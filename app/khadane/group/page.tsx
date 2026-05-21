@@ -76,7 +76,11 @@ export default function GroupPage() {
               <p className="font-display italic text-2xl md:text-3xl text-quarry-gold no-justify max-w-3xl mb-12">
                 Established 1972 · Bijolia · Bhilwara District · Rajasthan
               </p>
-              <div className="flex justify-start max-w-md">
+              <Link
+                href="/mls"
+                aria-label="Open Mohan Lal & Sons homepage"
+                className="flex justify-start max-w-md transition-opacity hover:opacity-80"
+              >
                 <Image
                   src={ASSETS.mls.lockup.onLight}
                   alt="Mohan Lal & Sons · Est. 1972"
@@ -84,7 +88,7 @@ export default function GroupPage() {
                   height={195}
                   className="w-full h-auto"
                 />
-              </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -165,7 +169,11 @@ export default function GroupPage() {
         <div className="container-editorial">
           <div className="max-w-3xl mx-auto text-center">
             <RevealOnScroll>
-              <div className="mb-10 flex justify-center">
+              <Link
+                href="/mls"
+                aria-label="Open Mohan Lal & Sons homepage"
+                className="mb-10 flex justify-center transition-opacity hover:opacity-80"
+              >
                 <Image
                   src={ASSETS.mls.lockup.onDark}
                   alt="Mohan Lal & Sons"
@@ -173,7 +181,7 @@ export default function GroupPage() {
                   height={156}
                   className="w-[260px] lg:w-[400px] h-auto"
                 />
-              </div>
+              </Link>
               <p className="font-display italic text-2xl lg:text-3xl text-warm-white leading-snug mb-10 no-justify">
                 For the full house — across all five verticals — visit our parent site.
               </p>

@@ -67,7 +67,11 @@ export default function Footer() {
               <h3 className="font-sans text-xs tracking-eyebrow text-quarry-gold uppercase mb-5 no-justify">
                 The Parent
               </h3>
-              <Link href="/khadane/group" className="inline-block mb-4 hover:opacity-80 transition-opacity">
+              <Link
+                href="/mls"
+                aria-label="Open Mohan Lal & Sons homepage"
+                className="inline-block mb-4 hover:opacity-80 transition-opacity"
+              >
                 <Image
                   src={ASSETS.mls.lockup.onDark}
                   alt="Mohan Lal & Sons · Est. 1972"

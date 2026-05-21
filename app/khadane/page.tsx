@@ -606,7 +606,11 @@ export default function HomePage() {
               <p className="eyebrow mb-6 no-justify">08 · THE GROUP</p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
-              <div className="flex justify-center mb-10">
+              <Link
+                href="/mls"
+                aria-label="Open Mohan Lal & Sons homepage"
+                className="flex justify-center mb-10 transition-opacity hover:opacity-80"
+              >
                 <Image
                   src={ASSETS.mls.lockup.onLight}
                   alt="Mohan Lal & Sons · Est. 1972"
@@ -614,7 +618,7 @@ export default function HomePage() {
                   height={156}
                   className="w-[280px] lg:w-[400px] h-auto"
                 />
-              </div>
+              </Link>
             </RevealOnScroll>
             <RevealOnScroll delay={250}>
               <p className="font-display italic text-2xl lg:text-3xl text-obsidian leading-snug mb-8 no-justify max-w-2xl mx-auto">
