@@ -25,19 +25,19 @@ export default function HomePage() {
       <section className="relative min-h-[calc(100vh-4.5rem)] lg:min-h-[calc(100vh-4.75rem)] flex items-end overflow-hidden bg-obsidian texture-lines">
         {/* Background video with static fallback */}
         <div className="absolute inset-0">
-          <PlaceholderImage
-            variant="yard"
-            label="HERO PLACEHOLDER · LANDSCAPE"
-            title="The Bijolia quarry face."
-            spec="2400 × 1600px · Documentary, mid-tone, slightly underexposed. Working quarry face with stone strata visible. Late afternoon light preferred."
-            swapPath="/img/hero-quarry-face.jpg"
-            aspectRatio="absolute inset-0"
-            className="w-full h-full"
-            showCaption={false}
+          <Image
+            src="/img/mls-home-hero-poster.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="absolute inset-0 object-cover"
+            style={{ objectPosition: '50% 58%' }}
+            aria-hidden="true"
           />
           <HeroVideo
-            src="https://github.com/Ankitrajofficial/sandstone_mlswebsite/releases/download/v1.0-assets/Mines01.mp4"
-            poster="/img/hero-quarry-face.jpg"
+            src="/videos/home-hero.mp4"
+            poster="/img/mls-home-hero-poster.jpg"
             objectPosition="50% 58%"
           />
           {/* Top scrim */}
