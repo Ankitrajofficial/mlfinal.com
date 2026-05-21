@@ -48,7 +48,7 @@ export default function MLSHeader() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/92 backdrop-blur-md border-b border-mls-ink/8 shadow-[0_18px_42px_rgba(255,255,255,0.82)] transition-all duration-500 ease-editorial"
+      className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-mls-ink/8 shadow-[0_10px_28px_rgba(0,0,0,0.06)] transition-all duration-500 ease-editorial"
     >
       <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
         <div
