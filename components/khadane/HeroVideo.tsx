@@ -18,18 +18,29 @@ export default function HeroVideo({
   const [playing, setPlaying] = useState(true)
   const [muted, setMuted] = useState(true)
 
-  const togglePlayback = () => {
+  const playVideo = async () => {
+    const video = videoRef.current
+    if (!video) return false
+
+    try {
+      await video.play()
+      return true
+    } catch {
+      setPlaying(false)
+      return false
+    }
+  }
+
+  const togglePlayback = async () => {
     const video = videoRef.current
     if (!video) return
 
     if (video.paused) {
-      video.play()
-      setPlaying(true)
+      await playVideo()
       return
     }
 
     video.pause()
-    setPlaying(false)
   }
 
   const toggleMute = () => {
@@ -46,8 +57,7 @@ export default function HeroVideo({
 
     video.currentTime = 0
     if (video.paused) {
-      video.play()
-      setPlaying(true)
+      void playVideo()
     }
   }
 
@@ -55,7 +65,7 @@ export default function HeroVideo({
     <>
       <video
         ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         style={{ objectPosition }}
         autoPlay
         muted
@@ -71,7 +81,7 @@ export default function HeroVideo({
         <source src={src} type="video/mp4" />
       </video>
 
-      <div className="absolute left-6 bottom-6 z-20 flex items-center gap-2 rounded-full border border-warm-white/20 bg-obsidian/35 p-2 backdrop-blur-md lg:left-8 lg:bottom-8">
+      <div className="pointer-events-auto absolute left-6 bottom-6 z-50 flex items-center gap-2 rounded-full border border-warm-white/20 bg-obsidian/45 p-2 backdrop-blur-md lg:left-8 lg:bottom-8">
         <button
           type="button"
           aria-label={playing ? 'Pause background video' : 'Play background video'}

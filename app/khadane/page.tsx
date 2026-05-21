@@ -31,7 +31,7 @@ export default function HomePage() {
             fill
             priority
             sizes="100vw"
-            className="absolute inset-0 object-cover"
+            className="pointer-events-none absolute inset-0 object-cover"
             style={{ objectPosition: '50% 58%' }}
             aria-hidden="true"
           />
@@ -41,9 +41,9 @@ export default function HomePage() {
             objectPosition="50% 58%"
           />
           {/* Top scrim */}
-          <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-obsidian/70 via-obsidian/40 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-obsidian/70 via-obsidian/40 to-transparent" />
           {/* Bottom scrim */}
-          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-obsidian via-obsidian/70 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-obsidian via-obsidian/70 to-transparent" />
         </div>
 
         {/* Hero content */}
