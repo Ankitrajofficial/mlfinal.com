@@ -62,6 +62,36 @@ function isLocalHost(host: string) {
   return hostname === 'localhost' || hostname === '127.0.0.1'
 }
 
+function resolveLocalSiteByPath(path: string): 'mls' | 'khadane' | null {
+  if (
+    path === '/our-legacy' ||
+    path === '/csr' ||
+    path === '/careers' ||
+    path === '/contact' ||
+    path.startsWith('/verticals') ||
+    path.startsWith('/resources')
+  ) {
+    return 'mls'
+  }
+
+  if (
+    path === '/collection' ||
+    path === '/formats' ||
+    path === '/quarry' ||
+    path === '/yard' ||
+    path === '/desk' ||
+    path === '/about' ||
+    path === '/group' ||
+    path.startsWith('/collection/') ||
+    path.startsWith('/formats/') ||
+    path.startsWith('/field-notes')
+  ) {
+    return 'khadane'
+  }
+
+  return null
+}
+
 function markLocalSite(
   response: NextResponse,
   host: string,
@@ -144,8 +174,13 @@ export function middleware(request: NextRequest) {
   let target = resolveSite(host)
 
   if (isLocalHost(host) && path !== '/') {
+    const pathSite = resolveLocalSiteByPath(path)
+    if (pathSite) {
+      target = pathSite
+    }
+
     const localSite = request.cookies.get('local-site')?.value
-    if (localSite === 'mls' || localSite === 'khadane') {
+    if (!pathSite && (localSite === 'mls' || localSite === 'khadane')) {
       target = localSite
     }
   }
