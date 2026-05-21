@@ -154,8 +154,13 @@ export function middleware(request: NextRequest) {
   if (
     path === '/favicon.ico' ||
     path === '/apple-touch-icon.svg' ||
+    path === '/apple-touch-icon.png' ||
+    path === '/favicon-32.png' ||
     path === '/favicon.svg' ||
+    path === '/icon-192.png' ||
+    path === '/icon-512.png' ||
     path === '/og-image.svg' ||
+    path === '/site.webmanifest' ||
     path === '/twitter-card.svg'
   ) {
     return NextResponse.next()
