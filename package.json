@@ -1,0 +1,41 @@
+{
+  "name": "mls-khadane",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mohan Lal & Sons + KHADANE™ — one Next.js codebase, two domains.",
+  "scripts": {
+    "dev": "next dev",
+    "dev:mls": "NEXT_PUBLIC_DEV_HOST_MODE=mls next dev",
+    "dev:khadane": "NEXT_PUBLIC_DEV_HOST_MODE=khadane next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "audit:facts": "tsx scripts/audit-facts.ts",
+    "verify": "npm run lint && npm run typecheck && npm run audit:facts && npm run build"
+  },
+  "dependencies": {
+    "next": "^16.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "framer-motion": "^11.18.0",
+    "lucide-react": "^0.460.0",
+    "resend": "^4.0.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.16.0",
+    "eslint-config-next": "^16.2.0",
+    "postcss": "^8.5.0",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

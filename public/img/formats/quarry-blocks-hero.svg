@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="1600" height="1200" preserveAspectRatio="xMidYMid slice">
+  <!-- Background gradient (stone tones) -->
+  <defs>
+    <radialGradient id="bg_KHF_003" cx="30%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#4A3520" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#3D2B1A" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#1A1410" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="noise_KHF_003">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.07 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+
+  <!-- Base stone gradient -->
+  <rect width="1600" height="1200" fill="url(#bg_KHF_003)"/>
+
+  <!-- Stone-texture noise overlay -->
+  <rect width="1600" height="1200" filter="url(#noise_KHF_003)" opacity="0.6"/>
+
+  <!-- Geological strata (subtle horizontal lines) -->
+  <path d="M0,200 Q400,197 800,200 T1600,200" stroke="#F0EDE6" stroke-opacity="0.062" stroke-width="1" fill="none"/>
+    <path d="M0,400 Q400,397 800,400 T1600,400" stroke="#F0EDE6" stroke-opacity="0.074" stroke-width="1" fill="none"/>
+    <path d="M0,600 Q400,597 800,600 T1600,600" stroke="#F0EDE6" stroke-opacity="0.086" stroke-width="1" fill="none"/>
+    <path d="M0,800 Q400,797 800,800 T1600,800" stroke="#F0EDE6" stroke-opacity="0.098" stroke-width="1" fill="none"/>
+    <path d="M0,1000 Q400,997 800,1000 T1600,1000" stroke="#F0EDE6" stroke-opacity="0.110" stroke-width="1" fill="none"/>
+
+  <!-- Top-left code -->
+  
+    <text x="72" y="40"
+          font-family="JetBrains Mono, monospace" font-size="12"
+          fill="#B8962E" letter-spacing="0.15em">#KHF-003</text>
+
+
+  <!-- Gold corner marks -->
+  
+    <!-- Top-left corner -->
+    <line x1="32" y1="32" x2="56" y2="32" stroke="#B8962E" stroke-width="1.5"/>
+    <line x1="32" y1="32" x2="32" y2="56" stroke="#B8962E" stroke-width="1.5"/>
+    <!-- Top-right -->
+    <line x1="1544" y1="32" x2="1568" y2="32" stroke="#B8962E" stroke-width="1.5"/>
+    <line x1="1568" y1="32" x2="1568" y2="56" stroke="#B8962E" stroke-width="1.5"/>
+    <!-- Bottom-left -->
+    <line x1="32" y1="1168" x2="56" y2="1168" stroke="#B8962E" stroke-width="1.5"/>
+    <line x1="32" y1="1144" x2="32" y2="1168" stroke="#B8962E" stroke-width="1.5"/>
+    <!-- Bottom-right -->
+    <line x1="1544" y1="1168" x2="1568" y2="1168" stroke="#B8962E" stroke-width="1.5"/>
+    <line x1="1568" y1="1144" x2="1568" y2="1168" stroke="#B8962E" stroke-width="1.5"/>
+
+
+  <!-- Title -->
+  <text x="800" y="590"
+        text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif"
+        font-size="32" font-weight="500" font-style="italic"
+        fill="#F0EDE6" letter-spacing="-0.01em">Quarry Blocks</text>
+
+  <!-- Subtitle -->
+  <text x="800" y="622" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="11" fill="#B8962E" letter-spacing="0.2em">RAW BLOCK EXPORT</text>
+
+  <!-- Gold divider -->
+  <line x1="770" y1="636.0" x2="830" y2="636.0" stroke="#B8962E" stroke-width="0.8"/>
+
+  <!-- Spec lines -->
+  <text x="800" y="654" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#F0EDE6" fill-opacity="0.5" letter-spacing="0.05em">Raw · dimensioned · containerised</text>
+
+  <!-- KHADANE™ brand mark -->
+  
+    <text x="1528" y="1172"
+          text-anchor="end" font-family="Montserrat, sans-serif" font-weight="900" font-size="11"
+          fill="#F0EDE6" fill-opacity="0.5" letter-spacing="0.2em">KHADANE</text>
+    <text x="1538" y="1163"
+          text-anchor="end" font-family="Montserrat, sans-serif" font-weight="700" font-size="7"
+          fill="#B8962E" letter-spacing="0.1em">TM</text>
+
+
+</svg>

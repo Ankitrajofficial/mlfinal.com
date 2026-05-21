@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" preserveAspectRatio="xMidYMid slice">
+  <!-- Background gradient (stone tones) -->
+  <defs>
+    <radialGradient id="bg_KHD_015" cx="30%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#D9B894" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#C4A082" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#A88862" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="noise_KHD_015">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.07 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+
+  <!-- Base stone gradient -->
+  <rect width="1200" height="1500" fill="url(#bg_KHD_015)"/>
+
+  <!-- Stone-texture noise overlay -->
+  <rect width="1200" height="1500" filter="url(#noise_KHD_015)" opacity="0.6"/>
+
+  <!-- Geological strata (subtle horizontal lines) -->
+  <path d="M0,250 Q300,247 600,250 T1200,250" stroke="#F0EDE6" stroke-opacity="0.062" stroke-width="1" fill="none"/>
+    <path d="M0,500 Q300,497 600,500 T1200,500" stroke="#F0EDE6" stroke-opacity="0.074" stroke-width="1" fill="none"/>
+    <path d="M0,750 Q300,747 600,750 T1200,750" stroke="#F0EDE6" stroke-opacity="0.086" stroke-width="1" fill="none"/>
+    <path d="M0,1000 Q300,997 600,1000 T1200,1000" stroke="#F0EDE6" stroke-opacity="0.098" stroke-width="1" fill="none"/>
+    <path d="M0,1250 Q300,1247 600,1250 T1200,1250" stroke="#F0EDE6" stroke-opacity="0.110" stroke-width="1" fill="none"/>
+
+  <!-- Top-left code -->
+  
+    <text x="72" y="40"
+          font-family="JetBrains Mono, monospace" font-size="12"
+          fill="#B8962E" letter-spacing="0.15em">#KHD-015</text>
+
+
+  <!-- Gold corner marks -->
+  
+    <!-- Top-left corner -->
+    <line x1="32" y1="32" x2="56" y2="32" stroke="#B8962E" stroke-width="1.5"/>
+    <line x1="32" y1="32" x2="32" y2="56" stroke="#B8962E" stroke-width="1.5"/>
+    <!-- Top-right -->
+    <line x1="1144" y1="32" x2="1168" y2="32" stroke="#B8962E" stroke-width="1.5"/>
+    <line x1="1168" y1="32" x2="1168" y2="56" stroke="#B8962E" stroke-width="1.5"/>
+    <!-- Bottom-left -->
+    <line x1="32" y1="1468" x2="56" y2="1468" stroke="#B8962E" stroke-width="1.5"/>
+    <line x1="32" y1="1444" x2="32" y2="1468" stroke="#B8962E" stroke-width="1.5"/>
+    <!-- Bottom-right -->
+    <line x1="1144" y1="1468" x2="1168" y2="1468" stroke="#B8962E" stroke-width="1.5"/>
+    <line x1="1168" y1="1444" x2="1168" y2="1468" stroke="#B8962E" stroke-width="1.5"/>
+
+
+  <!-- Title -->
+  <text x="600" y="740"
+        text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif"
+        font-size="32" font-weight="500" font-style="italic"
+        fill="#F0EDE6" letter-spacing="-0.01em">Jodhpur Chittar</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="772" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="11" fill="#B8962E" letter-spacing="0.2em">JODHPUR DISTRICT</text>
+
+  <!-- Gold divider -->
+  <line x1="570" y1="786.0" x2="630" y2="786.0" stroke="#B8962E" stroke-width="0.8"/>
+
+  <!-- Spec lines -->
+  <text x="600" y="804" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#F0EDE6" fill-opacity="0.5" letter-spacing="0.05em">The pink sandstone of Mehrangarh</text>
+
+  <!-- KHADANE™ brand mark -->
+  
+    <text x="1128" y="1472"
+          text-anchor="end" font-family="Montserrat, sans-serif" font-weight="900" font-size="11"
+          fill="#F0EDE6" fill-opacity="0.5" letter-spacing="0.2em">KHADANE</text>
+    <text x="1138" y="1463"
+          text-anchor="end" font-family="Montserrat, sans-serif" font-weight="700" font-size="7"
+          fill="#B8962E" letter-spacing="0.1em">TM</text>
+
+
+</svg>

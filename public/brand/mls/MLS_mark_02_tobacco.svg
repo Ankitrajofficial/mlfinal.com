@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+<title>MLS · Four Pillars · 02_tobacco</title>
+<rect width="1080" height="1080" fill="#4A3520"/>
+<g transform="translate(540,728.25)">
+  <g fill="#EEEBE0">
+    <path d="M -193.50 0 L -193.50 -432.00 L -103.50 -333.00 L -103.50 0 Z"/>
+    <path d="M -94.50 0 L -94.50 -333.00 L -4.50 -234.00 L -4.50 0 Z"/>
+    <path d="M 4.50 0 L 4.50 -234.00 L 94.50 -333.00 L 94.50 0 Z"/>
+    <path d="M 103.50 0 L 103.50 -333.00 L 193.50 -432.00 L 193.50 0 Z"/>
+  </g>
+  <g fill="#B8962E">
+    <path d="M -216.00 0 L 216.00 0 L 216.00 18.00 L -216.00 18.00 Z"/>
+  </g>
+  <g fill="#4A3520"><path d="M -238.50 18.00 L 238.50 18.00 L 238.50 19.50 L -238.50 19.50 Z"/></g>
+  <g fill="#B8962E"><path d="M -238.50 19.50 L 238.50 19.50 L 238.50 55.50 L -238.50 55.50 Z"/></g>
+    <text x="0" y="43.98" text-anchor="middle"
+          font-family="Lora, 'Cormorant Garamond', Georgia, serif"
+          font-weight="500" font-size="17"
+          fill="#4A3520"
+          letter-spacing="0.04em">Since 1972 · Bijolia</text>
+</g>
+</svg>

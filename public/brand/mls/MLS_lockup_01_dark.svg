@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 700" width="1800" height="700">
+<rect width="1800" height="700" fill="#1A1410"/>
+<g transform="translate(320,473.57) scale(0.6564)">
+  <g fill="#EEEBE0">
+    <path d="M -193.50 0 L -193.50 -432.00 L -103.50 -333.00 L -103.50 0 Z"/>
+    <path d="M -94.50 0 L -94.50 -333.00 L -4.50 -234.00 L -4.50 0 Z"/>
+    <path d="M 4.50 0 L 4.50 -234.00 L 94.50 -333.00 L 94.50 0 Z"/>
+    <path d="M 103.50 0 L 103.50 -333.00 L 193.50 -432.00 L 193.50 0 Z"/>
+  </g>
+  <g fill="#B8962E">
+    <path d="M -216.00 0 L 216.00 0 L 216.00 18.00 L -216.00 18.00 Z"/>
+  </g>
+  <g fill="#1A1410"><path d="M -238.50 18.00 L 238.50 18.00 L 238.50 19.50 L -238.50 19.50 Z"/></g>
+  <g fill="#B8962E"><path d="M -238.50 19.50 L 238.50 19.50 L 238.50 55.50 L -238.50 55.50 Z"/></g>
+    <text x="0" y="43.98" text-anchor="middle"
+          font-family="Lora, 'Cormorant Garamond', Georgia, serif"
+          font-weight="500" font-size="17"
+          fill="#1A1410"
+          letter-spacing="0.04em">Since 1972 · Bijolia</text>
+</g>
+<line x1="580" y1="190.00" x2="580" y2="510.00"
+      stroke="#B8962E" stroke-width="2" opacity="0.85"/>
+<text x="640" y="425.00"
+      font-family="Lora, 'Cormorant Garamond', Georgia, serif"
+      font-weight="700" font-size="92" fill="#EEEBE0"
+      letter-spacing="-0.005em">Mohan Lal &amp; Sons</text>
+<text x="640" y="495.00"
+      font-family="Lora, 'Cormorant Garamond', Georgia, serif"
+      font-weight="300" font-style="italic" font-size="22" fill="#B8962E"
+      letter-spacing="0.25em">EST. 1972 &#160;·&#160; BIJOLIA, RAJASTHAN</text>
+</svg>

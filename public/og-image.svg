@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="bgGrad" cx="30%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#1A1410"/>
+      <stop offset="60%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#080604"/>
+    </radialGradient>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.04 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+
+  <!-- Base -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" filter="url(#noise)" opacity="0.5"/>
+
+  <!-- Strata lines -->
+  <path d="M0,130 Q300,127 600,130 T1200,130" stroke="#F0EDE6" stroke-opacity="0.05" stroke-width="1" fill="none"/>
+  <path d="M0,250 Q300,247 600,250 T1200,250" stroke="#F0EDE6" stroke-opacity="0.06" stroke-width="1" fill="none"/>
+  <path d="M0,380 Q300,377 600,380 T1200,380" stroke="#F0EDE6" stroke-opacity="0.07" stroke-width="1" fill="none"/>
+  <path d="M0,500 Q300,497 600,500 T1200,500" stroke="#F0EDE6" stroke-opacity="0.08" stroke-width="1" fill="none"/>
+
+  <!-- Gold corner marks -->
+  <line x1="64" y1="64" x2="100" y2="64" stroke="#B8962E" stroke-width="2"/>
+  <line x1="64" y1="64" x2="64" y2="100" stroke="#B8962E" stroke-width="2"/>
+  <line x1="1100" y1="64" x2="1136" y2="64" stroke="#B8962E" stroke-width="2"/>
+  <line x1="1136" y1="64" x2="1136" y2="100" stroke="#B8962E" stroke-width="2"/>
+  <line x1="64" y1="566" x2="100" y2="566" stroke="#B8962E" stroke-width="2"/>
+  <line x1="64" y1="530" x2="64" y2="566" stroke="#B8962E" stroke-width="2"/>
+  <line x1="1100" y1="566" x2="1136" y2="566" stroke="#B8962E" stroke-width="2"/>
+  <line x1="1136" y1="530" x2="1136" y2="566" stroke="#B8962E" stroke-width="2"/>
+
+  <!-- Top-left coordinates -->
+  <text x="110" y="76" font-family="JetBrains Mono, monospace" font-size="11" fill="#B8962E" letter-spacing="0.2em" fill-opacity="0.7">25.176° N · 75.342° E</text>
+  <text x="110" y="92" font-family="JetBrains Mono, monospace" font-size="10" fill="#F0EDE6" fill-opacity="0.35" letter-spacing="0.2em">BIJOLIA · RAJASTHAN</text>
+
+  <!-- Hero block — KHADANE wordmark style typography -->
+  <text x="600" y="245" text-anchor="middle"
+        font-family="Montserrat, sans-serif" font-weight="900" font-size="96"
+        fill="#F0EDE6" letter-spacing="-0.01em">
+    <tspan fill="#B8962E">KHA</tspan><tspan fill="#F0EDE6">DANE</tspan>
+  </text>
+  <text x="845" y="200" font-family="Montserrat, sans-serif" font-weight="800" font-size="22" fill="#B8962E" letter-spacing="0.1em">TM</text>
+
+  <!-- Tagline -->
+  <text x="600" y="295" text-anchor="middle"
+        font-family="Cormorant Garamond, Georgia, serif" font-size="32" font-style="italic"
+        fill="#B8962E" letter-spacing="0.02em">खदान — The Quarry</text>
+
+  <!-- Gold divider -->
+  <line x1="560" y1="335" x2="640" y2="335" stroke="#B8962E" stroke-width="1.5"/>
+
+  <!-- Sub-headline (three statement) -->
+  <text x="600" y="385" text-anchor="middle"
+        font-family="Cormorant Garamond, Georgia, serif" font-size="26"
+        fill="#F0EDE6" fill-opacity="0.85">Twenty-one varieties.  Fourteen formats.  One house.</text>
+
+  <!-- Eyebrow -->
+  <text x="600" y="445" text-anchor="middle"
+        font-family="Montserrat, sans-serif" font-size="11" font-weight="500"
+        fill="#F0EDE6" fill-opacity="0.55" letter-spacing="0.3em">
+    THE SANDSTONE CATALOGUE OF DHAKAR STONES GROUP
+  </text>
+
+  <!-- Foundation line -->
+  <text x="600" y="475" text-anchor="middle"
+        font-family="Montserrat, sans-serif" font-size="11" font-weight="500"
+        fill="#B8962E" fill-opacity="0.7" letter-spacing="0.3em">
+    BIJOLIA  ·  RAJASTHAN  ·  SINCE 1972
+  </text>
+
+  <!-- Bottom-right brand mark -->
+  <text x="1090" y="585" text-anchor="end"
+        font-family="Montserrat, sans-serif" font-weight="900" font-size="10"
+        fill="#F0EDE6" fill-opacity="0.4" letter-spacing="0.25em">A MOHAN LAL &amp; SONS OPERATION</text>
+
+  <!-- Bottom-left site -->
+  <text x="110" y="585" font-family="JetBrains Mono, monospace" font-size="10"
+        fill="#F0EDE6" fill-opacity="0.4" letter-spacing="0.15em">KHADANE.COM</text>
+
+</svg>
