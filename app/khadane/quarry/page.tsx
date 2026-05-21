@@ -49,7 +49,7 @@ export default function QuarryPage() {
       </section>
 
       {/* Three-statement intro */}
-      <section className="section-padding section-warm">
+      <section className="section-warm py-20 lg:py-28">
         <div className="container-editorial">
           <div className="max-w-3xl mx-auto text-center">
             <RevealOnScroll>
@@ -64,19 +64,61 @@ export default function QuarryPage() {
       </section>
 
       {/* Stats grid */}
-      <section className="section-padding section-cream">
+      <section className="section-cream py-16 lg:py-24">
         <div className="container-editorial">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-obsidian/10">
+          <div className="mb-10 lg:mb-12 max-w-3xl">
+            <RevealOnScroll>
+              <p className="eyebrow-gold mb-5 no-justify">QUARRY CAPACITY</p>
+              <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.08] text-obsidian no-justify">
+                The numbers are operational,
+                <span className="block italic text-quarry-gold mt-2">not decorative.</span>
+              </h2>
+            </RevealOnScroll>
+            <RevealOnScroll delay={100}>
+              <p className="mt-6 max-w-2xl font-sans text-base lg:text-lg leading-relaxed text-graphite">
+                The Bijolia belt is where the catalogue begins: owned quarries,
+                direct extraction, processing custody, and export capacity under
+                one house.
+              </p>
+            </RevealOnScroll>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr gap-px bg-obsidian/10">
             {[
-              { num: SITE.bijoliaBeltYears.toString(), label: 'Years of recorded sandstone production' },
-              { num: SITE.quarryCount, label: 'Quarries in operation' },
-              { num: SITE.annualOutput, label: 'Annual output' },
-              { num: SITE.workforceCount, label: 'Workforce' },
+              {
+                num: SITE.bijoliaBeltYears.toString(),
+                label: 'Years of recorded sandstone production',
+                note: 'A stone belt with dated working history around Bijolia.',
+              },
+              {
+                num: SITE.quarryCount,
+                label: 'Quarries in operation',
+                note: 'Owned and operated sources across the sandstone belt.',
+              },
+              {
+                num: '2M+',
+                label: 'Sq.m annual output',
+                note: SITE.annualOutput,
+              },
+              {
+                num: SITE.workforceCount,
+                label: 'Workforce',
+                note: 'Extraction, selection, processing, packing, and dispatch.',
+              },
             ].map((s, i) => (
-              <RevealOnScroll key={i} delay={i * 80}>
-                <div className="bg-warm-white p-8 lg:p-12 text-center">
-                  <p className="font-display text-5xl lg:text-6xl text-quarry-gold no-justify mb-4">{s.num}</p>
-                  <p className="font-sans text-xs uppercase tracking-eyebrow text-tobacco no-justify">{s.label}</p>
+              <RevealOnScroll key={s.label} delay={i * 80} className="h-full">
+                <div className="flex h-full min-h-[19rem] flex-col justify-between bg-warm-white p-8 lg:p-10">
+                  <div>
+                    <p className="font-display text-5xl lg:text-6xl text-quarry-gold no-justify mb-5">
+                      {s.num}
+                    </p>
+                    <p className="font-sans text-xs uppercase tracking-eyebrow text-tobacco no-justify">
+                      {s.label}
+                    </p>
+                  </div>
+                  <p className="mt-10 border-t border-obsidian/10 pt-5 font-sans text-sm leading-relaxed text-graphite">
+                    {s.note}
+                  </p>
                 </div>
               </RevealOnScroll>
             ))}
