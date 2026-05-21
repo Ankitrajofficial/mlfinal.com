@@ -14,9 +14,7 @@ export default function Navigation() {
   const homeHref = routeBase || '/'
   const withRouteBase = (href: string) =>
     routeBase && href.startsWith('/') ? `${routeBase}${href}` : href
-  const sitePath = routeBase ? pathname.slice(routeBase.length) || '/' : pathname
-  const darkHeroNav = sitePath === '/' || sitePath === '/quarry'
-  const navOnDark = darkHeroNav && !scrolled
+  const navOnDark = false
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -34,8 +32,8 @@ export default function Navigation() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ease-editorial ${
           scrolled
-            ? 'bg-warm-white/90 backdrop-blur-md border-b border-obsidian/8 py-1.5'
-            : 'bg-transparent py-2.5'
+            ? 'bg-white border-b border-obsidian/8 py-1.5'
+            : 'bg-white border-b border-obsidian/8 py-2.5'
         }`}
       >
         <div className="container-editorial flex items-center justify-between gap-5">
