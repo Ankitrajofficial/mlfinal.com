@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight, ArrowRight } from 'lucide-react'
 import { buildMetadata } from '@/lib/seo'
 import {
@@ -70,6 +71,16 @@ export default function MLSHomePage() {
         data-mls-hero
         className="relative -mt-20 lg:-mt-24 min-h-[calc(100svh-6.25rem)] bg-mls-ink overflow-hidden flex items-end"
       >
+        <Image
+          src="/img/mls-home-hero-poster.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="absolute inset-0 object-cover"
+          style={{ objectPosition: '50% 58%' }}
+          aria-hidden="true"
+        />
         <video
           className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition: '50% 58%' }}
@@ -77,8 +88,8 @@ export default function MLSHomePage() {
           muted
           loop
           playsInline
-          preload="metadata"
-          poster="/img/hero-quarry-face.svg"
+          preload="auto"
+          poster="/img/mls-home-hero-poster.jpg"
           aria-hidden="true"
         >
           <source src={MLS_HERO_VIDEO} type="video/mp4" />
