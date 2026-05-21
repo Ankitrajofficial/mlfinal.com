@@ -13,41 +13,20 @@ import { MLS_NAV, MLS_ASSETS, MLS_SITE } from '@/lib/site-mls'
  */
 export default function MLSHeader() {
   const [scrolled, setScrolled] = useState(false)
-  const [overHero, setOverHero] = useState(true)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const pathname = usePathname()
   const headerRef = useRef<HTMLElement>(null)
-  const isHomePath = pathname === '/' || pathname === '/mls'
-  const lightHeader = isHomePath && overHero && !mobileOpen
-  const navTextClass = lightHeader
-    ? 'text-white hover:text-mls-gold'
-    : 'text-mls-ink/80 hover:text-mls-gold'
-  const menuLineClass = lightHeader ? 'bg-white' : 'bg-mls-ink'
+  const navTextClass = 'text-mls-ink/80 hover:text-mls-gold'
+  const menuLineClass = 'bg-mls-ink'
 
-  // Scroll-aware condensation and color swap.
+  // Scroll-aware condensation.
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 24)
-
-      if (pathname !== '/' && pathname !== '/mls') {
-        setOverHero(false)
-        return
-      }
-
-      const hero = document.querySelector<HTMLElement>('[data-mls-hero]')
-      const headerHeight = headerRef.current?.offsetHeight ?? 0
-      setOverHero(Boolean(hero && hero.getBoundingClientRect().bottom > headerHeight + 12))
-    }
-
+    const onScroll = () => setScrolled(window.scrollY > 24)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-    }
-  }, [pathname])
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   // Close menus on route change
   useEffect(() => {
@@ -69,7 +48,7 @@ export default function MLSHeader() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500 ease-editorial"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/92 backdrop-blur-md border-b border-mls-ink/8 shadow-[0_18px_42px_rgba(255,255,255,0.82)] transition-all duration-500 ease-editorial"
     >
       <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
         <div
@@ -84,7 +63,7 @@ export default function MLSHeader() {
             aria-label={`${MLS_SITE.name} — Home`}
           >
             <Image
-              src={lightHeader ? MLS_ASSETS.lockup.onDark : MLS_ASSETS.lockup.onLight}
+              src={MLS_ASSETS.lockup.onLight}
               alt={MLS_SITE.name}
               width={scrolled ? 180 : 220}
               height={scrolled ? 36 : 44}
@@ -184,9 +163,7 @@ export default function MLSHeader() {
                   href={item.href}
                   className={`px-4 py-2 text-sm font-body tracking-wide transition-colors duration-300 ${
                     pathname === item.href
-                      ? lightHeader
-                        ? 'text-white'
-                        : 'text-mls-gold'
+                      ? 'text-mls-gold'
                       : navTextClass
                   }`}
                 >
