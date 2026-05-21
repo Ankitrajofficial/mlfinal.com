@@ -12,8 +12,13 @@ export function generateStaticParams() {
   return VARIETIES.map((v) => ({ variety: v.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { variety: string } }) {
-  const v = getVariety(params.variety)
+type VarietyPageProps = {
+  params: Promise<{ variety: string }>
+}
+
+export async function generateMetadata({ params }: VarietyPageProps) {
+  const { variety } = await params
+  const v = getVariety(variety)
   if (!v) return { title: 'Not found' }
   return {
     title: `${v.name} — ${v.code}`,
@@ -21,8 +26,9 @@ export async function generateMetadata({ params }: { params: { variety: string }
   }
 }
 
-export default function VarietyPage({ params }: { params: { variety: string } }) {
-  const v = getVariety(params.variety)
+export default async function VarietyPage({ params }: VarietyPageProps) {
+  const { variety } = await params
+  const v = getVariety(variety)
   if (!v) notFound()
 
   const prev = getPrevVariety(v.rank)
@@ -60,10 +66,10 @@ export default function VarietyPage({ params }: { params: { variety: string } })
                   {v.oneLine}
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Link href="/desk" className="cta-primary no-justify">
+                  <Link href="/khadane/desk" className="cta-primary no-justify">
                     Quote for {v.name}
                   </Link>
-                  <Link href="/collection" className="cta-secondary no-justify">
+                  <Link href="/khadane/collection" className="cta-secondary no-justify">
                     All varieties
                   </Link>
                 </div>
@@ -178,7 +184,7 @@ export default function VarietyPage({ params }: { params: { variety: string } })
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {availableFormats.map((f, i) => (
               <RevealOnScroll key={f.slug} delay={Math.min(i * 40, 400)}>
-                <Link href={`/formats/${f.slug}`} className="block p-5 bg-warm-white hover:bg-stone-linen transition-colors group">
+                <Link href={`/khadane/formats/${f.slug}`} className="block p-5 bg-warm-white hover:bg-stone-linen transition-colors group">
                   <p className="font-mono text-xs text-quarry-gold no-justify mb-3">{f.code}</p>
                   <p className="font-display text-lg text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
                     {f.name}
@@ -209,7 +215,7 @@ export default function VarietyPage({ params }: { params: { variety: string } })
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={400}>
-              <Link href="/desk" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify">
+              <Link href="/khadane/desk" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify">
                 Quote for {v.name} →
               </Link>
             </RevealOnScroll>
@@ -221,13 +227,13 @@ export default function VarietyPage({ params }: { params: { variety: string } })
       <section className="section-warm border-t border-obsidian/10">
         <div className="container-editorial py-12 lg:py-16">
           <div className="grid grid-cols-2 gap-4">
-            <Link href={`/collection/${prev.slug}`} className="group block">
+            <Link href={`/khadane/collection/${prev.slug}`} className="group block">
               <p className="font-mono text-xs text-tobacco/60 mb-2 no-justify">← PREVIOUS · {prev.code}</p>
               <p className="font-display text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
                 {prev.name}
               </p>
             </Link>
-            <Link href={`/collection/${next.slug}`} className="group block text-right">
+            <Link href={`/khadane/collection/${next.slug}`} className="group block text-right">
               <p className="font-mono text-xs text-tobacco/60 mb-2 no-justify">NEXT · {next.code} →</p>
               <p className="font-display text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
                 {next.name}

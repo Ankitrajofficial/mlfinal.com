@@ -56,7 +56,7 @@ export default function FormatsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-obsidian/10">
             {FORMATS.map((f, i) => (
               <RevealOnScroll key={f.slug} delay={Math.min(i * 40, 400)}>
-                <Link href={`/formats/${f.slug}`} className="block bg-warm-white p-8 lg:p-10 group hover:bg-stone-linen transition-colors duration-400 ease-editorial h-full">
+                <Link href={`/khadane/formats/${f.slug}`} className="block bg-warm-white p-8 lg:p-10 group hover:bg-stone-linen transition-colors duration-400 ease-editorial h-full">
                   <p className="font-mono text-xs text-quarry-gold no-justify mb-4">{f.code}</p>
                   <h3 className="font-display text-3xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors mb-4 leading-tight">
                     {f.name}

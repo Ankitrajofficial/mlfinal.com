@@ -11,8 +11,13 @@ export function generateStaticParams() {
   return FORMATS.map((f) => ({ format: f.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { format: string } }) {
-  const f = getFormat(params.format)
+type FormatPageProps = {
+  params: Promise<{ format: string }>
+}
+
+export async function generateMetadata({ params }: FormatPageProps) {
+  const { format } = await params
+  const f = getFormat(format)
   if (!f) return { title: 'Not found' }
   return {
     title: `${f.name} — ${f.code}`,
@@ -20,8 +25,9 @@ export async function generateMetadata({ params }: { params: { format: string } 
   }
 }
 
-export default function FormatPage({ params }: { params: { format: string } }) {
-  const f = getFormat(params.format)
+export default async function FormatPage({ params }: FormatPageProps) {
+  const { format } = await params
+  const f = getFormat(format)
   if (!f) notFound()
 
   const prev = getPrevFormat(f.rank)
@@ -58,10 +64,10 @@ export default function FormatPage({ params }: { params: { format: string } }) {
                   {f.description}
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Link href="/desk" className="cta-primary no-justify">
+                  <Link href="/khadane/desk" className="cta-primary no-justify">
                     Quote for {f.name}
                   </Link>
-                  <Link href="/formats" className="cta-secondary no-justify">
+                  <Link href="/khadane/formats" className="cta-secondary no-justify">
                     All formats
                   </Link>
                 </div>
@@ -133,7 +139,7 @@ export default function FormatPage({ params }: { params: { format: string } }) {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {availableVarieties.map((v, i) => (
               <RevealOnScroll key={v.slug} delay={Math.min(i * 30, 400)}>
-                <Link href={`/collection/${v.slug}`} className="block p-5 bg-stone-linen/40 hover:bg-stone-linen transition-colors group">
+                <Link href={`/khadane/collection/${v.slug}`} className="block p-5 bg-stone-linen/40 hover:bg-stone-linen transition-colors group">
                   <p className="font-mono text-xs text-quarry-gold no-justify mb-2">{v.code}</p>
                   <p className="font-display text-lg text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
                     {v.name}
@@ -162,7 +168,7 @@ export default function FormatPage({ params }: { params: { format: string } }) {
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={400}>
-              <Link href="/desk" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify">
+              <Link href="/khadane/desk" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify">
                 Quote for {f.name} →
               </Link>
             </RevealOnScroll>
@@ -174,13 +180,13 @@ export default function FormatPage({ params }: { params: { format: string } }) {
       <section className="section-warm border-t border-obsidian/10">
         <div className="container-editorial py-12 lg:py-16">
           <div className="grid grid-cols-2 gap-4">
-            <Link href={`/formats/${prev.slug}`} className="group block">
+            <Link href={`/khadane/formats/${prev.slug}`} className="group block">
               <p className="font-mono text-xs text-tobacco/60 mb-2 no-justify">← PREVIOUS · {prev.code}</p>
               <p className="font-display text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
                 {prev.name}
               </p>
             </Link>
-            <Link href={`/formats/${next.slug}`} className="group block text-right">
+            <Link href={`/khadane/formats/${next.slug}`} className="group block text-right">
               <p className="font-mono text-xs text-tobacco/60 mb-2 no-justify">NEXT · {next.code} →</p>
               <p className="font-display text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
                 {next.name}

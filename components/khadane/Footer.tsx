@@ -43,11 +43,11 @@ export default function Footer() {
                 Catalogue
               </h3>
               <ul className="space-y-3">
-                <li><Link href="/collection" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Collection</Link></li>
-                <li><Link href="/formats" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Formats</Link></li>
-                <li><Link href="/gallery" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Gallery</Link></li>
-                <li><Link href="/quarry" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Quarry</Link></li>
-                <li><Link href="/yard" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Yard</Link></li>
+                <li><Link href="/khadane/collection" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Collection</Link></li>
+                <li><Link href="/khadane/formats" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Formats</Link></li>
+                <li><Link href="/khadane/gallery" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Gallery</Link></li>
+                <li><Link href="/khadane/quarry" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Quarry</Link></li>
+                <li><Link href="/khadane/yard" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Yard</Link></li>
               </ul>
             </div>
 
@@ -56,10 +56,10 @@ export default function Footer() {
                 The Desk
               </h3>
               <ul className="space-y-3">
-                <li><Link href="/desk" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Enquire</Link></li>
-                <li><Link href="/about" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">About</Link></li>
-                <li><Link href="/group" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Group</Link></li>
-                <li><Link href="/field-notes" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Field Notes</Link></li>
+                <li><Link href="/khadane/desk" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Enquire</Link></li>
+                <li><Link href="/khadane/about" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">About</Link></li>
+                <li><Link href="/khadane/group" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Group</Link></li>
+                <li><Link href="/khadane/field-notes" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Field Notes</Link></li>
               </ul>
             </div>
 
@@ -67,7 +67,7 @@ export default function Footer() {
               <h3 className="font-sans text-xs tracking-eyebrow text-quarry-gold uppercase mb-5 no-justify">
                 The Parent
               </h3>
-              <Link href="/group" className="inline-block mb-4 hover:opacity-80 transition-opacity">
+              <Link href="/khadane/group" className="inline-block mb-4 hover:opacity-80 transition-opacity">
                 <Image
                   src={ASSETS.mls.lockup.onDark}
                   alt="Mohan Lal & Sons · Est. 1972"

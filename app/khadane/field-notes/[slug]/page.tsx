@@ -15,8 +15,13 @@ export function generateStaticParams() {
   return FIELD_NOTES.map((n) => ({ slug: n.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const note = getFieldNote(params.slug)
+type FieldNotePageProps = {
+  params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: FieldNotePageProps) {
+  const { slug } = await params
+  const note = getFieldNote(slug)
   if (!note) return { title: 'Not found' }
   return {
     title: `${note.title} · ${note.id}`,
@@ -24,8 +29,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function FieldNotePage({ params }: { params: { slug: string } }) {
-  const note = getFieldNote(params.slug)
+export default async function FieldNotePage({ params }: FieldNotePageProps) {
+  const { slug } = await params
+  const note = getFieldNote(slug)
   if (!note) notFound()
 
   const prev = getPrevFieldNote(note.slug)
@@ -37,7 +43,7 @@ export default function FieldNotePage({ params }: { params: { slug: string } }) 
       <section className="section-warm pt-12 lg:pt-20">
         <div className="container-editorial max-w-4xl">
           <div className="opacity-0 animate-fade-in" style={{ animationDelay: '100ms' }}>
-            <Link href="/field-notes" className="font-mono text-xs text-tobacco/60 hover:text-quarry-gold transition-colors no-justify inline-block mb-8">
+            <Link href="/khadane/field-notes" className="font-mono text-xs text-tobacco/60 hover:text-quarry-gold transition-colors no-justify inline-block mb-8">
               ← Field Notes
             </Link>
             <div className="flex flex-wrap items-center gap-3 mb-8">
@@ -120,13 +126,13 @@ export default function FieldNotePage({ params }: { params: { slug: string } }) 
       <section className="section-cream border-t border-obsidian/10">
         <div className="container-editorial py-12 lg:py-16">
           <div className="grid grid-cols-2 gap-4">
-            <Link href={`/field-notes/${prev.slug}`} className="group block">
+            <Link href={`/khadane/field-notes/${prev.slug}`} className="group block">
               <p className="font-mono text-xs text-tobacco/60 mb-2 no-justify">← PREVIOUS · {prev.id}</p>
               <p className="font-display text-xl lg:text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors leading-tight">
                 {prev.title}
               </p>
             </Link>
-            <Link href={`/field-notes/${next.slug}`} className="group block text-right">
+            <Link href={`/khadane/field-notes/${next.slug}`} className="group block text-right">
               <p className="font-mono text-xs text-tobacco/60 mb-2 no-justify">NEXT · {next.id} →</p>
               <p className="font-display text-xl lg:text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors leading-tight">
                 {next.title}

@@ -20,12 +20,12 @@ const STATIC_PAGES: SearchResult[] = [
   { type: 'page', title: 'The Quarry', subtitle: 'The working face', href: '/quarry' },
   { type: 'page', title: 'The Yard', subtitle: 'Processing & shipping', href: '/yard' },
   { type: 'page', title: 'The Desk', subtitle: 'Write to us', href: '/desk' },
-  { type: 'page', title: 'The Group', subtitle: 'Mohan Lal & Sons', href: '/group' },
-  { type: 'page', title: 'Gallery', subtitle: 'Stone, quarry, yard, in-situ', href: '/gallery' },
-  { type: 'page', title: 'Collection', subtitle: 'All 21 varieties', href: '/collection' },
-  { type: 'page', title: 'Formats', subtitle: 'All 14 formats', href: '/formats' },
-  { type: 'page', title: 'Field Notes', subtitle: 'Editorial briefs', href: '/field-notes' },
-  { type: 'page', title: 'About', subtitle: 'About KHADANE™', href: '/about' },
+  { type: 'page', title: 'The Group', subtitle: 'Mohan Lal & Sons', href: '/khadane/group' },
+  { type: 'page', title: 'Gallery', subtitle: 'Stone, quarry, yard, in-situ', href: '/khadane/gallery' },
+  { type: 'page', title: 'Collection', subtitle: 'All 21 varieties', href: '/khadane/collection' },
+  { type: 'page', title: 'Formats', subtitle: 'All 14 formats', href: '/khadane/formats' },
+  { type: 'page', title: 'Field Notes', subtitle: 'Editorial briefs', href: '/khadane/field-notes' },
+  { type: 'page', title: 'About', subtitle: 'About KHADANE™', href: '/khadane/about' },
 ]
 
 interface SearchProps {
@@ -59,21 +59,21 @@ export default function Search({ tone = 'light' }: SearchProps) {
       type: 'variety' as const,
       title: v.name,
       subtitle: `${v.code} · ${v.district}`,
-      href: `/collection/${v.slug}`,
+      href: `/khadane/collection/${v.slug}`,
       code: v.code,
     }))
     const formatResults: SearchResult[] = FORMATS.map((f) => ({
       type: 'format' as const,
       title: f.name,
       subtitle: `${f.code} · ${f.primaryUse}`,
-      href: `/formats/${f.slug}`,
+      href: `/khadane/formats/${f.slug}`,
       code: f.code,
     }))
     const noteResults: SearchResult[] = FIELD_NOTES.map((n) => ({
       type: 'field-note' as const,
       title: n.title,
       subtitle: `${n.id} · ${n.categoryLabel}`,
-      href: `/field-notes/${n.slug}`,
+      href: `/khadane/field-notes/${n.slug}`,
       code: n.id,
     }))
     return [...varietyResults, ...formatResults, ...noteResults, ...STATIC_PAGES]

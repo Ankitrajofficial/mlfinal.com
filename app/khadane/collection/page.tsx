@@ -63,7 +63,7 @@ export default function CollectionPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-5">
             {owned.map((v, i) => (
               <RevealOnScroll key={v.slug} delay={Math.min(i * 40, 400)}>
-                <Link href={`/collection/${v.slug}`} className="group block">
+                <Link href={`/khadane/collection/${v.slug}`} className="group block">
                   <PlaceholderImage
                     variant={v.placeholderClass.replace('placeholder-', '') as any}
                     label={v.code}
@@ -106,7 +106,7 @@ export default function CollectionPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 lg:gap-5">
             {allied.map((v, i) => (
               <RevealOnScroll key={v.slug} delay={Math.min(i * 50, 400)}>
-                <Link href={`/collection/${v.slug}`} className="group block">
+                <Link href={`/khadane/collection/${v.slug}`} className="group block">
                   <div className="aspect-[3/4] placeholder-base placeholder-stone-warm border border-quarry-gold/20 transition-transform duration-600 ease-editorial group-hover:scale-[1.02]">
                     <div className="placeholder-caption">
                       <span className="ph-label">{v.code}</span>

@@ -207,8 +207,8 @@ export default function QuarryPage() {
           </RevealOnScroll>
           <RevealOnScroll delay={200}>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/collection" className="cta-primary no-justify">The Collection →</Link>
-              <Link href="/yard" className="cta-secondary no-justify">The Yard →</Link>
+              <Link href="/khadane/collection" className="cta-primary no-justify">The Collection →</Link>
+              <Link href="/khadane/yard" className="cta-secondary no-justify">The Yard →</Link>
             </div>
           </RevealOnScroll>
         </div>

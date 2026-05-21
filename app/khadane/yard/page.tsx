@@ -151,7 +151,7 @@ export default function YardPage() {
             <p className="editorial-body mb-10">
               Tell us the variety, format, finish, size, and volume. Quote returned within one business day with lead time and shipping option.
             </p>
-            <Link href="/desk" className="cta-primary no-justify">
+            <Link href="/khadane/desk" className="cta-primary no-justify">
               Write to The Desk →
             </Link>
           </RevealOnScroll>

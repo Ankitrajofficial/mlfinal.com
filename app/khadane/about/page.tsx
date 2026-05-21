@@ -96,7 +96,7 @@ export default function AboutPage() {
                 <p className="editorial-body mb-6">
                   Mohan Lal &amp; Sons operates across five verticals: Stone &amp; Export (KHADANE™), Automotive &amp; Fuel, Hospitality, Student Housing, and Food Services. Each operates independently. KHADANE™ is the international face of the stone vertical.
                 </p>
-                <Link href="/group" className="cta-text mt-4">The full group →</Link>
+                <Link href="/khadane/group" className="cta-text mt-4">The full group →</Link>
               </RevealOnScroll>
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function AboutPage() {
               Have a project
               <span className="block italic text-quarry-gold">to talk about?</span>
             </h2>
-            <Link href="/desk" className="cta-primary no-justify">Write to The Desk →</Link>
+            <Link href="/khadane/desk" className="cta-primary no-justify">Write to The Desk →</Link>
           </RevealOnScroll>
         </div>
       </section>

@@ -74,11 +74,11 @@ export default function HomePage() {
                 Quarried with pride in Bijolia, Rajasthan. Shipped direct.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/collection" className="cta-primary no-justify">
+                <Link href="/khadane/collection" className="cta-primary no-justify">
                   Browse the Collection
                 </Link>
                 <Link
-                  href="/desk"
+                  href="/khadane/desk"
                   className="inline-flex items-center gap-3 px-8 py-4 border border-warm-white/30 text-warm-white font-sans text-sm tracking-wider uppercase transition-all duration-400 ease-editorial hover:bg-warm-white hover:text-obsidian hover:gap-4 no-justify"
                 >
                   Write to The Desk
@@ -178,14 +178,14 @@ export default function HomePage() {
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={350}>
-                <Link href="/collection" className="cta-text">Browse all 21 varieties →</Link>
+                <Link href="/khadane/collection" className="cta-text">Browse all 21 varieties →</Link>
               </RevealOnScroll>
             </div>
 
             <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4">
               {heroVarieties.map((v, i) => (
                 <RevealOnScroll key={v.slug} delay={i * 60}>
-                  <Link href={`/collection/${v.slug}`} className="group block">
+                  <Link href={`/khadane/collection/${v.slug}`} className="group block">
                     <PlaceholderImage
                       variant={v.placeholderClass.replace('placeholder-', '') as any}
                       label={v.code}
@@ -230,14 +230,14 @@ export default function HomePage() {
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={350}>
-                <Link href="/formats" className="cta-text">All fourteen formats →</Link>
+                <Link href="/khadane/formats" className="cta-text">All fourteen formats →</Link>
               </RevealOnScroll>
             </div>
 
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-px bg-obsidian/10">
               {heroFormats.map((f, i) => (
                 <RevealOnScroll key={f.slug} delay={i * 50} className="h-full">
-                  <Link href={`/formats/${f.slug}`} className="flex h-full min-h-44 flex-col bg-warm-white p-6 lg:p-8 hover:bg-stone-linen transition-colors duration-400 ease-editorial group">
+                  <Link href={`/khadane/formats/${f.slug}`} className="flex h-full min-h-44 flex-col bg-warm-white p-6 lg:p-8 hover:bg-stone-linen transition-colors duration-400 ease-editorial group">
                     <p className="font-mono text-xs text-quarry-gold no-justify mb-3">{f.code}</p>
                     <h3 className="font-display text-xl lg:text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors mb-3">
                       {f.name}
@@ -298,7 +298,7 @@ export default function HomePage() {
                 </div>
               </RevealOnScroll>
               <RevealOnScroll delay={500}>
-                <Link href="/quarry" className="inline-flex items-center gap-3 text-warm-white font-sans text-sm tracking-wider uppercase border-b border-warm-white/30 hover:border-quarry-gold hover:text-quarry-gold pb-1 transition-all duration-400 no-justify">
+                <Link href="/khadane/quarry" className="inline-flex items-center gap-3 text-warm-white font-sans text-sm tracking-wider uppercase border-b border-warm-white/30 hover:border-quarry-gold hover:text-quarry-gold pb-1 transition-all duration-400 no-justify">
                   Inside the quarry →
                 </Link>
               </RevealOnScroll>
@@ -377,7 +377,7 @@ export default function HomePage() {
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={400}>
-                <Link href="/yard" className="cta-text">Inside the yard →</Link>
+                <Link href="/khadane/yard" className="cta-text">Inside the yard →</Link>
               </RevealOnScroll>
             </div>
             <div className="lg:col-span-6 order-1 lg:order-2">
@@ -415,7 +415,7 @@ export default function HomePage() {
               </RevealOnScroll>
             </div>
             <RevealOnScroll delay={250}>
-              <Link href="/gallery" className="cta-text">Open the gallery →</Link>
+              <Link href="/khadane/gallery" className="cta-text">Open the gallery →</Link>
             </RevealOnScroll>
           </div>
 
@@ -423,7 +423,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-4">
             {/* Large wide tile */}
             <RevealOnScroll delay={100} className="lg:col-span-8 lg:row-span-2">
-              <Link href="/gallery" className="group block relative overflow-hidden bg-obsidian h-full">
+              <Link href="/khadane/gallery" className="group block relative overflow-hidden bg-obsidian h-full">
                 <PlaceholderImage
                   variant="quarry"
                   label="GAL-009"
@@ -441,7 +441,7 @@ export default function HomePage() {
             </RevealOnScroll>
             {/* Top right tile */}
             <RevealOnScroll delay={200} className="lg:col-span-4">
-              <Link href="/gallery" className="group block relative overflow-hidden bg-obsidian">
+              <Link href="/khadane/gallery" className="group block relative overflow-hidden bg-obsidian">
                 <PlaceholderImage
                   variant="stone-grey"
                   label="GAL-001"
@@ -457,7 +457,7 @@ export default function HomePage() {
             </RevealOnScroll>
             {/* Bottom right tile */}
             <RevealOnScroll delay={300} className="lg:col-span-4">
-              <Link href="/gallery" className="group block relative overflow-hidden bg-obsidian">
+              <Link href="/khadane/gallery" className="group block relative overflow-hidden bg-obsidian">
                 <PlaceholderImage
                   variant="yard"
                   label="GAL-016"
@@ -475,7 +475,7 @@ export default function HomePage() {
 
           <RevealOnScroll delay={400}>
             <div className="mt-12 text-center">
-              <Link href="/gallery" className="cta-secondary no-justify">
+              <Link href="/khadane/gallery" className="cta-secondary no-justify">
                 All 32 frames →
               </Link>
             </div>
@@ -501,7 +501,7 @@ export default function HomePage() {
               </RevealOnScroll>
             </div>
             <RevealOnScroll delay={250}>
-              <Link href="/field-notes" className="cta-text">All field notes →</Link>
+              <Link href="/khadane/field-notes" className="cta-text">All field notes →</Link>
             </RevealOnScroll>
           </div>
 
@@ -527,7 +527,7 @@ export default function HomePage() {
               },
             ].map((note, i) => (
               <RevealOnScroll key={note.code} delay={i * 100}>
-                <Link href="/field-notes" className="block group">
+                <Link href="/khadane/field-notes" className="block group">
                   <PlaceholderImage
                     variant="stone"
                     label={note.code}
@@ -580,7 +580,7 @@ export default function HomePage() {
               <div className="grid grid-cols-3 gap-3 lg:gap-4">
                 {alliedVarieties.slice(0, 9).map((v, i) => (
                   <RevealOnScroll key={v.slug} delay={i * 50}>
-                    <Link href={`/collection/${v.slug}`} className="block group">
+                    <Link href={`/khadane/collection/${v.slug}`} className="block group">
                       <div className="aspect-square placeholder-base placeholder-stone-warm border border-quarry-gold/20">
                         <div className="placeholder-caption">
                           <span className="ph-label">{v.code}</span>
@@ -622,7 +622,7 @@ export default function HomePage() {
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={400}>
-              <Link href="/group" className="cta-secondary">
+              <Link href="/khadane/group" className="cta-secondary">
                 The full house →
               </Link>
             </RevealOnScroll>
@@ -652,7 +652,7 @@ export default function HomePage() {
             </RevealOnScroll>
             <RevealOnScroll delay={400}>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link href="/desk" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify">
+                <Link href="/khadane/desk" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify">
                   Write to The Desk
                 </Link>
                 <a

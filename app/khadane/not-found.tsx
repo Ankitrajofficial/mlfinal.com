@@ -15,7 +15,7 @@ export default function NotFound() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/" className="cta-primary no-justify">Back to the homepage →</Link>
-            <Link href="/collection" className="cta-secondary no-justify">Browse the collection</Link>
+            <Link href="/khadane/collection" className="cta-secondary no-justify">Browse the collection</Link>
           </div>
         </div>
       </section>
