@@ -17,6 +17,7 @@ const NOTES = [
     excerpt: 'The Vindhyan Supergroup is one of the largest preserved sedimentary basins on Earth. Bijolia sits on its western edge. Why that geology produces the stone it does.',
     date: 'Q2 · 2026',
     variant: 'stone-warm' as const,
+    swapPath: '/img/field-notes/bijolia-sandstone-geology.jpg',
   },
   {
     code: 'FN-002',
@@ -25,6 +26,7 @@ const NOTES = [
     excerpt: 'A 22mm Kandla Grey slab shouldn\'t arrive at 24mm. Tolerance is the unsung discipline of the export trade. How we hit it, batch after batch.',
     date: 'Q2 · 2026',
     variant: 'stone-grey' as const,
+    swapPath: '/img/field-notes/calibration-explained.jpg',
   },
   {
     code: 'FN-003',
@@ -33,6 +35,7 @@ const NOTES = [
     excerpt: 'The shipping terms most often confused — and what they mean for your landed cost. A practical primer for first-time importers.',
     date: 'Q2 · 2026',
     variant: 'yard' as const,
+    swapPath: '/img/field-notes/fob-for-cif-uk-buyers.jpg',
   },
   {
     code: 'FN-004',
@@ -41,6 +44,7 @@ const NOTES = [
     excerpt: 'Iron oxidation, organic content, mineral inclusion. Why Autumn Brown is brown and Kandla Grey is grey, written in the rock.',
     date: 'Q1 · 2026',
     variant: 'stone' as const,
+    swapPath: '/img/field-notes/stone-colour-origin.jpg',
   },
   {
     code: 'FN-005',
@@ -49,6 +53,7 @@ const NOTES = [
     excerpt: 'How direct-source allied relationships work in practice — and what separates them from the broker chains that dominate the trade.',
     date: 'Q1 · 2026',
     variant: 'stone-red' as const,
+    swapPath: '/img/field-notes/allied-not-traded.jpg',
   },
   {
     code: 'FN-006',
@@ -57,6 +62,7 @@ const NOTES = [
     excerpt: 'A short field guide to the inspection criteria — grain consistency, edge condition, surface uniformity, dimensional tolerance.',
     date: 'Q1 · 2026',
     variant: 'stone-warm' as const,
+    swapPath: '/img/field-notes/hand-picking-inspection.jpg',
   },
 ]
 
@@ -100,6 +106,7 @@ export default function FieldNotesPage() {
                     variant={note.variant}
                     label={note.code}
                     title={note.category}
+                    swapPath={note.swapPath}
                     aspectRatio="aspect-[4/3]"
                     className="mb-6 transition-transform duration-600 ease-editorial group-hover:scale-[1.01]"
                   />

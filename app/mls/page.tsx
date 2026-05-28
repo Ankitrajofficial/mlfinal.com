@@ -441,6 +441,7 @@ export default function MLSHomePage() {
                   href: '/verticals/hospitality',
                   variant: 'mls-tobacco' as const,
                   label: 'M3 · KUNHARI',
+                  swapPath: '/img/m3-mini-mall.webp',
                 },
                 {
                   title: 'The Princess',
@@ -448,6 +449,7 @@ export default function MLSHomePage() {
                   href: '/verticals/student-housing',
                   variant: 'documentary' as const,
                   label: 'PRINCESS · KUNHARI',
+                  swapPath: '/img/mls-gallery/princess-day.jpg',
                 },
                 {
                   title: 'Victoria Palace',
@@ -455,6 +457,7 @@ export default function MLSHomePage() {
                   href: '/verticals/student-housing',
                   variant: 'mls-cream' as const,
                   label: 'VICTORIA · KUNHARI',
+                  swapPath: '/img/mls-gallery/victoria-study.jpg',
                 },
                 {
                   title: 'Vyanjanam',
@@ -462,6 +465,7 @@ export default function MLSHomePage() {
                   href: '/verticals/food-services',
                   variant: 'vyanjanam-dark' as const,
                   label: 'VYANJANAM · KUNHARI',
+                  swapPath: '/img/mls-gallery/vyanjanam-service.jpg',
                 },
               ].map((card, i) => (
                 <RevealOnScroll key={card.title} delay={i * 80}>
@@ -469,6 +473,7 @@ export default function MLSHomePage() {
                     <PlaceholderImage
                       label={card.label}
                       title={card.title}
+                      swapPath={card.swapPath}
                       aspectRatio="aspect-square"
                       variant={card.variant}
                       className="group-hover:opacity-95 transition-opacity duration-400"
@@ -546,7 +551,7 @@ export default function MLSHomePage() {
       </VyanjanamSection>
 
       {/* ============================================================
-          SECTION 09 — THE FAMILY (preview, full on /our-legacy/)
+          SECTION 09 — THE FAMILY THROUGH THE WORK
           ============================================================ */}
       <section className="bg-mls-cream py-24 lg:py-40">
         <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
@@ -554,23 +559,23 @@ export default function MLSHomePage() {
             <div className="lg:col-span-5">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                  09 · The Family
+                  09 · The Working House
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-mls-ink mb-6">
-                  {MLS_SCALE.generations}.
+                  The family is read
                   <span className="block italic text-mls-gold mt-2">
-                    The same house.
+                    through the work.
                   </span>
                 </h2>
               </RevealOnScroll>
               <RevealOnScroll delay={200}>
                 <p className="text-lg leading-relaxed text-mls-ink/85 mb-8 max-w-md">
-                  The founders, the brothers who built the work, the
-                  generation now operating each vertical, and the children
-                  who are growing up around it. The family roster is read in
-                  full on the Legacy page.
+                  MLS is not introduced through a posed family photograph.
+                  It is read through the places the family keeps running:
+                  stone yards, fuel stations, residences, kitchens, and hotel
+                  floors. The full family line is carried on the Legacy page.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={300}>
@@ -578,7 +583,7 @@ export default function MLSHomePage() {
                   href="/our-legacy"
                   className="inline-flex items-center gap-3 font-display italic text-lg text-mls-gold hover:gap-4 transition-all duration-300"
                 >
-                  Read the family
+                  Read the legacy
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </RevealOnScroll>
@@ -586,9 +591,9 @@ export default function MLSHomePage() {
             <div className="lg:col-span-7">
               <RevealOnScroll delay={200}>
                 <PlaceholderImage
-                  label="FAMILY · DOCUMENTARY"
-                  title="The brothers, at the quarry face."
-                  spec="1600 × 1067px · Documentary group, no posed shots, at Bijolia"
+                  label="MLS · OPERATING SITE"
+                  title="A working site in the family network."
+                  spec="1600 × 1067px · Documentary frame from the operating archive"
                   swapPath="/img/family-bijolia.jpg"
                   aspectRatio="aspect-[3/2]"
                   variant="mls-tobacco"
@@ -655,18 +660,21 @@ export default function MLSHomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
               {
-                label: 'STONE · #KHD-001',
-                title: 'Kandla Grey, batch-marked at the yard.',
+                label: 'STONE · QUARRY',
+                title: 'The working face at Bijolia.',
+                swapPath: '/img/mls-gallery/quarry-face.jpg',
                 variant: 'documentary' as const,
               },
               {
-                label: 'KUNHARI · M3',
-                title: 'Reception, late afternoon.',
+                label: 'STONE · YARD',
+                title: 'The yard, seen from above.',
+                swapPath: '/img/mls-gallery/yard-overview.jpg',
                 variant: 'mls-tobacco' as const,
               },
               {
-                label: 'BIJOLIA · DAIRY',
-                title: 'The morning milk run.',
+                label: 'BIJOLIA · BELT',
+                title: 'Roads between quarry and yard.',
+                swapPath: '/img/mls-gallery/quarry-road.jpg',
                 variant: 'mls-cream' as const,
               },
             ].map((item, i) => (
@@ -674,6 +682,7 @@ export default function MLSHomePage() {
                 <PlaceholderImage
                   label={item.label}
                   title={item.title}
+                  swapPath={item.swapPath}
                   aspectRatio="aspect-[4/5]"
                   variant={item.variant}
                 />

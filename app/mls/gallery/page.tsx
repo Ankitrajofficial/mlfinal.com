@@ -54,15 +54,16 @@ export default function GalleryPage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              { l: 'STONE · 001', t: 'Block selection, morning.' },
-              { l: 'STONE · 002', t: 'Calibration line.' },
-              { l: 'STONE · 003', t: 'Loading, the Mundra container.' },
-              { l: 'STONE · 004', t: 'Hands at the face.' },
+              { l: 'STONE · 001', t: 'Block selection, morning.', p: '/img/mls-gallery/quarry-face.jpg' },
+              { l: 'STONE · 002', t: 'Calibration line.', p: '/img/mls-gallery/yard-work.jpg' },
+              { l: 'STONE · 003', t: 'Loading, the Mundra container.', p: '/img/mls-gallery/quarry-road.jpg' },
+              { l: 'STONE · 004', t: 'Hands at the face.', p: '/img/mls-gallery/yard-overview.jpg' },
             ].map((item, i) => (
               <RevealOnScroll key={item.l} delay={i * 80}>
                 <PlaceholderImage
                   label={item.l}
                   title={item.t}
+                  swapPath={item.p}
                   aspectRatio="aspect-[3/4]"
                   variant="documentary"
                 />
@@ -87,15 +88,16 @@ export default function GalleryPage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { l: 'M3 · LOBBY', t: 'Late afternoon, reception.', v: 'mls-tobacco' as const },
-              { l: 'PRINCESS · DAY', t: 'The morning walk to class.', v: 'documentary' as const },
-              { l: 'VICTORIA · STUDY', t: 'Library hours, evening.', v: 'mls-cream' as const },
-              { l: 'VYANJANAM · SERVICE', t: 'Lunch, the busy hour.', v: 'vyanjanam-dark' as const },
+              { l: 'M3 · MALL', t: 'M3 mall and banquet frontage.', v: 'mls-tobacco' as const, p: '/img/m3-mini-mall.webp' },
+              { l: 'PRINCESS · DAY', t: 'The morning walk to class.', v: 'documentary' as const, p: '/img/mls-gallery/princess-day.jpg' },
+              { l: 'VICTORIA · STUDY', t: 'Library hours, evening.', v: 'mls-cream' as const, p: '/img/mls-gallery/victoria-study.jpg' },
+              { l: 'VYANJANAM · SERVICE', t: 'Lunch, the busy hour.', v: 'vyanjanam-dark' as const, p: '/img/mls-gallery/vyanjanam-service.jpg' },
             ].map((item, i) => (
               <RevealOnScroll key={item.l} delay={i * 80}>
                 <PlaceholderImage
                   label={item.l}
                   title={item.t}
+                  swapPath={item.p}
                   aspectRatio="aspect-square"
                   variant={item.v}
                 />

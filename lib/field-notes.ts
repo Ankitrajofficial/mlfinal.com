@@ -56,7 +56,7 @@ export const FIELD_NOTES: FieldNote[] = [
       {
         heading: 'The colour story.',
         body: [
-          'Iron is the colourist. Where iron is high and oxidised, you get Autumn Brown, Kaansiya Red, Modak. Where iron is low and the matrix is dominated by quartz with traces of clay minerals, you get Kandla Grey, Raveena White. Where iron exists alongside organic carbonates from very ancient algal mats, you get the green tones — Sage Green, Garda Green. Where the basin shifted through multiple oxidation states across a single bed, you get banding — Rainbow, Dual Tone.',
+          'Iron is the colourist. Where iron is high and oxidised, you get Autumn Brown, Red Choco, Modak. Where iron is low and the matrix is dominated by quartz with traces of clay minerals, you get Kandla Grey, Buff. Where iron exists alongside organic carbonates from very ancient algal mats, you get the green tones — Garda Green, Garda Green. Where the basin shifted through multiple oxidation states across a single bed, you get banding — Multi Colours, Dual Tone.',
           'All of this from a basin that closed up before complex life appeared.',
         ],
       },
@@ -174,20 +174,20 @@ export const FIELD_NOTES: FieldNote[] = [
       {
         heading: 'The iron family.',
         body: [
-          'Iron in oxidised form (hematite, Fe₂O₃) produces the reds and browns. The deeper the iron concentration, the deeper the colour. Kaansiya Red sits at the high-iron end. Autumn Brown is mid-range. Raj Blend mixes iron with organic carbonates for its brown-green character.',
+          'Iron in oxidised form (hematite, Fe₂O₃) produces the reds and browns. The deeper the iron concentration, the deeper the colour. Red Choco sits at the high-iron end. Autumn Brown is mid-range. Raj Blend mixes iron with organic carbonates for its brown-green character.',
           'Iron in reduced form (magnetite, Fe₃O₄) produces darker, more neutral greys. Slate Grey shows this — a denser, more iron-rich grey than Kandla Grey, but with the iron held in a reduced state.',
         ],
       },
       {
         heading: 'The carbonate family.',
         body: [
-          'Where ancient algal mats lived in the shallow Vindhyan sea, they left behind organic carbonates. As these mixed into the sandstone matrix, they gave certain beds a distinctive green or olive cast. This is the Sage Green / Garda Green story. The colour comes from what was alive in the water a billion years ago.',
+          'Where ancient algal mats lived in the shallow Vindhyan sea, they left behind organic carbonates. As these mixed into the sandstone matrix, they gave certain beds a distinctive green or olive cast. This is the Garda Green / Garda Green story. The colour comes from what was alive in the water a billion years ago.',
         ],
       },
       {
         heading: 'The quartz neutrals.',
         body: [
-          'Where iron was low and organic content was minimal, you get the neutrals — Kandla Grey, Raveena White, Camel Dust. These are quartz-dominated beds with minor clay minerals. They are the workhorses of the export catalogue precisely because they pair with almost any garden or interior palette.',
+          'Where iron was low and organic content was minimal, you get the neutrals — Kandla Grey, Buff, Camel Dust. These are quartz-dominated beds with minor clay minerals. They are the workhorses of the export catalogue precisely because they pair with almost any garden or interior palette.',
         ],
       },
     ],

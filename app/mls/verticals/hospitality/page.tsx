@@ -98,7 +98,7 @@ export default function HospitalityPage() {
                   label="M3 MINI MALL · KUNHARI"
                   title="The walkway, between buildings."
                   spec="1200 × 1500px · M3 Mini Mall facade or corridor"
-                  swapPath="/img/m3-mini-mall.jpg"
+                  swapPath="/img/m3-mini-mall.webp"
                   aspectRatio="aspect-[4/5]"
                   variant="mls-cream"
                 />

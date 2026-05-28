@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { ArrowRight, BadgeCheck, Factory, Gem, MapPin, PackageCheck, Route, Users } from 'lucide-react'
 import { ASSETS, SITE } from '@/lib/khadane/site'
 import { VARIETIES, getOwnedVarieties, getAlliedVarieties } from '@/lib/khadane/varieties'
 import { FORMATS } from '@/lib/khadane/formats'
+import { getVarietyImage } from '@/lib/khadane/variety-images'
 import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import HeroVideo from '@/components/khadane/HeroVideo'
@@ -54,13 +56,13 @@ export default function HomePage() {
               style={{ animationDelay: '200ms' }}
             >
               <p className="eyebrow-gold mb-8 no-justify">
-                #KHD ⋅ THE SANDSTONE CATALOGUE
+                KHADANE™ · BIJOLIA · SINCE 1972
               </p>
             </div>
 
             <HeroWordRise
               as="h1"
-              words={['Twenty-one', 'sandstone', 'varieties.', 'Fourteen', 'formats.', 'One', 'house.']}
+              words={['Stone', 'of', 'the', 'Bijolia', 'Belt.']}
               className="font-display text-5xl md:text-7xl lg:text-8xl tracking-tighter leading-[1.05] text-warm-white mb-10"
               baseDelay={400}
               staggerDelay={130}
@@ -71,7 +73,7 @@ export default function HomePage() {
               style={{ animationDelay: '1800ms' }}
             >
               <p className="font-display italic text-xl md:text-2xl text-quarry-gold mb-12 no-justify max-w-2xl">
-                Quarried with pride in Bijolia, Rajasthan. Shipped direct.
+                Owned quarries, and a network of allied quarries across northern India. Cut and dressed in every form the trade specifies.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/khadane/collection" className="cta-primary no-justify">
@@ -113,95 +115,193 @@ export default function HomePage() {
           SECTION 03 — THE HOUSE STATEMENT
           Three-statement period rhythm
           ============================================================ */}
-      <section className="section-padding section-warm">
+      <section className="section-warm py-16 lg:py-24">
         <div className="container-editorial">
-          <div className="max-w-4xl mx-auto text-center">
-            <RevealOnScroll>
-              <p className="eyebrow-gold mb-8 no-justify">THE HOUSE</p>
-            </RevealOnScroll>
-            <RevealOnScroll delay={100}>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-obsidian mb-10 no-justify">
-                We quarry our own.
-                <span className="block text-quarry-gold italic mt-2">We process our own.</span>
-                <span className="block mt-2">We ship our own.</span>
-              </h2>
-            </RevealOnScroll>
-            <RevealOnScroll delay={250}>
-              <p className="font-sans text-lg lg:text-xl text-graphite leading-relaxed max-w-2xl mx-auto">
-                KHADANE™ is the customer-facing trade brand of {SITE.exportOperation}, the export operation within the {SITE.groupOperation}. We own and operate our quarries in the Bijolia sandstone belt and source direct from heritage partners across Rajasthan, Madhya Pradesh, and Uttar Pradesh.
-              </p>
-            </RevealOnScroll>
-            <RevealOnScroll delay={400}>
-              <div className="mt-12 flex flex-wrap justify-center gap-12 lg:gap-20">
-                <div className="text-center">
-                  <p className="font-display text-5xl lg:text-6xl text-quarry-gold no-justify">{SITE.quarryCount}</p>
-                  <p className="font-sans text-xs uppercase tracking-eyebrow text-tobacco mt-3 no-justify">Quarries</p>
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+            <div className="lg:col-span-7 border border-obsidian/10 bg-stone-linen/45 p-8 md:p-10 lg:p-12">
+              <RevealOnScroll>
+                <p className="eyebrow-gold mb-8 no-justify">THE HOUSE</p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={100}>
+                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.08] text-obsidian mb-8 no-justify">
+                  We quarry our own.
+                  <span className="block text-quarry-gold italic mt-2">We process our own.</span>
+                  <span className="block mt-2">We ship our own.</span>
+                </h2>
+              </RevealOnScroll>
+              <RevealOnScroll delay={250}>
+                <p className="font-sans text-lg leading-relaxed text-graphite no-justify max-w-3xl mb-10">
+                  KHADANE works the Bijolia sandstone belt of Rajasthan through owned quarries, a controlled processing yard, and long-standing allied quarry relationships across northern India. The buyer sees the source, the format, the finish, and the dispatch route without broker ambiguity.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={350}>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                  {[
+                    {
+                      icon: MapPin,
+                      title: 'Source',
+                      body: 'Owned and allied quarry origins are marked clearly in the catalogue.',
+                    },
+                    {
+                      icon: Factory,
+                      title: 'Process',
+                      body: 'Cutting, calibration, surfacing, edging, and packing run through Bijolia.',
+                    },
+                    {
+                      icon: Route,
+                      title: 'Dispatch',
+                      body: `Finished crates move from the yard to ${SITE.port} for export loading.`,
+                    },
+                  ].map((item) => {
+                    const Icon = item.icon
+                    return (
+                      <div key={item.title} className="bg-warm-white p-6">
+                        <Icon size={20} strokeWidth={1.5} className="mb-6 text-quarry-gold" />
+                        <h3 className="font-display text-2xl text-obsidian no-justify mb-3">{item.title}</h3>
+                        <p className="font-sans text-sm leading-6 text-graphite no-justify">{item.body}</p>
+                      </div>
+                    )
+                  })}
                 </div>
-                <div className="text-center">
-                  <p className="font-display text-5xl lg:text-6xl text-quarry-gold no-justify">21</p>
-                  <p className="font-sans text-xs uppercase tracking-eyebrow text-tobacco mt-3 no-justify">Varieties</p>
-                </div>
-                <div className="text-center">
-                  <p className="font-display text-5xl lg:text-6xl text-quarry-gold no-justify">14</p>
-                  <p className="font-sans text-xs uppercase tracking-eyebrow text-tobacco mt-3 no-justify">Formats</p>
-                </div>
-                <div className="text-center">
-                  <p className="font-display text-5xl lg:text-6xl text-quarry-gold no-justify">{SITE.workforceCount}</p>
-                  <p className="font-sans text-xs uppercase tracking-eyebrow text-tobacco mt-3 no-justify">Workforce</p>
-                </div>
-              </div>
-            </RevealOnScroll>
+              </RevealOnScroll>
+            </div>
+
+            <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+              {[
+                { icon: BadgeCheck, value: SITE.quarryCount, label: 'Quarries', note: 'Owned and allied source network' },
+                { icon: PackageCheck, value: SITE.varietyCount, label: 'Varieties', note: `${SITE.ownedVarieties} owned · ${SITE.alliedVarieties} allied` },
+                { icon: Factory, value: SITE.formatCount, label: 'Formats', note: 'Production formats from the yard' },
+                { icon: Users, value: SITE.workforceCount, label: 'Workforce', note: 'Quarry, yard, and office teams' },
+              ].map((stat, index) => {
+                const Icon = stat.icon
+                return (
+                  <RevealOnScroll key={stat.label} delay={200 + index * 80} className="h-full">
+                    <div className="flex h-full min-h-[210px] flex-col justify-between border border-obsidian/10 bg-warm-white p-6 lg:p-7">
+                      <div className="flex items-start justify-between gap-5">
+                        <p className="font-mono text-[10px] uppercase tracking-eyebrow text-tobacco/50 no-justify">{String(index + 1).padStart(2, '0')}</p>
+                        <Icon size={20} strokeWidth={1.5} className="text-quarry-gold" />
+                      </div>
+                      <div>
+                        <p className="font-display text-5xl lg:text-6xl text-quarry-gold no-justify">{stat.value}</p>
+                        <p className="mt-3 font-sans text-xs uppercase tracking-eyebrow text-obsidian no-justify">{stat.label}</p>
+                        <p className="mt-3 font-sans text-xs leading-5 text-graphite no-justify">{stat.note}</p>
+                      </div>
+                    </div>
+                  </RevealOnScroll>
+                )
+              })}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ============================================================
           SECTION 04 — THE COLLECTION PREVIEW
-          21 varieties in a tight editorial mosaic
+          23 varieties in a tight editorial mosaic
           ============================================================ */}
       <section className="section-padding section-cream">
         <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mb-16">
-            <div className="lg:col-span-5">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16 lg:items-start">
+            <div className="lg:col-span-5 lg:sticky lg:top-28">
               <RevealOnScroll>
                 <p className="eyebrow mb-6 no-justify">01 · THE COLLECTION</p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="section-heading mb-8">
-                  Twenty-one varieties.
-                  <span className="block italic text-quarry-gold mt-2">Twelve owned. Nine allied.</span>
+                  A working catalogue
+                  <span className="block italic text-quarry-gold mt-2">of twenty-three stones.</span>
                 </h2>
               </RevealOnScroll>
               <RevealOnScroll delay={250}>
-                <p className="editorial-body mb-10">
-                  Our owned varieties come from the quarries we operate ourselves in the Bijolia belt. Our allied varieties come from heritage partners we have worked with for decades — Dholpur, Jodhpur, Jaisalmer, Sagar, Lalitpur, Nagaur, Kota.
+                <p className="font-sans text-lg leading-relaxed text-graphite no-justify mb-8">
+                  Fourteen owned varieties and nine allied varieties, each marked by source, formation, format compatibility, and technical specification. Buyers can read what is ours, what is allied, and how each stone can be cut.
                 </p>
               </RevealOnScroll>
-              <RevealOnScroll delay={350}>
-                <Link href="/khadane/collection" className="cta-text">Browse all 21 varieties →</Link>
+              <RevealOnScroll delay={320}>
+                <div className="mb-8 grid grid-cols-2 gap-4">
+                  {[
+                    { value: SITE.ownedVarieties, label: 'Owned varieties' },
+                    { value: SITE.alliedVarieties, label: 'Allied network' },
+                    { value: SITE.surfaceTreatmentCount, label: 'Surface treatments' },
+                    { value: SITE.edgeProfileCount, label: 'Edge profiles' },
+                  ].map((item) => (
+                    <div key={item.label} className="border border-obsidian/10 bg-warm-white p-5">
+                      <p className="font-display text-4xl text-quarry-gold no-justify">{item.value}</p>
+                      <p className="mt-2 font-mono text-[10px] uppercase tracking-eyebrow text-tobacco/55 no-justify">{item.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </RevealOnScroll>
+              <RevealOnScroll delay={420}>
+                <Link href="/khadane/collection" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-quarry-gold hover:text-obsidian no-justify">
+                  Browse all {SITE.varietyCount} varieties <ArrowRight size={16} strokeWidth={1.6} />
+                </Link>
               </RevealOnScroll>
             </div>
 
-            <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4">
-              {heroVarieties.map((v, i) => (
-                <RevealOnScroll key={v.slug} delay={i * 60}>
-                  <Link href={`/khadane/collection/${v.slug}`} className="group block">
-                    <PlaceholderImage
-                      variant={v.placeholderClass.replace('placeholder-', '') as any}
-                      label={v.code}
-                      title={v.name}
-                      aspectRatio="aspect-[3/4]"
-                      className="transition-transform duration-600 ease-editorial group-hover:scale-[1.02]"
-                    />
-                    <div className="mt-3 mb-1">
-                      <p className="font-display text-lg text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
-                        {v.name}
-                      </p>
-                      <p className="font-mono text-xs text-tobacco/60 mt-1 no-justify">{v.code}</p>
+            <div className="lg:col-span-7">
+              <RevealOnScroll>
+                <Link href={`/khadane/collection/${heroVarieties[0].slug}`} className="group mb-5 block border border-obsidian/10 bg-warm-white p-5 transition-colors duration-400 ease-editorial hover:border-quarry-gold/50">
+                  <div className="grid grid-cols-1 gap-5 md:grid-cols-12 md:items-stretch">
+                    <div className="md:col-span-7">
+                      <PlaceholderImage
+                        variant={heroVarieties[0].placeholderClass.replace('placeholder-', '') as any}
+                        label={heroVarieties[0].code}
+                        title={heroVarieties[0].name}
+                        swapPath={getVarietyImage(heroVarieties[0].slug, 'hero', `/img/varieties/${heroVarieties[0].slug}-hero.jpg`)}
+                        aspectRatio="aspect-[16/10]"
+                        className="transition-transform duration-700 ease-editorial group-hover:scale-[1.015]"
+                      />
                     </div>
-                  </Link>
-                </RevealOnScroll>
-              ))}
+                    <div className="md:col-span-5 flex flex-col justify-between p-2 md:p-4">
+                      <div>
+                        <div className="mb-8 flex items-center justify-between gap-4">
+                          <p className="font-mono text-[10px] uppercase tracking-eyebrow text-quarry-gold no-justify">Featured stone</p>
+                          <Gem size={19} strokeWidth={1.5} className="text-quarry-gold" />
+                        </div>
+                        <h3 className="font-display text-4xl leading-tight text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
+                          {heroVarieties[0].name}
+                        </h3>
+                        <p className="mt-3 font-mono text-xs uppercase tracking-eyebrow text-tobacco/55 no-justify">{heroVarieties[0].code}</p>
+                        <p className="mt-6 font-sans text-sm leading-6 text-graphite no-justify">
+                          {heroVarieties[0].oneLine}
+                        </p>
+                      </div>
+                      <p className="mt-8 inline-flex items-center gap-3 font-sans text-sm uppercase tracking-wider text-obsidian no-justify">
+                        View technical page <ArrowRight size={16} strokeWidth={1.6} />
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </RevealOnScroll>
+
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                {heroVarieties.slice(1).map((v, i) => (
+                  <RevealOnScroll key={v.slug} delay={100 + i * 70}>
+                    <Link href={`/khadane/collection/${v.slug}`} className="group block h-full border border-obsidian/10 bg-warm-white p-4 transition-colors duration-400 ease-editorial hover:border-quarry-gold/50">
+                      <PlaceholderImage
+                        variant={v.placeholderClass.replace('placeholder-', '') as any}
+                        label={v.code}
+                        title={v.name}
+                        swapPath={getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-hero.jpg`)}
+                        aspectRatio="aspect-[5/4]"
+                        className="transition-transform duration-700 ease-editorial group-hover:scale-[1.02]"
+                      />
+                      <div className="flex items-start justify-between gap-4 pt-5">
+                        <div>
+                          <p className="font-display text-2xl leading-tight text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
+                            {v.name}
+                          </p>
+                          <p className="mt-2 font-mono text-[10px] uppercase tracking-eyebrow text-tobacco/55 no-justify">{v.code}</p>
+                        </div>
+                        <span className="mt-1 grid h-9 w-9 shrink-0 place-items-center border border-obsidian/10 text-tobacco/60 transition-colors group-hover:border-quarry-gold/45 group-hover:text-quarry-gold">
+                          <ArrowRight size={15} strokeWidth={1.6} />
+                        </span>
+                      </div>
+                    </Link>
+                  </RevealOnScroll>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -209,7 +309,7 @@ export default function HomePage() {
 
       {/* ============================================================
           SECTION 05 — THE FORMATS
-          14 formats grid
+          19 formats grid
           ============================================================ */}
       <section className="section-padding section-warm">
         <div className="container-editorial">
@@ -220,17 +320,17 @@ export default function HomePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="section-heading mb-8">
-                  Fourteen ways
-                  <span className="block italic text-quarry-gold mt-1">to ship stone.</span>
+                  Every form
+                  <span className="block italic text-quarry-gold mt-1">the trade asks for.</span>
                 </h2>
               </RevealOnScroll>
               <RevealOnScroll delay={250}>
                 <p className="editorial-body mb-8">
-                  From raw blocks bound for European processors, to calibrated paving for English garden contracts, to wall cladding for Gulf architectural facades. Five trade dimensions: Variety × Format × Cutting × Surface × Size.
+                  KHADANE cuts and dresses the stone before it leaves Mundra. Nineteen formats run through the yard, with surface treatments and edge profiles cross-listed against each form.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={350}>
-                <Link href="/khadane/formats" className="cta-text">All fourteen formats →</Link>
+                <Link href="/khadane/formats" className="cta-text">All {SITE.formatCount} formats →</Link>
               </RevealOnScroll>
             </div>
 
@@ -331,10 +431,10 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-px bg-obsidian/10">
             {[
-              { label: 'Variety', count: '21', hint: 'Catalogue varieties' },
-              { label: 'Format', count: '14', hint: 'Production formats' },
+              { label: 'Variety', count: String(SITE.varietyCount), hint: 'Catalogue varieties' },
+              { label: 'Format', count: String(SITE.formatCount), hint: 'Production formats' },
               { label: 'Cutting', count: '4', hint: 'Methods' },
-              { label: 'Surface', count: '14', hint: 'Finishes' },
+              { label: 'Surface', count: String(SITE.surfaceTreatmentCount), hint: 'Treatments' },
               { label: 'Size', count: '13', hint: 'Standard sizes' },
             ].map((d, i) => (
               <RevealOnScroll key={d.label} delay={i * 80}>
@@ -368,7 +468,7 @@ export default function HomePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={250}>
                 <p className="editorial-body mb-6">
-                  Three processing units. Calibration to BS EN tolerances. Hand-picking against approved samples. Container loading at our own facility before transit to Mundra Port.
+                  Raw blocks arrive from the quarries; finished crates leave for the port. Grading, gangsaw, surface treatments, edge profiles, calibration, quality check, packing: all handled at the Bijolia yard.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={300}>
@@ -428,6 +528,7 @@ export default function HomePage() {
                   variant="quarry"
                   label="GAL-009"
                   title="The Working Face"
+                  swapPath="/img/gallery/quarry/working-face-dawn.jpg"
                   aspectRatio="aspect-[16/10] lg:aspect-[5/4] lg:h-full"
                   className="transition-transform duration-1000 ease-editorial group-hover:scale-[1.02]"
                 />
@@ -446,6 +547,7 @@ export default function HomePage() {
                   variant="stone-grey"
                   label="GAL-001"
                   title="Kandla Grey · Riven"
+                  swapPath="/img/gallery/stone/kandla-grey-riven.jpg"
                   aspectRatio="aspect-[4/3]"
                   className="transition-transform duration-1000 ease-editorial group-hover:scale-[1.04]"
                 />
@@ -462,6 +564,7 @@ export default function HomePage() {
                   variant="yard"
                   label="GAL-016"
                   title="Calibration"
+                  swapPath="/img/gallery/yard/calibration.jpg"
                   aspectRatio="aspect-[4/3]"
                   className="transition-transform duration-1000 ease-editorial group-hover:scale-[1.04]"
                 />
@@ -512,18 +615,21 @@ export default function HomePage() {
                 category: 'Geology',
                 title: 'Why Bijolia sandstone sits where it does.',
                 excerpt: 'The Vindhyan Supergroup is one of the largest preserved sedimentary basins on Earth. Bijolia sits on its western edge.',
+                swapPath: '/img/field-notes/bijolia-sandstone-geology.jpg',
               },
               {
                 code: 'FN-002',
                 category: 'Process',
                 title: 'Calibration, explained.',
                 excerpt: 'A 22mm slab from Kandla Grey shouldn\'t arrive at 24mm. Here is how we hit tolerance, batch after batch.',
+                swapPath: '/img/field-notes/calibration-explained.jpg',
               },
               {
                 code: 'FN-003',
                 category: 'Trade',
                 title: 'FOB, FOR, CIF: what UK buyers actually need.',
                 excerpt: 'The shipping terms most often confused — and what they mean for your landed cost.',
+                swapPath: '/img/field-notes/fob-for-cif-uk-buyers.jpg',
               },
             ].map((note, i) => (
               <RevealOnScroll key={note.code} delay={i * 100}>
@@ -532,6 +638,7 @@ export default function HomePage() {
                     variant="stone"
                     label={note.code}
                     title={note.category}
+                    swapPath={note.swapPath}
                     aspectRatio="aspect-[4/3]"
                     className="mb-6 transition-transform duration-600 ease-editorial group-hover:scale-[1.01]"
                   />
@@ -581,12 +688,14 @@ export default function HomePage() {
                 {alliedVarieties.slice(0, 9).map((v, i) => (
                   <RevealOnScroll key={v.slug} delay={i * 50}>
                     <Link href={`/khadane/collection/${v.slug}`} className="block group">
-                      <div className="aspect-square placeholder-base placeholder-stone-warm border border-quarry-gold/20">
-                        <div className="placeholder-caption">
-                          <span className="ph-label">{v.code}</span>
-                          <span className="ph-title text-warm-white/90">{v.name}</span>
-                        </div>
-                      </div>
+                      <PlaceholderImage
+                        variant={v.placeholderClass.replace('placeholder-', '') as any}
+                        label={v.code}
+                        title={v.name}
+                        swapPath={getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-hero.jpg`)}
+                        aspectRatio="aspect-square"
+                        className="border border-quarry-gold/20 transition-transform duration-700 ease-editorial group-hover:scale-[1.02]"
+                      />
                     </Link>
                   </RevealOnScroll>
                 ))}

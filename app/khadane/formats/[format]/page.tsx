@@ -36,8 +36,8 @@ export default async function FormatPage({ params }: FormatPageProps) {
   // Available varieties — varieties that produce in this format
   const availableVarieties =
     f.slug === 'quarry-blocks'
-      ? VARIETIES.filter((v) => !v.formatExceptions || !v.formatExceptions.length || v.formatExceptions.includes('blocks-only'))
-      : VARIETIES.filter((v) => !v.formatExceptions?.includes('blocks-only'))
+      ? VARIETIES
+      : VARIETIES.filter((v) => !v.formatExceptions?.includes('block-first') || ['gangsaw-slabs', 'wall-cladding', 'cobble-setts', 'window-sills', 'copings', 'block-steps-treads'].includes(f.slug))
 
   return (
     <>
@@ -104,8 +104,9 @@ export default async function FormatPage({ params }: FormatPageProps) {
                 {[
                   { label: 'Code', value: f.code },
                   { label: 'Primary use', value: f.primaryUse },
-                  { label: 'Variety availability', value: `${f.varietyAvailability} of 21 varieties` },
-                  ...(f.bsEN ? [{ label: 'Aligns with', value: f.bsEN }] : []),
+                  { label: 'Variety availability', value: `${availableVarieties.length} of 23 varieties` },
+                  { label: 'Surfaces available', value: f.surfacesAvailable.join(', ') || 'On enquiry' },
+                  { label: 'Edges available', value: f.edgesAvailable.join(', ') || 'On enquiry' },
                 ].map((row, i) => (
                   <RevealOnScroll key={row.label} delay={i * 50}>
                     <div className="bg-warm-white p-6 lg:p-8">

@@ -59,17 +59,27 @@ export default function MLSHeader() {
           {/* MLS Lockup */}
           <Link
             href="/"
-            className="flex items-center gap-3 group"
+            className="group flex min-w-0 flex-1 items-center gap-3 lg:flex-none"
             aria-label={`${MLS_SITE.name} — Home`}
           >
             <Image
-              src={MLS_ASSETS.lockup.onLight}
-              alt={MLS_SITE.name}
-              width={scrolled ? 180 : 220}
-              height={scrolled ? 36 : 44}
-              className="transition-all duration-500 ease-editorial"
+              src={MLS_ASSETS.mark.onLight}
+              alt=""
+              width={48}
+              height={48}
+              className={`shrink-0 transition-all duration-500 ease-editorial ${
+                scrolled ? 'h-10 w-10' : 'h-12 w-12'
+              }`}
               priority
             />
+            <span className="flex min-w-0 flex-col leading-none">
+              <span className="truncate font-display text-[1.35rem] font-semibold text-mls-ink transition-colors duration-300 group-hover:text-mls-gold md:text-[1.55rem]">
+                {MLS_SITE.name}
+              </span>
+              <span className="mt-1 hidden font-body text-[0.62rem] uppercase tracking-marker text-mls-gold sm:block">
+                Since 1972 · Bijolia
+              </span>
+            </span>
           </Link>
 
           {/* Desktop Nav */}

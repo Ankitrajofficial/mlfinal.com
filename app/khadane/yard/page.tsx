@@ -1,4 +1,16 @@
 import Link from 'next/link'
+import {
+  ArrowRight,
+  BadgeCheck,
+  Boxes,
+  ClipboardCheck,
+  Factory,
+  PackageCheck,
+  Ruler,
+  Send,
+  Ship,
+  Truck,
+} from 'lucide-react'
 import { SITE } from '@/lib/khadane/site'
 import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
@@ -7,130 +19,259 @@ import BrandWhisper from '@/components/khadane/BrandWhisper'
 
 export const metadata = {
   title: 'The Yard — Processing, calibration, shipping',
-  description: 'Three processing units. BS EN tolerances. Container loading at our own facility. Direct to Mundra Port.',
+  description: 'The Bijolia processing yard, where the cut decisions happen. Block arrival, gangsaw, finishing lines, quality check, crating, dispatch.',
 }
 
 export default function YardPage() {
+  const checkpoints = [
+    {
+      num: '01',
+      title: 'Arrival',
+      body: 'Raw blocks arrive from owned quarries and allied partner quarries. Each block is logged by source village, variety, and approximate weight.',
+      icon: Truck,
+      variant: 'quarry' as const,
+      record: 'Source village · variety · block weight',
+      swapPath: '/img/gallery/quarry/block-lift.jpg',
+    },
+    {
+      num: '02',
+      title: 'Selection',
+      body: 'Blocks are inspected, graded, and chalk-marked by variety lot. This decides whether the block moves to slabs, paving, cobbles, detail, or custom work.',
+      icon: ClipboardCheck,
+      variant: 'yard' as const,
+      record: 'Grade · lot mark · production route',
+      swapPath: '/img/gallery/yard/hand-picking.jpg',
+    },
+    {
+      num: '03',
+      title: 'Gangsaw',
+      body: 'Selected blocks move to the gangsaw line, where parallel blades cut raw slabs of consistent thickness in a single pass.',
+      icon: Factory,
+      variant: 'stone' as const,
+      record: 'Blade setting · slab thickness · batch',
+      swapPath: '/img/gallery/yard/gangsaw-line.jpg',
+    },
+    {
+      num: '04',
+      title: 'Finishing',
+      body: 'Raw slabs move through calibration, surface treatment, and edging. Each station works to the agreed surface, edge, and thickness specification.',
+      icon: Ruler,
+      variant: 'stone-warm' as const,
+      record: 'Surface · edge · tolerance',
+      swapPath: '/img/gallery/yard/surface-finishing.jpg',
+    },
+    {
+      num: '05',
+      title: 'Crating',
+      body: 'Finished pieces are inspected, counted, and packed into labelled crates with variety, format, thickness, surface, edge, quantity, and order reference.',
+      icon: PackageCheck,
+      variant: 'belt' as const,
+      record: 'Crate label · quantity · order reference',
+      swapPath: '/img/gallery/yard/crates.jpg',
+    },
+    {
+      num: '06',
+      title: 'Dispatch',
+      body: 'Crates leave the yard by truck for Mundra Port, the primary loading point for KHADANE international exports.',
+      icon: Ship,
+      variant: 'yard' as const,
+      record: 'Truck dispatch · export documents · port route',
+      swapPath: '/img/gallery/yard/container-loading.jpg',
+    },
+  ]
+
   return (
     <>
       {/* Hero */}
-      <section className="section-padding section-warm">
-        <div className="container-editorial">
-          <div className="max-w-5xl">
-            <div className="opacity-0 animate-fade-in" style={{ animationDelay: '100ms' }}>
-              <p className="eyebrow-gold mb-8 no-justify">05 · THE YARD</p>
+      <section className="relative overflow-hidden section-warm pt-28 pb-14 md:pt-32 lg:min-h-[calc(100vh-10rem)] lg:flex lg:items-center lg:pt-36 lg:pb-20">
+        <div className="container-editorial w-full">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16 lg:items-center">
+            <div className="lg:col-span-7">
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '100ms' }}>
+                <p className="eyebrow-gold mb-8 no-justify">THE PROCESS</p>
+              </div>
+              <HeroWordRise
+                as="h1"
+                words={['The', 'Yard.']}
+                className="font-display text-6xl md:text-7xl lg:text-8xl xl:text-9xl tracking-tighter leading-[0.98] text-obsidian mb-8"
+                baseDelay={250}
+                staggerDelay={130}
+              />
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1300ms' }}>
+                <p className="font-display italic text-2xl md:text-3xl text-quarry-gold no-justify max-w-3xl mb-10">
+                  The sequence at Bijolia.
+                </p>
+                <div className="max-w-2xl">
+                  <p className="editorial-body">
+                    Raw blocks arrive from the quarry face. Finished crates leave for Mundra. Between those two points, the yard grades, saws, calibrates, finishes, edges, checks, crates, labels, and documents the stone.
+                  </p>
+                </div>
+                <div className="mt-10 flex flex-wrap gap-3">
+                  <a href="#checkpoints" className="cta-primary no-justify">
+                    <Factory size={16} strokeWidth={1.6} />
+                    Six checkpoints
+                  </a>
+                  <Link href="/khadane/desk" className="cta-secondary no-justify">
+                    <Send size={16} strokeWidth={1.6} />
+                    Visit or specify
+                  </Link>
+                </div>
+              </div>
             </div>
-            <HeroWordRise
-              as="h1"
-              words={['Where', 'stone', 'becomes', 'a', 'shipment.']}
-              className="font-display text-5xl md:text-7xl lg:text-8xl tracking-tighter leading-[1.05] text-obsidian mb-10"
-              baseDelay={250}
-              staggerDelay={130}
-            />
-            <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1500ms' }}>
-              <p className="font-display italic text-2xl text-quarry-gold no-justify max-w-2xl">
-                Processing. Calibration. Inspection. Loading.
-              </p>
+            <div className="lg:col-span-5">
+              <div className="grid grid-cols-2 gap-4 border border-obsidian/8 bg-stone-linen/30 p-4 lg:p-5">
+                {[
+                  { icon: Truck, label: 'Receiving', value: 'Block log' },
+                  { icon: Factory, label: 'Cutting', value: 'Gangsaw' },
+                  { icon: PackageCheck, label: 'Packing', value: 'Crate label' },
+                  { icon: Ship, label: 'Dispatch', value: SITE.port },
+                ].map((stat, i) => {
+                  const Icon = stat.icon
+                  return (
+                    <div
+                      key={stat.label}
+                      className="opacity-0 animate-fade-in bg-warm-white p-6 lg:p-7"
+                      style={{ animationDelay: `${900 + i * 120}ms` }}
+                    >
+                      <Icon size={20} strokeWidth={1.5} className="mb-6 text-quarry-gold" />
+                      <p className="font-display text-3xl text-obsidian no-justify">{stat.value}</p>
+                      <p className="mt-2 font-mono text-[10px] uppercase tracking-eyebrow text-tobacco/55 no-justify">{stat.label}</p>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Three-statement intro */}
-      <section className="section-padding section-cream">
-        <div className="container-editorial max-w-3xl mx-auto text-center">
+      {/* Operating promise */}
+      <section className="section-cream py-12 lg:py-16 border-y border-obsidian/8">
+        <div className="container-editorial">
           <RevealOnScroll>
-            <h2 className="section-heading mb-12">
-              Three processing units.
-              <span className="block italic text-quarry-gold mt-3">BS EN tolerances.</span>
-              <span className="block mt-3">One container line.</span>
-            </h2>
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
+              {[
+                {
+                  icon: BadgeCheck,
+                  title: 'Source held through processing',
+                  body: 'The source village and variety lot follow the block from receiving area to finished crate.',
+                },
+                {
+                  icon: Ruler,
+                  title: 'Specification before dispatch',
+                  body: 'Format, surface, edge, thickness, and size are checked before the material leaves the yard.',
+                },
+                {
+                  icon: PackageCheck,
+                  title: 'Crates documented for export',
+                  body: 'Finished pieces are labelled, counted, packed, and prepared for the Mundra route.',
+                },
+              ].map((item) => {
+                const Icon = item.icon
+                return (
+                  <div key={item.title} className="bg-warm-white p-8 lg:p-10">
+                    <Icon size={24} strokeWidth={1.5} className="mb-8 text-quarry-gold" />
+                    <h2 className="font-display text-3xl text-obsidian no-justify mb-4">{item.title}</h2>
+                    <p className="font-sans text-sm leading-relaxed text-graphite">{item.body}</p>
+                  </div>
+                )
+              })}
+            </div>
           </RevealOnScroll>
         </div>
       </section>
 
       {/* Process steps */}
-      <section className="section-padding section-warm">
+      <section id="checkpoints" className="section-padding section-warm">
         <div className="container-editorial">
-          <div className="space-y-24 lg:space-y-32">
-            {[
-              {
-                num: '01',
-                title: 'Extraction & block selection.',
-                body: 'Blocks are selected at the quarry face for grain consistency, freedom from cracks and inclusions, and dimensional viability. Marked, batched, and dispatched to the yard.',
-                variant: 'quarry' as const,
-              },
-              {
-                num: '02',
-                title: 'Cutting & calibration.',
-                body: 'Multi-blade gangsaw for large slabs. Block-cutters for paving and tile sections. Calibration to BS EN tolerances for 22mm export-default and project-specific thicknesses.',
-                variant: 'yard' as const,
-              },
-              {
-                num: '03',
-                title: 'Surface finishing.',
-                body: 'Fourteen surface finishes available. Riven (split-face), sandblasted, sawn, honed, polished, brushed, flamed, antique, leather, bush-hammered — selected per project.',
-                variant: 'stone' as const,
-              },
-              {
-                num: '04',
-                title: 'Hand-picking & quality control.',
-                body: 'Every order is hand-picked against approved samples. Variation managed within agreed batch tolerance. Reject pile photographed and reported per shipment.',
-                variant: 'stone-warm' as const,
-              },
-              {
-                num: '05',
-                title: 'Container loading.',
-                body: 'Loading at our own facility before transit to Mundra Port. Crate or wooden pallet, fumigated where required. Loading photographs supplied per container.',
-                variant: 'belt' as const,
-              },
-            ].map((step, i) => (
-              <RevealOnScroll key={step.num} delay={100}>
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-                  <div className={`lg:col-span-6 ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
+          <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16 lg:items-end">
+            <div className="lg:col-span-5">
+              <RevealOnScroll>
+                <p className="eyebrow-gold mb-6 no-justify">SIX CHECKPOINTS</p>
+                <h2 className="section-heading">
+                  From block arrival
+                  <span className="block italic text-quarry-gold">to dispatch.</span>
+                </h2>
+              </RevealOnScroll>
+            </div>
+            <div className="lg:col-span-7">
+              <RevealOnScroll delay={150}>
+                <p className="editorial-body">
+                  The yard sequence is designed for traceability and production clarity. Each checkpoint creates a decision record before material moves to the next station.
+                </p>
+              </RevealOnScroll>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-5 lg:gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {checkpoints.map((step, i) => {
+              const Icon = step.icon
+              return (
+                <RevealOnScroll key={step.num} delay={Math.min(i * 60, 360)}>
+                  <article className="flex h-full flex-col bg-warm-white transition-colors duration-400 ease-editorial hover:bg-stone-linen/70">
                     <PlaceholderImage
                       variant={step.variant}
-                      label={`STEP ${step.num}`}
+                      label={`CHECKPOINT ${step.num}`}
                       title={step.title}
-                      aspectRatio="aspect-[4/3]"
+                      spec={step.record}
+                      swapPath={step.swapPath}
+                      aspectRatio="aspect-[16/10]"
                     />
-                  </div>
-                  <div className={`lg:col-span-6 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <p className="font-mono text-sm text-quarry-gold mb-4 no-justify">PROCESS · {step.num}</p>
-                    <h3 className="font-display text-3xl lg:text-4xl tracking-tight leading-tight text-obsidian no-justify mb-6">
-                      {step.title}
-                    </h3>
-                    <p className="editorial-body">{step.body}</p>
-                  </div>
-                </div>
-              </RevealOnScroll>
-            ))}
+                    <div className="flex flex-1 flex-col p-6 lg:p-7">
+                      <div className="mb-6 flex items-center justify-between gap-4">
+                        <p className="font-mono text-xs text-quarry-gold no-justify">PROCESS · {step.num}</p>
+                        <Icon size={20} strokeWidth={1.5} className="text-quarry-gold" />
+                      </div>
+                      <h3 className="font-display text-3xl leading-tight text-obsidian no-justify mb-4">
+                        {step.title}.
+                      </h3>
+                      <p className="font-sans text-sm leading-relaxed text-graphite">
+                        {step.body}
+                      </p>
+                      <div className="mt-auto border-t border-obsidian/10 pt-5">
+                        <p className="font-mono text-[10px] uppercase tracking-eyebrow text-tobacco/45 no-justify mb-2">Record</p>
+                        <p className="font-sans text-xs leading-relaxed text-obsidian no-justify">{step.record}</p>
+                      </div>
+                    </div>
+                  </article>
+                </RevealOnScroll>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* Five-dimension reminder */}
+      {/* Yard records */}
       <section className="section-padding section-tobacco">
         <div className="container-editorial">
-          <RevealOnScroll>
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <p className="eyebrow-gold mb-6 no-justify">THE TRADE SPEC</p>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-warm-white no-justify">
-                Every order specified
-                <span className="block italic text-quarry-gold">in five dimensions.</span>
-              </h2>
+          <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <RevealOnScroll>
+                <p className="eyebrow-gold mb-6 no-justify">YARD RECORDS</p>
+                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-warm-white no-justify">
+                  The record follows
+                  <span className="block italic text-quarry-gold">the stone.</span>
+                </h2>
+              </RevealOnScroll>
             </div>
-          </RevealOnScroll>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-warm-white/10">
+            <div className="lg:col-span-7">
+              <RevealOnScroll delay={150}>
+                <p className="font-sans text-lg text-warm-white/75 leading-relaxed">
+                  The Yard page is about custody, not catalogue browsing. Each checkpoint leaves a practical record: where the block came from, how it was routed, what finish was applied, how it was packed, and what left for the port.
+                </p>
+              </RevealOnScroll>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
             {[
-              { label: 'Variety', count: '21' },
-              { label: 'Format', count: '14' },
-              { label: 'Cutting', count: '4' },
-              { label: 'Surface', count: '14' },
-              { label: 'Size', count: '13' },
+              { label: 'Receiving log', count: '01' },
+              { label: 'Grading mark', count: '02' },
+              { label: 'Finish sign-off', count: '03' },
+              { label: 'Crate label', count: '04' },
+              { label: 'Dispatch file', count: '05' },
             ].map((d, i) => (
               <RevealOnScroll key={d.label} delay={i * 80}>
-                <div className="bg-tobacco p-6 lg:p-8 text-center">
+                <div className="bg-warm-white/[0.05] border border-warm-white/10 p-6 lg:p-8 text-center">
                   <p className="font-display text-5xl text-quarry-gold mb-3 no-justify">{d.count}</p>
                   <p className="font-sans text-xs uppercase tracking-eyebrow text-warm-white no-justify">{d.label}</p>
                 </div>
@@ -140,21 +281,46 @@ export default function YardPage() {
         </div>
       </section>
 
-      {/* Quote CTA */}
+      {/* Documentation and visit CTA */}
       <section className="section-padding section-cream">
-        <div className="container-editorial max-w-3xl mx-auto text-center">
-          <RevealOnScroll>
-            <h2 className="section-heading mb-8">
-              Have a project
-              <span className="block italic text-quarry-gold">to specify?</span>
-            </h2>
-            <p className="editorial-body mb-10">
-              Tell us the variety, format, finish, size, and volume. Quote returned within one business day with lead time and shipping option.
-            </p>
-            <Link href="/khadane/desk" className="cta-primary no-justify">
-              Write to The Desk →
-            </Link>
-          </RevealOnScroll>
+        <div className="container-editorial">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16 lg:items-center">
+            <div className="lg:col-span-7">
+              <RevealOnScroll>
+                <p className="eyebrow-gold mb-6 no-justify">BUYER ACCESS</p>
+                <h2 className="section-heading mb-8">
+                  Visit the yard,
+                  <span className="block italic text-quarry-gold">or specify from your desk.</span>
+                </h2>
+                <p className="editorial-body max-w-2xl">
+                  Buyers visiting India for trade fairs, factory audits, or specification meetings can visit the Bijolia yard by prior appointment. Remote buyers can request sample sets, loading photographs, crate references, and route documentation through the desk.
+                </p>
+              </RevealOnScroll>
+            </div>
+            <div className="lg:col-span-5">
+              <RevealOnScroll delay={150}>
+                <div className="bg-warm-white p-8 lg:p-10 border border-obsidian/10">
+                  <div className="space-y-6">
+                    {[
+                      ['Location', 'Bijolia, Bhilwara District, Rajasthan'],
+                      ['Port', SITE.port],
+                      ['Response', 'Within one business day'],
+                      ['Desk', SITE.contact.publicEmail],
+                    ].map(([label, value]) => (
+                      <div key={label} className="border-b border-obsidian/10 pb-5 last:border-b-0 last:pb-0">
+                        <p className="font-mono text-[10px] uppercase tracking-eyebrow text-tobacco/45 no-justify mb-2">{label}</p>
+                        <p className="font-sans text-base text-obsidian no-justify">{value}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <Link href="/khadane/desk" className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-tobacco no-justify">
+                    Write to The Desk
+                    <ArrowRight size={16} strokeWidth={1.6} />
+                  </Link>
+                </div>
+              </RevealOnScroll>
+            </div>
+          </div>
         </div>
       </section>
 

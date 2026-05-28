@@ -1,3 +1,8 @@
+'use client'
+
+import Image from 'next/image'
+import { useState } from 'react'
+
 interface PlaceholderImageProps {
   className?: string
   variant?:
@@ -28,21 +33,37 @@ export default function PlaceholderImage({
   swapPath,
   showCaption = true,
 }: PlaceholderImageProps) {
+  const [imgFailed, setImgFailed] = useState(false)
   const variantClass = `placeholder-${variant}`
+  const showImage = Boolean(swapPath && !imgFailed)
+
+  // Hide the container entirely when no real image is available.
+  if (!showImage) {
+    // `spec` and `showCaption` are unused in this mode but kept in the props API for callers.
+    void spec
+    void showCaption
+    return null
+  }
 
   return (
     <div className={`placeholder-base ${variantClass} ${aspectRatio} ${className}`}>
-      {showCaption && (
-        <div className="placeholder-caption">
-          <span className="ph-label">{label}</span>
-          {title && <span className="ph-title">{title}</span>}
-          {spec && <span className="ph-spec">{spec}</span>}
-          {swapPath && (
-            <span className="ph-spec" style={{ marginTop: '0.5rem', opacity: 0.4 }}>
-              swap → {swapPath}
-            </span>
-          )}
-        </div>
+      {/^https?:\/\//.test(swapPath as string) ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={swapPath as string}
+          alt={title || label}
+          className="absolute inset-0 h-full w-full object-cover"
+          onError={() => setImgFailed(true)}
+        />
+      ) : (
+        <Image
+          src={swapPath as string}
+          alt={title || label}
+          fill
+          sizes="(min-width: 1280px) 42vw, (min-width: 1024px) 50vw, 100vw"
+          className="object-cover"
+          onError={() => setImgFailed(true)}
+        />
       )}
     </div>
   )

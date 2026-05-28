@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: '%s · KHADANE™',
   },
   description:
-    'KHADANE™ is the customer-facing trade brand of Dhakar Stone Impex, the export operation within the Dhakar family enterprise. Twenty-one sandstone varieties across fourteen formats. Quarried in Bijolia, Rajasthan.',
+    'KHADANE™ is the customer-facing trade brand of Dhakar Stone Impex, working the Bijolia sandstone belt of Rajasthan since 1972. Twenty-three sandstones across nineteen formats.',
   keywords: [
     'Indian sandstone',
     'Bijolia sandstone',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     'paving slabs',
     'Kandla Grey',
     'Autumn Brown',
-    'Raj Green',
+    'Garda Green',
     'KHADANE',
     'Mohan Lal & Sons',
     'Dhakar Stones Group',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: 'KHADANE™',
     title: 'KHADANE™ — The sandstone catalogue of Dhakar Stones Group',
     description:
-      'Twenty-one sandstone varieties across fourteen formats. Quarried in Bijolia, Rajasthan. Since 1972.',
+      'Twenty-three sandstones across nineteen formats. Quarried in Bijolia, Rajasthan. Since 1972.',
     images: [
       {
         url: '/og-image.jpg',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'KHADANE™ — Bijolia sandstone, exported direct.',
-    description: 'Twenty-one varieties across fourteen formats. Since 1972.',
+    description: 'Twenty-three sandstones across nineteen formats. Since 1972.',
   },
   robots: {
     index: true,

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
-import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, SlidersHorizontal } from 'lucide-react'
 import {
   GALLERY_ITEMS,
   GALLERY_CATEGORIES,
@@ -61,31 +61,37 @@ export default function Gallery() {
 
   return (
     <>
-      {/* Filter pills */}
+      {/* Filter controls */}
       <div className="container-editorial mb-12 lg:mb-16">
-        <div className="flex flex-wrap items-center justify-center gap-2 lg:gap-3">
-          {GALLERY_CATEGORIES.map((cat) => {
-            const active = cat.value === activeCategory
-            const count = cat.value === 'all'
-              ? GALLERY_ITEMS.length
-              : GALLERY_ITEMS.filter((i) => i.category === cat.value).length
-            return (
-              <button
-                key={cat.value}
-                onClick={() => setActiveCategory(cat.value)}
-                className={`group inline-flex items-center gap-2 px-5 lg:px-6 py-3 font-sans text-xs uppercase tracking-eyebrow transition-all duration-400 ease-editorial no-justify border ${
-                  active
-                    ? 'bg-obsidian text-warm-white border-obsidian'
-                    : 'bg-transparent text-obsidian border-obsidian/15 hover:border-quarry-gold hover:text-quarry-gold'
-                }`}
-              >
-                {cat.label}
-                <span className={`font-mono text-[10px] ${active ? 'text-quarry-gold' : 'text-tobacco/40 group-hover:text-quarry-gold/70'} transition-colors`}>
-                  {String(count).padStart(2, '0')}
-                </span>
-              </button>
-            )
-          })}
+        <div className="border border-obsidian/8 bg-stone-linen/45 p-4 lg:flex lg:items-center lg:justify-between lg:gap-6">
+          <div className="mb-4 flex items-center gap-3 lg:mb-0">
+            <SlidersHorizontal size={17} strokeWidth={1.5} className="text-quarry-gold" />
+            <p className="font-mono text-[10px] uppercase tracking-eyebrow text-tobacco/60 no-justify">Archive filter</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 lg:justify-end">
+            {GALLERY_CATEGORIES.map((cat) => {
+              const active = cat.value === activeCategory
+              const count = cat.value === 'all'
+                ? GALLERY_ITEMS.length
+                : GALLERY_ITEMS.filter((i) => i.category === cat.value).length
+              return (
+                <button
+                  key={cat.value}
+                  onClick={() => setActiveCategory(cat.value)}
+                  className={`group inline-flex items-center gap-2 border px-4 py-3 font-sans text-xs uppercase tracking-eyebrow transition-all duration-400 ease-editorial no-justify ${
+                    active
+                      ? 'border-obsidian bg-obsidian text-warm-white'
+                      : 'border-obsidian/15 bg-warm-white text-obsidian hover:border-quarry-gold hover:text-quarry-gold'
+                  }`}
+                >
+                  {cat.label}
+                  <span className={`font-mono text-[10px] ${active ? 'text-quarry-gold' : 'text-tobacco/40 group-hover:text-quarry-gold/70'} transition-colors`}>
+                    {String(count).padStart(2, '0')}
+                  </span>
+                </button>
+              )
+            })}
+          </div>
         </div>
       </div>
 
@@ -101,10 +107,10 @@ export default function Gallery() {
           ============================================================ */}
       {heroItem && (
         <RevealOnScroll>
-          <div className="mb-12 lg:mb-20">
+          <div className="container-editorial mb-12 lg:mb-20">
             <button
               onClick={() => openLightbox(heroItem)}
-              className="group block w-full text-left overflow-hidden bg-obsidian"
+              className="group block w-full border border-obsidian/10 bg-obsidian text-left overflow-hidden"
               aria-label={`Open ${heroItem.title} in lightbox`}
             >
               <div className="relative">
@@ -114,7 +120,7 @@ export default function Gallery() {
                   title={heroItem.title}
                   spec={heroItem.caption}
                   swapPath={heroItem.swapPath}
-                  aspectRatio="aspect-[21/9] lg:aspect-[21/8]"
+                  aspectRatio="aspect-[16/9] lg:aspect-[21/9]"
                   className="transition-transform duration-1000 ease-editorial group-hover:scale-[1.02]"
                 />
                 {/* Bottom scrim + caption */}
@@ -327,28 +333,37 @@ function GalleryTile({
   return (
     <button
       onClick={() => onClick(item)}
-      className="group block w-full text-left overflow-hidden bg-obsidian relative"
+      className="group block w-full overflow-hidden border border-obsidian/8 bg-warm-white text-left transition-colors duration-400 ease-editorial hover:border-quarry-gold/45"
       aria-label={`Open ${item.title}`}
     >
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden bg-obsidian">
         <PlaceholderImage
           variant={item.placeholderVariant}
           label={item.id}
           title={item.title}
+          spec={item.caption}
+          swapPath={item.swapPath}
           aspectRatio={aspectRatio}
           className="transition-transform duration-1000 ease-editorial group-hover:scale-[1.04]"
         />
         {/* Hover scrim */}
-        <div className="absolute inset-0 bg-obsidian/0 group-hover:bg-obsidian/40 transition-all duration-500 ease-editorial flex items-end p-5 lg:p-6">
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-editorial translate-y-2 group-hover:translate-y-0">
-            <p className="font-mono text-[10px] text-quarry-gold mb-2 no-justify">
-              {item.id} {item.varietyCode && ` · ${item.varietyCode}`}
-            </p>
-            <h4 className="font-display text-xl lg:text-2xl text-warm-white no-justify leading-tight">
-              {item.title}
-            </h4>
-          </div>
+        <div className="absolute inset-0 bg-obsidian/0 transition-all duration-500 ease-editorial group-hover:bg-obsidian/25" />
+        <div className="absolute right-4 top-4 bg-obsidian/80 px-3 py-2 font-mono text-[10px] uppercase tracking-eyebrow text-quarry-gold no-justify">
+          Open
         </div>
+      </div>
+      <div className="p-5 lg:p-6">
+        <p className="font-mono text-[10px] uppercase tracking-eyebrow text-quarry-gold no-justify mb-3">
+          {item.id}{item.varietyCode ? ` · ${item.varietyCode}` : ''}
+        </p>
+        <h4 className="font-display text-2xl leading-tight text-obsidian no-justify mb-3">
+          {item.title}
+        </h4>
+        {item.caption && (
+          <p className="font-sans text-sm leading-6 text-graphite no-justify">
+            {item.caption}
+          </p>
+        )}
       </div>
     </button>
   )

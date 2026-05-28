@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { Pause, Play, RotateCcw, Volume2, VolumeX } from 'lucide-react'
+import { Volume2, VolumeX } from 'lucide-react'
 
 interface HeroVideoProps {
   src: string
@@ -15,50 +15,44 @@ export default function HeroVideo({
   objectPosition = '50% 50%',
 }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [playing, setPlaying] = useState(true)
   const [muted, setMuted] = useState(true)
-
-  const playVideo = async () => {
-    const video = videoRef.current
-    if (!video) return false
-
-    try {
-      await video.play()
-      return true
-    } catch {
-      setPlaying(false)
-      return false
-    }
-  }
-
-  const togglePlayback = async () => {
-    const video = videoRef.current
-    if (!video) return
-
-    if (video.paused) {
-      await playVideo()
-      return
-    }
-
-    video.pause()
-  }
+  const [hasAudio, setHasAudio] = useState(true)
 
   const toggleMute = () => {
     const video = videoRef.current
     if (!video) return
 
-    video.muted = !video.muted
-    setMuted(video.muted)
+    const nextMuted = !video.muted
+    video.muted = nextMuted
+    video.defaultMuted = nextMuted
+    setMuted(nextMuted)
   }
 
-  const restart = () => {
+  const syncMutedState = () => {
     const video = videoRef.current
     if (!video) return
 
-    video.currentTime = 0
-    if (video.paused) {
-      void playVideo()
+    setMuted(video.muted)
+  }
+
+  const syncMediaState = () => {
+    const video = videoRef.current
+    if (!video) return
+
+    const mediaWithAudio = video as HTMLVideoElement & {
+      webkitAudioDecodedByteCount?: number
+      mozHasAudio?: boolean
+      audioTracks?: { length: number }
     }
+
+    setMuted(video.muted)
+    setHasAudio(
+      Boolean(
+        mediaWithAudio.audioTracks?.length ||
+          mediaWithAudio.mozHasAudio ||
+          mediaWithAudio.webkitAudioDecodedByteCount
+      )
+    )
   }
 
   return (
@@ -68,48 +62,33 @@ export default function HeroVideo({
         className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         style={{ objectPosition }}
         autoPlay
-        muted
+        muted={muted}
         loop
         playsInline
         preload="auto"
         poster={poster}
         aria-hidden="true"
-        onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
-        onVolumeChange={(event) => setMuted(event.currentTarget.muted)}
+        onLoadedMetadata={syncMediaState}
+        onCanPlay={syncMediaState}
+        onVolumeChange={syncMutedState}
       >
         <source src={src} type="video/mp4" />
       </video>
 
-      <div className="pointer-events-auto absolute left-6 bottom-6 z-50 flex items-center gap-2 rounded-full border border-warm-white/20 bg-obsidian/45 p-2 backdrop-blur-md lg:left-8 lg:bottom-8">
-        <button
-          type="button"
-          aria-label={playing ? 'Pause background video' : 'Play background video'}
-          title={playing ? 'Pause background video' : 'Play background video'}
-          onClick={togglePlayback}
-          className="grid h-10 w-10 place-items-center rounded-full text-warm-white transition-colors duration-300 hover:bg-warm-white hover:text-obsidian"
-        >
-          {playing ? <Pause size={18} strokeWidth={1.6} /> : <Play size={18} strokeWidth={1.6} />}
-        </button>
+      {hasAudio && (
+      <div className="pointer-events-auto absolute left-6 bottom-6 z-50 rounded-full border border-warm-white/20 bg-obsidian/45 p-2 backdrop-blur-md lg:left-8 lg:bottom-8">
         <button
           type="button"
           aria-label={muted ? 'Unmute background video' : 'Mute background video'}
           title={muted ? 'Unmute background video' : 'Mute background video'}
+          aria-pressed={!muted}
           onClick={toggleMute}
           className="grid h-10 w-10 place-items-center rounded-full text-warm-white transition-colors duration-300 hover:bg-warm-white hover:text-obsidian"
         >
           {muted ? <VolumeX size={18} strokeWidth={1.6} /> : <Volume2 size={18} strokeWidth={1.6} />}
         </button>
-        <button
-          type="button"
-          aria-label="Restart background video"
-          title="Restart background video"
-          onClick={restart}
-          className="grid h-10 w-10 place-items-center rounded-full text-warm-white transition-colors duration-300 hover:bg-warm-white hover:text-obsidian"
-        >
-          <RotateCcw size={17} strokeWidth={1.6} />
-        </button>
       </div>
+      )}
     </>
   )
 }

@@ -66,7 +66,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     location: 'Bundi District',
     layoutHint: 'square',
     placeholderVariant: 'stone-green',
-    swapPath: '/img/gallery/stone/sage-green-edge.jpg',
+    swapPath: '/img/gallery/stone/garda-green-edge.jpg',
   },
   {
     id: 'GAL-004',
@@ -77,7 +77,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     location: 'Bhilwara District',
     layoutHint: 'wide',
     placeholderVariant: 'stone-red',
-    swapPath: '/img/gallery/stone/kaansiya-red-cleft.jpg',
+    swapPath: '/img/varieties/red-choco/slab-face.jpg',
   },
   {
     id: 'GAL-005',
@@ -88,7 +88,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     location: 'Bhilwara District',
     layoutHint: 'standard',
     placeholderVariant: 'stone-warm',
-    swapPath: '/img/gallery/stone/camel-dust-grain.jpg',
+    swapPath: '/img/varieties/camel-dust/slab-face.jpg',
   },
   {
     id: 'GAL-006',
@@ -99,7 +99,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     location: 'Bhilwara District',
     layoutHint: 'tall',
     placeholderVariant: 'stone-warm',
-    swapPath: '/img/gallery/stone/raveena-white-sawn.jpg',
+    swapPath: '/img/varieties/buff/slab-face.jpg',
   },
   {
     id: 'GAL-007',
@@ -110,7 +110,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     location: 'Bhilwara + Bundi',
     layoutHint: 'square',
     placeholderVariant: 'stone',
-    swapPath: '/img/gallery/stone/rainbow-banded.jpg',
+    swapPath: '/img/varieties/multi-colours/slab-face.jpg',
   },
   {
     id: 'GAL-008',
@@ -121,7 +121,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     location: 'Nagaur District',
     layoutHint: 'wide',
     placeholderVariant: 'stone',
-    swapPath: '/img/gallery/stone/teakwood-block.jpg',
+    swapPath: '/img/varieties/teakwood/slab-face.jpg',
   },
 
   // ─── QUARRY · 6 items ───
@@ -271,7 +271,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     varietyCode: '#KHD-003',
     layoutHint: 'wide',
     placeholderVariant: 'stone-green',
-    swapPath: '/img/gallery/installation/sage-green-devon.jpg',
+    swapPath: '/img/gallery/installation/garda-green-devon.jpg',
   },
   {
     id: 'GAL-024',
@@ -281,7 +281,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     varietyCode: '#KHD-007',
     layoutHint: 'square',
     placeholderVariant: 'stone-warm',
-    swapPath: '/img/gallery/installation/camel-dust-dubai.jpg',
+    swapPath: '/img/varieties/camel-dust-hero.jpg',
   },
   {
     id: 'GAL-025',
@@ -291,7 +291,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     varietyCode: '#KHD-006',
     layoutHint: 'wide',
     placeholderVariant: 'stone-warm',
-    swapPath: '/img/gallery/installation/raveena-white-cote-dazur.jpg',
+    swapPath: '/img/varieties/buff-hero.jpg',
   },
   {
     id: 'GAL-026',
@@ -301,7 +301,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     varietyCode: '#KHD-012',
     layoutHint: 'standard',
     placeholderVariant: 'stone-red',
-    swapPath: '/img/gallery/installation/kaansiya-red-heritage.jpg',
+    swapPath: '/img/varieties/red-choco-hero.jpg',
   },
   {
     id: 'GAL-027',
@@ -311,7 +311,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     varietyCode: '#KHD-011',
     layoutHint: 'tall',
     placeholderVariant: 'stone',
-    swapPath: '/img/gallery/installation/dual-tone-contemporary.jpg',
+    swapPath: '/img/varieties/dual-tone-hero.jpg',
   },
 
   // ─── BELT FILM STILLS · 5 items ───
@@ -323,7 +323,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     location: 'Bijolia, Rajasthan',
     layoutHint: 'hero',
     placeholderVariant: 'quarry',
-    swapPath: '/img/gallery/belt-film/k-001-establishing.jpg',
+    swapPath: '/img/gallery/quarry/working-face-dawn.jpg',
   },
   {
     id: 'GAL-029',
@@ -332,7 +332,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: '500+ workforce. Multiple units. One direction.',
     layoutHint: 'wide',
     placeholderVariant: 'yard',
-    swapPath: '/img/gallery/belt-film/k-003-workforce.jpg',
+    swapPath: '/img/gallery/yard/hand-picking.jpg',
   },
   {
     id: 'GAL-030',
@@ -341,7 +341,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: 'Vindhyan Supergroup. Bhander Group. The geology, in frame.',
     layoutHint: 'square',
     placeholderVariant: 'stone-warm',
-    swapPath: '/img/gallery/belt-film/k-005-geology.jpg',
+    swapPath: '/img/gallery/quarry/strata-cross-section.jpg',
   },
   {
     id: 'GAL-031',
@@ -350,7 +350,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: 'Loaded at the yard. Bound for Mundra.',
     layoutHint: 'tall',
     placeholderVariant: 'belt',
-    swapPath: '/img/gallery/belt-film/k-007-container.jpg',
+    swapPath: '/img/gallery/yard/container-loading.jpg',
   },
   {
     id: 'GAL-032',
@@ -359,7 +359,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: 'Bijolia · Rajasthan · Since 1972.',
     layoutHint: 'wide',
     placeholderVariant: 'quarry',
-    swapPath: '/img/gallery/belt-film/k-009-closing.jpg',
+    swapPath: '/img/gallery/quarry/far-wall.jpg',
   },
 ]
 

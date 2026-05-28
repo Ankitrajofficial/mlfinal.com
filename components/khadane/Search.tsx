@@ -7,6 +7,7 @@ import { Search as SearchIcon, X } from 'lucide-react'
 import { VARIETIES } from '@/lib/khadane/varieties'
 import { FORMATS } from '@/lib/khadane/formats'
 import { FIELD_NOTES } from '@/lib/field-notes'
+import { SITE } from '@/lib/khadane/site'
 
 interface SearchResult {
   type: 'variety' | 'format' | 'field-note' | 'page'
@@ -22,8 +23,8 @@ const STATIC_PAGES: SearchResult[] = [
   { type: 'page', title: 'The Desk', subtitle: 'Write to us', href: '/desk' },
   { type: 'page', title: 'The Group', subtitle: 'Mohan Lal & Sons', href: '/khadane/group' },
   { type: 'page', title: 'Gallery', subtitle: 'Stone, quarry, yard, in-situ', href: '/khadane/gallery' },
-  { type: 'page', title: 'Collection', subtitle: 'All 21 varieties', href: '/khadane/collection' },
-  { type: 'page', title: 'Formats', subtitle: 'All 14 formats', href: '/khadane/formats' },
+  { type: 'page', title: 'Collection', subtitle: `All ${SITE.varietyCount} varieties`, href: '/khadane/collection' },
+  { type: 'page', title: 'Formats', subtitle: `All ${SITE.formatCount} formats`, href: '/khadane/formats' },
   { type: 'page', title: 'Field Notes', subtitle: 'Editorial briefs', href: '/khadane/field-notes' },
   { type: 'page', title: 'About', subtitle: 'About KHADANE™', href: '/khadane/about' },
 ]

@@ -1,77 +1,93 @@
 // ============================================================
-// KHADANE™ — Site-wide configuration · v1.0 locked
+// KHADANE(TM) - Site-wide configuration
+// Source: update.md
 // ============================================================
 
 export const SITE = {
-  name: 'KHADANE™',
-  domain: 'khadane.com',
-  url: 'https://khadane.com',
-  shortName: 'KHADANE',
+  name: "KHADANE™",
+  domain: "khadane.com",
+  url: "https://khadane.com",
+  shortName: "KHADANE",
 
-  // Brand architecture
-  groupParent: 'Mohan Lal & Sons',
-  groupOperation: 'Dhakar Stones Group',
+  groupParent: "Mohan Lal & Sons",
+  groupOperation: "Dhakar Stones Group (DSG)",
   groupAcronym: 'DSG',
-  exportOperation: 'Dhakar Stone Impex',
+  exportOperation: "Dhakar Stone Impex (DSI)",
   exportAcronym: 'DSI',
 
-  // Locations
-  origin: 'Bijolia',
+  origin: "Bijolia",
   district: 'Bhilwara District',
   state: 'Rajasthan',
   country: 'India',
-  port: 'Mundra',
+  port: "Mundra",
 
-  // Foundation
   foundationYear: 1972,
   currentYear: 2026,
 
-  // Catalogue scope
-  varietyCount: 21,
-  ownedVarieties: 12,
+  varietyCount: 23,
+  ownedVarieties: 14,
   alliedVarieties: 9,
-  formatCount: 14,
+  formatCount: 19,
+  surfaceTreatmentCount: 11,
+  edgeProfileCount: 4,
   quarryCount: '100+',
   workforceCount: '500+',
   annualOutput: 'Over 2 million sq.m',
+  countriesShipped: '20+',
+  continentsReached: '4',
   bijoliaBeltYears: 854,
 
-  // Contact
   contact: {
-    publicEmail: 'exports@khadane.com',
-    publicPhone: '+91 98285 71143',
-    whatsappNumber: '919828571143',
-    whatsappUrl: 'https://wa.me/919828571143',
-    hours: 'Monday–Saturday · 10:00–18:00 IST',
+    publicEmail: "exports@khadane.com",
+    publicPhone: "+91 94141 12455",
+    whatsappNumber: '919414112455',
+    whatsappUrl: 'https://wa.me/919414112455',
+    hours: "Monday–Saturday, 09:00–18:00 IST",
   },
 
-  // Parent links
   parent: {
     site: 'https://mohanlalsonsgroup.com',
     email: 'exports@mohanlalsonsgroup.com',
+    description: "Part of Mohan Lal & Sons — the operating group behind KHADANE™. Five verticals. One family. Since 1972.",
   },
 
-  // Brand whisper signature
-  signature: 'The sandstone catalogue of Dhakar Stones Group. Bijolia, Rajasthan. Since 1972.',
-  tagline: 'Quarried with pride in Bijolia, Rajasthan.',
-  hindiTag: 'खदान — The Quarry',
-
-  // Footer copyright
-  copyright: '© 1972–2026 KHADANE™ · A Dhakar Stones Group operation',
+  signature: "The sandstone catalogue of Dhakar Stones Group. Bijolia, Rajasthan. Since 1972.",
+  tagline: "Quarried with pride in Bijolia, Rajasthan.",
+  hindiTag: "खदान — The Quarry",
+  copyright: "© 1972–2026 KHADANE™ · A Dhakar Stones Group operation",
 } as const
 
 export const NAV_ITEMS = [
-  { href: '/collection', label: 'Collection' },
-  { href: '/formats', label: 'Formats' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/quarry', label: 'The Quarry' },
-  { href: '/yard', label: 'The Yard' },
-  { href: '/desk', label: 'The Desk' },
-  { href: '/field-notes', label: 'Field Notes' },
-  { href: '/group', label: 'The Group' },
+  {
+    "label": "Collection",
+    "href": "/collection"
+  },
+  {
+    "label": "Formats",
+    "href": "/formats"
+  },
+  {
+    "label": "The Quarry",
+    "href": "/quarry"
+  },
+  {
+    "label": "The Yard",
+    "href": "/yard"
+  },
+  {
+    "label": "Field Notes",
+    "href": "/field-notes"
+  },
+  {
+    "label": "The Group",
+    "href": "/group"
+  },
+  {
+    "label": "Gallery",
+    "href": "/gallery"
+  }
 ] as const
 
-// Brand asset path helpers — always returns transparent variants
 export const ASSETS = {
   khadane: {
     onLight: '/brand/khadane/KHADANE_04_transparent_on_light.svg',

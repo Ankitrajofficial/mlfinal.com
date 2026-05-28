@@ -24,7 +24,7 @@ export default function TermsPage() {
                   This site is published by KHADANE™ / {SITE.exportOperation}, the export operation of the {SITE.groupOperation} within {SITE.groupParent}. All content, photography, and design is the intellectual property of {SITE.exportOperation}.
                 </p>
                 <p className="mt-4">
-                  Variety codes (#KHD-001 to #KHD-021), format codes (#KHF-001 to #KHF-014), and the KHADANE™ wordmark are trademarks of {SITE.exportOperation}.
+                  Variety codes (KHD-O-01 to KHD-A-09), format codes (KHF-001 to KHF-019), and the KHADANE™ wordmark are trademarks of {SITE.exportOperation}.
                 </p>
               </div>
 
@@ -41,7 +41,7 @@ export default function TermsPage() {
               <div>
                 <h2 className="font-display text-2xl text-obsidian no-justify mb-4">Specifications &amp; tolerances</h2>
                 <p>
-                  Sandstone is a natural material. Colour, grain, and pattern variation within agreed batch tolerances is inherent and not grounds for rejection. Dimensional tolerances comply with BS EN 1341, BS EN 12058, BS EN 1343 as applicable per format. Approved samples are the reference standard for hand-picking.
+                  Sandstone is a natural material. Colour, grain, and pattern variation within agreed batch tolerances is inherent and not grounds for rejection. Dimensional tolerances follow agreed export specifications per format and per project. Approved samples are the reference standard for hand-picking.
                 </p>
               </div>
 

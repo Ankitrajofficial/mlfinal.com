@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { NAV_ITEMS } from '@/lib/khadane/site'
+import { NAV_ITEMS, SITE } from '@/lib/khadane/site'
 import Wordmark from './Wordmark'
 
 export default function Navigation() {
@@ -146,7 +146,7 @@ export default function Navigation() {
             </li>
           </ul>
           <div className="px-8 py-8 border-t border-warm-white/10 text-warm-white/60 text-xs font-mono tracking-wider">
-            exports@khadane.com · +91 98285 71143
+            {SITE.contact.publicEmail} · {SITE.contact.publicPhone}
           </div>
         </div>
       </div>
