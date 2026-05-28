@@ -23,6 +23,8 @@ import { NextResponse, type NextRequest } from 'next/server'
 const MLS_HOSTS = new Set([
   'mohanlalsonsgroup.com',
   'www.mohanlalsonsgroup.com',
+  'mohanlalandsonsgroup.com',
+  'www.mohanlalandsonsgroup.com',
   'mls.localhost',
 ])
 
@@ -50,6 +52,21 @@ const KHADANE_ENV_HOST = hostnameFromUrl(
   process.env.NEXT_PUBLIC_KHADANE_URL,
   'khadane.com'
 )
+
+function siteBaseUrl(site: 'mls' | 'khadane') {
+  const configured =
+    site === 'mls'
+      ? process.env.NEXT_PUBLIC_MLS_URL
+      : process.env.NEXT_PUBLIC_KHADANE_URL
+
+  if (configured?.startsWith('http://') || configured?.startsWith('https://')) {
+    return configured
+  }
+
+  return site === 'mls'
+    ? `https://${MLS_ENV_HOST}`
+    : `https://${KHADANE_ENV_HOST}`
+}
 
 function normalizeHost(host: string) {
   const trimmed = host.toLowerCase().trim()
@@ -132,6 +149,19 @@ function resolveSite(host: string): 'mls' | 'khadane' | null {
   return null
 }
 
+function stripSitePrefix(path: string, site: 'mls' | 'khadane') {
+  const prefix = `/${site}`
+  if (path === prefix) return '/'
+  if (path.startsWith(`${prefix}/`)) return path.slice(prefix.length) || '/'
+  return null
+}
+
+function prefixedSiteForPath(path: string): 'mls' | 'khadane' | null {
+  if (stripSitePrefix(path, 'mls')) return 'mls'
+  if (stripSitePrefix(path, 'khadane')) return 'khadane'
+  return null
+}
+
 export function middleware(request: NextRequest) {
   const url = request.nextUrl
   const host = request.headers.get('host')?.toLowerCase() ?? ''
@@ -166,7 +196,25 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Avoid infinite-loop on internal paths.
+  // Canonicalize internal route prefixes on public domains. The browser URL
+  // should stay clean: khadane.com/collection, not khadane.com/khadane/collection.
+  const hostTarget = resolveSite(host)
+  const prefixedSite = prefixedSiteForPath(path)
+  if (hostTarget && prefixedSite && !isLocalHost(host)) {
+    const cleanPath = stripSitePrefix(path, prefixedSite) ?? '/'
+
+    if (prefixedSite === hostTarget) {
+      const cleanUrl = url.clone()
+      cleanUrl.pathname = cleanPath
+      return NextResponse.redirect(cleanUrl, 308)
+    }
+
+    const cleanUrl = new URL(cleanPath, siteBaseUrl(prefixedSite))
+    cleanUrl.search = url.search
+    return NextResponse.redirect(cleanUrl, 308)
+  }
+
+  // Avoid infinite-loop on internal paths in local/dev or direct internal access.
   if (path.startsWith('/mls')) {
     return markLocalSite(NextResponse.next(), host, 'mls')
   }
@@ -176,7 +224,7 @@ export function middleware(request: NextRequest) {
   }
 
   // ─── Host resolution ────────────────────────────────────────────
-  let target = resolveSite(host)
+  let target = hostTarget
 
   if (isLocalHost(host) && path !== '/') {
     const pathSite = resolveLocalSiteByPath(path)

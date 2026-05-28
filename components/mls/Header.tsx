@@ -50,10 +50,10 @@ export default function MLSHeader() {
       ref={headerRef}
       className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-mls-ink/8 shadow-[0_10px_28px_rgba(0,0,0,0.06)] transition-all duration-500 ease-editorial"
     >
-      <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
+      <div className="mx-auto px-4 md:px-12 lg:px-16 max-w-[88rem]">
         <div
           className={`flex items-center justify-between transition-all duration-500 ${
-            scrolled ? 'h-16 lg:h-18' : 'h-20 lg:h-24'
+            scrolled ? 'h-12 lg:h-18' : 'h-14 lg:h-24'
           }`}
         >
           {/* MLS Lockup */}
@@ -68,12 +68,12 @@ export default function MLSHeader() {
               width={48}
               height={48}
               className={`shrink-0 transition-all duration-500 ease-editorial ${
-                scrolled ? 'h-10 w-10' : 'h-12 w-12'
+                scrolled ? 'h-8 w-8 lg:h-10 lg:w-10' : 'h-9 w-9 lg:h-12 lg:w-12'
               }`}
               priority
             />
             <span className="flex min-w-0 flex-col leading-none">
-              <span className="truncate font-display text-[1.35rem] font-semibold text-mls-ink transition-colors duration-300 group-hover:text-mls-gold md:text-[1.55rem]">
+              <span className="truncate font-display text-[1.08rem] font-semibold text-mls-ink transition-colors duration-300 group-hover:text-mls-gold md:text-[1.55rem]">
                 {MLS_SITE.name}
               </span>
               <span className="mt-1 hidden font-body text-[0.62rem] uppercase tracking-marker text-mls-gold sm:block">

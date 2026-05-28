@@ -32,16 +32,18 @@ export default function Navigation() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ease-editorial ${
           scrolled
-            ? 'bg-white border-b border-obsidian/8 py-1.5'
-            : 'bg-white border-b border-obsidian/8 py-2.5'
+            ? 'bg-white border-b border-obsidian/8 py-1 lg:py-1.5'
+            : 'bg-white border-b border-obsidian/8 py-1.5 lg:py-2.5'
         }`}
       >
-        <div className="container-editorial flex items-center justify-between gap-5">
+        <div className="container-editorial flex items-center justify-between gap-4">
           <Wordmark
             theme={navOnDark ? 'dark' : 'light'}
             width={scrolled ? 96 : 108}
             href={homeHref}
-            className="transition-all duration-400 ease-editorial"
+            className={`h-auto transition-all duration-400 ease-editorial ${
+              scrolled ? 'w-[82px] lg:w-[96px]' : 'w-[92px] lg:w-[108px]'
+            }`}
           />
 
           {/* Desktop nav */}
@@ -87,7 +89,7 @@ export default function Navigation() {
           {/* Mobile menu trigger */}
           <button
             type="button"
-            className="lg:hidden flex flex-col gap-1.5 p-1.5"
+            className="lg:hidden flex flex-col gap-1.5 p-1"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >
