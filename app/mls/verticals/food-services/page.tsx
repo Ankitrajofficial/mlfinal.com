@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { buildMetadata } from '@/lib/seo'
 import {
@@ -24,6 +25,65 @@ export const metadata = buildMetadata({
 
 const rahul = FAMILY.find((m) => m.name.includes('Rahul'))
 const rohan = FAMILY.find((m) => m.name.includes('Rohan'))
+
+const vyanjanamGallery = [
+  {
+    src: '/img/vyanjanam/exterior-aerial.jpg',
+    title: 'Vyanjanam exterior view',
+    meta: 'Facility',
+    aspect: 'aspect-[16/10]',
+    className: 'md:col-span-2',
+  },
+  {
+    src: '/img/vyanjanam/front-entrance.jpg',
+    title: 'Front entrance',
+    meta: 'Arrival',
+    aspect: 'aspect-[4/5]',
+    className: '',
+  },
+  {
+    src: '/img/vyanjanam/main-dining-hall.jpg',
+    title: 'Main dining hall',
+    meta: 'Dining',
+    aspect: 'aspect-[4/5]',
+    className: '',
+  },
+  {
+    src: '/img/vyanjanam/live-kitchen.jpg',
+    title: 'Live cooking in kitchen',
+    meta: 'Kitchen',
+    aspect: 'aspect-[4/5]',
+    className: '',
+  },
+  {
+    src: '/img/vyanjanam/meal-box-prep.jpg',
+    title: 'Meal box preparation',
+    meta: 'Tiffin',
+    aspect: 'aspect-[4/5]',
+    className: '',
+  },
+  {
+    src: '/img/vyanjanam/service-counter.jpg',
+    title: 'Self-service counter',
+    meta: 'Service',
+    aspect: 'aspect-[16/10]',
+    className: 'md:col-span-2',
+  },
+  {
+    src: '/img/vyanjanam/roti-prep.jpg',
+    title: 'Roti dough preparation',
+    meta: 'Kitchen',
+    aspect: 'aspect-[16/10]',
+    className: 'md:col-span-2',
+  },
+  {
+    src: '/img/vyanjanam/skylit-dining.jpg',
+    title: 'Skylit dining area',
+    meta: 'Dining',
+    aspect: 'aspect-[16/10]',
+    className: 'md:col-span-2',
+  },
+]
 
 export default function FoodServicesPage() {
   return (
@@ -143,13 +203,75 @@ export default function FoodServicesPage() {
         </div>
       </section>
 
-      {/* SECTION 04 — THE SOURCING CHAIN */}
+      {/* SECTION 04 — THE PLACE IN PICTURES */}
+      <section className="bg-mls-ink text-mls-cream py-20 lg:py-32 border-b border-mls-cream/10">
+        <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-12">
+            <div className="lg:col-span-5">
+              <RevealOnScroll>
+                <p className="font-mono text-[11px] uppercase tracking-marker text-vyanjanam-light mb-5">
+                  04 · The place in pictures
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={100}>
+                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05] mb-6">
+                  The dining hall,
+                  <span className="block italic text-vyanjanam-light mt-2">
+                    kitchen, and service floor.
+                  </span>
+                </h2>
+              </RevealOnScroll>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7">
+              <RevealOnScroll delay={180}>
+                <p className="text-lg leading-relaxed text-mls-cream/78">
+                  The photographs read Vyanjanam as a working food-service
+                  operation: the entrance, the dining floor, kitchen prep,
+                  tiffin packing, and the self-service rhythm of the day.
+                </p>
+              </RevealOnScroll>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+            {vyanjanamGallery.map((item, i) => (
+              <RevealOnScroll key={item.src} delay={i * 60}>
+                <figure
+                  className={`group relative overflow-hidden border border-mls-cream/10 bg-vyanjanam-hero ${item.aspect} ${item.className}`}
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    sizes={
+                      item.className
+                        ? '(min-width: 768px) 50vw, 100vw'
+                        : '(min-width: 768px) 25vw, 100vw'
+                    }
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent p-5">
+                    <p className="font-mono text-[10px] uppercase tracking-marker text-vyanjanam-light/80 mb-2">
+                      {item.meta}
+                    </p>
+                    <p className="font-display text-xl text-vyanjanam-white leading-tight">
+                      {item.title}
+                    </p>
+                  </figcaption>
+                </figure>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 05 — THE SOURCING CHAIN */}
       <section className="bg-mls-cream py-20 lg:py-32 border-b border-mls-ink/10">
         <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
           <div className="max-w-5xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                04 · The sourcing chain
+                05 · The sourcing chain
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -210,13 +332,13 @@ export default function FoodServicesPage() {
         </div>
       </section>
 
-      {/* SECTION 05 — THE FOUNDERS (text-only treatment per locked decision) */}
+      {/* SECTION 06 — THE FOUNDERS (text-only treatment per locked decision) */}
       <section className="bg-mls-buff/20 py-20 lg:py-32 border-y border-mls-ink/10">
         <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
           <div className="mb-12">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-3">
-                05 · The founders
+                06 · The founders
               </p>
               <h2 className="font-display text-3xl md:text-4xl text-mls-ink tracking-tight">
                 Read by name.
@@ -268,13 +390,13 @@ export default function FoodServicesPage() {
         </div>
       </section>
 
-      {/* SECTION 06 — THE SUBSCRIPTION ARCHITECTURE (plan structure only, no pricing) */}
+      {/* SECTION 07 — THE SUBSCRIPTION ARCHITECTURE (plan structure only, no pricing) */}
       <section className="bg-mls-cream py-20 lg:py-32 border-b border-mls-ink/10">
         <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
           <div className="mb-12 max-w-3xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-3">
-                06 · The subscription architecture
+                07 · The subscription architecture
               </p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-mls-ink tracking-tight leading-[1.1] mb-6">
                 Four plans.
@@ -347,13 +469,13 @@ export default function FoodServicesPage() {
         </div>
       </section>
 
-      {/* SECTION 07 — VOICE OF STUDENTS (empty state) */}
+      {/* SECTION 08 — VOICE OF STUDENTS (empty state) */}
       <section className="bg-mls-cream py-20 lg:py-28">
         <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
           <div className="max-w-3xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                07 · The voice of students
+                08 · The voice of students
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -368,14 +490,14 @@ export default function FoodServicesPage() {
         </div>
       </section>
 
-      {/* SECTION 08 — RESERVE / REACH THE KITCHEN */}
+      {/* SECTION 09 — RESERVE / REACH THE KITCHEN */}
       <section className="bg-mls-tobacco text-mls-cream py-24 lg:py-32">
         <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-7">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                  08 · Reach the kitchen
+                  09 · Reach the kitchen
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>

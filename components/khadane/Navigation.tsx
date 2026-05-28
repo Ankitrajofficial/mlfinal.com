@@ -30,19 +30,21 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ease-editorial ${
-          scrolled
-            ? 'bg-white border-b border-obsidian/8 py-1 lg:py-1.5'
-            : 'bg-white border-b border-obsidian/8 py-1.5 lg:py-2.5'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ease-editorial bg-white border-b border-obsidian/8 ${
+          scrolled ? 'lg:py-1.5' : 'lg:py-2.5'
         }`}
       >
-        <div className="container-editorial flex items-center justify-between gap-4">
+        <div
+          className={`container-editorial flex items-center justify-between gap-4 ${
+            scrolled ? 'h-10 lg:h-auto' : 'h-11 lg:h-auto'
+          }`}
+        >
           <Wordmark
             theme={navOnDark ? 'dark' : 'light'}
             width={scrolled ? 96 : 108}
             href={homeHref}
             className={`h-auto transition-all duration-400 ease-editorial ${
-              scrolled ? 'w-[82px] lg:w-[96px]' : 'w-[92px] lg:w-[108px]'
+              scrolled ? 'w-[70px] lg:w-[96px]' : 'w-[78px] lg:w-[108px]'
             }`}
           />
 
@@ -89,7 +91,7 @@ export default function Navigation() {
           {/* Mobile menu trigger */}
           <button
             type="button"
-            className="lg:hidden flex flex-col gap-1.5 p-1"
+            className="lg:hidden flex flex-col gap-1.5 p-0.5"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >
@@ -109,13 +111,13 @@ export default function Navigation() {
       >
         <div className="absolute inset-0 bg-obsidian" />
         <div className="relative h-full flex flex-col">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-warm-white/10">
-            <Wordmark theme="dark" width={128} linked={false} />
+          <div className="flex h-11 items-center justify-between px-4 border-b border-warm-white/10">
+            <Wordmark theme="dark" width={108} linked={false} className="h-auto w-[78px]" />
             <button
               type="button"
               onClick={() => setMobileOpen(false)}
               aria-label="Close menu"
-              className="text-warm-white text-2xl px-2"
+              className="text-warm-white text-xl px-2"
             >
               ×
             </button>

@@ -53,7 +53,7 @@ export default function MLSHeader() {
       <div className="mx-auto px-4 md:px-12 lg:px-16 max-w-[88rem]">
         <div
           className={`flex items-center justify-between transition-all duration-500 ${
-            scrolled ? 'h-12 lg:h-18' : 'h-14 lg:h-24'
+            scrolled ? 'h-11 lg:h-18' : 'h-12 lg:h-24'
           }`}
         >
           {/* MLS Lockup */}
@@ -68,7 +68,7 @@ export default function MLSHeader() {
               width={48}
               height={48}
               className={`shrink-0 transition-all duration-500 ease-editorial ${
-                scrolled ? 'h-8 w-8 lg:h-10 lg:w-10' : 'h-9 w-9 lg:h-12 lg:w-12'
+                scrolled ? 'h-7 w-7 lg:h-10 lg:w-10' : 'h-8 w-8 lg:h-12 lg:w-12'
               }`}
               priority
             />
