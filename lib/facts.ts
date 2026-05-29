@@ -487,7 +487,7 @@ export const FAMILY: readonly FamilyMember[] = [
     generation: 'G3',
     mlsRole:
       'CEO · Exports · Strategy · operational lead Hospitality + Food Services + KHADANE Exports',
-    khadaneRole: 'CEO · Exports (primary commercial interface)',
+    khadaneRole: 'Founder · Exports (primary commercial interface)',
   },
   {
     name: 'Mahak Dhakar',

@@ -96,6 +96,9 @@ export default function AboutPage() {
                 <p className="editorial-body mb-6">
                   Mohan Lal &amp; Sons operates across five verticals: Stone &amp; Export (KHADANE™), Automotive &amp; Fuel, Hospitality, Student Housing, and Food Services. Each operates independently. KHADANE™ is the international face of the stone vertical.
                 </p>
+                <p className="font-mono text-xs uppercase tracking-eyebrow text-tobacco mb-6 no-justify">
+                  Founder at KHADANE — Rahul Dhakar
+                </p>
                 <Link href="/khadane/group" className="cta-text mt-4">The full group →</Link>
               </RevealOnScroll>
             </div>
