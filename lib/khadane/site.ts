@@ -39,9 +39,9 @@ export const SITE = {
 
   contact: {
     publicEmail: "exports@khadane.com",
-    publicPhone: "+91 94141 12455",
-    whatsappNumber: '919414112455',
-    whatsappUrl: 'https://wa.me/919414112455',
+    publicPhone: "+91 98285 71143",
+    whatsappNumber: '919828571143',
+    whatsappUrl: 'https://wa.me/919828571143',
     hours: "Monday–Saturday, 09:00–18:00 IST",
   },
 
