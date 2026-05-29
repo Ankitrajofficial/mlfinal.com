@@ -55,7 +55,7 @@ export default function HomePage() {
               className="opacity-0 animate-fade-in"
               style={{ animationDelay: '200ms' }}
             >
-              <p className="eyebrow-gold mb-8 no-justify">
+              <p className="eyebrow-gold text-warm-white mb-8 no-justify">
                 KHADANE™ · BIJOLIA · SINCE 1972
               </p>
             </div>
@@ -63,7 +63,7 @@ export default function HomePage() {
             <HeroWordRise
               as="h1"
               words={['Stone', 'of', 'the', 'Bijolia', 'Belt.']}
-              className="font-display text-5xl md:text-7xl lg:text-8xl tracking-tighter leading-[1.05] text-warm-white mb-10"
+              className="font-display text-5xl md:text-7xl lg:text-8xl tracking-tighter leading-[1.05] text-quarry-gold mb-10"
               baseDelay={400}
               staggerDelay={130}
             />
@@ -72,7 +72,7 @@ export default function HomePage() {
               className="opacity-0 animate-fade-in"
               style={{ animationDelay: '1800ms' }}
             >
-              <p className="font-display italic text-xl md:text-2xl text-quarry-gold mb-12 no-justify max-w-2xl">
+              <p className="font-display italic text-xl md:text-2xl text-warm-white mb-12 no-justify max-w-2xl">
                 Owned quarries, and a network of allied quarries across northern India. Cut and dressed in every form the trade specifies.
               </p>
               <div className="flex flex-wrap gap-4">
