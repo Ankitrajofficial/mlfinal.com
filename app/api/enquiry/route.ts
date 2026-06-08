@@ -5,6 +5,7 @@ import {
   routeEnquiryInbox,
 } from '@/lib/enquiry-schema'
 import { sendEmail, verifyTurnstile } from '@/lib/resend'
+import { sendGoogleEnquiryWebhook } from '@/lib/google-enquiry'
 import { checkRateLimit, getClientIp } from '@/lib/rate-limit'
 import { CONTACT, ENTITIES, FOUNDING } from '@/lib/facts'
 
@@ -18,10 +19,10 @@ import { CONTACT, ENTITIES, FOUNDING } from '@/lib/facts'
  *   4. Min-submit-time check (silent block if too fast)
  *   5. IP rate limit (5 / 15 min per IP)
  *   6. Optional Turnstile verification
- *   7. Production safety: 503 if RESEND_API_KEY missing in production
+ *   7. Production safety: 503 if no mail backend is configured in production
  *   8. Generate reference number
  *   9. Route to correct inbox via lib/enquiry-schema.ts
- *   10. Compose and send email via Resend
+ *   10. Send via Google Apps Script webhook or Resend
  *   11. Return {ok, reference, message}
  *
  * Single-channel discipline per FACTS Section 10.
@@ -111,7 +112,13 @@ export async function POST(request: NextRequest) {
   }
 
   // ─── 7. Production safety check ─────────────────────────────
-  if (process.env.NODE_ENV === 'production' && !process.env.RESEND_API_KEY) {
+  const googleWebhookConfigured = Boolean(process.env.GOOGLE_ENQUIRY_WEBHOOK_URL)
+  const resendConfigured = Boolean(process.env.RESEND_API_KEY)
+  if (
+    process.env.NODE_ENV === 'production' &&
+    !googleWebhookConfigured &&
+    !resendConfigured
+  ) {
     return NextResponse.json(
       {
         ok: false,
@@ -127,7 +134,41 @@ export async function POST(request: NextRequest) {
   const reference = generateReferenceNumber(data.site)
   const inbox = routeEnquiryInbox(data.site, data.category)
 
-  // ─── 9. Compose email ───────────────────────────────────────
+  // ─── 9. Google Apps Script webhook, if configured ───────────
+  const googleResult = await sendGoogleEnquiryWebhook({
+    reference,
+    enquiry: data,
+    notifyTo: inbox,
+    ip,
+    userAgent: request.headers.get('user-agent') ?? '',
+    sourceUrl: request.headers.get('referer') ?? '',
+  })
+
+  if (googleResult.configured) {
+    if (!googleResult.ok) {
+      console.error('[ENQUIRY · GOOGLE WEBHOOK ERROR]', {
+        reference,
+        error: googleResult.error,
+      })
+      return NextResponse.json(
+        {
+          ok: false,
+          error: `We received your enquiry (ref ${reference}) but could not complete the automated follow-up. Please write to ${CONTACT.officeMLS} mentioning this reference.`,
+          reference,
+        },
+        { status: 502 },
+      )
+    }
+
+    return NextResponse.json({
+      ok: true,
+      reference,
+      message:
+        'Your enquiry has been received. A confirmation email has been sent.',
+    })
+  }
+
+  // ─── 10. Compose Resend email fallback ──────────────────────
   const { subject, html, text } = composeEmail({
     reference,
     site: data.site,
@@ -137,14 +178,19 @@ export async function POST(request: NextRequest) {
     phone: data.phone || '',
     company: data.company || '',
     country: data.country || '',
+    variety: data.variety || '',
+    format: data.format || '',
+    finish: data.finish || '',
+    volume: data.volume || '',
+    targetArrival: data.targetArrival || '',
     message: data.message,
     ip,
   })
 
-  // ─── 10. Send (only attempts in prod or when key present) ───
+  // ─── 11. Send through Resend fallback ───────────────────────
   let sendOk = true
   let sendError: string | undefined
-  if (process.env.RESEND_API_KEY) {
+  if (resendConfigured) {
     const sendResult = await sendEmail({
       from: FROM_DOMAIN,
       to: inbox,
@@ -165,7 +211,7 @@ export async function POST(request: NextRequest) {
     })
   }
 
-  // ─── 11. Response ───────────────────────────────────────────
+  // ─── 12. Response ───────────────────────────────────────────
   if (!sendOk) {
     console.error('[ENQUIRY · SEND ERROR]', { reference, sendError })
     // Don't tell the user the technical reason; we have the ref number.
@@ -210,6 +256,11 @@ interface ComposeInput {
   phone: string
   company: string
   country: string
+  variety: string
+  format: string
+  finish: string
+  volume: string
+  targetArrival: string
   message: string
   ip: string
 }
@@ -228,6 +279,11 @@ function composeEmail(input: ComposeInput) {
     `Phone: ${input.phone || '—'}`,
     `Company: ${input.company || '—'}`,
     `Country: ${input.country || '—'}`,
+    `Variety: ${input.variety || '—'}`,
+    `Format: ${input.format || '—'}`,
+    `Finish: ${input.finish || '—'}`,
+    `Volume: ${input.volume || '—'}`,
+    `Target arrival: ${input.targetArrival || '—'}`,
     '',
     'Message:',
     input.message,
@@ -260,6 +316,11 @@ function composeEmail(input: ComposeInput) {
       ${input.phone ? `<tr><td style="padding:8px 0;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#999690;">Phone</td><td style="padding:8px 0;font-size:15px;color:#1A1410;">${escapeHtml(input.phone)}</td></tr>` : ''}
       ${input.company ? `<tr><td style="padding:8px 0;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#999690;">Company</td><td style="padding:8px 0;font-size:15px;color:#1A1410;">${escapeHtml(input.company)}</td></tr>` : ''}
       ${input.country ? `<tr><td style="padding:8px 0;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#999690;">Country</td><td style="padding:8px 0;font-size:15px;color:#1A1410;">${escapeHtml(input.country)}</td></tr>` : ''}
+      ${input.variety ? `<tr><td style="padding:8px 0;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#999690;">Variety</td><td style="padding:8px 0;font-size:15px;color:#1A1410;">${escapeHtml(input.variety)}</td></tr>` : ''}
+      ${input.format ? `<tr><td style="padding:8px 0;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#999690;">Format</td><td style="padding:8px 0;font-size:15px;color:#1A1410;">${escapeHtml(input.format)}</td></tr>` : ''}
+      ${input.finish ? `<tr><td style="padding:8px 0;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#999690;">Finish</td><td style="padding:8px 0;font-size:15px;color:#1A1410;">${escapeHtml(input.finish)}</td></tr>` : ''}
+      ${input.volume ? `<tr><td style="padding:8px 0;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#999690;">Volume</td><td style="padding:8px 0;font-size:15px;color:#1A1410;">${escapeHtml(input.volume)}</td></tr>` : ''}
+      ${input.targetArrival ? `<tr><td style="padding:8px 0;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#999690;">Target arrival</td><td style="padding:8px 0;font-size:15px;color:#1A1410;">${escapeHtml(input.targetArrival)}</td></tr>` : ''}
     </table>
     <hr style="border:0;border-top:1px solid rgba(26,20,16,0.1);margin:24px 0;" />
     <p style="font-family:'Courier New',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#999690;margin:0 0 8px 0;">

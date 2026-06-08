@@ -156,7 +156,10 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   'khadipur-grey': local('khadipur-grey', ['slabFace']),
   'kandla-grey': local('kandla-grey', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
   'autumn-brown': local('autumn-brown', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
-  'raj-blend': local('raj-blend', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
+  'raj-blend': {
+    ...local('raj-blend', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
+    thumb: '/img/varieties/raj-blend-thumb.jpg',
+  },
   'garda-green': local('garda-green', ['slabFace', 'surfaceClose']),
   'slate-grey': local('slate-grey', ['slabFace', 'surfaceClose']),
   'mint': local('mint', ['slabFace', 'surfaceClose']),

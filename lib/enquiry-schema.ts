@@ -50,6 +50,11 @@ export const EnquirySchema = z.object({
     .or(z.literal('')),
   company: z.string().max(200).optional().or(z.literal('')),
   country: z.string().max(100).optional().or(z.literal('')),
+  variety: z.string().max(160).optional().or(z.literal('')),
+  format: z.string().max(160).optional().or(z.literal('')),
+  finish: z.string().max(160).optional().or(z.literal('')),
+  volume: z.string().max(160).optional().or(z.literal('')),
+  targetArrival: z.string().max(160).optional().or(z.literal('')),
   message: z
     .string()
     .min(10, 'Please write at least 10 characters')

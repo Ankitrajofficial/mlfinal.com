@@ -11,6 +11,7 @@ import HeroVideo from '@/components/khadane/HeroVideo'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import Marquee from '@/components/khadane/Marquee'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
+import EnquiryForm from '@/components/khadane/EnquiryForm'
 
 export default function HomePage() {
   const ownedVarieties = getOwnedVarieties()
@@ -177,8 +178,7 @@ export default function HomePage() {
                 return (
                   <RevealOnScroll key={stat.label} delay={200 + index * 80} className="h-full">
                     <div className="flex h-full min-h-[210px] flex-col justify-between border border-obsidian/10 bg-warm-white p-6 lg:p-7">
-                      <div className="flex items-start justify-between gap-5">
-                        <p className="font-mono text-[10px] uppercase tracking-eyebrow text-tobacco/50 no-justify">{String(index + 1).padStart(2, '0')}</p>
+                      <div className="flex justify-end">
                         <Icon size={20} strokeWidth={1.5} className="text-quarry-gold" />
                       </div>
                       <div>
@@ -283,7 +283,11 @@ export default function HomePage() {
                         variant={v.placeholderClass.replace('placeholder-', '') as any}
                         label={v.code}
                         title={v.name}
-                        swapPath={getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-hero.jpg`)}
+                        swapPath={getVarietyImage(
+                          v.slug,
+                          'thumb',
+                          getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-hero.jpg`),
+                        )}
                         aspectRatio="aspect-[5/4]"
                         className="transition-transform duration-700 ease-editorial group-hover:scale-[1.02]"
                       />
@@ -439,7 +443,6 @@ export default function HomePage() {
             ].map((d, i) => (
               <RevealOnScroll key={d.label} delay={i * 80}>
                 <div className="bg-warm-white p-8 lg:p-10 text-center">
-                  <p className="font-mono text-xs text-tobacco/60 mb-4 no-justify">{String(i + 1).padStart(2, '0')}</p>
                   <p className="font-display text-5xl text-quarry-gold mb-4 no-justify">{d.count}</p>
                   <p className="font-sans text-sm tracking-wider uppercase text-obsidian mb-2 no-justify">{d.label}</p>
                   <p className="font-sans text-xs text-graphite no-justify">{d.hint}</p>
@@ -744,49 +747,50 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================
-          SECTION 12 — THE DESK (CTA section)
+          SECTION 12 — THE DESK (enquiry form)
           ============================================================ */}
       <section className="section-padding section-dark texture-lines">
         <div className="container-editorial">
-          <div className="max-w-4xl mx-auto text-center">
-            <RevealOnScroll>
-              <p className="eyebrow-gold mb-6 no-justify">09 · THE DESK</p>
-            </RevealOnScroll>
-            <RevealOnScroll delay={100}>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-7xl tracking-tight leading-[1.05] text-warm-white mb-10 no-justify">
-                Write to us.
-                <span className="block italic text-quarry-gold mt-2">Quote within a day.</span>
-              </h2>
-            </RevealOnScroll>
-            <RevealOnScroll delay={250}>
-              <p className="font-sans text-lg text-warm-white/70 leading-relaxed mb-12 max-w-2xl mx-auto">
-                Pricing is built per project. Tell us the variety, format, finish, size, and volume — and we will return a quote with the lead time, shipping option, and any catalogue alternatives within one business day.
-              </p>
-            </RevealOnScroll>
-            <RevealOnScroll delay={400}>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link href="/khadane/desk" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify">
-                  Write to The Desk
-                </Link>
-                <a
-                  href={SITE.contact.whatsappUrl}
-                  target="_blank"
-                  rel="noopener"
-                  className="inline-flex items-center gap-3 px-10 py-5 border border-warm-white/30 text-warm-white font-sans text-sm tracking-wider uppercase hover:bg-warm-white hover:text-obsidian transition-all duration-400 ease-editorial no-justify"
-                >
-                  WhatsApp directly
-                </a>
-              </div>
-            </RevealOnScroll>
-            <RevealOnScroll delay={500}>
-              <div className="mt-16 pt-12 border-t border-warm-white/10 flex flex-col md:flex-row items-center justify-center gap-8 text-warm-white/60 font-mono text-xs no-justify">
-                <span>{SITE.contact.publicEmail}</span>
-                <span className="hidden md:inline text-quarry-gold/30">◆</span>
-                <span>{SITE.contact.publicPhone}</span>
-                <span className="hidden md:inline text-quarry-gold/30">◆</span>
-                <span>{SITE.contact.hours}</span>
-              </div>
-            </RevealOnScroll>
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <RevealOnScroll>
+                <p className="eyebrow-gold mb-6 no-justify">09 · THE DESK</p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={100}>
+                <h2 className="font-display text-4xl md:text-5xl lg:text-7xl tracking-tight leading-[1.05] text-warm-white mb-10 no-justify">
+                  Write to us.
+                  <span className="block italic text-quarry-gold mt-2">Quote within a day.</span>
+                </h2>
+              </RevealOnScroll>
+              <RevealOnScroll delay={250}>
+                <p className="font-sans text-lg text-warm-white/70 leading-relaxed mb-10">
+                  Tell us the stone, the form, and what the project needs. The desk will respond with the next practical step.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={350}>
+                <div className="space-y-5 border-t border-warm-white/10 pt-8 font-mono text-xs text-warm-white/60 no-justify">
+                  <p>{SITE.contact.publicEmail}</p>
+                  <p>{SITE.contact.publicPhone}</p>
+                  <p>{SITE.contact.hours}</p>
+                  <a
+                    href={SITE.contact.whatsappUrl}
+                    target="_blank"
+                    rel="noopener"
+                    className="inline-flex pt-2 font-sans text-sm uppercase tracking-wider text-quarry-gold transition-colors hover:text-warm-white"
+                  >
+                    WhatsApp directly →
+                  </a>
+                </div>
+              </RevealOnScroll>
+            </div>
+
+            <div className="lg:col-span-7">
+              <RevealOnScroll delay={150}>
+                <div className="bg-warm-white p-6 md:p-8 lg:p-10">
+                  <EnquiryForm />
+                </div>
+              </RevealOnScroll>
+            </div>
           </div>
         </div>
       </section>

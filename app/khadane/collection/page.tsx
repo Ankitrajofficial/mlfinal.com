@@ -194,7 +194,18 @@ export default function CollectionPage() {
             {heroStones.map((v, i) => (
               <RevealOnScroll key={v.slug} delay={i * 60}>
                 <Link href={`/khadane/collection/${v.slug}`} className="group block bg-warm-white p-5 transition-colors hover:bg-stone-linen/70">
-                  <div className={`mb-5 h-20 placeholder-base ${v.placeholderClass}`} />
+                  <PlaceholderImage
+                    variant={v.placeholderClass.replace('placeholder-', '') as any}
+                    label={v.code}
+                    title={v.name}
+                    swapPath={getVarietyImage(
+                      v.slug,
+                      'thumb',
+                      getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-hero.jpg`),
+                    )}
+                    aspectRatio="aspect-[5/4]"
+                    className="mb-5 transition-transform duration-700 ease-editorial group-hover:scale-[1.02]"
+                  />
                   <p className="font-mono text-[10px] uppercase tracking-eyebrow text-quarry-gold no-justify mb-2">{v.code}</p>
                   <p className="font-display text-xl leading-tight text-obsidian no-justify group-hover:text-quarry-gold transition-colors">{v.name}</p>
                 </Link>

@@ -53,12 +53,14 @@ Don't deploy yet — set environment variables first.
 
 In Vercel → Project Settings → Environment Variables, add:
 
-### Required for production
+### Mail backend
 
 | Variable | Example value | Scope |
 |---|---|---|
 | `RESEND_API_KEY` | `re_xxxxxxxxxx` | Production + Preview |
 | `RESEND_FROM_DOMAIN` | `enquiries@mohanlalsonsgroup.com` | Production + Preview |
+
+Production needs either Resend or the Google Apps Script webhook. If both are set, `/api/enquiry` uses the Google webhook first so the enquiry is saved to Sheets and the customer receives a confirmation email.
 
 ### Optional (have defaults)
 
@@ -68,6 +70,8 @@ In Vercel → Project Settings → Environment Variables, add:
 | `INBOX_KHADANE_EXPORTS` | `exports@khadane.com` | Production |
 | `NEXT_PUBLIC_MLS_URL` | `https://mohanlalsonsgroup.com` | Production |
 | `NEXT_PUBLIC_KHADANE_URL` | `https://khadane.com` | Production |
+| `GOOGLE_ENQUIRY_WEBHOOK_URL` | Google Apps Script `/exec` web app URL | Production + Preview |
+| `GOOGLE_ENQUIRY_WEBHOOK_SECRET` | Same value as Apps Script `WEBHOOK_SECRET` | Production + Preview |
 
 ### Optional Turnstile (if you want CAPTCHA)
 
@@ -86,7 +90,48 @@ Create `.env.local` (not committed):
 NEXT_PUBLIC_DEV_HOST_MODE=mls
 # or =khadane to preview that side
 RESEND_API_KEY=re_yourkey_for_dev
+GOOGLE_ENQUIRY_WEBHOOK_URL=https://script.google.com/macros/s/.../exec
+GOOGLE_ENQUIRY_WEBHOOK_SECRET=change-this-long-random-secret
 ```
+
+---
+
+## Optional Google Sheets enquiry backend
+
+Use `scripts/google-enquiry-webhook.gs` in Google Apps Script when you want every enquiry saved to a Google Sheet and want Apps Script to send both emails:
+
+1. Create or open the Google Sheet that should receive enquiries.
+2. In Extensions → Apps Script, paste `scripts/google-enquiry-webhook.gs`.
+3. Replace the `CONFIG` constants at the top of the script:
+
+| Constant | Purpose |
+|---|---|
+| `SHEET_ID` | Google Sheet ID from the Sheet URL |
+| `SHEET_NAME` | Sheet tab name, defaults to `Enquiries` |
+| `OWNER_EMAIL` | Fallback notification inbox |
+| `NOTIFY_EMAIL` | Optional extra fallback notification inbox |
+| `MLS_OWNER_EMAIL` | MLS notification inbox |
+| `KHADANE_OWNER_EMAIL` | KHADANE notification inbox |
+| `WEBHOOK_SECRET` | Must match `GOOGLE_ENQUIRY_WEBHOOK_SECRET` |
+| `BUSINESS_NAME` | Name shown in confirmation email |
+
+4. Deploy → New deployment → Web app.
+5. Execute as: **Me**.
+6. Who has access: **Anyone**.
+7. Copy the `/exec` URL into `GOOGLE_ENQUIRY_WEBHOOK_URL`.
+
+Keep `WEBHOOK_SECRET` long and private. The public web app URL is protected by that shared secret.
+
+### Notification email test
+
+Before testing the website form, run `testNotificationEmail()` inside Apps Script. Google will ask for permission the first time. If that email does not arrive:
+
+- Check the configured `OWNER_EMAIL`, `NOTIFY_EMAIL`, or `KHADANE_OWNER_EMAIL`.
+- Check Spam, Promotions, and Updates tabs.
+- Confirm the Apps Script deployment runs as **Me**.
+- Confirm the deploying Google account has remaining `MailApp` quota.
+
+Local website submissions only call Apps Script when `.env.local` contains `GOOGLE_ENQUIRY_WEBHOOK_URL` and `GOOGLE_ENQUIRY_WEBHOOK_SECRET`, and the dev server has been restarted.
 
 ---
 

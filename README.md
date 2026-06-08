@@ -124,8 +124,10 @@ See `DEPLOYMENT.md` for the full list. Minimum for production:
 
 | Variable | Required | Purpose |
 |---|---|---|
-| `RESEND_API_KEY` | **Yes (prod)** | Resend HTTP API key for outgoing mail |
-| `RESEND_FROM_DOMAIN` | **Yes (prod)** | Verified sender at Resend |
+| `RESEND_API_KEY` | No* | Resend HTTP API key for outgoing mail fallback |
+| `RESEND_FROM_DOMAIN` | No* | Verified sender at Resend |
+| `GOOGLE_ENQUIRY_WEBHOOK_URL` | No* | Google Apps Script web app URL for Sheets + emails |
+| `GOOGLE_ENQUIRY_WEBHOOK_SECRET` | No | Shared secret for the Apps Script webhook |
 | `INBOX_OFFICE_MLS` | No | Override default `office@mohanlalsonsgroup.com` |
 | `INBOX_KHADANE_EXPORTS` | No | Override default `exports@khadane.com` |
 | `NEXT_PUBLIC_MLS_URL` | No | Override default `https://mohanlalsonsgroup.com` |
@@ -133,6 +135,8 @@ See `DEPLOYMENT.md` for the full list. Minimum for production:
 | `NEXT_PUBLIC_DEV_HOST_MODE` | No (dev) | `mls` or `khadane` — pick a site in dev |
 | `TURNSTILE_SECRET_KEY` | No | Cloudflare Turnstile server-side secret |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | No | Cloudflare Turnstile client-side key |
+
+*Production requires either Resend or the Google Apps Script webhook.
 
 ---
 

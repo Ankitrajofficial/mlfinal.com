@@ -30,13 +30,11 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ease-editorial bg-white border-b border-obsidian/8 ${
-          scrolled ? 'lg:py-1.5' : 'lg:py-2.5'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-obsidian/8 transition-all duration-400 ease-editorial"
       >
         <div
           className={`container-editorial flex items-center justify-between gap-4 ${
-            scrolled ? 'h-10 lg:h-auto' : 'h-11 lg:h-auto'
+            scrolled ? 'h-10 lg:h-[52px]' : 'h-11 lg:h-[60px]'
           }`}
         >
           <Wordmark
