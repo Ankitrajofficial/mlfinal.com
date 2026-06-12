@@ -65,7 +65,7 @@ function doGet() {
 }
 
 function testNotificationEmail() {
-  var recipients = notifyEmailsForSite_('khadane');
+  var recipients = notifyEmailsForSite_('khadane', '');
   MailApp.sendEmail({
     to: recipients.join(','),
     subject: 'KHADANE enquiry notification test',
@@ -175,7 +175,7 @@ function validatePayload_(payload) {
 
 function normalizeEnquiry_(payload) {
   var site = clean_(payload.site).toLowerCase();
-  var notifyEmails = notifyEmailsForSite_(site);
+  var notifyEmails = notifyEmailsForSite_(site, payload.notifyTo);
 
   return {
     submittedAt: new Date(),
@@ -257,15 +257,7 @@ function sendEmails_(enquiry) {
     ' | Customer: ' + (customerSent ? 'sent' : 'failed');
 }
 
-function primaryNotifyEmail_(enquiry) {
-  if (enquiry.notifyEmails && enquiry.notifyEmails.length > 0) {
-    return enquiry.notifyEmails[0];
-  }
-
-  return '';
-}
-
-function notifyEmailsForSite_(site) {
+function notifyEmailsForSite_(site, notifyTo) {
   var recipients = [];
 
   addEmail_(recipients, getProp_('OWNER_EMAIL'));
@@ -416,82 +408,12 @@ function customerHtml_(enquiry) {
 }
 
 function detailRow_(label, value, rawValue) {
-  if (!hasValue_(value)) return '';
   return [
     '<tr>',
-    '<td style="width:36%;padding:10px 12px;border:1px solid #E4DED0;background:#F7F4EC;font-size:11px;line-height:16px;letter-spacing:.08em;text-transform:uppercase;color:#8A8376;vertical-align:top;word-break:break-word">' + esc_(label) + '</td>',
-    '<td style="padding:10px 12px;border:1px solid #E4DED0;background:#FFFFFF;font-size:14px;line-height:20px;color:#1A1410;vertical-align:top;word-break:break-word;overflow-wrap:anywhere">' + (rawValue ? String(value || '-') : esc_(value || '-')) + '</td>',
+    '<td style="width:38%;padding:10px 12px;border:1px solid #E4DED0;background:#F7F4EC;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8A8376;vertical-align:top">' + esc_(label) + '</td>',
+    '<td style="padding:10px 12px;border:1px solid #E4DED0;background:#FFFFFF;font-size:14px;color:#1A1410;vertical-align:top">' + (rawValue ? String(value || '-') : esc_(value || '-')) + '</td>',
     '</tr>'
   ].join('');
-}
-
-function optionalDetailRow_(label, value) {
-  return hasValue_(value) ? detailRow_(label, value) : '';
-}
-
-function emailShell_(opts) {
-  return [
-    '<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;margin:0;padding:0;border-collapse:collapse;background:#F0EDE6;color:#1A1410">',
-    '<tr>',
-    '<td align="center" style="padding:24px 12px">',
-    '<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;max-width:640px;border-collapse:collapse;background:#FAF8F2;border:1px solid #DED8CA">',
-    '<tr><td style="padding:28px 24px 22px;border-bottom:1px solid #E4DED0">',
-    '<p style="margin:0 0 10px;font-family:Arial,sans-serif;font-size:11px;line-height:16px;letter-spacing:.14em;text-transform:uppercase;color:#B8962E">' + esc_(opts.eyebrow) + '</p>',
-    '<h1 style="margin:0;font-family:Georgia,serif;font-size:28px;line-height:34px;font-weight:400;color:#1A1410;word-break:break-word">' + esc_(opts.title) + '</h1>',
-    '<p style="margin:14px 0 0;font-family:Arial,sans-serif;font-size:15px;line-height:23px;color:#4B4740;word-break:break-word">' + esc_(opts.intro) + '</p>',
-    '</td></tr>',
-    '<tr><td style="padding:20px 24px;background:#111111;color:#F0EDE6">',
-    '<p style="margin:0 0 6px;font-family:Arial,sans-serif;font-size:10px;line-height:14px;letter-spacing:.14em;text-transform:uppercase;color:#B8962E">Reference</p>',
-    '<p style="margin:0;font-family:Courier New,monospace;font-size:16px;line-height:22px;letter-spacing:.03em;color:#F0EDE6;word-break:break-word;overflow-wrap:anywhere">' + esc_(opts.reference) + '</p>',
-    '</td></tr>',
-    '<tr><td style="padding:26px 24px;font-family:Arial,sans-serif">',
-    opts.body,
-    '</td></tr>',
-    '</table>',
-    '<p style="max-width:640px;margin:12px auto 0;font-family:Arial,sans-serif;font-size:11px;line-height:17px;color:#8A8376;text-align:center;word-break:break-word">' + esc_(opts.footer) + '</p>',
-    '</td>',
-    '</tr>',
-    '</table>'
-  ].join('');
-}
-
-function emailSection_(title, rows) {
-  if (!hasValue_(rows)) return '';
-  return [
-    '<p style="margin:0 0 12px;font-family:Arial,sans-serif;font-size:11px;line-height:16px;letter-spacing:.12em;text-transform:uppercase;color:#B8962E">' + esc_(title) + '</p>',
-    '<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;border-collapse:collapse;margin:0 0 22px">',
-    rows,
-    '</table>'
-  ].join('');
-}
-
-function messageBlock_(title, message) {
-  if (!hasValue_(message)) return '';
-  return [
-    '<div style="margin:0 0 22px;padding:16px 18px;border-left:3px solid #B8962E;background:#F0EDE6">',
-    '<p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:11px;line-height:16px;letter-spacing:.12em;text-transform:uppercase;color:#3D2B1A">' + esc_(title) + '</p>',
-    '<div style="white-space:pre-wrap;font-family:Arial,sans-serif;color:#333;font-size:14px;line-height:22px;word-break:break-word;overflow-wrap:anywhere">' + esc_(message) + '</div>',
-    '</div>'
-  ].join('');
-}
-
-function noticeBlock_(title, message) {
-  if (!hasValue_(message)) return '';
-  return [
-    '<div style="margin:0 0 22px;padding:16px 18px;background:#F7F4EC;border:1px solid #E4DED0">',
-    '<p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:11px;line-height:16px;letter-spacing:.12em;text-transform:uppercase;color:#B8962E">' + esc_(title) + '</p>',
-    '<p style="margin:0;font-family:Arial,sans-serif;color:#4B4740;font-size:14px;line-height:22px;word-break:break-word">' + esc_(message) + '</p>',
-    '</div>'
-  ].join('');
-}
-
-function optionalLine_(label, value) {
-  return hasValue_(value) ? label + ': ' + value : '';
-}
-
-function hasValue_(value) {
-  var text = String(value || '').trim();
-  return text !== '' && text !== '-';
 }
 
 function siteLabel_(site) {
