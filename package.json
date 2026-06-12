@@ -15,11 +15,11 @@
     "verify": "npm run lint && npm run typecheck && npm run audit:facts && npm run build"
   },
   "dependencies": {
-    "next": "^16.2.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
     "framer-motion": "^11.18.0",
     "lucide-react": "^0.460.0",
+    "next": "^16.2.9",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "resend": "^4.0.0",
     "zod": "^3.24.0"
   },

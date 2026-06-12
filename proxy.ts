@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
 /**
- * Host-based routing middleware.
+ * Host-based routing proxy (Next.js 16 replacement for middleware).
  *
  * Production:
  *   mohanlalsonsgroup.com/*  → /mls/*  (transparent rewrite, URL stays clean)
@@ -162,7 +162,7 @@ function prefixedSiteForPath(path: string): 'mls' | 'khadane' | null {
   return null
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const url = request.nextUrl
   const host = request.headers.get('host')?.toLowerCase() ?? ''
   const path = url.pathname

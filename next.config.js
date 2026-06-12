@@ -42,6 +42,12 @@ const nextConfig = {
     ]
   },
 
+  // Pin the workspace root so Next.js ignores the stray lockfile in the
+  // home directory and resolves Turbopack from this project.
+  turbopack: {
+    root: __dirname,
+  },
+
   experimental: {
     // Next 16 features can be enabled here
   },
