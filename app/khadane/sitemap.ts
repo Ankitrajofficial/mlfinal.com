@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { VARIETIES } from '@/lib/khadane/varieties'
 import { FORMATS } from '@/lib/khadane/formats'
+import { FIELD_NOTES } from '@/lib/field-notes'
 import { SITE } from '@/lib/khadane/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -41,5 +42,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticUrls, ...varietyUrls, ...formatUrls]
+  const fieldNoteUrls = FIELD_NOTES.map((n) => ({
+    url: `${base}/field-notes/${n.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
+  return [...staticUrls, ...varietyUrls, ...formatUrls, ...fieldNoteUrls]
 }
