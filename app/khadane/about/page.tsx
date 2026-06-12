@@ -7,7 +7,7 @@ import BrandWhisper from '@/components/khadane/BrandWhisper'
 
 export const metadata = {
   title: 'About KHADANE™',
-  description: 'KHADANE™ is the customer-facing trade brand of Dhakar Stone Impex, the export operation of the Dhakar Stones Group within Mohan Lal & Sons.',
+  description: 'KHADANE™ is the sandstone export brand of Mohan Lal & Sons, quarrying and shipping Indian sandstone direct from the Bijolia belt of Rajasthan since 1972.',
 }
 
 export default function AboutPage() {
@@ -32,7 +32,7 @@ export default function AboutPage() {
                 Since 1972. Direct from Bijolia. Shipped worldwide.
               </p>
               <p className="editorial-body max-w-2xl">
-                KHADANE™ is the customer-facing trade brand of {SITE.exportOperation}, the export operation of the {SITE.groupOperation} within {SITE.groupParent}. We quarry, process, and ship Indian sandstone direct from the Bijolia belt.
+                KHADANE™ is the sandstone export brand of {SITE.groupParent}. We quarry, process, and ship Indian sandstone direct from the Bijolia belt.
               </p>
             </div>
           </div>
@@ -49,10 +49,10 @@ export default function AboutPage() {
                 <h2 className="section-heading mb-8">
                   Quarry,
                   <span className="block italic text-quarry-gold">processing,</span>
-                  port.
+                  shipping.
                 </h2>
                 <p className="editorial-body mb-6">
-                  The full operational chain sits in-house: extraction in Bijolia, processing across three units, container loading at our own facility before transit to Mundra Port on the Gujarat coast.
+                  The full operational chain sits in-house: extraction in Bijolia, processing across three units, and container loading at our own facility before export.
                 </p>
                 <p className="editorial-body">
                   Nothing about the supply chain is outsourced. The stone you receive moved through one set of hands — ours.
@@ -78,7 +78,7 @@ export default function AboutPage() {
               <RevealOnScroll>
                 <PlaceholderImage
                   variant="stone-warm"
-                  label="HERITAGE"
+                  label="THE HOUSE"
                   title="A house of five operations."
                   spec="1600 × 1200px · MLS contextual photography"
                   swapPath="/img/about/heritage.jpg"

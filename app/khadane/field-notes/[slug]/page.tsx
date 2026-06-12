@@ -67,6 +67,9 @@ export default async function FieldNotePage({ params }: FieldNotePageProps) {
             <p className="font-display italic text-2xl text-quarry-gold no-justify leading-snug">
               {note.excerpt}
             </p>
+            <p className="mt-6 pt-5 border-t border-obsidian/10 font-mono text-xs uppercase tracking-eyebrow text-tobacco/55 no-justify">
+              {note.byline ?? 'By the KHADANE desk · Bijolia'}
+            </p>
           </div>
         </div>
       </section>
@@ -97,18 +100,56 @@ export default async function FieldNotePage({ params }: FieldNotePageProps) {
                     {section.heading}
                   </h2>
                 )}
+                {section.pullQuote && (
+                  <blockquote className="border-l-2 border-quarry-gold pl-6 lg:pl-8 my-10">
+                    <p className="font-display italic text-2xl lg:text-3xl leading-snug text-obsidian no-justify">
+                      {section.pullQuote}
+                    </p>
+                  </blockquote>
+                )}
                 {section.body.map((paragraph, pIdx) => (
                   <p
                     key={pIdx}
-                    className="font-sans text-base lg:text-lg leading-relaxed text-graphite mb-6"
+                    className={`font-sans text-base lg:text-lg leading-relaxed text-graphite mb-6 ${
+                      sIdx === 0 && pIdx === 0 ? 'drop-cap' : ''
+                    }`}
                     style={{ textAlign: 'justify', hyphens: 'auto' }}
                   >
                     {paragraph}
                   </p>
                 ))}
+                {section.figure && (
+                  <figure className="my-10">
+                    <PlaceholderImage
+                      variant={note.placeholderVariant}
+                      label={note.id}
+                      title={note.categoryLabel}
+                      aspectRatio="aspect-[16/10]"
+                      swapPath={section.figure.swapPath}
+                    />
+                    <figcaption className="mt-3 text-center font-display italic text-base text-tobacco/70 no-justify">
+                      {section.figure.caption}
+                    </figcaption>
+                  </figure>
+                )}
               </div>
             </RevealOnScroll>
           ))}
+
+          {note.sources && note.sources.length > 0 && (
+            <RevealOnScroll>
+              <div className="pt-6 mt-4 border-t border-obsidian/10">
+                <p className="font-mono text-xs uppercase tracking-eyebrow text-tobacco/55 no-justify mb-3">
+                  Sources
+                </p>
+                {note.sources.map((source, i) => (
+                  <p key={i} className="font-sans text-sm text-tobacco/75 leading-relaxed no-justify">
+                    {source}
+                  </p>
+                ))}
+              </div>
+            </RevealOnScroll>
+          )}
 
           {note.closingNote && (
             <RevealOnScroll>

@@ -53,7 +53,7 @@ const verticals = [
     code: 'I',
     icon: Factory,
     name: 'Stone & Export',
-    brand: 'KHADANE™ · Dhakar Stone Impex',
+    brand: 'KHADANE™',
     note: 'The founding vertical',
     description:
       'Twenty-three sandstones quarried and allied across Rajasthan, Madhya Pradesh, and Uttar Pradesh. Cut, dressed, packed, and shipped from the Bijolia yard for international buyers.',
@@ -106,7 +106,7 @@ const khadaneRole = [
   {
     icon: Warehouse,
     title: 'Bijolia processing yard',
-    body: 'Blocks move through gangsaws, calibration, finishing, edging, inspection, crating, and dispatch documentation before export.',
+    body: 'Blocks move through sorting, cutting, edge and surface work, calibration, inspection, crating, and dispatch documentation before export.',
   },
   {
     icon: Handshake,
@@ -145,7 +145,7 @@ export default function GroupPage() {
                   Five verticals. One house. A working enterprise rooted in Bijolia.
                 </p>
                 <p className="max-w-3xl font-sans text-lg leading-relaxed text-graphite">
-                  Mohan Lal & Sons operates across stone and export, automotive and fuel, hospitality, student housing, and food services. KHADANE™ is the stone export vertical of that house, also known to the trade as Dhakar Stones Group.
+                  Mohan Lal & Sons operates across stone and export, automotive and fuel, hospitality, student housing, and food services. KHADANE™ is the stone export vertical of that house.
                 </p>
                 <div className="mt-10 flex flex-wrap gap-3">
                   <a href="#verticals" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-quarry-gold hover:text-obsidian no-justify">
@@ -276,7 +276,7 @@ export default function GroupPage() {
                   <span className="block italic text-quarry-gold">of the stone vertical.</span>
                 </h2>
                 <p className="font-sans text-lg leading-relaxed text-warm-white/72">
-                  Stone moves from owned and allied quarries to the Bijolia yard for processing, then to Mundra port for export. The sequence is direct, documented, and visible across the quarry, yard, collection, and desk pages.
+                  Stone moves from owned and allied quarries to the Bijolia yard for processing, then out to buyers nationwide and worldwide. The sequence is direct, documented, and visible across the quarry, yard, collection, and desk pages.
                 </p>
               </RevealOnScroll>
             </div>

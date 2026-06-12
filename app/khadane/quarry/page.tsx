@@ -194,7 +194,7 @@ export default function QuarryPage() {
             <div className="lg:col-span-7">
               <RevealOnScroll delay={150}>
                 <p className="editorial-body">
-                  Each variety in the catalogue carries the name of its origin village in its provenance line. These are owned blocks, owned crews, owned equipment, and allied partner quarry locations whose source is stated openly.
+                  Each variety in the catalogue names the village it comes from. These are owned blocks, owned crews, owned equipment, and allied partner quarry locations whose source is stated openly.
                 </p>
               </RevealOnScroll>
             </div>

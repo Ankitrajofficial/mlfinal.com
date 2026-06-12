@@ -165,7 +165,7 @@ export default async function FormatPage({ params }: FormatPageProps) {
             </RevealOnScroll>
             <RevealOnScroll delay={250}>
               <p className="font-sans text-lg text-warm-white/70 leading-relaxed mb-10 max-w-xl mx-auto">
-                Tell us the variety, finish, size, and volume. Quote returned within one business day.
+                Tell us the variety, surface, size, and volume. Quote returned within one business day.
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={400}>

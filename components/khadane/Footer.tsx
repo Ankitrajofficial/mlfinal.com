@@ -20,7 +20,7 @@ export default function Footer() {
               />
             </div>
             <p className="font-display text-2xl lg:text-3xl italic text-warm-white/90 leading-snug mb-8 no-justify max-w-md">
-              The sandstone catalogue of {SITE.groupOperation}.
+              The sandstone catalogue of the Bijolia belt.
               <span className="block mt-2 text-quarry-gold not-italic font-sans text-sm uppercase tracking-eyebrow">
                 Bijolia · Rajasthan · Since 1972
               </span>
@@ -45,7 +45,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li><Link href="/khadane/collection" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Collection</Link></li>
                 <li><Link href="/khadane/formats" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Formats</Link></li>
-                <li><Link href="/khadane/gallery" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Gallery</Link></li>
+                <li><Link href="/khadane/gallery" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Record</Link></li>
                 <li><Link href="/khadane/quarry" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Quarry</Link></li>
                 <li><Link href="/khadane/yard" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Yard</Link></li>
               </ul>
@@ -108,10 +108,10 @@ export default function Footer() {
             {SITE.copyright}
           </p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="font-sans text-xs text-warm-white/40 hover:text-quarry-gold transition-colors no-justify">
+            <Link href="/khadane/privacy" className="font-sans text-xs text-warm-white/40 hover:text-quarry-gold transition-colors no-justify">
               Privacy
             </Link>
-            <Link href="/terms" className="font-sans text-xs text-warm-white/40 hover:text-quarry-gold transition-colors no-justify">
+            <Link href="/khadane/terms" className="font-sans text-xs text-warm-white/40 hover:text-quarry-gold transition-colors no-justify">
               Terms
             </Link>
             <span className="font-mono text-xs text-warm-white/30 no-justify">

@@ -10,16 +10,11 @@ export const SITE = {
   shortName: "KHADANE",
 
   groupParent: "Mohan Lal & Sons",
-  groupOperation: "Dhakar Stones Group (DSG)",
-  groupAcronym: 'DSG',
-  exportOperation: "Dhakar Stone Impex (DSI)",
-  exportAcronym: 'DSI',
 
   origin: "Bijolia",
   district: 'Bhilwara District',
   state: 'Rajasthan',
   country: 'India',
-  port: "Mundra",
 
   foundationYear: 1972,
   currentYear: 2026,
@@ -51,10 +46,10 @@ export const SITE = {
     description: "Part of Mohan Lal & Sons — the operating group behind KHADANE™. Five verticals. One family. Since 1972.",
   },
 
-  signature: "The sandstone catalogue of Dhakar Stones Group. Bijolia, Rajasthan. Since 1972.",
+  signature: "The sandstone catalogue of the Bijolia belt. Rajasthan. Since 1972.",
   tagline: "Quarried with pride in Bijolia, Rajasthan.",
   hindiTag: "खदान — The Quarry",
-  copyright: "© 1972–2026 KHADANE™ · A Dhakar Stones Group operation",
+  copyright: "© 1972–2026 KHADANE™ · A Mohan Lal & Sons operation",
 } as const
 
 export const NAV_ITEMS = [
@@ -83,7 +78,7 @@ export const NAV_ITEMS = [
     "href": "/group"
   },
   {
-    "label": "Gallery",
+    "label": "The Record",
     "href": "/gallery"
   }
 ] as const

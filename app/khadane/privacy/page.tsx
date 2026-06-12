@@ -22,7 +22,7 @@ export default function PrivacyPage() {
                 <strong className="font-sans text-obsidian">What we collect:</strong> When you submit an enquiry through The Desk, we collect your name, email, phone (if provided), company, country, and the specifics of your project enquiry — variety, format, volume, and project notes.
               </p>
               <p>
-                <strong className="font-sans text-obsidian">How we use it:</strong> We use this data exclusively to respond to your enquiry, prepare a quote, and follow up if you become a customer. Data is held within KHADANE™ / {SITE.exportOperation} / {SITE.groupOperation}.
+                <strong className="font-sans text-obsidian">How we use it:</strong> We use this data exclusively to respond to your enquiry, prepare a quote, and follow up if you become a customer. Data is held within KHADANE™.
               </p>
               <p>
                 <strong className="font-sans text-obsidian">What we don't do:</strong> We do not sell your data. We do not share your enquiry with third parties. We do not enrol you in newsletters without your explicit subscription.

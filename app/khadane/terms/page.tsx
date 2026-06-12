@@ -21,10 +21,10 @@ export default function TermsPage() {
               <div>
                 <h2 className="font-display text-2xl text-obsidian no-justify mb-4">Site terms</h2>
                 <p>
-                  This site is published by KHADANE™ / {SITE.exportOperation}, the export operation of the {SITE.groupOperation} within {SITE.groupParent}. All content, photography, and design is the intellectual property of {SITE.exportOperation}.
+                  This site is published by KHADANE™, the sandstone export brand of {SITE.groupParent}. All content, photography, and design is the intellectual property of KHADANE™.
                 </p>
                 <p className="mt-4">
-                  Variety codes (KHD-O-01 to KHD-A-09), format codes (KHF-001 to KHF-019), and the KHADANE™ wordmark are trademarks of {SITE.exportOperation}.
+                  Variety codes (KHD-O-01 to KHD-A-09), format codes (KHF-001 to KHF-019), and the KHADANE™ wordmark are trademarks of KHADANE™.
                 </p>
               </div>
 

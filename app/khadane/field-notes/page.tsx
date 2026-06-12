@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { FIELD_NOTES } from '@/lib/field-notes'
 import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
@@ -9,62 +10,6 @@ export const metadata = {
   description: 'Editorial briefs from the Bijolia sandstone belt. Geology, process, trade. Written from the quarry.',
 }
 
-const NOTES = [
-  {
-    code: 'FN-001',
-    category: 'GEOLOGY',
-    title: 'Why Bijolia sandstone sits where it does.',
-    excerpt: 'The Vindhyan Supergroup is one of the largest preserved sedimentary basins on Earth. Bijolia sits on its western edge. Why that geology produces the stone it does.',
-    date: 'Q2 · 2026',
-    variant: 'stone-warm' as const,
-    swapPath: '/img/field-notes/bijolia-sandstone-geology.jpg',
-  },
-  {
-    code: 'FN-002',
-    category: 'PROCESS',
-    title: 'Calibration, explained.',
-    excerpt: 'A 22mm Kandla Grey slab shouldn\'t arrive at 24mm. Tolerance is the unsung discipline of the export trade. How we hit it, batch after batch.',
-    date: 'Q2 · 2026',
-    variant: 'stone-grey' as const,
-    swapPath: '/img/field-notes/calibration-explained.jpg',
-  },
-  {
-    code: 'FN-003',
-    category: 'TRADE',
-    title: 'FOB, FOR, CIF: what UK buyers actually need.',
-    excerpt: 'The shipping terms most often confused — and what they mean for your landed cost. A practical primer for first-time importers.',
-    date: 'Q2 · 2026',
-    variant: 'yard' as const,
-    swapPath: '/img/field-notes/fob-for-cif-uk-buyers.jpg',
-  },
-  {
-    code: 'FN-004',
-    category: 'GEOLOGY',
-    title: 'The colour of stone: where it comes from.',
-    excerpt: 'Iron oxidation, organic content, mineral inclusion. Why Autumn Brown is brown and Kandla Grey is grey, written in the rock.',
-    date: 'Q1 · 2026',
-    variant: 'stone' as const,
-    swapPath: '/img/field-notes/stone-colour-origin.jpg',
-  },
-  {
-    code: 'FN-005',
-    category: 'NETWORK',
-    title: 'Allied does not mean traded.',
-    excerpt: 'How direct-source allied relationships work in practice — and what separates them from the broker chains that dominate the trade.',
-    date: 'Q1 · 2026',
-    variant: 'stone-red' as const,
-    swapPath: '/img/field-notes/allied-not-traded.jpg',
-  },
-  {
-    code: 'FN-006',
-    category: 'PROCESS',
-    title: 'Hand-picking: what we actually inspect.',
-    excerpt: 'A short field guide to the inspection criteria — grain consistency, edge condition, surface uniformity, dimensional tolerance.',
-    date: 'Q1 · 2026',
-    variant: 'stone-warm' as const,
-    swapPath: '/img/field-notes/hand-picking-inspection.jpg',
-  },
-]
 
 export default function FieldNotesPage() {
   return (
@@ -74,7 +19,7 @@ export default function FieldNotesPage() {
         <div className="container-editorial">
           <div className="max-w-5xl">
             <div className="opacity-0 animate-fade-in" style={{ animationDelay: '100ms' }}>
-              <p className="eyebrow-gold mb-8 no-justify">06 · FIELD NOTES</p>
+              <p className="eyebrow-gold mb-8 no-justify">FIELD NOTES</p>
             </div>
             <HeroWordRise
               as="h1"
@@ -99,19 +44,19 @@ export default function FieldNotesPage() {
       <section className="section-padding section-cream">
         <div className="container-editorial">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {NOTES.map((note, i) => (
-              <RevealOnScroll key={note.code} delay={i * 80}>
-                <article className="group">
+            {FIELD_NOTES.map((note, i) => (
+              <RevealOnScroll key={note.id} delay={i * 80}>
+                <Link href={`/khadane/field-notes/${note.slug}`} className="group block">
                   <PlaceholderImage
-                    variant={note.variant}
-                    label={note.code}
-                    title={note.category}
-                    swapPath={note.swapPath}
+                    variant={note.placeholderVariant}
+                    label={note.id}
+                    title={note.categoryLabel}
+                    swapPath={`/img/field-notes/${note.slug}.jpg`}
                     aspectRatio="aspect-[4/3]"
                     className="mb-6 transition-transform duration-600 ease-editorial group-hover:scale-[1.01]"
                   />
                   <div className="flex items-center gap-3 mb-3">
-                    <p className="font-mono text-xs text-quarry-gold no-justify">{note.category}</p>
+                    <p className="font-mono text-xs text-quarry-gold no-justify">{note.categoryLabel}</p>
                     <span className="text-tobacco/30">·</span>
                     <p className="font-mono text-xs text-tobacco/60 no-justify">{note.date}</p>
                   </div>
@@ -121,10 +66,10 @@ export default function FieldNotesPage() {
                   <p className="font-sans text-sm text-graphite leading-relaxed mb-4">
                     {note.excerpt}
                   </p>
-                  <p className="font-mono text-xs text-tobacco/40 no-justify">
-                    Coming soon →
+                  <p className="font-mono text-xs text-tobacco/55 group-hover:text-quarry-gold transition-colors no-justify">
+                    {note.readMinutes} min read →
                   </p>
-                </article>
+                </Link>
               </RevealOnScroll>
             ))}
           </div>

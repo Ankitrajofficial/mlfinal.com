@@ -18,7 +18,7 @@ export default function DeskPage() {
         <div className="container-editorial">
           <div className="max-w-5xl">
             <div className="opacity-0 animate-fade-in" style={{ animationDelay: '100ms' }}>
-              <p className="eyebrow-gold mb-8 no-justify">06 · THE DESK</p>
+              <p className="eyebrow-gold mb-8 no-justify">THE DESK</p>
             </div>
             <HeroWordRise
               as="h1"

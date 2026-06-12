@@ -14,14 +14,24 @@ export default function Navigation() {
   const homeHref = routeBase || '/'
   const withRouteBase = (href: string) =>
     routeBase && href.startsWith('/') ? `${routeBase}${href}` : href
-  const navOnDark = false
+  const isHome = pathname === homeHref || pathname === `${homeHref}/`
+  const [overHero, setOverHero] = useState(isHome)
+  const navOnDark = overHero
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 40)
+      setOverHero(isHome && y < window.innerHeight * 0.72)
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
     onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [isHome])
 
   useEffect(() => {
     setMobileOpen(false)
@@ -30,19 +40,23 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-obsidian/8 transition-all duration-400 ease-editorial"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-editorial ${
+          overHero
+            ? 'bg-transparent border-b border-transparent'
+            : 'bg-white border-b border-obsidian/8'
+        }`}
       >
         <div
-          className={`container-editorial flex items-center justify-between gap-4 ${
-            scrolled ? 'h-10 lg:h-[52px]' : 'h-11 lg:h-[60px]'
+          className={`container-editorial flex items-center justify-between gap-4 transition-all duration-500 ease-editorial ${
+            scrolled && !overHero ? 'h-11 lg:h-[58px]' : 'h-12 lg:h-[68px]'
           }`}
         >
           <Wordmark
             theme={navOnDark ? 'dark' : 'light'}
-            width={scrolled ? 96 : 108}
+            width={150}
             href={homeHref}
-            className={`h-auto transition-all duration-400 ease-editorial ${
-              scrolled ? 'w-[70px] lg:w-[96px]' : 'w-[78px] lg:w-[108px]'
+            className={`h-auto transition-all duration-500 ease-editorial ${
+              scrolled && !overHero ? 'w-[92px] lg:w-[126px]' : 'w-[104px] lg:w-[150px]'
             }`}
           />
 

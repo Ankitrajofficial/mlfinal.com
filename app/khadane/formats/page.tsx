@@ -170,13 +170,12 @@ export default function FormatsPage() {
           <RevealOnScroll>
             <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
               {[
-                { step: '01', title: 'Form', body: 'The physical object being ordered: slab, sett, coping, sill, block, tile, or custom part.' },
-                { step: '02', title: 'Surface', body: 'The face treatment: natural riven, honed, sandblast, flamed, brushed, leather, or another catalogue finish.' },
-                { step: '03', title: 'Edge', body: 'The visible profile: hand cut, hand-cut straight, machine cut, or bullnose where the format allows it.' },
-                { step: '04', title: 'Packing unit', body: 'How the format is shipped: crate, pallet, slab rack, raw block loading, or per-drawing custom packing.' },
+                { title: 'Form', body: 'The physical object being ordered: slab, sett, coping, sill, block, tile, or custom part.' },
+                { title: 'Surface', body: 'The face treatment: natural riven, honed, sandblast, flamed, brushed, leather, or another catalogue finish.' },
+                { title: 'Edge', body: 'The visible profile: hand cut, hand-cut straight, machine cut, or bullnose where the format allows it.' },
+                { title: 'Packing unit', body: 'How the format is shipped: crate, pallet, slab rack, raw block loading, or per-drawing custom packing.' },
               ].map((item) => (
-                <div key={item.step} className="bg-warm-white p-6 lg:p-7">
-                  <p className="font-mono text-xs text-quarry-gold no-justify mb-5">{item.step}</p>
+                <div key={item.title} className="bg-warm-white p-6 lg:p-7">
                   <h2 className="font-display text-2xl text-obsidian no-justify mb-3">{item.title}</h2>
                   <p className="font-sans text-sm leading-relaxed text-graphite">{item.body}</p>
                 </div>
@@ -219,7 +218,7 @@ export default function FormatsPage() {
           <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <RevealOnScroll>
-                <p className="eyebrow-gold mb-6 no-justify">{SITE.formatCount} PRODUCTION FORMATS</p>
+                <p className="eyebrow-gold mb-6 no-justify">PRODUCTION FORMATS</p>
                 <h2 className="section-heading">
                   From raw blocks
                   <span className="block italic text-quarry-gold">to garden accessories.</span>

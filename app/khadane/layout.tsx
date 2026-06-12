@@ -6,11 +6,11 @@ import StickyCTA from '@/components/khadane/StickyCTA'
 export const metadata: Metadata = {
   metadataBase: new URL('https://khadane.com'),
   title: {
-    default: 'KHADANE™ — The sandstone catalogue of Dhakar Stones Group. Bijolia, Rajasthan. Since 1972.',
+    default: 'KHADANE™ — The sandstone catalogue of the Bijolia belt. Rajasthan. Since 1972.',
     template: '%s · KHADANE™',
   },
   description:
-    'KHADANE™ is the customer-facing trade brand of Dhakar Stone Impex, working the Bijolia sandstone belt of Rajasthan since 1972. Twenty-three sandstones across nineteen formats.',
+    'KHADANE™ works the Bijolia sandstone belt of Rajasthan, quarrying and exporting twenty-three sandstones across nineteen formats since 1972.',
   keywords: [
     'Indian sandstone',
     'Bijolia sandstone',
@@ -23,17 +23,16 @@ export const metadata: Metadata = {
     'Garda Green',
     'KHADANE',
     'Mohan Lal & Sons',
-    'Dhakar Stones Group',
   ],
-  authors: [{ name: 'KHADANE™ · Dhakar Stones Group' }],
-  creator: 'Dhakar Stones Group',
-  publisher: 'Dhakar Stone Impex',
+  authors: [{ name: 'KHADANE™' }],
+  creator: 'KHADANE™',
+  publisher: 'KHADANE™',
   openGraph: {
     type: 'website',
     locale: 'en_GB',
     url: 'https://khadane.com',
     siteName: 'KHADANE™',
-    title: 'KHADANE™ — The sandstone catalogue of Dhakar Stones Group',
+    title: 'KHADANE™ — The sandstone catalogue of the Bijolia belt',
     description:
       'Twenty-three sandstones across nineteen formats. Quarried in Bijolia, Rajasthan. Since 1972.',
     images: [

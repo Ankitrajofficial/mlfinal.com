@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, BadgeCheck, Gem, Layers3, MapPin, PackageCheck } from 'lucide-react'
+import { ArrowRight, BadgeCheck, Gem, MapPin, PackageCheck } from 'lucide-react'
 import { VARIETIES, getOwnedVarieties, getAlliedVarieties } from '@/lib/khadane/varieties'
 import { SITE } from '@/lib/khadane/site'
 import { getVarietyImage } from '@/lib/khadane/variety-images'
@@ -95,7 +95,7 @@ export default function CollectionPage() {
               />
               <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1200ms' }}>
                 <p className="font-display italic text-2xl md:text-3xl text-quarry-gold no-justify max-w-3xl">
-                  Twenty-three stones. Fourteen owned. Nine allied.
+                  Owned at the source. Allied under one custody. Every stone documented the same way.
                 </p>
                 <div className="mt-10 max-w-2xl">
                   <p className="editorial-body">
@@ -149,7 +149,7 @@ export default function CollectionPage() {
               <RevealOnScroll>
                 <p className="eyebrow-gold mb-4 no-justify">FOUNDING STONES</p>
                 <h2 className="font-display text-3xl lg:text-4xl tracking-tight leading-tight text-obsidian no-justify">
-                  The two beds that started the catalogue.
+                  The beds we’ve worked longest.
                 </h2>
               </RevealOnScroll>
             </div>
@@ -177,16 +177,16 @@ export default function CollectionPage() {
           <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <RevealOnScroll>
               <div>
-                <p className="eyebrow-gold mb-5 no-justify">FAST READ</p>
+                <p className="eyebrow-gold mb-5 no-justify">ONE STANDARD</p>
                 <h2 className="section-heading">
-                  Six stones,
-                  <span className="block italic text-quarry-gold">one catalogue language.</span>
+                  Every stone,
+                  <span className="block italic text-quarry-gold">read the same way.</span>
                 </h2>
               </div>
             </RevealOnScroll>
             <RevealOnScroll delay={150}>
               <p className="max-w-xl font-sans text-base leading-relaxed text-graphite">
-                Every stone detail page follows the same structure: provenance, image set, technical specification, format compatibility, and export enquiry route.
+                Every stone detail page follows the same structure: origin, image set, technical specification, format compatibility, and export enquiry route.
               </p>
             </RevealOnScroll>
           </div>
@@ -221,7 +221,7 @@ export default function CollectionPage() {
           <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <RevealOnScroll>
-                <p className="eyebrow-gold mb-6 no-justify">OWNED · {SITE.ownedVarieties} VARIETIES</p>
+                <p className="eyebrow-gold mb-6 no-justify">OWNED</p>
                 <h2 className="section-heading mb-6">
                   From quarries
                   <span className="block italic text-quarry-gold">we own.</span>
@@ -231,7 +231,7 @@ export default function CollectionPage() {
             <div className="lg:col-span-7">
               <RevealOnScroll delay={150}>
                 <p className="editorial-body">
-                  The Bijolia belt sits across the Bhilwara and Bundi sides of the broader sandstone region. The owned catalogue includes the founding stones and the newer beds opened across the 1980s, 1990s, 2000s, and 2010s.
+                  Owning the quarry means supply you can plan around and one party accountable for every stone — no broker between you and the source. The owned beds run across the Bhilwara and Bundi sides of the Bijolia belt, the founding stones among them.
                 </p>
               </RevealOnScroll>
             </div>
@@ -251,7 +251,7 @@ export default function CollectionPage() {
           <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <RevealOnScroll>
-                <p className="eyebrow-gold mb-6 no-justify">ALLIED · THE NETWORK · {SITE.alliedVarieties} VARIETIES</p>
+                <p className="eyebrow-gold mb-6 no-justify">ALLIED</p>
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-warm-white mb-6 no-justify">
                   Sourced direct
                   <span className="block italic text-quarry-gold">from heritage partners.</span>
@@ -261,7 +261,7 @@ export default function CollectionPage() {
             <div className="lg:col-span-7">
               <RevealOnScroll delay={150}>
                 <p className="font-sans text-lg text-warm-white/80 leading-relaxed">
-                  Some varieties sit outside the Bijolia belt. For these we work direct with operators across Rajasthan, Madhya Pradesh, and Uttar Pradesh whose work and word are trusted. Allied does not mean traded; it means the source is named and the custody is clear.
+                  Allied does not mean traded; it means the source is named and the custody is clear. Some varieties sit outside the Bijolia belt — for these we work direct with operators across Rajasthan, Madhya Pradesh, and Uttar Pradesh whose work and word are trusted.
                 </p>
               </RevealOnScroll>
             </div>
@@ -277,34 +277,39 @@ export default function CollectionPage() {
 
       <section className="section-padding section-warm">
         <div className="container-editorial">
+          <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <RevealOnScroll>
+                <p className="eyebrow-gold mb-6 no-justify">BUILT TO SPEC</p>
+                <h2 className="section-heading mb-6">
+                  Five choices. One stone at a time.
+                  <span className="block italic text-quarry-gold">They don’t add up — they multiply.</span>
+                </h2>
+              </RevealOnScroll>
+            </div>
+            <div className="lg:col-span-7">
+              <RevealOnScroll delay={150}>
+                <p className="editorial-body">
+                  Specified independently for every order, these combine into more configurations than any page could hold — and each one traceable to the quarry it came from. Past the standards, the desk cuts to drawing.
+                </p>
+              </RevealOnScroll>
+            </div>
+          </div>
+
           <RevealOnScroll>
-            <div className="grid grid-cols-1 gap-5 lg:gap-6 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-px border border-obsidian/10 bg-obsidian/10 sm:grid-cols-2 lg:grid-cols-5">
               {[
-                {
-                  icon: Layers3,
-                  title: 'Surfaces and edges',
-                  body: 'Every stone can be specified against surface treatments and edge profiles before dispatch.',
-                },
-                {
-                  icon: PackageCheck,
-                  title: 'Format range',
-                  body: 'Nineteen catalogue forms are the standard route. Custom sizes and drawings are handled by the desk.',
-                },
-                {
-                  icon: MapPin,
-                  title: 'Named provenance',
-                  body: 'Each variety page carries source location, formation, and working history for clear buyer review.',
-                },
-              ].map((item) => {
-                const Icon = item.icon
-                return (
-                  <div key={item.title} className="bg-warm-white p-8 lg:p-10">
-                    <Icon size={24} strokeWidth={1.5} className="mb-8 text-quarry-gold" />
-                    <h3 className="font-display text-3xl text-obsidian no-justify mb-4">{item.title}</h3>
-                    <p className="font-sans text-sm leading-relaxed text-graphite">{item.body}</p>
-                  </div>
-                )
-              })}
+                { axis: 'STONE', body: 'Owned and allied sandstones, from Khadipur Grey to Teakwood.' },
+                { axis: 'FORM', body: 'Paving, cobbles, kerbs, copings, steps, cladding, slabs, and more.' },
+                { axis: 'SURFACE', body: 'Natural-riven, honed, sandblasted, flamed, sawn, tumbled, brushed.' },
+                { axis: 'EDGE', body: 'Hand-cut, straight hand-cut, machine-cut, sawn.' },
+                { axis: 'SIZE', body: 'Calibrated singles, mixed patio packs, set thicknesses, or cut to your drawing.' },
+              ].map((item) => (
+                <div key={item.axis} className="bg-warm-white p-8">
+                  <p className="font-mono text-[10px] uppercase tracking-eyebrow text-quarry-gold no-justify mb-4">{item.axis}</p>
+                  <p className="font-sans text-sm leading-relaxed text-graphite">{item.body}</p>
+                </div>
+              ))}
             </div>
           </RevealOnScroll>
         </div>

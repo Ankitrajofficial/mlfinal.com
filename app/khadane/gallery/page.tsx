@@ -18,7 +18,7 @@ import BrandWhisper from '@/components/khadane/BrandWhisper'
 import Gallery from '@/components/khadane/Gallery'
 
 export const metadata = {
-  title: 'The Gallery — Stone, quarry, yard, installations',
+  title: 'The Record — Gallery of stone, quarry, yard, installations',
   description: 'An editorial gallery of KHADANE™ — stone close-ups, the working quarry face, the yard, real installations, and stills from the Belt Film.',
 }
 
@@ -69,7 +69,7 @@ export default function GalleryPage() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 lg:items-center">
             <div className="lg:col-span-7">
             <div className="opacity-0 animate-fade-in" style={{ animationDelay: '100ms' }}>
-              <p className="eyebrow-gold mb-8 no-justify">THE GALLERY</p>
+              <p className="eyebrow-gold mb-8 no-justify">THE RECORD</p>
             </div>
             <HeroWordRise
               as="h1"
@@ -111,7 +111,7 @@ export default function GalleryPage() {
                   {[
                     { value: '5', label: 'Categories' },
                     { value: SITE.varietyCount, label: 'Stone catalogue' },
-                    { value: SITE.port, label: 'Export route' },
+                    { value: 'Worldwide', label: 'Shipping' },
                     { value: 'Press', label: 'Usage on request' },
                   ].map((item) => (
                     <div key={item.label} className="bg-warm-white p-5 lg:p-6">

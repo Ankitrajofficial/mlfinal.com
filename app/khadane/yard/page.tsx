@@ -5,6 +5,7 @@ import {
   Boxes,
   ClipboardCheck,
   Factory,
+  Hammer,
   PackageCheck,
   Ruler,
   Send,
@@ -19,7 +20,7 @@ import BrandWhisper from '@/components/khadane/BrandWhisper'
 
 export const metadata = {
   title: 'The Yard — Processing, calibration, shipping',
-  description: 'The Bijolia processing yard, where the cut decisions happen. Block arrival, gangsaw, finishing lines, quality check, crating, dispatch.',
+  description: 'The Bijolia processing yard, where the cut is decided. Block arrival, sorting, cutting, edge and surface, calibration, crating, and dispatch.',
 }
 
 export default function YardPage() {
@@ -35,48 +36,48 @@ export default function YardPage() {
     },
     {
       num: '02',
-      title: 'Selection',
-      body: 'Blocks are inspected, graded, and chalk-marked by variety lot. This decides whether the block moves to slabs, paving, cobbles, detail, or custom work.',
+      title: 'Sorting',
+      body: 'Every block is inspected, graded, and chalk-marked by variety lot, then routed by what it will become — the hand line or the machine line. The route decides the cut.',
       icon: ClipboardCheck,
       variant: 'yard' as const,
-      record: 'Grade · lot mark · production route',
+      record: 'Grade · lot mark · cutting route',
       swapPath: '/img/gallery/yard/hand-picking.jpg',
     },
     {
       num: '03',
-      title: 'Gangsaw',
-      body: 'Selected blocks move to the gangsaw line, where parallel blades cut raw slabs of consistent thickness in a single pass.',
+      title: 'Cutting & sizing',
+      body: 'Each format takes its own route. The hand line cuts and splits riven pavers, cobbles, flagstones, and roofing; the machine line — block cutter, bridge cutter, edge and profiling machines, and the gangsaw — squares slabs, tiles, sills, frames, kerbs, copings, and steps.',
       icon: Factory,
       variant: 'stone' as const,
-      record: 'Blade setting · slab thickness · batch',
+      record: 'Route · machine · size',
       swapPath: '/img/gallery/yard/gangsaw-line.jpg',
     },
     {
       num: '04',
-      title: 'Finishing',
-      body: 'Raw slabs move through calibration, surface treatment, and edging. Each station works to the agreed surface, edge, and thickness specification.',
-      icon: Ruler,
+      title: 'Edge & surface',
+      body: 'Edges are taken straight off the machine, hand-dressed, or rockfaced. Surfaces range across natural, riven, sawn, honed, polished, flamed, sandblasted, brushed, and tumbled — worked to the specification the order calls for.',
+      icon: Hammer,
       variant: 'stone-warm' as const,
-      record: 'Surface · edge · tolerance',
+      record: 'Surface · edge profile · treatment',
       swapPath: '/img/gallery/yard/surface-finishing.jpg',
     },
     {
       num: '05',
-      title: 'Crating',
-      body: 'Finished pieces are inspected, counted, and packed into labelled crates with variety, format, thickness, surface, edge, quantity, and order reference.',
-      icon: PackageCheck,
+      title: 'Calibration',
+      body: 'Most finished dimensional stone is run to an exact, consistent thickness. The hand-split, raw-block, and assembled lines pass straight through.',
+      icon: Ruler,
       variant: 'belt' as const,
-      record: 'Crate label · quantity · order reference',
-      swapPath: '/img/gallery/yard/crates.jpg',
+      record: 'Thickness · tolerance · batch',
+      swapPath: '/img/gallery/yard/calibration.jpg',
     },
     {
       num: '06',
-      title: 'Dispatch',
-      body: 'Crates leave the yard by truck for Mundra Port, the primary loading point for KHADANE international exports.',
-      icon: Ship,
+      title: 'Crating & dispatch',
+      body: 'Finished pieces are inspected, counted, and packed into labelled crates carrying variety, format, thickness, surface, edge, quantity, and order reference — then dispatched, nationwide and worldwide.',
+      icon: PackageCheck,
       variant: 'yard' as const,
-      record: 'Truck dispatch · export documents · port route',
-      swapPath: '/img/gallery/yard/container-loading.jpg',
+      record: 'Crate label · quantity · order reference',
+      swapPath: '/img/gallery/yard/crates.jpg',
     },
   ]
 
@@ -103,7 +104,7 @@ export default function YardPage() {
                 </p>
                 <div className="max-w-2xl">
                   <p className="editorial-body">
-                    Raw blocks arrive from the quarry face. Finished crates leave for Mundra. Between those two points, the yard grades, saws, calibrates, finishes, edges, checks, crates, labels, and documents the stone.
+                    Raw blocks arrive from the quarry face. Finished crates leave for buyers nationwide and worldwide. Between those two points, the yard sorts, cuts, dresses, calibrates, checks, crates, labels, and documents the stone.
                   </p>
                 </div>
                 <div className="mt-10 flex flex-wrap gap-3">
@@ -122,9 +123,9 @@ export default function YardPage() {
               <div className="grid grid-cols-2 gap-4 border border-obsidian/8 bg-stone-linen/30 p-4 lg:p-5">
                 {[
                   { icon: Truck, label: 'Receiving', value: 'Block log' },
-                  { icon: Factory, label: 'Cutting', value: 'Gangsaw' },
+                  { icon: Factory, label: 'Cutting', value: 'Hand + machine' },
                   { icon: PackageCheck, label: 'Packing', value: 'Crate label' },
-                  { icon: Ship, label: 'Dispatch', value: SITE.port },
+                  { icon: Ship, label: 'Dispatch', value: 'Worldwide' },
                 ].map((stat, i) => {
                   const Icon = stat.icon
                   return (
@@ -164,7 +165,7 @@ export default function YardPage() {
                 {
                   icon: PackageCheck,
                   title: 'Crates documented for export',
-                  body: 'Finished pieces are labelled, counted, packed, and prepared for the Mundra route.',
+                  body: 'Finished pieces are labelled, counted, packed, and documented before they leave the yard.',
                 },
               ].map((item) => {
                 const Icon = item.icon
@@ -257,7 +258,7 @@ export default function YardPage() {
             <div className="lg:col-span-7">
               <RevealOnScroll delay={150}>
                 <p className="font-sans text-lg text-warm-white/75 leading-relaxed">
-                  The Yard page is about custody, not catalogue browsing. Each checkpoint leaves a practical record: where the block came from, how it was routed, what finish was applied, how it was packed, and what left for the port.
+                  The Yard page is about custody, not catalogue browsing. Each checkpoint leaves a practical record: where the block came from, how it was routed, what finish was applied, how it was packed, and what was dispatched.
                 </p>
               </RevealOnScroll>
             </div>
@@ -303,7 +304,7 @@ export default function YardPage() {
                   <div className="space-y-6">
                     {[
                       ['Location', 'Bijolia, Bhilwara District, Rajasthan'],
-                      ['Port', SITE.port],
+                      ['Shipping', 'Nationwide & worldwide'],
                       ['Response', 'Within one business day'],
                       ['Desk', SITE.contact.publicEmail],
                     ].map(([label, value]) => (

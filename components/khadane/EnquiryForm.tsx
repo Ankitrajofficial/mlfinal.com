@@ -226,7 +226,7 @@ export default function EnquiryForm() {
           {state.status === 'submitting' ? 'Sending...' : 'Submit enquiry'}
         </button>
         <p className="font-mono text-xs leading-relaxed text-tobacco/50 no-justify">
-          We do not share enquiry data outside KHADANE™ / Dhakar Stone Impex.
+          We do not share enquiry data outside KHADANE™.
         </p>
       </div>
     </form>

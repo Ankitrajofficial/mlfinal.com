@@ -1,13 +1,18 @@
 // ============================================================
 // KHADANE™ — Field Notes Catalogue Data
-// 6 editorial briefs · Geology, Process, Trade, Network
+// 6 editorial briefs · Geology, Process, Trade, Allied
 // ============================================================
 
-export type FieldNoteCategory = 'geology' | 'process' | 'trade' | 'network'
+export type FieldNoteCategory = 'geology' | 'process' | 'trade' | 'allied'
 
 export interface FieldNoteSection {
   heading?: string
   body: string[]   // Each item is a paragraph
+  pullQuote?: string                   // Optional lifted line, rendered as a gold pull quote
+  figure?: {                           // Optional inline photograph with caption
+    caption: string
+    swapPath: string                   // /img/field-notes/{slug}-{n}.jpg — user photography
+  }
 }
 
 export interface FieldNote {
@@ -24,6 +29,8 @@ export interface FieldNote {
     | 'stone-grey' | 'stone-warm' | 'stone-red' | 'stone-green'
     | 'portrait' | 'belt'
   sections: FieldNoteSection[]
+  byline?: string                      // Defaults to 'BY THE KHADANE DESK · BIJOLIA' in the template
+  sources?: string[]                   // Research citations — supplied by Rahul, never invented
   closingNote?: string                 // Italic gold close line
 }
 
@@ -48,6 +55,7 @@ export const FIELD_NOTES: FieldNote[] = [
       },
       {
         heading: 'What this means for the stone.',
+        pullQuote: 'It is the geology, written into the rock long before any of us got here.',
         body: [
           'Sandstones laid down under quiet, shallow water for hundreds of millions of years tend to develop very particular qualities: fine grain, dense matrix, low porosity, good dimensional stability. The Bhander sandstones of the Bijolia belt show all four. This is why they have been quarried — continuously, by hand and then by machine — for over eight centuries.',
           'It is also why they ship well. A dense, dimensionally stable stone holds its calibration better. It absorbs less water during transit. It freeze-thaws better in northern European climates. It cuts cleaner. None of this is luck. It is the geology, written into the rock long before any of us got here.',
@@ -136,7 +144,7 @@ export const FIELD_NOTES: FieldNote[] = [
       {
         heading: 'FOB — Free On Board.',
         body: [
-          'The exporter\'s responsibility ends when the goods are loaded on the vessel at the agreed port of loading. For us, that port is Mundra. The buyer arranges ocean freight, marine insurance, customs at destination, and delivery beyond destination port. This is the most common term for established importers. It separates costs cleanly.',
+          'The exporter\'s responsibility ends when the goods are loaded on the vessel at the agreed port of loading. The buyer arranges ocean freight, marine insurance, customs at destination, and delivery beyond destination port. This is the most common term for established importers. It separates costs cleanly.',
         ],
       },
       {
@@ -148,7 +156,7 @@ export const FIELD_NOTES: FieldNote[] = [
       {
         heading: 'What we quote against.',
         body: [
-          'We quote FOB Mundra as the default. For first-time buyers, we can quote CIF to a named UK port — typically Felixstowe, Southampton, or Tilbury — if the volume is sufficient. We do not quote DDP (delivered duty paid). UK VAT and import duty are the buyer\'s responsibility.',
+          'We quote FOB, against the agreed Indian port of loading, as the default. For first-time buyers, we can quote CIF to a named UK port — typically Felixstowe, Southampton, or Tilbury — if the volume is sufficient. We do not quote DDP (delivered duty paid). UK VAT and import duty are the buyer\'s responsibility.',
         ],
       },
     ],
@@ -196,8 +204,8 @@ export const FIELD_NOTES: FieldNote[] = [
   {
     id: 'FN-005',
     slug: 'allied-not-traded',
-    category: 'network',
-    categoryLabel: 'NETWORK',
+    category: 'allied',
+    categoryLabel: 'ALLIED',
     title: 'Allied does not mean traded.',
     excerpt:
       'How direct-source allied relationships work in practice — and what separates them from the broker chains that dominate the trade.',

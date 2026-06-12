@@ -299,6 +299,10 @@
   .word-rise {
     display: inline-block;
     overflow: hidden;
+    /* Extend the mask below the baseline so Cormorant's descenders and the
+       swash Q tail aren't sheared; negative margin cancels any layout shift. */
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
   }
 
   .word-rise > span {
@@ -350,5 +354,39 @@
     inset: 0;
     pointer-events: none;
     background: repeating-linear-gradient(0deg, transparent 0, transparent 96px, rgba(122, 80, 56, 0.022) 96px, rgba(122, 80, 56, 0.022) 97px);
+  }
+}
+
+/* ============================================================
+   Field Notes — editorial drop cap (Treatment locked Jun 2026)
+   ============================================================ */
+.drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-display, 'Cormorant Garamond'), serif;
+  font-weight: 600;
+  font-size: 4.1em;
+  line-height: 0.78;
+  color: #B8962E;
+  padding: 0.06em 0.12em 0 0;
+}
+
+/* ============================================================
+   Reduced motion — settle everything instantly when asked
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .word-rise > span { opacity: 1 !important; transform: none !important; }
+  /* The marquee strips are content banners, not entrance effects —
+     freezing them strands the items mid-clip with no way to read the rest.
+     Keep them looping (the gentlest continuous motion on the page). */
+  .animate-marquee {
+    animation-duration: 40s !important;
+    animation-iteration-count: infinite !important;
   }
 }

@@ -68,6 +68,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
     { label: 'Trade aliases', value: v.tradeNames === 'Catalogued under its trade name' ? undefined : v.tradeNames },
     { label: 'Renamed by KHADANE', value: v.renamedByKhadane },
     { label: 'Format scope', value: v.formatScope },
+    { label: 'Sizes', value: 'Calibrated singles, mixed patio packs, set thicknesses, or cut to your drawing' },
   ].filter((row): row is { label: string; value: string } => Boolean(row.value))
   const sourceLabel = v.tier === 'owned' ? 'Owned quarry' : 'Allied quarry'
   const sourceDetail =
@@ -84,7 +85,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
     | 'stone-green'
   const imageSlots = [
     {
-      label: '01 · MATERIAL',
+      label: 'MATERIAL',
       title: `${v.name} · Slab face`,
       spec: 'Full-face slab or paving piece on neutral ground. Show the colour range clearly.',
       swapPath: swapPathFor(`/img/varieties/${v.slug}/slab-face.jpg`),
@@ -92,7 +93,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
       variant: stoneVariant,
     },
     {
-      label: '02 · SURFACE',
+      label: 'SURFACE',
       title: `${v.name} · Surface close-up`,
       spec: 'Macro texture, grain, fossil/vein/colour movement where present. Raking light preferred.',
       swapPath: swapPathFor(`/img/varieties/${v.slug}/surface-close.jpg`),
@@ -100,7 +101,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
       variant: stoneVariant,
     },
     {
-      label: '03 · EDGE',
+      label: 'EDGE',
       title: `${v.name} · Edge profile`,
       spec: 'Show thickness, edge finish, and bedding plane. Include hand-cut or machine-cut character.',
       swapPath: swapPathFor(`/img/varieties/${v.slug}/edge-profile.jpg`),
@@ -108,7 +109,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
       variant: stoneVariant,
     },
     {
-      label: '04 · FORMAT',
+      label: 'FORMAT',
       title: `${v.name} · Worked format`,
       spec: 'Paving, cobble, coping, cladding, or custom cut in production or stacked for packing.',
       swapPath: swapPathFor(`/img/varieties/${v.slug}/worked-format.jpg`),
@@ -116,7 +117,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
       variant: 'yard' as const,
     },
     {
-      label: '05 · SOURCE',
+      label: 'SOURCE',
       title: `${v.name} · Source context`,
       spec: `${v.primaryLocation}. Quarry face, block yard, or raw block documentation.`,
       swapPath: swapPathFor(`/img/varieties/${v.slug}/source-context.jpg`),
@@ -222,13 +223,13 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
         </div>
       </section>
 
-      {/* Section 02 — Provenance */}
+      {/* Section 02 — Origin */}
       <section className="section-padding section-cream">
         <div className="container-editorial">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <RevealOnScroll>
-                <p className="eyebrow-gold mb-6 no-justify">PROVENANCE</p>
+                <p className="eyebrow-gold mb-6 no-justify">ORIGIN</p>
                 <h2 className="section-heading mb-8">
                   Source,
                   <span className="block italic text-quarry-gold">not guesswork.</span>
@@ -362,7 +363,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
           <div className="container-editorial">
             <div className="max-w-3xl mx-auto text-center">
               <RevealOnScroll>
-                <p className="eyebrow-gold mb-8 no-justify">THE NETWORK · ALLIED</p>
+                <p className="eyebrow-gold mb-8 no-justify">ALLIED</p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <p className="font-display italic text-2xl lg:text-3xl text-warm-white leading-snug no-justify">
@@ -421,8 +422,8 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
           </div>
           <div className="grid grid-cols-1 gap-px bg-obsidian/10 sm:grid-cols-2 lg:grid-cols-4">
             {featuredFormats.map((f, i) => (
-              <RevealOnScroll key={f.slug} delay={Math.min(i * 40, 400)}>
-                <Link href={`/khadane/formats/${f.slug}`} className="group flex min-h-44 flex-col justify-between bg-warm-white p-6 transition-colors duration-400 ease-editorial hover:bg-stone-linen">
+              <RevealOnScroll key={f.slug} delay={Math.min(i * 40, 400)} className="h-full">
+                <Link href={`/khadane/formats/${f.slug}`} className="group flex h-full min-h-44 flex-col justify-between bg-warm-white p-6 transition-colors duration-400 ease-editorial hover:bg-stone-linen">
                   <div>
                     <p className="font-mono text-xs text-quarry-gold no-justify mb-4">{f.code}</p>
                     <p className="font-display text-2xl leading-tight text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
@@ -464,7 +465,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
               </RevealOnScroll>
               <RevealOnScroll delay={250}>
                 <p className="font-sans text-lg text-warm-white/70 leading-relaxed max-w-2xl">
-                  Send the format, surface, edge, size, volume, delivery port, and target timeline. The desk responds within one business day with lead time, sample availability, and route options from Mundra.
+                  Send the format, surface, edge, size, volume, delivery port, and target timeline. The desk responds within one business day with lead time, sample availability, and route options.
                 </p>
               </RevealOnScroll>
             </div>
@@ -475,7 +476,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
                     {[
                       ['Email', SITE.contact.publicEmail],
                       ['Response', 'Within one business day'],
-                      ['Port', SITE.port],
+                      ['Shipping', 'Nationwide & worldwide'],
                       ['Samples', 'On enquiry'],
                     ].map(([label, value]) => (
                       <div key={label} className="border-b border-warm-white/10 pb-5 last:border-b-0 last:pb-0">

@@ -22,7 +22,7 @@ const STATIC_PAGES: SearchResult[] = [
   { type: 'page', title: 'The Yard', subtitle: 'Processing & shipping', href: '/yard' },
   { type: 'page', title: 'The Desk', subtitle: 'Write to us', href: '/desk' },
   { type: 'page', title: 'The Group', subtitle: 'Mohan Lal & Sons', href: '/khadane/group' },
-  { type: 'page', title: 'Gallery', subtitle: 'Stone, quarry, yard, in-situ', href: '/khadane/gallery' },
+  { type: 'page', title: 'The Record', subtitle: 'Stone, quarry, yard, in-situ', href: '/khadane/gallery' },
   { type: 'page', title: 'Collection', subtitle: `All ${SITE.varietyCount} varieties`, href: '/khadane/collection' },
   { type: 'page', title: 'Formats', subtitle: `All ${SITE.formatCount} formats`, href: '/khadane/formats' },
   { type: 'page', title: 'Field Notes', subtitle: 'Editorial briefs', href: '/khadane/field-notes' },

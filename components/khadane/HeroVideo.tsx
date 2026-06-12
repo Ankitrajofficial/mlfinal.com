@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Volume2, VolumeX } from 'lucide-react'
 
 interface HeroVideoProps {
@@ -17,6 +17,13 @@ export default function HeroVideo({
   const videoRef = useRef<HTMLVideoElement>(null)
   const [muted, setMuted] = useState(true)
   const [hasAudio, setHasAudio] = useState(true)
+
+  // Safari ignores the autoPlay attribute under Reduce Motion / Low Power
+  // Mode, but still honours an explicit muted play() call.
+  useEffect(() => {
+    const video = videoRef.current
+    if (video?.paused) video.play().catch(() => {})
+  }, [])
 
   const toggleMute = () => {
     const video = videoRef.current

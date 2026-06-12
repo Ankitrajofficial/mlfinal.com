@@ -151,7 +151,7 @@ export default function HomePage() {
                     {
                       icon: Route,
                       title: 'Dispatch',
-                      body: `Finished crates move from the yard to ${SITE.port} for export loading.`,
+                      body: `Finished crates move from the yard, dispatched nationwide and worldwide.`,
                     },
                   ].map((item) => {
                     const Icon = item.icon
@@ -204,7 +204,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16 lg:items-start">
             <div className="lg:col-span-5 lg:sticky lg:top-28">
               <RevealOnScroll>
-                <p className="eyebrow mb-6 no-justify">01 · THE COLLECTION</p>
+                <p className="eyebrow mb-6 no-justify">THE COLLECTION</p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="section-heading mb-8">
@@ -216,21 +216,6 @@ export default function HomePage() {
                 <p className="font-sans text-lg leading-relaxed text-graphite no-justify mb-8">
                   Fourteen owned varieties and nine allied varieties, each marked by source, formation, format compatibility, and technical specification. Buyers can read what is ours, what is allied, and how each stone can be cut.
                 </p>
-              </RevealOnScroll>
-              <RevealOnScroll delay={320}>
-                <div className="mb-8 grid grid-cols-2 gap-4">
-                  {[
-                    { value: SITE.ownedVarieties, label: 'Owned varieties' },
-                    { value: SITE.alliedVarieties, label: 'Allied network' },
-                    { value: SITE.surfaceTreatmentCount, label: 'Surface treatments' },
-                    { value: SITE.edgeProfileCount, label: 'Edge profiles' },
-                  ].map((item) => (
-                    <div key={item.label} className="border border-obsidian/10 bg-warm-white p-5">
-                      <p className="font-display text-4xl text-quarry-gold no-justify">{item.value}</p>
-                      <p className="mt-2 font-mono text-[10px] uppercase tracking-eyebrow text-tobacco/55 no-justify">{item.label}</p>
-                    </div>
-                  ))}
-                </div>
               </RevealOnScroll>
               <RevealOnScroll delay={420}>
                 <Link href="/khadane/collection" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-quarry-gold hover:text-obsidian no-justify">
@@ -320,17 +305,17 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mb-12">
             <div className="lg:col-span-5">
               <RevealOnScroll>
-                <p className="eyebrow mb-6 no-justify">02 · THE FORMATS</p>
+                <p className="eyebrow mb-6 no-justify">THE FORMATS</p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="section-heading mb-8">
                   Every form
-                  <span className="block italic text-quarry-gold mt-1">the trade asks for.</span>
+                  <span className="block italic text-quarry-gold mt-1">the trade specifies.</span>
                 </h2>
               </RevealOnScroll>
               <RevealOnScroll delay={250}>
                 <p className="editorial-body mb-8">
-                  KHADANE cuts and dresses the stone before it leaves Mundra. Nineteen formats run through the yard, with surface treatments and edge profiles cross-listed against each form.
+                  KHADANE cuts and dresses the stone before it leaves the yard. Nineteen formats run through the yard, with surface treatments and edge profiles cross-listed against each form.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={350}>
@@ -376,7 +361,7 @@ export default function HomePage() {
           <div className="flex items-center p-10 md:p-16 lg:p-20 xl:p-24">
             <div>
               <RevealOnScroll>
-                <p className="eyebrow-gold mb-6 no-justify">03 · THE QUARRY</p>
+                <p className="eyebrow-gold mb-6 no-justify">THE QUARRY</p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-warm-white mb-8 no-justify">
@@ -418,7 +403,7 @@ export default function HomePage() {
         <div className="container-editorial">
           <div className="text-center max-w-4xl mx-auto mb-16">
             <RevealOnScroll>
-              <p className="eyebrow mb-6 no-justify">04 · THE TRADE SPEC</p>
+              <p className="eyebrow mb-6 no-justify">THE STANDARD</p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
               <h2 className="section-heading mb-8">
@@ -428,24 +413,23 @@ export default function HomePage() {
             </RevealOnScroll>
             <RevealOnScroll delay={250}>
               <p className="editorial-body max-w-2xl mx-auto">
-                Every shipment is specified across five dimensions. This is how stone moves from quarry to container without ambiguity.
+                Every shipment is specified across five dimensions. They don't add up — they multiply, which is how one catalogue meets a drawing instead of a fixed list.
               </p>
             </RevealOnScroll>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-px bg-obsidian/10">
             {[
-              { label: 'Variety', count: String(SITE.varietyCount), hint: 'Catalogue varieties' },
-              { label: 'Format', count: String(SITE.formatCount), hint: 'Production formats' },
-              { label: 'Cutting', count: '4', hint: 'Methods' },
-              { label: 'Surface', count: String(SITE.surfaceTreatmentCount), hint: 'Treatments' },
-              { label: 'Size', count: '13', hint: 'Standard sizes' },
+              { label: 'Variety', desc: 'Owned and allied, across the belt' },
+              { label: 'Format', desc: 'Every production format' },
+              { label: 'Cutting', desc: 'Four methods' },
+              { label: 'Surface', desc: 'Eleven treatments' },
+              { label: 'Size', desc: 'Thirteen standard, or cut to drawing' },
             ].map((d, i) => (
-              <RevealOnScroll key={d.label} delay={i * 80}>
-                <div className="bg-warm-white p-8 lg:p-10 text-center">
-                  <p className="font-display text-5xl text-quarry-gold mb-4 no-justify">{d.count}</p>
-                  <p className="font-sans text-sm tracking-wider uppercase text-obsidian mb-2 no-justify">{d.label}</p>
-                  <p className="font-sans text-xs text-graphite no-justify">{d.hint}</p>
+              <RevealOnScroll key={d.label} delay={i * 80} className="h-full">
+                <div className="h-full bg-warm-white p-8 lg:p-10 text-center">
+                  <p className="font-display text-3xl text-quarry-gold mb-3 no-justify">{d.label}</p>
+                  <p className="font-sans text-sm text-graphite no-justify">{d.desc}</p>
                 </div>
               </RevealOnScroll>
             ))}
@@ -461,12 +445,12 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             <div className="lg:col-span-6 order-2 lg:order-1">
               <RevealOnScroll>
-                <p className="eyebrow mb-6 no-justify">05 · THE YARD</p>
+                <p className="eyebrow mb-6 no-justify">THE YARD</p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="section-heading mb-8">
                   Where stone
-                  <span className="block italic text-quarry-gold">becomes a shipment.</span>
+                  <span className="block italic text-quarry-gold">becomes cargo.</span>
                 </h2>
               </RevealOnScroll>
               <RevealOnScroll delay={250}>
@@ -508,7 +492,7 @@ export default function HomePage() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 lg:mb-16 gap-6">
             <div className="max-w-2xl">
               <RevealOnScroll>
-                <p className="eyebrow mb-6 no-justify">06 · THE GALLERY</p>
+                <p className="eyebrow mb-6 no-justify">THE RECORD</p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="section-heading">
@@ -518,7 +502,7 @@ export default function HomePage() {
               </RevealOnScroll>
             </div>
             <RevealOnScroll delay={250}>
-              <Link href="/khadane/gallery" className="cta-text">Open the gallery →</Link>
+              <Link href="/khadane/gallery" className="cta-text">Open the record →</Link>
             </RevealOnScroll>
           </div>
 
@@ -597,11 +581,11 @@ export default function HomePage() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 lg:mb-16 gap-6">
             <div>
               <RevealOnScroll>
-                <p className="eyebrow mb-6 no-justify">06 · FIELD NOTES</p>
+                <p className="eyebrow mb-6 no-justify">FIELD NOTES</p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="section-heading">
-                  Editorial briefs
+                  Working notes
                   <span className="block italic text-quarry-gold">from the belt.</span>
                 </h2>
               </RevealOnScroll>
@@ -660,19 +644,19 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================
-          SECTION 10 — THE NETWORK (allied operators)
+          SECTION 10 — ALLIED (allied operators)
           ============================================================ */}
       <section className="section-padding section-tobacco">
         <div className="container-editorial">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
             <div className="lg:col-span-5">
               <RevealOnScroll>
-                <p className="eyebrow-gold mb-6 no-justify">07 · THE NETWORK</p>
+                <p className="eyebrow-gold mb-6 no-justify">ALLIED</p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-warm-white mb-8 no-justify">
-                  Nine allied
-                  <span className="block italic text-quarry-gold">heritage operators.</span>
+                  Sourced direct
+                  <span className="block italic text-quarry-gold">beyond the belt.</span>
                 </h2>
               </RevealOnScroll>
               <RevealOnScroll delay={250}>
@@ -682,7 +666,7 @@ export default function HomePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={350}>
                 <p className="font-sans text-sm text-quarry-gold/80 uppercase tracking-wider no-justify">
-                  Every allied variety still ships under DSI custody.
+                  Every allied variety still ships under KHADANE custody.
                 </p>
               </RevealOnScroll>
             </div>
@@ -715,7 +699,7 @@ export default function HomePage() {
         <div className="container-editorial">
           <div className="max-w-4xl mx-auto text-center">
             <RevealOnScroll>
-              <p className="eyebrow mb-6 no-justify">08 · THE GROUP</p>
+              <p className="eyebrow mb-6 no-justify">THE GROUP</p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
               <Link
@@ -734,7 +718,7 @@ export default function HomePage() {
             </RevealOnScroll>
             <RevealOnScroll delay={250}>
               <p className="font-display italic text-2xl lg:text-3xl text-obsidian leading-snug mb-8 no-justify max-w-2xl mx-auto">
-                KHADANE™ is one of five operations within Mohan Lal &amp; Sons. The stone &amp; export vertical is run by the {SITE.groupOperation}.
+                KHADANE™ is one of five operations within Mohan Lal &amp; Sons — the stone &amp; export vertical of the house.
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={400}>
@@ -754,11 +738,11 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <RevealOnScroll>
-                <p className="eyebrow-gold mb-6 no-justify">09 · THE DESK</p>
+                <p className="eyebrow-gold mb-6 no-justify">THE DESK</p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="font-display text-4xl md:text-5xl lg:text-7xl tracking-tight leading-[1.05] text-warm-white mb-10 no-justify">
-                  Write to us.
+                  Write to the desk.
                   <span className="block italic text-quarry-gold mt-2">Quote within a day.</span>
                 </h2>
               </RevealOnScroll>

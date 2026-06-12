@@ -103,6 +103,12 @@ const config: Config = {
         ],
       },
       letterSpacing: {
+        // Softened for Cormorant Garamond display headings.
+        // Tailwind defaults (tight -0.025em / tighter -0.05em) crush the
+        // italic glyphs into each other (T into h). These gentler values
+        // keep the tight display feel without letters touching.
+        tight: '-0.008em',
+        tighter: '-0.018em',
         eyebrow: '0.16em',
         marker: '0.18em',
       },
