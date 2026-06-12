@@ -304,8 +304,13 @@ export default function CollectionPage() {
                 { axis: 'SURFACE', body: 'Natural-riven, honed, sandblasted, flamed, sawn, tumbled, brushed.' },
                 { axis: 'EDGE', body: 'Hand-cut, straight hand-cut, machine-cut, sawn.' },
                 { axis: 'SIZE', body: 'Calibrated singles, mixed patio packs, set thicknesses, or cut to your drawing.' },
-              ].map((item) => (
-                <div key={item.axis} className="bg-warm-white p-8">
+              ].map((item, i, arr) => (
+                <div
+                  key={item.axis}
+                  className={`bg-warm-white p-8 ${
+                    i === arr.length - 1 && arr.length % 2 === 1 ? 'sm:col-span-2 lg:col-span-1' : ''
+                  }`}
+                >
                   <p className="font-mono text-[10px] uppercase tracking-eyebrow text-quarry-gold no-justify mb-4">{item.axis}</p>
                   <p className="font-sans text-sm leading-relaxed text-graphite">{item.body}</p>
                 </div>

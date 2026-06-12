@@ -468,8 +468,8 @@ export default function MLSHomePage() {
                   swapPath: '/img/mls-gallery/vyanjanam-service.jpg',
                 },
               ].map((card, i) => (
-                <RevealOnScroll key={card.title} delay={i * 80}>
-                  <Link href={card.href} className="block group">
+                <RevealOnScroll key={card.title} delay={i * 80} className="h-full">
+                  <Link href={card.href} className="block group h-full bg-mls-cream">
                     <PlaceholderImage
                       label={card.label}
                       title={card.title}

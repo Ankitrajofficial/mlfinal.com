@@ -107,9 +107,15 @@ export default async function FormatPage({ params }: FormatPageProps) {
                   { label: 'Variety availability', value: `${availableVarieties.length} of 23 varieties` },
                   { label: 'Surfaces available', value: f.surfacesAvailable.join(', ') || 'On enquiry' },
                   { label: 'Edges available', value: f.edgesAvailable.join(', ') || 'On enquiry' },
-                ].map((row, i) => (
-                  <RevealOnScroll key={row.label} delay={i * 50}>
-                    <div className="bg-warm-white p-6 lg:p-8">
+                ].map((row, i, arr) => (
+                  <RevealOnScroll
+                    key={row.label}
+                    delay={i * 50}
+                    className={`h-full ${
+                      i === arr.length - 1 && arr.length % 2 === 1 ? 'md:col-span-2' : ''
+                    }`}
+                  >
+                    <div className="h-full bg-warm-white p-6 lg:p-8">
                       <p className="font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify mb-2">
                         {row.label}
                       </p>
