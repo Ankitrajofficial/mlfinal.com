@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { MLS_SITE, MLS_ASSETS } from '@/lib/site-mls'
+import { MLS_SITE, MLS_ASSETS, KHADANE_PUBLIC_URL } from '@/lib/site-mls'
 import { ENTITIES, FOUNDING, CONTACT, CROSS_LINKS } from '@/lib/facts'
 
 const footerSections = [
@@ -197,7 +197,7 @@ export default function MLSFooter() {
                   Trade Brand
                 </p>
                 <Link
-                  href="/khadane"
+                  href={KHADANE_PUBLIC_URL}
                   className="group block max-w-sm"
                   aria-label="Visit KHADANE"
                 >

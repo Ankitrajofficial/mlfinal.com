@@ -90,3 +90,14 @@ export const MLS_ASSETS = {
 
 // Vertical hero video.
 export const MLS_HERO_VIDEO = '/videos/home-hero.mp4'
+
+/**
+ * Public URL for the KHADANE site, used wherever MLS pages link across
+ * to the stone brand. In production this is the real khadane.com domain
+ * (each site lives on its own domain via the host proxy); in local dev
+ * it stays a relative path so navigation never leaves localhost.
+ */
+export const KHADANE_PUBLIC_URL =
+  process.env.NODE_ENV === 'development'
+    ? '/khadane'
+    : process.env.NEXT_PUBLIC_KHADANE_URL ?? 'https://www.khadane.com'

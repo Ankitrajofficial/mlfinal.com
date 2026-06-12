@@ -99,3 +99,15 @@ export const ASSETS = {
     },
   },
 } as const
+
+/**
+ * Public URL for the Mohan Lal & Sons site, used wherever KHADANE pages
+ * link across to the parent group. In production this is the real
+ * mohanlalsonsgroup.com domain (each site lives on its own domain via
+ * the host proxy); in local dev it stays a relative path so navigation
+ * never leaves localhost.
+ */
+export const MLS_PUBLIC_URL =
+  process.env.NODE_ENV === 'development'
+    ? '/mls'
+    : process.env.NEXT_PUBLIC_MLS_URL ?? 'https://mohanlalsonsgroup.com'

@@ -14,7 +14,7 @@ import {
   Utensils,
   Warehouse,
 } from 'lucide-react'
-import { SITE, ASSETS } from '@/lib/khadane/site'
+import { SITE, ASSETS, MLS_PUBLIC_URL } from '@/lib/khadane/site'
 import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
@@ -344,7 +344,7 @@ export default function GroupPage() {
             <div className="lg:col-span-5">
               <RevealOnScroll>
                 <Link
-                  href="/mls"
+                  href={MLS_PUBLIC_URL}
                   aria-label="Open Mohan Lal & Sons homepage"
                   className="mb-10 flex justify-start transition-opacity hover:opacity-80"
                 >

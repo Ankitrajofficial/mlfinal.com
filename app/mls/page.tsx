@@ -20,7 +20,7 @@ import VerticalCard from '@/components/mls/VerticalCard'
 import StatMarquee from '@/components/mls/StatMarquee'
 import SectionHeader from '@/components/mls/SectionHeader'
 import VyanjanamSection from '@/components/mls/VyanjanamSection'
-import { MLS_HERO_VIDEO } from '@/lib/site-mls'
+import { MLS_HERO_VIDEO, KHADANE_PUBLIC_URL } from '@/lib/site-mls'
 
 export const metadata = buildMetadata({
   site: 'mls',
@@ -127,7 +127,7 @@ export default function MLSHomePage() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="/khadane"
+                  href={KHADANE_PUBLIC_URL}
                   className="inline-flex items-center gap-3 px-8 py-4 border border-mls-cream/45 text-mls-cream text-sm font-body tracking-wider uppercase hover:bg-mls-cream hover:text-mls-ink hover:gap-4 transition-all duration-400 ease-editorial"
                 >
                   Visit KHADANE™
@@ -218,7 +218,7 @@ export default function MLSHomePage() {
                   className={`h-full ${isHospitality ? 'lg:row-span-2' : ''}`}
                 >
                   <VerticalCard
-                    href={isStone ? '/khadane' : `/verticals/${v.slug}`}
+                    href={isStone ? KHADANE_PUBLIC_URL : `/verticals/${v.slug}`}
                     external={isStone}
                     number={number}
                     title={v.title}
@@ -385,7 +385,7 @@ export default function MLSHomePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={300}>
                 <Link
-                  href="/khadane"
+                  href={KHADANE_PUBLIC_URL}
                   className="inline-flex items-center gap-3 px-8 py-4 bg-mls-gold text-mls-ink text-sm font-body tracking-wider uppercase hover:bg-mls-cream hover:gap-4 transition-all duration-400 ease-editorial self-start"
                 >
                   Open khadane.com

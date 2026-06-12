@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, BadgeCheck, Factory, Gem, MapPin, PackageCheck, Route, Users } from 'lucide-react'
-import { ASSETS, SITE } from '@/lib/khadane/site'
+import { ASSETS, SITE, MLS_PUBLIC_URL } from '@/lib/khadane/site'
 import { VARIETIES, getOwnedVarieties, getAlliedVarieties } from '@/lib/khadane/varieties'
 import { FORMATS } from '@/lib/khadane/formats'
 import { getVarietyImage } from '@/lib/khadane/variety-images'
@@ -703,7 +703,7 @@ export default function HomePage() {
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
               <Link
-                href="/mls"
+                href={MLS_PUBLIC_URL}
                 aria-label="Open Mohan Lal & Sons homepage"
                 className="flex justify-center mb-10 transition-opacity hover:opacity-80"
               >

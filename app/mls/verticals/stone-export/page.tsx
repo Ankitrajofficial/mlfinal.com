@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { buildMetadata } from '@/lib/seo'
+import { KHADANE_PUBLIC_URL } from '@/lib/site-mls'
 import {
   ENTITIES,
   KHADANE_SCALE,
@@ -136,7 +137,7 @@ export default function StoneExportBridgePage() {
             </RevealOnScroll>
             <RevealOnScroll delay={400}>
               <Link
-                href="/khadane"
+                href={KHADANE_PUBLIC_URL}
                 className="inline-flex items-center gap-3 px-10 py-5 bg-mls-gold text-mls-ink text-sm font-body tracking-wider uppercase hover:bg-mls-cream hover:gap-4 transition-all duration-400 ease-editorial"
               >
                 Open khadane.com

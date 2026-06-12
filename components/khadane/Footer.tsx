@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { SITE, ASSETS } from '@/lib/khadane/site'
+import { SITE, ASSETS, MLS_PUBLIC_URL } from '@/lib/khadane/site'
 
 export default function Footer() {
   return (
@@ -68,7 +68,7 @@ export default function Footer() {
                 The Parent
               </h3>
               <Link
-                href="/mls"
+                href={MLS_PUBLIC_URL}
                 aria-label="Open Mohan Lal & Sons homepage"
                 className="inline-block mb-4 hover:opacity-80 transition-opacity"
               >
