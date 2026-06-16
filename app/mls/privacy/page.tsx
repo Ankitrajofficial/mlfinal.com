@@ -84,8 +84,8 @@ export default function PrivacyPage() {
                 </h2>
                 <p>
                   Your information is used to answer your enquiry, to keep
-                  a record of correspondence the family has had with you,
-                  and to route your enquiry to the right hand in the family
+                  a record of correspondence we have had with you,
+                  and to route your enquiry to the right person
                   — most often The Office, in some cases directly to the
                   vertical concerned. Stone enquiries route to KHADANE™.
                 </p>
@@ -101,7 +101,7 @@ export default function PrivacyPage() {
                   We do not sell your information to anyone. We share it
                   only with the email service we use to deliver enquiries
                   (Resend) and, where you have written to KHADANE™ from
-                  this site, with the KHADANE™ desk within the family.
+                  this site, with the KHADANE™ desk within the group.
                   That is the extent of it.
                 </p>
               </div>
@@ -130,7 +130,7 @@ export default function PrivacyPage() {
             <RevealOnScroll delay={500}>
               <div className="pt-8 border-t border-mls-ink/10">
                 <p className="font-mono text-xs text-mls-slate">
-                  Last reviewed: {FOUNDING.currentYear} · The family reviews
+                  Last reviewed: {FOUNDING.currentYear} · We review
                   this notice when material changes are made to the
                   operation. It is updated here when it is.
                 </p>

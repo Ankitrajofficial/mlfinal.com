@@ -54,7 +54,7 @@ export default function CataloguesPage() {
               <p className="text-lg leading-relaxed text-mls-cream/85 mb-10 max-w-2xl">
                 The trade brand carries the working catalogue — the
                 collection of varieties, the formats they ship in, the field
-                notes the family writes alongside the work, and the
+                notes written alongside the work, and the
                 technical sheets for the desk.
               </p>
             </RevealOnScroll>

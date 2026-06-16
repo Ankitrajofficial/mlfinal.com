@@ -8,7 +8,7 @@ export const metadata = buildMetadata({
   site: 'mls',
   title: 'Careers',
   description:
-    'Working with the Dhakar family at Mohan Lal & Sons. How the family hires, what we look for, and where to write if you would like to be considered.',
+    'Working with the Dhakar family at Mohan Lal & Sons. How we hire, what we look for, and where to write if you would like to be considered.',
   path: '/careers',
 })
 
@@ -20,19 +20,16 @@ export const metadata = buildMetadata({
 export default function CareersPage() {
   const values = [
     {
-      num: '01',
       title: 'Tenure as a standard.',
-      body: "We expect to work with the same people for a long time. The institutional pattern of the family is that the people who join us tend to stay. We hire with that expectation on both sides.",
+      body: "We expect to work with the same people for a long time. Our institutional pattern is that the people who join us tend to stay. We hire with that expectation on both sides.",
     },
     {
-      num: '02',
       title: 'Operational honesty.',
-      body: 'The work runs on what the family actually does. There is no marketing department. There is no separate HR function. Communication is direct, and decisions are taken close to the work.',
+      body: 'The work runs on what we actually do. There is no marketing department. There is no separate HR function. Communication is direct, and decisions are taken close to the work.',
     },
     {
-      num: '03',
       title: 'Quiet competence.',
-      body: 'We look for people who can be trusted to operate without supervision and who do not need recognition to do good work. The family notices, the work notices, and the rest is private.',
+      body: 'We look for people who can be trusted to operate without supervision and who do not need recognition to do good work. We notice, the work notices, and the rest is private.',
     },
   ]
 
@@ -53,13 +50,13 @@ export default function CareersPage() {
               <h1 className="font-display text-5xl md:text-7xl lg:text-[7rem] tracking-tighter leading-[1.02] text-mls-ink mb-8">
                 Working with
                 <span className="block italic text-mls-gold mt-2">
-                  the family.
+                  us.
                 </span>
               </h1>
             </RevealOnScroll>
             <RevealOnScroll delay={250}>
               <p className="font-display italic text-2xl md:text-3xl text-mls-tobacco max-w-3xl leading-snug">
-                How the family hires, what we look for, and where to write
+                How we hire, what we look for, and where to write
                 if you would like to be considered.
               </p>
             </RevealOnScroll>
@@ -94,8 +91,8 @@ export default function CareersPage() {
                   The family does not run an open hiring funnel. Roles are
                   identified when they are needed and filled with people who
                   can be trusted to carry them. Most of the people working
-                  in the group today were either known to the family or
-                  came in through someone the family already knew.
+                  in the group today were either known to us or came in
+                  through someone we already knew.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
@@ -103,7 +100,7 @@ export default function CareersPage() {
                   If you read the work and find that it speaks to you, write
                   to the office. Tell us what you can do, where you have
                   worked before, and what kind of work you would like to be
-                  considered for. The family reads every letter that arrives.
+                  considered for. We read every letter that arrives.
                 </p>
               </RevealOnScroll>
             </div>
@@ -129,11 +126,8 @@ export default function CareersPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-mls-ink/10">
             {values.map((v, i) => (
-              <RevealOnScroll key={v.num} delay={i * 80}>
+              <RevealOnScroll key={v.title} delay={i * 80}>
                 <div className="bg-mls-cream p-8 lg:p-10 h-full">
-                  <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                    {v.num}
-                  </p>
                   <h3 className="font-display text-2xl md:text-3xl tracking-tight leading-tight text-mls-ink mb-5">
                     {v.title}
                   </h3>

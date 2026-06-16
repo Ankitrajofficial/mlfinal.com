@@ -45,7 +45,7 @@ export default function GalleryPage() {
           <div className="mb-10">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-3">
-                02 · Stone
+                Stone
               </p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-mls-ink tracking-tight">
                 At the quarry, at the yard.
@@ -79,7 +79,7 @@ export default function GalleryPage() {
           <div className="mb-10">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-3">
-                03 · The Kunhari cluster
+                The Kunhari cluster
               </p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-mls-ink tracking-tight">
                 M3, Princess, Victoria, Vyanjanam.
@@ -113,7 +113,7 @@ export default function GalleryPage() {
           <div className="max-w-3xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                04 · The photographers
+                The photographers
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -141,7 +141,7 @@ export default function GalleryPage() {
           <div className="max-w-3xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                05 · The archive
+                The archive
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>

@@ -28,7 +28,7 @@ export default function StudentHousingPage() {
           <div className="max-w-4xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                04 · Student Housing
+                Student Housing
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -88,7 +88,7 @@ export default function StudentHousingPage() {
             <div className="lg:col-span-5">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                  01 · The Girls&rsquo; Campus
+                  The Girls&rsquo; Campus
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
@@ -161,7 +161,7 @@ export default function StudentHousingPage() {
             <div className="lg:col-span-5">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                  02 · The Boys&rsquo; Residences
+                  The Boys&rsquo; Residences
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>

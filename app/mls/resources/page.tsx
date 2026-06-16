@@ -17,7 +17,7 @@ export default function ResourcesHubPage() {
     {
       href: '/resources/blog',
       label: 'Blog',
-      body: 'The institutional reading of the work. Written by members of the family. The archive begins shortly.',
+      body: 'The institutional reading of the work. Written in-house. The archive begins shortly.',
     },
     {
       href: '/resources/catalogues',

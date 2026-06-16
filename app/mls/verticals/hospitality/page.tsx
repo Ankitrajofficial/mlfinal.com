@@ -7,9 +7,9 @@ import PlaceholderImage from '@/components/shared/PlaceholderImage'
 
 export const metadata = buildMetadata({
   site: 'mls',
-  title: 'Hospitality — M3 Boutique Hotel',
+  title: 'Hospitality — M3 Hotel',
   description:
-    'M3 Boutique Hotel in Kunhari, Kota — opened in 2016 for the families of students who came for the coaching examinations. M3 Mini Mall adjacent.',
+    'M3 Hotel in Kunhari, Kota — opened in 2016 for the families of students who came for the coaching examinations. M3 Mini Mall shares the same building.',
   path: '/verticals/hospitality',
 })
 
@@ -22,14 +22,14 @@ export default function HospitalityPage() {
           <div className="max-w-4xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                03 · Hospitality
+                Hospitality
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
               <h1 className="font-display text-5xl md:text-7xl lg:text-[7rem] tracking-tighter leading-[1.02] text-mls-ink mb-8">
-                A strategic expansion.
+                Built for the families.
                 <span className="block italic text-mls-gold mt-2">
-                  Into Kota, for the families.
+                  An expansion into Kota.
                 </span>
               </h1>
             </RevealOnScroll>
@@ -50,7 +50,7 @@ export default function HospitalityPage() {
             <div className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-mls-ink/85">
               <RevealOnScroll>
                 <p>
-                  M3 Boutique Hotel was opened in {MLS_SCALE.m3Opened} in
+                  M3 Hotel was opened in {MLS_SCALE.m3Opened} in
                   Kunhari, the same neighbourhood of Kota where the
                   family&rsquo;s student residences are located. The two
                   operations are within five minutes of each other. The
@@ -107,12 +107,12 @@ export default function HospitalityPage() {
             <div className="lg:col-span-7">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                  02 · M3 Mini Mall
+                  M3 Mini Mall
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[1.05] text-mls-ink mb-6">
-                  Adjacent to the hotel.
+                  Under the same roof.
                   <span className="block italic text-mls-gold mt-2">
                     Built for the neighbourhood.
                   </span>
@@ -121,7 +121,7 @@ export default function HospitalityPage() {
               <RevealOnScroll delay={200}>
                 <div className="space-y-5 text-lg leading-relaxed text-mls-ink/85">
                   <p>
-                    M3 Mini Mall sits adjacent to the hotel — small,
+                    M3 Mini Mall sits within the same building as the hotel — small,
                     walkable, with the kind of shops a family living or
                     visiting in Kunhari actually needs. Stationery, daily
                     provisions, food, and a few specialised retailers.

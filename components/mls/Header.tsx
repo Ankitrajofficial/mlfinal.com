@@ -17,16 +17,36 @@ export default function MLSHeader() {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const pathname = usePathname()
   const headerRef = useRef<HTMLElement>(null)
-  const navTextClass = 'text-mls-ink/80 hover:text-mls-gold'
-  const menuLineClass = 'bg-mls-ink'
 
-  // Scroll-aware condensation.
+  // Home detection works in both local (/mls) and production (clean /) routing.
+  const routeBase = pathname.startsWith('/mls') ? '/mls' : ''
+  const homeHref = routeBase || '/'
+  const isHome = pathname === homeHref || pathname === `${homeHref}/`
+  const [overHero, setOverHero] = useState(isHome)
+
+  // Transparent over the dark homepage hero; solid once the menu opens.
+  const navOnDark = overHero && !mobileOpen
+
+  const navTextClass = navOnDark
+    ? 'text-mls-cream/85 hover:text-mls-gold'
+    : 'text-mls-ink/80 hover:text-mls-gold'
+  const menuLineClass = navOnDark ? 'bg-mls-cream' : 'bg-mls-ink'
+
+  // Scroll-aware: condense on scroll, ride transparent over the homepage hero.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 24)
+      setOverHero(isHome && y < window.innerHeight * 0.72)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    window.addEventListener('resize', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [isHome])
 
   // Close menus on route change
   useEffect(() => {
@@ -48,35 +68,39 @@ export default function MLSHeader() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-mls-ink/8 shadow-[0_10px_28px_rgba(0,0,0,0.06)] transition-all duration-500 ease-editorial"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-editorial ${
+        navOnDark
+          ? 'bg-transparent border-b border-transparent'
+          : 'bg-white border-b border-mls-ink/8 shadow-[0_10px_28px_rgba(0,0,0,0.06)]'
+      }`}
     >
       <div className="mx-auto px-4 md:px-12 lg:px-16 max-w-[88rem]">
         <div
           className={`flex items-center justify-between transition-all duration-500 ${
-            scrolled ? 'h-11 lg:h-18' : 'h-12 lg:h-24'
+            scrolled && !overHero ? 'h-11 lg:h-18' : 'h-12 lg:h-24'
           }`}
         >
           {/* MLS Lockup */}
           <Link
-            href="/"
+            href={homeHref}
             className="group flex min-w-0 flex-1 items-center gap-3 lg:flex-none"
             aria-label={`${MLS_SITE.name} — Home`}
           >
             <Image
-              src={MLS_ASSETS.mark.onLight}
+              src={navOnDark ? MLS_ASSETS.mark.onDark : MLS_ASSETS.mark.onLight}
               alt=""
-              width={48}
-              height={48}
+              width={64}
+              height={64}
               className={`shrink-0 transition-all duration-500 ease-editorial ${
-                scrolled ? 'h-7 w-7 lg:h-10 lg:w-10' : 'h-8 w-8 lg:h-12 lg:w-12'
+                scrolled && !overHero ? 'h-8 w-8 lg:h-12 lg:w-12' : 'h-10 w-10 lg:h-16 lg:w-16'
               }`}
               priority
             />
             <span className="flex min-w-0 flex-col leading-none">
-              <span className="truncate font-display text-[1.08rem] font-semibold text-mls-ink transition-colors duration-300 group-hover:text-mls-gold md:text-[1.55rem]">
+              <span className={`truncate font-display text-[1.2rem] font-semibold transition-colors duration-300 group-hover:text-mls-gold md:text-[1.85rem] ${navOnDark ? 'text-mls-cream' : 'text-mls-ink'}`}>
                 {MLS_SITE.name}
               </span>
-              <span className="mt-1 hidden font-body text-[0.62rem] uppercase tracking-marker text-mls-gold sm:block">
+              <span className="mt-1 hidden font-body text-[0.64rem] uppercase tracking-marker text-mls-gold sm:block">
                 Since 1972 · Bijolia
               </span>
             </span>
@@ -128,7 +152,7 @@ export default function MLSHeader() {
                             href={String(child.external)}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-between px-5 py-3 text-sm text-mls-ink/80 hover:bg-mls-cream hover:text-mls-gold transition-colors duration-200"
+                            className="flex items-center justify-between px-5 py-3 text-sm text-mls-ink/80 hover:bg-mls-buff/30 hover:text-mls-gold transition-colors duration-200"
                           >
                             <span>{child.label}</span>
                             <span className="text-mls-slate text-xs" aria-hidden>
@@ -139,7 +163,7 @@ export default function MLSHeader() {
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="block px-5 py-3 text-sm text-mls-ink/80 hover:bg-mls-cream hover:text-mls-gold transition-colors duration-200"
+                            className="block px-5 py-3 text-sm text-mls-ink/80 hover:bg-mls-buff/30 hover:text-mls-gold transition-colors duration-200"
                           >
                             {child.label}
                           </Link>

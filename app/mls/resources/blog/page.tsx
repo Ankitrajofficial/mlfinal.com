@@ -56,9 +56,9 @@ export default function BlogPage() {
             </RevealOnScroll>
             <RevealOnScroll delay={250}>
               <p className="text-lg leading-relaxed text-mls-ink/85 max-w-2xl mb-10">
-                The blog begins as the family begins. There is no editorial
+                The blog begins as the work begins. There is no editorial
                 team waiting in the wings, and there will not be one. Entries
-                are written by family members in their own voice, when they
+                are written in their own voice, when they
                 have something worth writing.
               </p>
             </RevealOnScroll>

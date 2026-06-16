@@ -50,7 +50,7 @@ const HOMEPAGE_VERTICAL_FACTS: Record<string, Array<{ label: string; value: stri
     {
       label: 'Operations',
       value:
-        'Kitchen, housekeeping, reception, and guest enquiries are handled directly by the family operation.',
+        'Kitchen, housekeeping, reception, and guest enquiries are handled directly, in-house.',
     },
   ],
 }
@@ -166,13 +166,13 @@ export default function MLSHomePage() {
                   from it. The work since has stayed close to that founding
                   shape — extraction, transport, hospitality, housing,
                   food. None of it spun off into separate companies. Every
-                  vertical has been carried by the same family.
+                  vertical has stayed in-house.
                 </p>
                 <p>
                   The group operates five verticals today. The largest is
                   still stone and its export, run as KHADANE™. The other
                   four were taken on, in turn, where an obligation or an
-                  operational need landed in front of the family and we
+                  operational need landed in front of us and we
                   could meet it with our own hands.
                 </p>
               </>
@@ -257,7 +257,7 @@ export default function MLSHomePage() {
             <div className="lg:col-span-7">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                  05 · The Belt
+                  The Belt
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
@@ -352,7 +352,7 @@ export default function MLSHomePage() {
             <div className="lg:col-span-5">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                  06 · The Trade Brand
+                  The Export Mark
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
@@ -407,7 +407,7 @@ export default function MLSHomePage() {
             <div className="lg:col-span-5">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                  07 · The Kota Cluster
+                  The Kota Cluster
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
@@ -420,7 +420,7 @@ export default function MLSHomePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={200}>
                 <p className="text-lg leading-relaxed text-mls-ink/85 mb-6 max-w-md">
-                  In Kunhari — a neighbourhood of Kota — the family operates
+                  In Kunhari — a neighbourhood of Kota — we operate
                   M3 Hotel, Vyanjanam, two girls&rsquo; residences, and three
                   PG accommodations for boys. They sit within five minutes
                   of each other. The kitchen serves the residences in the
@@ -498,7 +498,7 @@ export default function MLSHomePage() {
           SECTION 08 — VYANJANAM DARK BLOCK
           B&W contrast section. Vyanjanam treatment.
           ============================================================ */}
-      <VyanjanamSection eyebrow="08 · The Kitchen">
+      <VyanjanamSection eyebrow="The Kitchen">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-7">
             <RevealOnScroll>
@@ -516,11 +516,11 @@ export default function MLSHomePage() {
             </RevealOnScroll>
             <RevealOnScroll delay={250}>
               <p className="text-lg leading-relaxed text-vyanjanam-light/80 max-w-xl">
-                Vyanjanam is the family&rsquo;s kitchen for the coaching
+                Vyanjanam is our kitchen for the coaching
                 students of Kota. Pure vegetarian. Sourced from our own farms
                 in Bijolia where possible, from trusted vendors otherwise.
-                The dairy on a student&rsquo;s tray came from the family
-                house. So did the buttermilk.
+                The dairy on a student&rsquo;s tray came from our own
+                farm. So did the buttermilk.
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={350}>
@@ -559,7 +559,7 @@ export default function MLSHomePage() {
             <div className="lg:col-span-5">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                  09 · The Working House
+                  The Working House
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
@@ -573,7 +573,7 @@ export default function MLSHomePage() {
               <RevealOnScroll delay={200}>
                 <p className="text-lg leading-relaxed text-mls-ink/85 mb-8 max-w-md">
                   MLS is not introduced through a posed family photograph.
-                  It is read through the places the family keeps running:
+                  It is read through the places it keeps running:
                   stone yards, fuel stations, residences, kitchens, and hotel
                   floors. The full family line is carried on the Legacy page.
                 </p>
@@ -612,7 +612,7 @@ export default function MLSHomePage() {
           <div className="max-w-4xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                10 · An institutional partner
+                An institutional partner
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -626,7 +626,7 @@ export default function MLSHomePage() {
                   INSTITUTIONAL_PARTNER.role.slice(1)}
                 . Joined the work {INSTITUTIONAL_PARTNER.poeticPhrase} —{' '}
                 {INSTITUTIONAL_PARTNER.directPhrase}. He is named here
-                because the institutional work of the family cannot honestly
+                because the institutional work of the group cannot honestly
                 be told without him.
               </p>
             </RevealOnScroll>
@@ -712,7 +712,7 @@ export default function MLSHomePage() {
             <div className="lg:col-span-7">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                  12 · The Office
+                  The Office
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
@@ -727,7 +727,7 @@ export default function MLSHomePage() {
                 <p className="text-lg leading-relaxed text-mls-cream/85 max-w-xl mb-3">
                   Whichever vertical your inquiry concerns, the same office
                   reads it. Stone export inquiries are routed to KHADANE™
-                  on the same day; everything else is answered by the family
+                  on the same day; everything else is answered by us
                   directly.
                 </p>
               </RevealOnScroll>

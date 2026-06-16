@@ -16,7 +16,7 @@ export const metadata = buildMetadata({
   site: 'mls',
   title: 'Automotive & Fuel',
   description:
-    'Dhakar Motors (Ashok Leyland authorised dealer, since 2013, Dabi, Bundi District) and Dharnidhar Fuels (two stations on NH 27 — IOC + Nayara Energy partnerships).',
+    'Dhakar Motors (Ashok Leyland authorised service center, since 2012, Dabi, Bundi District) and Dharnidhar Fuels (two stations on NH 27 — IOC + Nayara Energy partnerships).',
   path: '/verticals/automotive-fuel',
 })
 
@@ -29,7 +29,7 @@ export default function AutomotiveFuelPage() {
           <div className="max-w-4xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                02 · Automotive &amp; Fuel
+                Automotive &amp; Fuel
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -57,7 +57,7 @@ export default function AutomotiveFuelPage() {
             number="01"
             eyebrow="The shape of the expansion"
             heading="The fleet came first."
-            subLine="The retail dealership followed."
+            subLine="The service center followed."
             layout="split"
             body={
               <>
@@ -70,8 +70,8 @@ export default function AutomotiveFuelPage() {
                 </p>
                 <p>
                   In {MLS_SCALE.dhakarMotorsOpened}, the family opened
-                  Dhakar Motors — an Ashok Leyland authorised dealership at
-                  Dabi, in {LOCATIONS.dhakarMotorsLocation.split(', ').slice(1).join(', ')}.
+                  Dhakar Motors — an Ashok Leyland authorised service center,
+                  first at Talera and now based at Dabi, in {LOCATIONS.dhakarMotorsLocation.split(', ').slice(1).join(', ')}.
                   Dharnidhar Fuels followed, two stations on NH 27 near
                   Nala-ke-Mataji, in partnership with Indian Oil and Nayara
                   Energy.
@@ -90,8 +90,8 @@ export default function AutomotiveFuelPage() {
               <RevealOnScroll>
                 <PlaceholderImage
                   label="DHAKAR MOTORS · DABI"
-                  title="The dealership floor."
-                  spec="1200 × 1500px · Ashok Leyland dealership, working day"
+                  title="The service bay."
+                  spec="1200 × 1500px · Ashok Leyland service center, working day"
                   swapPath="/img/dhakar-motors.jpg"
                   aspectRatio="aspect-[4/5]"
                   variant="mls-tobacco"
@@ -101,7 +101,7 @@ export default function AutomotiveFuelPage() {
             <div className="lg:col-span-7 lg:pl-4">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                  02 · Dhakar Motors
+                  Dhakar Motors
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
@@ -118,15 +118,15 @@ export default function AutomotiveFuelPage() {
                     Dhakar Motors operates from Dabi in Bundi District —
                     deliberately placed to serve the commercial-vehicle
                     operators of the stone belt and the highways that pass
-                    through it. Sales, service, parts, and operator
-                    training, all under one roof.
+                    through it. Service, parts, repairs, and operator
+                    support, all under one roof.
                   </p>
                   <p>
-                    The dealership has been carried by Mr. Rajesh Dhakar
+                    The service center has been carried by Mr. Rajesh Dhakar
                     since opening. The institutional knowledge of trucks
                     that the family had built up over forty years of moving
-                    its own stone is now extended to the operators who buy
-                    them from us.
+                    its own stone now keeps the operators of this belt
+                    running.
                   </p>
                 </div>
               </RevealOnScroll>
@@ -183,7 +183,7 @@ export default function AutomotiveFuelPage() {
             <div className="lg:col-span-7 order-2 lg:order-1">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                  03 · Dharnidhar Fuels
+                  Dharnidhar Fuels
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>

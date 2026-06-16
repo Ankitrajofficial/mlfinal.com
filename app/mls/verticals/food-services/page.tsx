@@ -19,7 +19,7 @@ export const metadata = buildMetadata({
   site: 'mls',
   title: 'Food Services — Vyanjanam',
   description:
-    "Vyanjanam — the family's kitchen for the coaching students of Kota. Pure vegetarian, 1,000+ daily meals, FSSAI certified, since 2023. Sourced from the family farm at Bijolia.",
+    'Vyanjanam — the kitchen for the coaching students of Kota. Pure vegetarian, 1,000+ daily meals, FSSAI certified, since 2023. Produce sourced 50–60% from own farms in Bijolia, the rest from trusted vendors.',
   path: '/verticals/food-services',
 })
 
@@ -93,7 +93,7 @@ export default function FoodServicesPage() {
         <div className="max-w-5xl">
           <RevealOnScroll>
             <p className="font-mono text-[11px] uppercase tracking-marker text-vyanjanam-light mb-6">
-              05 · Food Services · Vyanjanam
+              Food Services · Vyanjanam
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={100}>
@@ -106,7 +106,7 @@ export default function FoodServicesPage() {
           </RevealOnScroll>
           <RevealOnScroll delay={250}>
             <p className="font-display italic text-2xl md:text-3xl text-vyanjanam-light/90 max-w-3xl leading-snug">
-              Vyanjanam is the family&rsquo;s kitchen for the coaching
+              Vyanjanam is our kitchen for the coaching
               students of Kota. {MLS_SCALE.vyanjanamDailyMeals}. Pure
               vegetarian. Since {MLS_SCALE.vyanjanamFounded}.
             </p>
@@ -120,7 +120,7 @@ export default function FoodServicesPage() {
           <div className="max-w-4xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                02 · The reading
+                The reading
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -132,7 +132,7 @@ export default function FoodServicesPage() {
               <div className="space-y-5 text-lg leading-relaxed text-mls-ink/85">
                 <p>
                   Vyanjanam is the operating brand of{' '}
-                  {ENTITIES.vyanjanam.vehicle}, the family&rsquo;s
+                  {ENTITIES.vyanjanam.vehicle}, our
                   food-services vehicle. The kitchen serves three streams,
                   read separately below: dine-in mess service at Kunhari;
                   tiffin delivery to the boys&rsquo; residences in the same
@@ -140,10 +140,10 @@ export default function FoodServicesPage() {
                   kitchen that serves the two girls&rsquo; campuses.
                 </p>
                 <p>
-                  All three draw on the same sourcing chain. {MLS_SCALE.vegSourcingPct}. The dairy is from
-                  the family&rsquo;s own farm in Bijolia. The institutional
-                  knowledge of feeding coaching students at scale has been
-                  developed by the family over the last several years.
+                  All three draw on the same sourcing chain. {MLS_SCALE.vegSourcingPct}. The dairy is our
+                  own, from Bijolia. The know-how of feeding coaching
+                  students at scale has been built over the last several
+                  years.
                 </p>
               </div>
             </RevealOnScroll>
@@ -158,7 +158,7 @@ export default function FoodServicesPage() {
             <div className="lg:col-span-7">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                  03 · The open mess
+                  The open mess
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
@@ -173,7 +173,7 @@ export default function FoodServicesPage() {
                 <div className="space-y-5 text-lg leading-relaxed text-mls-ink/85">
                   <p>
                     The dine-in service in Kunhari is open to coaching
-                    students from outside the family&rsquo;s own residences,
+                    students from outside our own residences,
                     to walk-in guests, and to visiting parents. The mess
                     operates daily, with the kitchen closed for deep
                     cleaning on the {MLS_SCALE.vyanjanamClosure.toLowerCase()}.
@@ -210,7 +210,7 @@ export default function FoodServicesPage() {
             <div className="lg:col-span-5">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-vyanjanam-light mb-5">
-                  04 · The place in pictures
+                  The place in pictures
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
@@ -271,21 +271,21 @@ export default function FoodServicesPage() {
           <div className="max-w-5xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                05 · The sourcing chain
+                The sourcing chain
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-mls-ink mb-10">
-                From the farm in Bijolia
+From the belt to the tray
                 <span className="block italic text-mls-gold mt-2">
-                  to the tray in Kota.
+                  in Kota.
                 </span>
               </h2>
             </RevealOnScroll>
             <RevealOnScroll delay={200}>
               <p className="text-lg leading-relaxed text-mls-ink/85 mb-12 max-w-3xl">
                 The chain the kitchen serves from is short enough that the
-                family can name every link. We read it here.
+                kitchen can name every link. We read it here.
               </p>
             </RevealOnScroll>
           </div>
@@ -293,31 +293,24 @@ export default function FoodServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-mls-ink/10">
             {[
               {
-                num: '01',
                 title: 'Bijolia farm.',
-                body: 'Vegetables, where the season permits. 50-60% of the produce from the family farm.',
+                body: 'Vegetables, where the season permits — 50 to 60% from our own farm, the rest from trusted vendors.',
               },
               {
-                num: '02',
                 title: 'Bijolia dairy.',
-                body: "The family's own dairy. Milk and curd carried to the Kota home in the morning.",
+                body: "Our own dairy. Milk and curd carried to the Kota home in the morning.",
               },
               {
-                num: '03',
-                title: "The family kitchen.",
-                body: "From the Kota house, Rahul Ji's mother sends the day's buttermilk to the kitchen.",
+                title: "Our kitchen.",
+                body: "From the Kota house, the day's buttermilk is sent to the kitchen each morning.",
               },
               {
-                num: '04',
                 title: 'The student tray.',
                 body: 'Vyanjanam open mess. Tiffin to the boys. Divine Dining at the girls&rsquo; campuses.',
               },
             ].map((step, i) => (
-              <RevealOnScroll key={step.num} delay={i * 80}>
+              <RevealOnScroll key={step.title} delay={i * 80}>
                 <div className="bg-mls-cream p-7 lg:p-8 h-full">
-                  <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-4">
-                    {step.num}
-                  </p>
                   <h3 className="font-display text-xl lg:text-2xl text-mls-ink tracking-tight leading-tight mb-3">
                     {step.title}
                   </h3>
@@ -338,7 +331,7 @@ export default function FoodServicesPage() {
           <div className="mb-12">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-3">
-                06 · The founders
+                The founders
               </p>
               <h2 className="font-display text-3xl md:text-4xl text-mls-ink tracking-tight">
                 Read by name.
@@ -360,8 +353,8 @@ export default function FoodServicesPage() {
               },
               {
                 name: `Mr. ${INSTITUTIONAL_PARTNER.name}`,
-                role: 'EXECUTION BACKBONE · FAMILY STANDING',
-                body: `Anchors the kitchen and the residences. Joined the work in ${INSTITUTIONAL_PARTNER.tenureStart} and has stood beside the family for ${INSTITUTIONAL_PARTNER.tenureYears} years. Named here because the work cannot be told without him.`,
+                role: 'EXECUTION BACKBONE · LONG STANDING',
+                body: `Anchors the kitchen and the residences. Joined the work in ${INSTITUTIONAL_PARTNER.tenureStart} and has stood beside the group for ${INSTITUTIONAL_PARTNER.tenureYears} years. Named here because the work cannot be told without him.`,
               },
             ].map((founder, i) => (
               <RevealOnScroll key={founder.name} delay={i * 100}>
@@ -396,7 +389,7 @@ export default function FoodServicesPage() {
           <div className="mb-12 max-w-3xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-3">
-                07 · The subscription architecture
+                The subscription architecture
               </p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-mls-ink tracking-tight leading-[1.1] mb-6">
                 Four plans.
@@ -475,7 +468,7 @@ export default function FoodServicesPage() {
           <div className="max-w-3xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                08 · The voice of students
+                The voice of students
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -497,7 +490,7 @@ export default function FoodServicesPage() {
             <div className="lg:col-span-7">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                  09 · Reach the kitchen
+                  Reach the kitchen
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>

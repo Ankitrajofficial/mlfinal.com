@@ -34,7 +34,7 @@ export default function StoneExportBridgePage() {
           <div className="max-w-4xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                01 · Stone &amp; Export
+                Stone &amp; Export
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -66,19 +66,18 @@ export default function StoneExportBridgePage() {
                   operations. {KHADANE_SCALE.quarries} quarries across the
                   Bijolia belt are operated under the family&rsquo;s own
                   hand. {KHADANE_SCALE.annualOutput} of annual output moves
-                  through multiple in-house processing units to the major
-                  Indian sea ports.
+                  through multiple in-house processing units, ready for
+                  export.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <p>
-                  For more than twenty-five years, this stone reached its
-                  overseas markets through intermediaries — agents,
-                  consolidators, traders. The family knew the quarry and
-                  the loading port, but rarely the building or garden it
-                  ended up in. In 2026 the family consolidated all
-                  direct buyer-to-buyer export under KHADANE™, the
-                  trade-facing brand of {ENTITIES.dsg.name}.
+                  For the last four to five decades, this stone has reached
+                  overseas markets and travelled the world. What has changed
+                  is the route: the family now consolidates all direct
+                  buyer-to-buyer export under KHADANE™, the trade-facing
+                  brand of {ENTITIES.dsg.name} — the quarry and the buyer,
+                  on the same line, with no one in between.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={200}>

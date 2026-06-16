@@ -54,7 +54,7 @@ export default function OurLegacyPage() {
             </RevealOnScroll>
             <RevealOnScroll delay={250}>
               <p className="font-display italic text-2xl md:text-3xl text-mls-tobacco max-w-3xl leading-snug">
-                A reading of the work, the brothers who carried it, and the
+                A reading of the work, the brothers who built it, and the
                 generation that operates it now.
               </p>
             </RevealOnScroll>
@@ -83,7 +83,7 @@ export default function OurLegacyPage() {
                 <p>
                   The group began in 1972, in Bijolia, with the first stone
                   cut from the family&rsquo;s own land. The two brothers
-                  founders the work — Shri Bhura Lal Dhakar and his younger
+                  founded the work — Shri Bhura Lal Dhakar and his younger
                   brother, Shri Mohan Lal Dhakar, for whom the group is
                   named. Their decision was simple: work the stone, work the
                   belt, and stay close to home.
@@ -107,7 +107,7 @@ export default function OurLegacyPage() {
                   KHADANE™ in 2026. For the previous{' '}
                   {FOUNDING.indirectExportYears.toLowerCase()}, the stone
                   reached its overseas markets through intermediaries; the
-                  family knew the quarry and the loading port, but not
+                  family knew the quarry and the loading, but not
                   always the building it ended up in. KHADANE™ closes that
                   distance.
                 </p>
@@ -260,11 +260,11 @@ export default function OurLegacyPage() {
                   Mr. {INSTITUTIONAL_PARTNER.name} joined the work{' '}
                   {INSTITUTIONAL_PARTNER.poeticPhrase} — that is,{' '}
                   {INSTITUTIONAL_PARTNER.directPhrase}. He anchors Vyanjanam
-                  and Divine Dining and has stood beside the family for{' '}
+                  and Divine Dining and has stood beside the group for{' '}
                   {INSTITUTIONAL_PARTNER.tenureYears} years.
                 </p>
                 <p className="font-display italic text-lg text-mls-gold">
-                  Named here because the institutional work of the family
+                  Named here because the institutional work of the group
                   cannot honestly be told without him.
                 </p>
               </div>

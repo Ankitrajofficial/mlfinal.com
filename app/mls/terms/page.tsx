@@ -44,8 +44,8 @@ export default function TermsPage() {
                 <p>
                   This site is operated by {ENTITIES.group.name}, a family
                   enterprise based in Bijolia, Rajasthan, India. The
-                  content reflects the work of the group as the family
-                  reads it. Where photographs are pending, the site reads
+                  content reflects the work of the group as we
+                  read it. Where photographs are pending, the site reads
                   honestly about that.
                 </p>
               </div>
@@ -59,7 +59,7 @@ export default function TermsPage() {
                 <p>
                   The institutional facts on this site — the founding
                   year, the family roster, the operational scale of the
-                  verticals — are read and verified by the family. Pricing,
+                  verticals — are read and verified by us. Pricing,
                   availability, lead times, and similar transactional
                   information are not published here; for those, write to
                   The Office directly.
@@ -75,10 +75,10 @@ export default function TermsPage() {
                 <p>
                   Read the site, share what you find useful, write to us
                   with questions. Don&rsquo;t scrape it for commercial
-                  republication, don&rsquo;t copy the family&rsquo;s
+                  republication, don&rsquo;t copy our
                   writing to your own materials, don&rsquo;t use the
                   KHADANE™ wordmark or the MLS lockup outside the
-                  context of the family&rsquo;s own work.
+                  context of our own work.
                 </p>
               </div>
             </RevealOnScroll>
@@ -89,10 +89,10 @@ export default function TermsPage() {
                   Brand &amp; intellectual property
                 </h2>
                 <p>
-                  KHADANE™ is a trade mark of the family&rsquo;s stone
+                  KHADANE™ is a trade mark of the group&rsquo;s stone
                   export operation. The MLS lockup, the four-pillars mark,
                   and the Vyanjanam handwritten Hindi wordmark are the
-                  property of the family. Use them only with our written
+                  property of the group. Use them only with our written
                   permission.
                 </p>
               </div>

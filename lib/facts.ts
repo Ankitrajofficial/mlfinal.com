@@ -122,7 +122,7 @@ export const MLS_SCALE = {
   m3Rooms: 'Boutique scale', // PUBLIC claim language (replaces "Forty rooms")
   m3RoomsInternal: 40, // Internal data only
   m3Opened: 2016,
-  dhakarMotorsOpened: 2013,
+  dhakarMotorsOpened: 2012,
   dharnidharStations: 'Two stations',
   vyanjanamFounded: 2023,
   princessOpened: 2018,

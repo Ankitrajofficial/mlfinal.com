@@ -64,7 +64,7 @@ export default function GirlsCampusPage() {
           <div className="mb-12">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-3">
-                02 · The two houses
+                The two houses
               </p>
               <h2 className="font-display text-3xl md:text-4xl text-mls-ink tracking-tight">
                 Read in order.
@@ -127,7 +127,7 @@ export default function GirlsCampusPage() {
             <div className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-mls-ink/85">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5 not-italic">
-                  03 · The day
+                  The day
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
@@ -178,7 +178,7 @@ export default function GirlsCampusPage() {
           <div className="lg:col-span-7">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-6">
-                04 · The kitchen
+                The kitchen
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -231,7 +231,7 @@ export default function GirlsCampusPage() {
           <div className="max-w-3xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                05 · The voice of students
+                The voice of students
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -264,7 +264,7 @@ export default function GirlsCampusPage() {
           <div className="max-w-4xl">
             <RevealOnScroll>
               <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-8">
-                06 · The commitment
+                The commitment
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
@@ -290,6 +290,14 @@ export default function GirlsCampusPage() {
                   There is no contracted operator between the residents
                   and the family that owns the operation.
                 </p>
+                <p>
+                  Each residence has resident wardens who live on site, not
+                  a rotating contract crew. Meals come from Divine Dining,
+                  the family&rsquo;s own kitchen; housekeeping, the gate, and
+                  the night arrangements are all managed in-house. A parent
+                  reaches the family directly &mdash; not a call centre &mdash;
+                  and can expect a real answer.
+                </p>
               </div>
             </RevealOnScroll>
             <RevealOnScroll delay={400}>
@@ -311,7 +319,7 @@ export default function GirlsCampusPage() {
             <div className="lg:col-span-7">
               <RevealOnScroll>
                 <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                  07 · Reach the campus
+                  Reach the campus
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>

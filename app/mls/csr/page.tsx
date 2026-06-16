@@ -13,7 +13,7 @@ export const metadata = buildMetadata({
   site: 'mls',
   title: 'CSR',
   description:
-    "The family's institutional commitments — long-tenured workforce, community-fixture operations in Kunhari, sourcing chain transparency, direct buyer relationships. The CSR is the way the operations run.",
+    "The group's institutional commitments — long-tenured workforce, community-fixture operations in Kunhari, sourcing-chain transparency, direct buyer relationships. The CSR is the way the operations run.",
   path: '/csr',
 })
 
@@ -27,24 +27,20 @@ export const metadata = buildMetadata({
 export default function CSRPage() {
   const commitments = [
     {
-      num: '01',
       title: 'Long-tenured workforce as a standard.',
-      body: `The family's commitment to its workforce is measured in years of tenure, not in program enrolments. Mr. ${INSTITUTIONAL_PARTNER.name} joined in ${INSTITUTIONAL_PARTNER.tenureStart} and stands as family. The institutional pattern repeats across the quarry floor, the residences, the kitchen, and the road.`,
+      body: `Our commitment to the workforce is measured in years of tenure, not in programme enrolments. Mr. ${INSTITUTIONAL_PARTNER.name} joined in ${INSTITUTIONAL_PARTNER.tenureStart} and stands as one of our own. The institutional pattern repeats across the quarry floor, the residences, the kitchen, and the road.`,
     },
     {
-      num: '02',
       title: 'A community fixture, not a commercial post.',
-      body: "In Kota's Kunhari neighbourhood, every operation the group runs — the residences, M3 Hotel, M3 Mini Mall, Vyanjanam — was built as a fixture of the neighbourhood, not as a transactional service. The family lives, eats, and operates from within the community it serves.",
+      body: "In Kota's Kunhari neighbourhood, every operation the group runs — the residences, M3 Hotel, M3 Mini Mall, Vyanjanam — was built as a fixture of the neighbourhood, not as a transactional service. We live, eat, and operate from within the community we serve.",
     },
     {
-      num: '03',
       title: 'A sourcing chain we can name.',
-      body: "From the dairy farm in Bijolia to the buttermilk on a student's tray in Kota, the food the family serves travels a route the family can name. Sourcing chain transparency is the family's commitment to the people who depend on the meal — and on the people who grow and tend the source.",
+      body: "From the dairy farm in Bijolia to the buttermilk on a student's tray in Kota, the food we serve travels a route we can name. Sourcing-chain transparency is our commitment to the people who depend on the meal — and to the people who grow and tend the source.",
     },
     {
-      num: '04',
       title: 'Direct buyer relationships.',
-      body: 'The shift to direct buyer-to-buyer export under KHADANE™ in 2026 was a CSR decision as much as a commercial one. Eliminating intermediaries means quarry workers see the price closer to source, and the family\'s institutional standing reaches the buyer directly. No layer between the work and the receiver of it.',
+      body: 'The shift to direct buyer-to-buyer export under KHADANE™ in 2026 was a CSR decision as much as a commercial one. Eliminating intermediaries means quarry workers see the price closer to source, and our institutional standing reaches the buyer directly. No layer between the work and the receiver of it.',
     },
   ]
 
@@ -98,11 +94,8 @@ export default function CSRPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-mls-ink/10">
             {commitments.map((c, i) => (
-              <RevealOnScroll key={c.num} delay={i * 80}>
+              <RevealOnScroll key={c.title} delay={i * 80}>
                 <div className="bg-mls-cream p-8 lg:p-12 h-full flex flex-col">
-                  <p className="font-mono text-[11px] uppercase tracking-marker text-mls-gold mb-5">
-                    {c.num}
-                  </p>
                   <h3 className="font-display text-2xl md:text-3xl tracking-tight leading-tight text-mls-ink mb-5">
                     {c.title}
                   </h3>
@@ -141,7 +134,7 @@ export default function CSRPage() {
             <RevealOnScroll delay={350}>
               <div className="mt-12 pt-10 border-t border-mls-cream/15">
                 <p className="text-sm leading-relaxed text-mls-cream/70 max-w-2xl mb-6">
-                  For questions about the family&rsquo;s operating
+                  For questions about our operating
                   philosophy, partnerships, or sourcing principles, write to
                   the office. {FOUNDING.yearsEvergreen}.
                 </p>
