@@ -32,7 +32,7 @@ export default function CSRPage() {
     },
     {
       title: 'A community fixture, not a commercial post.',
-      body: "In Kota's Kunhari neighbourhood, every operation the group runs — the residences, M3 Hotel, M3 Mini Mall, Vyanjanam — was built as a fixture of the neighbourhood, not as a transactional service. We live, eat, and operate from within the community we serve.",
+      body: "In Kota's Kunhari neighbourhood, every operation the group runs — the residences, M3 Boutique Hotel, M3 Mini Mall, Vyanjanam — was built as a fixture of the neighbourhood, not as a transactional service. We live, eat, and operate from within the community we serve.",
     },
     {
       title: 'A sourcing chain we can name.',

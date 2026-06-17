@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { buildMetadata } from '@/lib/seo'
-import { KHADANE_PUBLIC_URL } from '@/lib/site-mls'
 import {
   ENTITIES,
   KHADANE_SCALE,
@@ -72,8 +71,8 @@ export default function StoneExportBridgePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <p>
-                  For the last four to five decades, this stone has reached
-                  overseas markets and travelled the world. What has changed
+                  For more than twenty-five years, this stone has reached
+                  overseas markets. What has changed
                   is the route: the family now consolidates all direct
                   buyer-to-buyer export under KHADANE™, the trade-facing
                   brand of {ENTITIES.dsg.name} — the quarry and the buyer,
@@ -136,7 +135,7 @@ export default function StoneExportBridgePage() {
             </RevealOnScroll>
             <RevealOnScroll delay={400}>
               <Link
-                href={KHADANE_PUBLIC_URL}
+                href="/khadane"
                 className="inline-flex items-center gap-3 px-10 py-5 bg-mls-gold text-mls-ink text-sm font-body tracking-wider uppercase hover:bg-mls-cream hover:gap-4 transition-all duration-400 ease-editorial"
               >
                 Open khadane.com

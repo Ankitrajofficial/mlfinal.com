@@ -7,9 +7,9 @@ import PlaceholderImage from '@/components/shared/PlaceholderImage'
 
 export const metadata = buildMetadata({
   site: 'mls',
-  title: 'Hospitality — M3 Hotel',
+  title: 'Hospitality — M3 Boutique Hotel',
   description:
-    'M3 Hotel in Kunhari, Kota — opened in 2016 for the families of students who came for the coaching examinations. M3 Mini Mall shares the same building.',
+    'M3 Boutique Hotel in Kunhari, Kota — opened in 2016 for the families of students who came for the coaching examinations. M3 Mini Mall shares the same building.',
   path: '/verticals/hospitality',
 })
 
@@ -50,7 +50,7 @@ export default function HospitalityPage() {
             <div className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-mls-ink/85">
               <RevealOnScroll>
                 <p>
-                  M3 Hotel was opened in {MLS_SCALE.m3Opened} in
+                  M3 Boutique Hotel was opened in {MLS_SCALE.m3Opened} in
                   Kunhari, the same neighbourhood of Kota where the
                   family&rsquo;s student residences are located. The two
                   operations are within five minutes of each other. The
@@ -63,8 +63,8 @@ export default function HospitalityPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
                 <p>
-                  M3 is a {MLS_SCALE.m3Rooms.toLowerCase()} hotel — boutique
-                  in the literal sense of the word. The kitchen,
+                  M3 is small by design — boutique in the literal sense,
+                  not the marketing one. The kitchen,
                   housekeeping, and reception are run with the same
                   institutional standards as the residences and the food
                   service. The hotel does not run promotions, does not
@@ -184,7 +184,7 @@ export default function HospitalityPage() {
                       Email
                     </p>
                     <a
-                      href={`mailto:${CONTACT.officeMLS}?subject=M3%20Hotel%20Reservation`}
+                      href={`mailto:${CONTACT.officeMLS}?subject=M3%20Boutique%20Hotel%20Reservation`}
                       className="font-display text-xl text-mls-cream hover:text-mls-gold transition-colors break-all"
                     >
                       {CONTACT.officeMLS}

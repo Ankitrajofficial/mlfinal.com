@@ -28,7 +28,7 @@ export const ENTITIES = {
     acronym: 'MLS',
   },
   dsg: {
-    name: 'Dhakar Stones Group',
+    name: 'Dhakar Stone Group',
     acronym: 'DSG',
   },
   dsi: {
@@ -80,7 +80,7 @@ export const FOUNDING = {
   bijoliaInscriptionsYears: 854, // ~1172 CE Bijolia rock inscriptions; KHADANE side only
   directExportFraming:
     'Indirect exports for over 25 years. Direct buyer-to-buyer export consolidated under KHADANE™ from 2026.',
-  indirectExportYears: '25+ years of indirect exports',
+  indirectExportYears: '25+ years',
 } as const
 
 // ─── SECTION 3: OPERATIONAL SCALE — KHADANE ─────────────────
@@ -109,14 +109,14 @@ export const KHADANE_SCALE = {
 
 export const MLS_SCALE = {
   verticals: 5,
-  verticalsDisplay: '05 verticals',
+  verticalsDisplay: 'Five',
   familyMembers: '50+',
-  groupWorkforce: '1,000+ across group',
-  generations: '03 generations',
-  indirectExportYears: '25+ years of indirect exports',
+  groupWorkforce: '1,000+',
+  generations: 'Three',
+  indirectExportYears: '25+ years',
   vyanjanamDailyMeals: '1,000+ daily meals',
   vyanjanamStudentsServed: 'Over five hundred students',
-  studentHousingTotal: 'Over 570 across portfolio',
+  studentHousingTotal: 'Over 570',
   girlsCampusTotal: 'Over 320 beds',
   boysTotal: 'Over 250 male students',
   m3Rooms: 'Boutique scale', // PUBLIC claim language (replaces "Forty rooms")
@@ -541,7 +541,7 @@ export const CONTACT = {
   // Phones
   groupMain: '+91 98285 71143', // MLS Group + Dharnidhar Fuels + KHADANE v1 public phone
   rajeshDhakarMotors: '+91 97833 04510',
-  vyanjanamReception: '+91 84468 81643', // SHARED with M3 Hotel Reception (both in Kunhari)
+  vyanjanamReception: '+91 84468 81643', // SHARED with M3 Boutique Hotel Reception (both in Kunhari)
   m3HotelReception: '+91 84468 81643', // SHARED with Vyanjanam Reception (operational truth)
   vyanjanamTiffinDelivery: '+91 70732 81643',
   girlsCampus: '+91 83064 81143', // The Princess + Victoria Palace

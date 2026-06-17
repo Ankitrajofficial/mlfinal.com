@@ -54,7 +54,6 @@ export default function AutomotiveFuelPage() {
       <section className="bg-mls-cream py-20 lg:py-28 border-t border-mls-ink/10">
         <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
           <SectionHeader
-            number="01"
             eyebrow="The shape of the expansion"
             heading="The fleet came first."
             subLine="The service center followed."
@@ -63,10 +62,10 @@ export default function AutomotiveFuelPage() {
               <>
                 <p>
                   The stone moves by truck. For the first decades, the
-                  family operated its own fleet from Bijolia to the loading
-                  ports. The work of buying parts, maintaining trucks, and
-                  building up that institutional knowledge of commercial
-                  vehicles eventually outgrew the fleet itself.
+                  family operated its own fleet, moving its own stone out of
+                  Bijolia. The work of buying parts, maintaining trucks, and
+                  building up institutional knowledge of commercial vehicles
+                  eventually became a discipline of its own.
                 </p>
                 <p>
                   In {MLS_SCALE.dhakarMotorsOpened}, the family opened
@@ -206,7 +205,7 @@ export default function AutomotiveFuelPage() {
                   <p>
                     Both stations operate to the standards of the brand
                     partners they carry, with the family&rsquo;s own
-                    institutional discipline around staff tenure, cleanness
+                    institutional discipline around staff tenure, cleanliness
                     of forecourt, and reliability of pumps.
                   </p>
                 </div>

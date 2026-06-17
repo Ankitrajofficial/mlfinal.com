@@ -33,9 +33,9 @@ export default function StudentHousingPage() {
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
               <h1 className="font-display text-5xl md:text-7xl lg:text-[7rem] tracking-tighter leading-[1.02] text-mls-ink mb-8">
-                A strategic expansion.
+                Room, roof, and a family on call.
                 <span className="block italic text-mls-gold mt-2">
-                  Into where the students live.
+                  In Kota.
                 </span>
               </h1>
             </RevealOnScroll>

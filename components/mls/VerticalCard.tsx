@@ -7,7 +7,7 @@ interface VerticalCardProps {
   /** Set true if href is an external site (renders an outbound arrow). */
   external?: boolean
   /** e.g. "01" */
-  number: string
+  number?: string
   /** e.g. "Stone & Export" */
   title: string
   /** Trade brand line, e.g. "KHADANE™" */
@@ -55,12 +55,9 @@ export default function VerticalCard({
     <div
       className={`group relative h-full flex flex-col justify-between p-8 lg:p-10 border transition-colors duration-500 ease-editorial ${variantStyles[variant]}`}
     >
-      {/* Top: number + brand */}
+      {/* Top: label */}
       <div>
-        <div className="flex items-baseline justify-between mb-6">
-          <span className="font-mono text-[10px] uppercase tracking-marker opacity-60">
-            {number}
-          </span>
+        <div className="flex items-baseline mb-6">
           <span className="font-mono text-[10px] uppercase tracking-marker opacity-50">
             Vertical
           </span>

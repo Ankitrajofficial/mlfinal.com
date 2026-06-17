@@ -72,7 +72,7 @@ const verticals = [
     code: 'III',
     icon: Hotel,
     name: 'Hospitality',
-    brand: 'M3 Hotel',
+    brand: 'M3 Boutique Hotel',
     note: 'Kota hospitality',
     description:
       'A hospitality presence built for student families, trade visitors, and the working network moving through central Rajasthan.',

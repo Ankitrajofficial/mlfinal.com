@@ -3,7 +3,6 @@ import {
   ENTITIES,
   FOUNDING,
   FAMILY,
-  NEXT_WAVE,
   INSTITUTIONAL_PARTNER,
   LOCATIONS,
   formatFamilyName,
@@ -17,14 +16,14 @@ export const metadata = buildMetadata({
   site: 'mls',
   title: 'Our Legacy',
   description:
-    'The legacy of Mohan Lal & Sons: the founding work, the brothers who built it, the generation now operating it, and the children growing up around it. Since 1972.',
+    'The legacy of Mohan Lal & Sons: the founding work, the brothers who built it, and the generation operating it now. Since 1972.',
   path: '/our-legacy',
 })
 
 /**
  * Two-part page:
  *   PART I — institutional narrative (founding, the shape of the work)
- *   PART II — the family (G1 → G2 → G3 → Next Wave + Milan Ji)
+ *   PART II — the family (Founders, Builders, Operating Family, + the partner)
  */
 export default function OurLegacyPage() {
   const g1 = FAMILY.filter((m) => m.generation === 'G1')
@@ -117,9 +116,9 @@ export default function OurLegacyPage() {
                   The group operates five verticals today, and every one of
                   them is run by a member of the family. The founders are
                   still consulted. The brothers walk the quarry every
-                  working day. The third generation has taken on the
-                  operational lead for each vertical, with the second
-                  generation as anchor.
+                  working day. Day-to-day lead for each vertical now sits
+                  with the family members who run it, anchored by those who
+                  built it.
                 </p>
               </RevealOnScroll>
             </div>
@@ -162,10 +161,7 @@ export default function OurLegacyPage() {
           <div className="mb-16 lg:mb-20">
             <div className="flex items-baseline justify-between mb-8 border-b border-mls-ink/10 pb-4">
               <h3 className="font-display text-2xl md:text-3xl text-mls-ink">
-                First Generation
-                <span className="font-mono text-[10px] uppercase tracking-marker text-mls-slate ml-3">
-                  Founders
-                </span>
+                The Founders
               </h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
@@ -181,7 +177,7 @@ export default function OurLegacyPage() {
           <div className="mb-16 lg:mb-20">
             <div className="flex items-baseline justify-between mb-8 border-b border-mls-ink/10 pb-4">
               <h3 className="font-display text-2xl md:text-3xl text-mls-ink">
-                Second Generation
+                The Builders
                 <span className="font-mono text-[10px] uppercase tracking-marker text-mls-slate ml-3">
                   Sons of Shri Mohan Lal · At the quarry every working day
                 </span>
@@ -200,7 +196,7 @@ export default function OurLegacyPage() {
           <div className="mb-16 lg:mb-20">
             <div className="flex items-baseline justify-between mb-8 border-b border-mls-ink/10 pb-4">
               <h3 className="font-display text-2xl md:text-3xl text-mls-ink">
-                Third Generation
+                The Operating Family
                 <span className="font-mono text-[10px] uppercase tracking-marker text-mls-slate ml-3">
                   Operational leads, one per vertical
                 </span>
@@ -215,36 +211,13 @@ export default function OurLegacyPage() {
             </div>
           </div>
 
-          {/* Next Wave */}
-          <div className="mb-16">
-            <div className="flex items-baseline justify-between mb-6 border-b border-mls-ink/10 pb-4">
-              <h3 className="font-display text-2xl md:text-3xl text-mls-ink">
-                The Next Wave
-                <span className="font-mono text-[10px] uppercase tracking-marker text-mls-slate ml-3">
-                  The children
-                </span>
-              </h3>
-            </div>
-            <RevealOnScroll>
-              <p className="font-display italic text-xl text-mls-tobacco max-w-2xl mb-6">
-                {NEXT_WAVE.join(' · ')}
-              </p>
-              <p className="text-base leading-relaxed text-mls-ink/80 max-w-2xl">
-                The children of the third generation. They grow up around
-                the work — at the quarry, at the residences, at the kitchen
-                — without yet being asked to carry any of it. They are
-                named here because they are part of the family.
-              </p>
-            </RevealOnScroll>
-          </div>
-
           {/* Institutional Partner — Milan Ji */}
           <div>
             <div className="flex items-baseline justify-between mb-8 border-b border-mls-ink/10 pb-4">
               <h3 className="font-display text-2xl md:text-3xl text-mls-ink">
                 An Institutional Partner
                 <span className="font-mono text-[10px] uppercase tracking-marker text-mls-slate ml-3">
-                  Family standing · Since {INSTITUTIONAL_PARTNER.tenureStart}
+                  Long standing · Since {INSTITUTIONAL_PARTNER.tenureStart}
                 </span>
               </h3>
             </div>
@@ -308,6 +281,8 @@ interface FamilyCardProps {
 
 function FamilyCard({ m, variant }: FamilyCardProps) {
   const isFounder = variant === 'founder'
+  const roleLabel =
+    variant === 'founder' ? 'Founder' : variant === 'builder' ? 'Builder' : 'Operating'
   return (
     <div
       className={`p-7 lg:p-8 border ${
@@ -321,7 +296,7 @@ function FamilyCard({ m, variant }: FamilyCardProps) {
           isFounder ? 'text-mls-gold' : 'text-mls-gold'
         }`}
       >
-        {m.generation} · {m.honorific}
+        {roleLabel} · {m.honorific}
       </p>
       <h4
         className={`font-display ${

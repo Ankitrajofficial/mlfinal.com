@@ -20,7 +20,7 @@ import VerticalCard from '@/components/mls/VerticalCard'
 import StatMarquee from '@/components/mls/StatMarquee'
 import SectionHeader from '@/components/mls/SectionHeader'
 import VyanjanamSection from '@/components/mls/VyanjanamSection'
-import { MLS_HERO_VIDEO, KHADANE_PUBLIC_URL } from '@/lib/site-mls'
+import { MLS_HERO_VIDEO } from '@/lib/site-mls'
 
 export const metadata = buildMetadata({
   site: 'mls',
@@ -45,7 +45,7 @@ const HOMEPAGE_VERTICAL_FACTS: Record<string, Array<{ label: string; value: stri
     {
       label: 'Neighbourhood',
       value:
-        'M3 Mini Mall sits adjacent to the hotel with daily-use retail for residents, families, and visitors.',
+        'M3 Mini Mall sits within the same building as the hotel, with daily-use retail for residents, families, and visitors.',
     },
     {
       label: 'Operations',
@@ -106,7 +106,7 @@ export default function MLSHomePage() {
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
               <h1 className="font-display text-5xl md:text-7xl lg:text-[8.5rem] tracking-tighter leading-[1.02] text-mls-cream mb-8">
-                A working group.
+                A working house.
                 <span className="block italic text-mls-gold mt-2">
                   Since 1972.
                 </span>
@@ -127,7 +127,7 @@ export default function MLSHomePage() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href={KHADANE_PUBLIC_URL}
+                  href="/khadane"
                   className="inline-flex items-center gap-3 px-8 py-4 border border-mls-cream/45 text-mls-cream text-sm font-body tracking-wider uppercase hover:bg-mls-cream hover:text-mls-ink hover:gap-4 transition-all duration-400 ease-editorial"
                 >
                   Visit KHADANE™
@@ -151,7 +151,6 @@ export default function MLSHomePage() {
       <section className="bg-mls-cream py-24 lg:py-40">
         <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
           <SectionHeader
-            number="03"
             eyebrow="The Group"
             heading="The work began with stone."
             subLine="The rest came from the same hands."
@@ -189,18 +188,17 @@ export default function MLSHomePage() {
         <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
           <div className="mb-16 lg:mb-20">
             <SectionHeader
-              number="04"
               eyebrow="The Five Verticals"
               heading="One family,"
               subLine="five ways of working."
               maxWidth="max-w-4xl"
               body={
                 <p>
-                  Each vertical began the same way: an operational need we
-                  could answer with our own hands, or an obligation we took
-                  on for the people we already serve. None of these were
-                  spun off into separate companies. They are all the work
-                  of the same family.
+                  Stone and its export remains the largest, run as KHADANE&trade;.
+                  The other four &mdash; fuel and service, hospitality, student
+                  housing, and food &mdash; each grew from a need of the same belt
+                  and the people already in our care. Different work; one
+                  standard, one set of hands.
                 </p>
               }
             />
@@ -208,7 +206,6 @@ export default function MLSHomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:auto-rows-fr gap-px bg-mls-ink/10">
             {VERTICALS.map((v, idx) => {
-              const number = String(idx + 1).padStart(2, '0')
               const isStone = v.slug === 'stone-export'
               const isHospitality = v.slug === 'hospitality'
               return (
@@ -218,9 +215,8 @@ export default function MLSHomePage() {
                   className={`h-full ${isHospitality ? 'lg:row-span-2' : ''}`}
                 >
                   <VerticalCard
-                    href={isStone ? KHADANE_PUBLIC_URL : `/verticals/${v.slug}`}
+                    href={isStone ? '/khadane' : `/verticals/${v.slug}`}
                     external={isStone}
-                    number={number}
                     title={v.title}
                     brand={v.brand}
                     framing={v.framing}
@@ -385,7 +381,7 @@ export default function MLSHomePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={300}>
                 <Link
-                  href={KHADANE_PUBLIC_URL}
+                  href="/khadane"
                   className="inline-flex items-center gap-3 px-8 py-4 bg-mls-gold text-mls-ink text-sm font-body tracking-wider uppercase hover:bg-mls-cream hover:gap-4 transition-all duration-400 ease-editorial self-start"
                 >
                   Open khadane.com
@@ -421,7 +417,7 @@ export default function MLSHomePage() {
               <RevealOnScroll delay={200}>
                 <p className="text-lg leading-relaxed text-mls-ink/85 mb-6 max-w-md">
                   In Kunhari — a neighbourhood of Kota — we operate
-                  M3 Hotel, Vyanjanam, two girls&rsquo; residences, and three
+                  M3 Boutique Hotel, Vyanjanam, two girls&rsquo; residences, and three
                   PG accommodations for boys. They sit within five minutes
                   of each other. The kitchen serves the residences in the
                   morning. The hotel takes families visiting their children.
@@ -468,8 +464,8 @@ export default function MLSHomePage() {
                   swapPath: '/img/mls-gallery/vyanjanam-service.jpg',
                 },
               ].map((card, i) => (
-                <RevealOnScroll key={card.title} delay={i * 80} className="h-full">
-                  <Link href={card.href} className="block group h-full bg-mls-cream">
+                <RevealOnScroll key={card.title} delay={i * 80}>
+                  <Link href={card.href} className="block group">
                     <PlaceholderImage
                       label={card.label}
                       title={card.title}
@@ -641,7 +637,6 @@ export default function MLSHomePage() {
         <div className="mx-auto px-6 md:px-12 lg:px-16 max-w-[88rem]">
           <div className="mb-12">
             <SectionHeader
-              number="11"
               eyebrow="Recent Work"
               heading="The work,"
               subLine={SIGNATURE_LINES.workAsItAppears
@@ -725,8 +720,8 @@ export default function MLSHomePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={200}>
                 <p className="text-lg leading-relaxed text-mls-cream/85 max-w-xl mb-3">
-                  Whichever vertical your inquiry concerns, the same office
-                  reads it. Stone export inquiries are routed to KHADANE™
+                  Whichever vertical your enquiry concerns, the same office
+                  reads it. Stone export enquiries are routed to KHADANE™
                   on the same day; everything else is answered by us
                   directly.
                 </p>

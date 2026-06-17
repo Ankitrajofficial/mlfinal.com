@@ -56,7 +56,7 @@ export default function GalleryPage() {
             {[
               { l: 'STONE · 001', t: 'Block selection, morning.', p: '/img/mls-gallery/quarry-face.jpg' },
               { l: 'STONE · 002', t: 'Calibration line.', p: '/img/mls-gallery/yard-work.jpg' },
-              { l: 'STONE · 003', t: 'Loading, the Mundra container.', p: '/img/mls-gallery/quarry-road.jpg' },
+              { l: 'STONE · 003', t: 'Loading the export container.', p: '/img/mls-gallery/quarry-road.jpg' },
               { l: 'STONE · 004', t: 'Hands at the face.', p: '/img/mls-gallery/yard-overview.jpg' },
             ].map((item, i) => (
               <RevealOnScroll key={item.l} delay={i * 80}>

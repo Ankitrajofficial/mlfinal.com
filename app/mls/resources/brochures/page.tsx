@@ -46,7 +46,7 @@ export default function BrochuresPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                title: 'M3 Hotel — for visiting families.',
+                title: 'M3 Boutique Hotel — for visiting families.',
                 detail: 'Reservation context, services, the neighbourhood.',
                 href: '/verticals/hospitality',
               },

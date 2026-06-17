@@ -15,11 +15,10 @@ interface Stat {
 const DEFAULT_STATS: Stat[] = [
   { value: MLS_SCALE.verticalsDisplay, label: 'Verticals' },
   { value: MLS_SCALE.generations, label: 'Generations' },
-  { value: MLS_SCALE.familyMembers, label: 'Family members' },
   { value: MLS_SCALE.groupWorkforce, label: 'Across the group' },
   { value: FOUNDING.yearsEvergreen, label: 'Working from Bijolia' },
   { value: MLS_SCALE.indirectExportYears, label: 'Of indirect exports' },
-  { value: MLS_SCALE.vyanjanamDailyMeals, label: 'Daily meals' },
+  { value: MLS_SCALE.vyanjanamDailyMeals, label: 'At Vyanjanam' },
   { value: MLS_SCALE.studentHousingTotal, label: 'Student beds' },
 ]
 

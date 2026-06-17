@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     'Rajasthan family business',
     'Stone & Export',
     'KHADANE',
-    'M3 Hotel Kota',
+    'M3 Boutique Hotel Kota',
     'Vyanjanam Kota',
     'Dhakar Motors',
     'Dharnidhar Fuels',

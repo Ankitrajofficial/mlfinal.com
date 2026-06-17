@@ -14,7 +14,7 @@ const CATEGORIES = [
   { value: 'domestic-stone', label: 'Domestic Stone (routes to KHADANE™)' },
   { value: 'automotive', label: 'Automotive · Dhakar Motors' },
   { value: 'fuel', label: 'Fuel · Dharnidhar' },
-  { value: 'hospitality', label: 'Hospitality · M3 Hotel' },
+  { value: 'hospitality', label: 'Hospitality · M3 Boutique Hotel' },
   { value: 'student-housing', label: 'Student Housing · The Princess / Victoria / Boys&rsquo; PG' },
   { value: 'food-services', label: 'Food Services · Vyanjanam' },
   { value: 'careers', label: 'Careers · Letter of interest' },

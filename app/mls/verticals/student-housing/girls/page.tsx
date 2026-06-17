@@ -51,7 +51,7 @@ export default function GirlsCampusPage() {
             <RevealOnScroll delay={250}>
               <p className="font-display italic text-2xl md:text-3xl text-mls-tobacco max-w-3xl leading-snug">
                 Two residences. {MLS_SCALE.girlsCampusTotal}. One campus, run
-                by the family at hand.
+                by the family directly.
               </p>
             </RevealOnScroll>
           </div>
