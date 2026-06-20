@@ -195,7 +195,7 @@ export default async function FieldNotePage({ params }: FieldNotePageProps) {
               One brief per month. Geology, process, or trade. Sent only to specifiers and importers.
             </p>
             <a
-              href="mailto:exports@khadane.com?subject=Subscribe%20to%20Field%20Notes"
+              href="mailto:office@khadane.com?subject=Subscribe%20to%20Field%20Notes"
               className="inline-flex items-center gap-3 px-8 py-4 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify"
             >
               Subscribe →

@@ -18,7 +18,7 @@
  *
  * Per FACTS Section 10: single-channel routing.
  *   MLS enquiries → office@mohanlalsonsgroup.com
- *   KHADANE enquiries → exports@khadane.com
+ *   KHADANE enquiries → office@khadane.com
  */
 
 export interface SendEmailOptions {

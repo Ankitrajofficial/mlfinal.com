@@ -32,7 +32,7 @@ The enquiry pipeline depends on Resend.
 4. Wait for both domains to show as **Verified** in Resend.
 5. Generate an API key at Resend → API Keys. Copy it.
 
-The actual receiving inboxes (`office@mohanlalsonsgroup.com`, `exports@khadane.com`) are forwarding addresses set up at the domain registrar or via Google Workspace / Zoho. Resend only sends *from* — receiving is handled by your mail provider.
+The actual receiving inboxes (`office@mohanlalsonsgroup.com`, `office@khadane.com`) are forwarding addresses set up at the domain registrar or via Google Workspace / Zoho. Resend only sends *from* — receiving is handled by your mail provider.
 
 ---
 
@@ -67,7 +67,7 @@ Production needs either Resend or the Google Apps Script webhook. If both are se
 | Variable | Default | Scope |
 |---|---|---|
 | `INBOX_OFFICE_MLS` | `office@mohanlalsonsgroup.com` | Production |
-| `INBOX_KHADANE_EXPORTS` | `exports@khadane.com` | Production |
+| `INBOX_KHADANE_EXPORTS` | `office@khadane.com` | Production |
 | `NEXT_PUBLIC_MLS_URL` | `https://mohanlalsonsgroup.com` | Production |
 | `NEXT_PUBLIC_KHADANE_URL` | `https://khadane.com` | Production |
 | `GOOGLE_ENQUIRY_WEBHOOK_URL` | Google Apps Script `/exec` web app URL | Production + Preview |
@@ -200,9 +200,9 @@ Vercel auto-deploys. Watch the build log.
 - [ ] Submit test enquiry from `mohanlalsonsgroup.com/contact/`
 - [ ] Confirm arrival at `office@mohanlalsonsgroup.com`
 - [ ] Submit a stone enquiry — category "Stone & Export"
-- [ ] Confirm routing to `exports@khadane.com` (NOT to office@)
+- [ ] Confirm routing to `office@khadane.com` (NOT to office@)
 - [ ] Submit from `khadane.com/desk/`
-- [ ] Confirm arrival at `exports@khadane.com`
+- [ ] Confirm arrival at `office@khadane.com`
 - [ ] Reference number format: `MLS-ENQ-YYYYMMDD-XXXX` / `KHD-ENQ-YYYYMMDD-XXXX`
 
 ### Spam defences

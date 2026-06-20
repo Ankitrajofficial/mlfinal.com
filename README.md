@@ -129,7 +129,7 @@ See `DEPLOYMENT.md` for the full list. Minimum for production:
 | `GOOGLE_ENQUIRY_WEBHOOK_URL` | No* | Google Apps Script web app URL for Sheets + emails |
 | `GOOGLE_ENQUIRY_WEBHOOK_SECRET` | No | Shared secret for the Apps Script webhook |
 | `INBOX_OFFICE_MLS` | No | Override default `office@mohanlalsonsgroup.com` |
-| `INBOX_KHADANE_EXPORTS` | No | Override default `exports@khadane.com` |
+| `INBOX_KHADANE_EXPORTS` | No | Override default `office@khadane.com` |
 | `NEXT_PUBLIC_MLS_URL` | No | Override default `https://mohanlalsonsgroup.com` |
 | `NEXT_PUBLIC_KHADANE_URL` | No | Override default `https://khadane.com` |
 | `NEXT_PUBLIC_DEV_HOST_MODE` | No (dev) | `mls` or `khadane` — pick a site in dev |

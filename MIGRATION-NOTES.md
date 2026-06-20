@@ -106,8 +106,8 @@ After deploying to Vercel staging:
 - [ ] khadane.com (or KHADANE staging URL) homepage loads
 - [ ] All KHADANE v1 routes still work (collection, formats, field-notes, etc.)
 - [ ] Submit a real enquiry via MLS contact form — family receives email at `office@mohanlalsonsgroup.com`, enquirer receives confirmation
-- [ ] Submit a stone-export enquiry via MLS — routes to `exports@khadane.com`
-- [ ] Submit a real enquiry via KHADANE — routes to `exports@khadane.com`
+- [ ] Submit a stone-export enquiry via MLS — routes to `office@khadane.com`
+- [ ] Submit a real enquiry via KHADANE — routes to `office@khadane.com`
 - [ ] Verify rate limit: send 6 enquiries rapidly from same IP — 6th returns 429
 - [ ] Inspect OG images: share `mohanlalsonsgroup.com` on WhatsApp/Slack — preview renders
 - [ ] View page source: confirm `<link rel="canonical">` points to the correct domain per site

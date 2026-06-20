@@ -87,7 +87,7 @@ export default function FieldNotesPage() {
             <p className="font-sans text-lg text-warm-white/70 leading-relaxed mb-10 max-w-xl mx-auto">
               One brief per month. Geology, process, or trade. Sent only to specifiers and importers.
             </p>
-            <a href="mailto:exports@khadane.com?subject=Subscribe%20to%20Field%20Notes" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify">
+            <a href="mailto:office@khadane.com?subject=Subscribe%20to%20Field%20Notes" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify">
               Subscribe →
             </a>
           </RevealOnScroll>

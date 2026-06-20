@@ -355,12 +355,12 @@ All four G2 brothers at the quarry every working day.
 | Email | Purpose | Site |
 |---|---|---|
 | **office@mohanlalsonsgroup.com** | The Office — MLS sitewide default routing | MLS sitewide |
-| **exports@khadane.com** | KHADANE The Desk — buyer-side correspondence | KHADANE primary; `/stone-export/` on MLS |
+| **office@khadane.com** | KHADANE The Desk — buyer-side correspondence | KHADANE primary; `/stone-export/` on MLS |
 | **exports@mohanlalsonsgroup.com** | KHADANE v1 parent fallback | KHADANE footer |
 
 ### Routing rules (single-channel discipline locked)
 
-🔧 **Per Section 10 lock:** Single-channel routing — everything routes to `office@mohanlalsonsgroup.com`, except KHADANE buyer inquiries → `exports@khadane.com`. Family triages personally. NO separate vertical inboxes.
+🔧 **Per Section 10 lock:** Single-channel routing — everything routes to `office@mohanlalsonsgroup.com`, except KHADANE buyer inquiries → `office@khadane.com`. Family triages personally. NO separate vertical inboxes.
 
 ### Reference number prefixes
 

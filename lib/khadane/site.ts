@@ -33,7 +33,7 @@ export const SITE = {
   bijoliaBeltYears: 854,
 
   contact: {
-    publicEmail: "exports@khadane.com",
+    publicEmail: "office@khadane.com",
     publicPhone: "+91 98285 71143",
     whatsappNumber: '919828571143',
     whatsappUrl: 'https://wa.me/919828571143',

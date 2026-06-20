@@ -91,14 +91,14 @@ export function generateReferenceNumber(site: Site): string {
  * Single-channel discipline per FACTS-CANONICAL v2.0 Section 10.
  */
 export function routeEnquiryInbox(site: Site, category: string): string {
-  // KHADANE side → always exports@khadane.com
+  // KHADANE side → always office@khadane.com
   if (site === 'khadane') {
-    return process.env.INBOX_KHADANE_EXPORTS ?? 'exports@khadane.com'
+    return process.env.INBOX_KHADANE_EXPORTS ?? 'office@khadane.com'
   }
 
   // MLS side → stone-related routes to KHADANE; everything else to office@
   if (category === 'stone-export' || category === 'domestic-stone') {
-    return process.env.INBOX_KHADANE_EXPORTS ?? 'exports@khadane.com'
+    return process.env.INBOX_KHADANE_EXPORTS ?? 'office@khadane.com'
   }
 
   return process.env.INBOX_OFFICE_MLS ?? 'office@mohanlalsonsgroup.com'

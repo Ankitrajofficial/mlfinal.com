@@ -555,7 +555,7 @@ export const CONTACT = {
 
   // Emails (single-channel discipline)
   officeMLS: 'office@mohanlalsonsgroup.com',
-  exportsKhadane: 'exports@khadane.com',
+  exportsKhadane: 'office@khadane.com',
   exportsMLSFallback: 'exports@mohanlalsonsgroup.com',
 
   // Operating hours
