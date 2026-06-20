@@ -1,27 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
-  <defs>
-    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
-      <stop offset="0%" stop-color="#1A1410"/>
-      <stop offset="100%" stop-color="#080604"/>
-    </radialGradient>
-  </defs>
-  <rect width="180" height="180" fill="url(#bg)" rx="22"/>
-  <!-- Gold corner marks -->
-  <line x1="16" y1="16" x2="32" y2="16" stroke="#B8962E" stroke-width="1.5"/>
-  <line x1="16" y1="16" x2="16" y2="32" stroke="#B8962E" stroke-width="1.5"/>
-  <line x1="148" y1="16" x2="164" y2="16" stroke="#B8962E" stroke-width="1.5"/>
-  <line x1="164" y1="16" x2="164" y2="32" stroke="#B8962E" stroke-width="1.5"/>
-  <line x1="16" y1="164" x2="32" y2="164" stroke="#B8962E" stroke-width="1.5"/>
-  <line x1="16" y1="148" x2="16" y2="164" stroke="#B8962E" stroke-width="1.5"/>
-  <line x1="148" y1="164" x2="164" y2="164" stroke="#B8962E" stroke-width="1.5"/>
-  <line x1="164" y1="148" x2="164" y2="164" stroke="#B8962E" stroke-width="1.5"/>
-  <!-- K letter -->
-  <text x="90" y="118" text-anchor="middle"
-        font-family="Montserrat, sans-serif" font-weight="900" font-size="100"
-        fill="#B8962E" letter-spacing="-0.04em">K</text>
-  <!-- TM superscript -->
-  <text x="130" y="65" font-family="Montserrat, sans-serif" font-weight="700" font-size="16" fill="#F0EDE6" letter-spacing="0.05em">™</text>
-  <!-- Bottom EST -->
-  <text x="90" y="148" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7"
-        fill="#F0EDE6" fill-opacity="0.4" letter-spacing="0.3em">EST 1972</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="KHADANE K favicon" shape-rendering="geometricPrecision">
+  <title>KHADANE K favicon</title>
+  <path fill="#B8962E" transform="translate(6.13500,461.50000) scale(0.59000,-0.59000)" d="M268 150 255 409 519 700H776L480 374L349 240ZM57 0V700H289V0ZM517 0 311 272 464 434 790 0Z"/>
 </svg>

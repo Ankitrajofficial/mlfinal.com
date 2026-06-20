@@ -37,10 +37,13 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
-        {/* Favicons + Apple touch icon — generated from the locked SVG marks */}
+        {/* Favicons — KHADANE™ transparent K-only mark (Quarry Gold #B8962E) */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#B8962E" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#B8962E" />
       </head>

@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#111111" rx="3"/>
-  <text x="16" y="23" text-anchor="middle"
-        font-family="Montserrat, sans-serif"
-        font-weight="900" font-size="22" letter-spacing="-0.04em"
-        fill="#B8962E">K</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="KHADANE K favicon" shape-rendering="geometricPrecision">
+  <title>KHADANE K favicon</title>
+  <path fill="#B8962E" transform="translate(6.13500,461.50000) scale(0.59000,-0.59000)" d="M268 150 255 409 519 700H776L480 374L349 240ZM57 0V700H289V0ZM517 0 311 272 464 434 790 0Z"/>
 </svg>
