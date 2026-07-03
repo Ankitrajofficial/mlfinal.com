@@ -104,7 +104,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'GAL-007',
     category: 'stone',
-    title: 'Multi Colours · Banded Section',
+    title: 'Rainbow · Banded Section',
     caption: 'Full-spectrum variegation from the Bijolia belt.',
     varietyCode: 'KHD-O-14',
     location: 'Bhilwara + Bundi',

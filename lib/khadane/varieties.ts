@@ -399,8 +399,8 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-14",
     "rank": 14,
     "slug": "multi-colours",
-    "name": "Multi Colours",
-    "nameHindi": "मल्टी कलर्स",
+    "name": "Rainbow",
+    "nameHindi": "रेनबो",
     "tier": "owned",
     "tierLabel": "Owned · Newest",
     "district": "Bhilwara District",
@@ -410,7 +410,7 @@ export const VARIETIES: Variety[] = [
     "formation": "Bijolia belt, Lower Vindhyan — mineralogically complex variegated bed",
     "tradeNames": "Rainbow Sandstone (international trade)",
     "oneLine": "The full-spectrum variegated bed. The newest stone in the catalogue.",
-    "inHandHeadline": "Multi Colours is quarried from several of the family's owned blocks across the Bijolia tehsil of Bhilwara District — the variegated bed surfaces in multiple KHADANE quarries within the tehsil. Also known in the trade as Rainbow Sandstone.",
+    "inHandHeadline": "Rainbow is quarried from several of the family's owned blocks across the Bijolia tehsil of Bhilwara District — the variegated bed surfaces in multiple KHADANE quarries within the tehsil. Also known in the trade as Rainbow Sandstone.",
     "formatScope": "All 19 formats",
     "placeholderClass": "placeholder-stone-warm",
     "alternateNames": [
@@ -419,10 +419,10 @@ export const VARIETIES: Variety[] = [
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
     "workedSince": "the 2010s",
-    "renamedByKhadane": "Yes",
-    "provenanceLine": "Multi Colours is quarried from several of the family's owned blocks across the Bijolia tehsil of Bhilwara District — the variegated bed surfaces in multiple KHADANE quarries within the tehsil. Also known in the trade as Rainbow Sandstone.",
+    "renamedByKhadane": "No",
+    "provenanceLine": "Rainbow is quarried from several of the family's owned blocks across the Bijolia tehsil of Bhilwara District — the variegated bed surfaces in multiple KHADANE quarries within the tehsil. Also known in the trade as Rainbow Sandstone.",
     "editorialBody": [
-      "Multi Colours is the full-spectrum variegated bed of KHADANE’s owned Bijolia quarries — browns, soft greens, dove greys, and pale yellows surfacing in patches across a single face. The colour distribution is geological, not deliberate; the bed laid down with mixed mineralogy across the layers and the stone reflects that history wherever it is cut.",
+      "Rainbow is the full-spectrum variegated bed of KHADANE’s owned Bijolia quarries — browns, soft greens, dove greys, and pale yellows surfacing in patches across a single face. The colour distribution is geological, not deliberate; the bed laid down with mixed mineralogy across the layers and the stone reflects that history wherever it is cut.",
       "Honed surfaces hold the colour distinctly. Natural-riven faces soften the boundaries between tones. Sandblasted and tumbled treatments lift the lighter patches and recess the darker ones. The stone is specified for installations that want visual movement — driveway cobbles where the variegation reads as patina from a distance, wall cladding where the colour shifts give a slab the character of geological time."
     ],
     "foundingStone": false

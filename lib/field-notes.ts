@@ -64,7 +64,7 @@ export const FIELD_NOTES: FieldNote[] = [
       {
         heading: 'The colour story.',
         body: [
-          'Iron is the colourist. Where iron is high and oxidised, you get Autumn Brown, Red Choco, Modak. Where iron is low and the matrix is dominated by quartz with traces of clay minerals, you get Kandla Grey, Buff. Where iron exists alongside organic carbonates from very ancient algal mats, you get the green tones — Garda Green, Garda Green. Where the basin shifted through multiple oxidation states across a single bed, you get banding — Multi Colours, Dual Tone.',
+          'Iron is the colourist. Where iron is high and oxidised, you get Autumn Brown, Red Choco, Modak. Where iron is low and the matrix is dominated by quartz with traces of clay minerals, you get Kandla Grey, Buff. Where iron exists alongside organic carbonates from very ancient algal mats, you get the green tones — Garda Green, Garda Green. Where the basin shifted through multiple oxidation states across a single bed, you get banding — Rainbow, Dual Tone.',
           'All of this from a basin that closed up before complex life appeared.',
         ],
       },
