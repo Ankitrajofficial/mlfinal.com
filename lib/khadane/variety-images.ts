@@ -122,7 +122,8 @@ export const VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     workedFormat:  d('1Qw820y1glRXF3RCfp13I8Tn8nS4e36-1'),
     sourceContext: d('17EzqL2R-BemfisNPBi6zDcpHihMgQ-vG'),
   },
-  'multi-colours': {},
+  'rainbow': {},
+  'white-mint': {},
   // Allied varieties — no Drive folder yet, will use placeholders
   'agra-red': {},
   'basalt-black': {},
@@ -169,7 +170,14 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   'red-choco': local('red-choco', ['slabFace']),
   'dual-tone': local('dual-tone', ['slabFace']),
   'multi-brown': local('multi-brown', ['slabFace', 'surfaceClose']),
-  'multi-colours': local('multi-colours', ['slabFace']),
+  // Rainbow (renamed from Multi Colours) — image files keep the original folder name
+  'rainbow': {
+    ...local('multi-colours', ['slabFace']),
+  },
+  'white-mint': {
+    hero: '/images/khadane/varieties/white-mint/white-mint.jpg',
+    thumb: '/images/khadane/varieties/white-mint/white-mint-thumb.webp',
+  },
   'agra-red': local('agra-red', ['slabFace']),
   'basalt-black': local('basalt-black', ['slabFace']),
   'dholpur-beige': local('dholpur-beige', ['slabFace']),

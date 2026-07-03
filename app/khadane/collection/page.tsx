@@ -9,8 +9,8 @@ import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
 
 export const metadata = {
-  title: 'The Collection — 23 sandstone varieties',
-  description: 'Twenty-three sandstones, owned and allied. Each one, the surfaces and edges and formats it can take.',
+  title: 'The Collection — 24 sandstone varieties',
+  description: 'Twenty-four sandstones, owned and allied. Each one, the surfaces and edges and formats it can take.',
 }
 
 export default function CollectionPage() {

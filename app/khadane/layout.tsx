@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: '%s · KHADANE™',
   },
   description:
-    'KHADANE™ works the Bijolia sandstone belt of Rajasthan, quarrying and exporting twenty-three sandstones across nineteen formats since 1972.',
+    'KHADANE™ works the Bijolia sandstone belt of Rajasthan, quarrying and exporting twenty-four sandstones across nineteen formats since 1972.',
   keywords: [
     'Indian sandstone',
     'Bijolia sandstone',

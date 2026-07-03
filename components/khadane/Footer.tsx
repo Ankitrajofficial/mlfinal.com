@@ -45,6 +45,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li><Link href="/collection" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Collection</Link></li>
                 <li><Link href="/formats" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Formats</Link></li>
+                <li><Link href="/surfaces" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">Surfaces</Link></li>
                 <li><Link href="/gallery" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Record</Link></li>
                 <li><Link href="/quarry" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Quarry</Link></li>
                 <li><Link href="/yard" className="font-sans text-sm text-warm-white/80 hover:text-quarry-gold transition-colors no-justify">The Yard</Link></li>

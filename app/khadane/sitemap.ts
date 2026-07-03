@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/collection',
     '/formats',
+    '/surfaces',
     '/gallery',
     '/quarry',
     '/yard',

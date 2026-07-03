@@ -1,7 +1,7 @@
 // ============================================================
 // KHADANE(TM) - Variety Catalogue Data
 // Source: update.md
-// 23 varieties: 14 owned + 9 allied
+// 24 varieties: 15 owned + 9 allied
 // ============================================================
 
 export type Tier = 'owned' | 'allied'
@@ -398,23 +398,24 @@ export const VARIETIES: Variety[] = [
   {
     "code": "KHD-O-14",
     "rank": 14,
-    "slug": "multi-colours",
+    "slug": "rainbow",
     "name": "Rainbow",
     "nameHindi": "रेनबो",
     "tier": "owned",
-    "tierLabel": "Owned · Newest",
+    "tierLabel": "Owned",
     "district": "Bhilwara District",
     "primaryLocation": "Bijolia tehsil, Bhilwara District, Rajasthan (Multiple owned blocks tehsil-wide; the variegated bed surfaces in several KHADANE quarries)",
     "additionalLocations": "",
     "quarryNetworkNote": "The variegated bed surfaces in multiple KHADANE quarries across the Bijolia tehsil.",
     "formation": "Bijolia belt, Lower Vindhyan — mineralogically complex variegated bed",
     "tradeNames": "Rainbow Sandstone (international trade)",
-    "oneLine": "The full-spectrum variegated bed. The newest stone in the catalogue.",
+    "oneLine": "The full-spectrum variegated bed. Warm and cool tones blend across each piece; no two are alike.",
     "inHandHeadline": "Rainbow is quarried from several of the family's owned blocks across the Bijolia tehsil of Bhilwara District — the variegated bed surfaces in multiple KHADANE quarries within the tehsil. Also known in the trade as Rainbow Sandstone.",
     "formatScope": "All 19 formats",
     "placeholderClass": "placeholder-stone-warm",
     "alternateNames": [
-      "Rainbow Sandstone (international trade)"
+      "Rainbow Sandstone (international trade)",
+      "Multi Colours (former name)"
     ],
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
@@ -428,8 +429,36 @@ export const VARIETIES: Variety[] = [
     "foundingStone": false
   },
   {
-    "code": "KHD-A-01",
+    "code": "KHD-O-15",
     "rank": 15,
+    "slug": "white-mint",
+    "name": "White Mint",
+    "nameHindi": "व्हाइट मिंट",
+    "tier": "owned",
+    "tierLabel": "Owned · Newest",
+    "district": "Bijolia belt",
+    "primaryLocation": "Bijolia belt, Rajasthan — quarry block on record with the desk",
+    "additionalLocations": "",
+    "quarryNetworkNote": "",
+    "formation": "Bijolia belt — quartzitic sandstone",
+    "tradeNames": "Catalogued under its trade name",
+    "oneLine": "A pale, cool-toned quartzitic sandstone. The lightest stone in the owned range.",
+    "inHandHeadline": "A soft off-white ground with cool mint-grey undertones and fine natural veining. One of the lightest stones in the KHADANE owned range.",
+    "formatScope": "Full format range — on enquiry",
+    "placeholderClass": "placeholder-stone-grey",
+    "splittable": "Yes — splits cleanly along its natural bedding plane",
+    "splittabilityNote": "",
+    "renamedByKhadane": "No",
+    "provenanceLine": "A soft off-white ground with cool mint-grey undertones and fine natural veining. One of the lightest stones in the KHADANE owned range.",
+    "editorialBody": [
+      "White Mint is a pale, cool-toned quartzitic sandstone. An off-white ground is carried by soft mint-grey undertones and quiet natural veining, giving it a calm, contemporary presence. As one of the lightest stones in the KHADANE owned range, it opens up a space and sits naturally against modern architecture, while holding the density and durability the belt's quartzitic sandstone is known for.",
+      "It works across paving, wall cladding, pool surrounds and interior floors. The stone launches with one photographed finish, natural riven; the remaining finishes are worked to order and will be photographed as they ship."
+    ],
+    "foundingStone": false
+  },
+  {
+    "code": "KHD-A-01",
+    "rank": 16,
     "slug": "agra-red",
     "name": "Agra Red",
     "nameHindi": "आगरा रेड",
@@ -458,7 +487,7 @@ export const VARIETIES: Variety[] = [
   },
   {
     "code": "KHD-A-02",
-    "rank": 16,
+    "rank": 17,
     "slug": "basalt-black",
     "name": "Basalt Black",
     "nameHindi": "बेसाल्ट ब्लैक",
@@ -490,7 +519,7 @@ export const VARIETIES: Variety[] = [
   },
   {
     "code": "KHD-A-03",
-    "rank": 17,
+    "rank": 18,
     "slug": "dholpur-beige",
     "name": "Dholpur Beige",
     "nameHindi": "धौलपुर बेज",
@@ -519,7 +548,7 @@ export const VARIETIES: Variety[] = [
   },
   {
     "code": "KHD-A-04",
-    "rank": 18,
+    "rank": 19,
     "slug": "dholpur-pink",
     "name": "Dholpur Pink",
     "nameHindi": "धौलपुर पिंक",
@@ -545,7 +574,7 @@ export const VARIETIES: Variety[] = [
   },
   {
     "code": "KHD-A-05",
-    "rank": 19,
+    "rank": 20,
     "slug": "gwalior-mint",
     "name": "Gwalior Mint",
     "nameHindi": "ग्वालियर मिंट",
@@ -575,7 +604,7 @@ export const VARIETIES: Variety[] = [
   },
   {
     "code": "KHD-A-06",
-    "rank": 20,
+    "rank": 21,
     "slug": "jaisalmer-yellow",
     "name": "Jaisalmer Yellow",
     "nameHindi": "जैसलमेर यलो",
@@ -605,7 +634,7 @@ export const VARIETIES: Variety[] = [
   },
   {
     "code": "KHD-A-07",
-    "rank": 21,
+    "rank": 22,
     "slug": "lalitpur-yellow",
     "name": "Lalitpur Yellow",
     "nameHindi": "ललितपुर यलो",
@@ -635,7 +664,7 @@ export const VARIETIES: Variety[] = [
   },
   {
     "code": "KHD-A-08",
-    "rank": 22,
+    "rank": 23,
     "slug": "sagar-black",
     "name": "Sagar Black",
     "nameHindi": "सागर ब्लैक",
@@ -665,7 +694,7 @@ export const VARIETIES: Variety[] = [
   },
   {
     "code": "KHD-A-09",
-    "rank": 23,
+    "rank": 24,
     "slug": "teakwood",
     "name": "Teakwood",
     "nameHindi": "टीकवुड",

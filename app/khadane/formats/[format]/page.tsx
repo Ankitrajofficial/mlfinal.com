@@ -104,7 +104,7 @@ export default async function FormatPage({ params }: FormatPageProps) {
                 {[
                   { label: 'Code', value: f.code },
                   { label: 'Primary use', value: f.primaryUse },
-                  { label: 'Variety availability', value: `${availableVarieties.length} of 23 varieties` },
+                  { label: 'Variety availability', value: `${availableVarieties.length} of ${VARIETIES.length} varieties` },
                   { label: 'Surfaces available', value: f.surfacesAvailable.join(', ') || 'On enquiry' },
                   { label: 'Edges available', value: f.edgesAvailable.join(', ') || 'On enquiry' },
                 ].map((row, i, arr) => (

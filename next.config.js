@@ -19,6 +19,22 @@ const nextConfig = {
     ],
   },
 
+  async redirects() {
+    return [
+      // Rainbow rename (KHD-O-14): "Multi Colours" retired 2026-07 — 301 the old slug
+      {
+        source: '/collection/multi-colours',
+        destination: '/collection/rainbow',
+        permanent: true,
+      },
+      {
+        source: '/khadane/collection/multi-colours',
+        destination: '/collection/rainbow',
+        permanent: true,
+      },
+    ]
+  },
+
   async headers() {
     return [
       {

@@ -174,6 +174,7 @@ export function proxy(request: NextRequest) {
     path.startsWith('/api') ||
     path.startsWith('/brand') ||
     path.startsWith('/img') ||
+    path.startsWith('/images') ||
     path.startsWith('/videos')
   ) {
     return NextResponse.next()

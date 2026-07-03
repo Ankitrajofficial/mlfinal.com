@@ -197,7 +197,7 @@ export default function HomePage() {
 
       {/* ============================================================
           SECTION 04 — THE COLLECTION PREVIEW
-          23 varieties in a tight editorial mosaic
+          24 varieties in a tight editorial mosaic
           ============================================================ */}
       <section className="section-padding section-cream">
         <div className="container-editorial">
@@ -209,12 +209,12 @@ export default function HomePage() {
               <RevealOnScroll delay={100}>
                 <h2 className="section-heading mb-8">
                   A working catalogue
-                  <span className="block italic text-quarry-gold mt-2">of twenty-three stones.</span>
+                  <span className="block italic text-quarry-gold mt-2">of twenty-four stones.</span>
                 </h2>
               </RevealOnScroll>
               <RevealOnScroll delay={250}>
                 <p className="font-sans text-lg leading-relaxed text-graphite no-justify mb-8">
-                  Fourteen owned varieties and nine allied varieties, each marked by source, formation, format compatibility, and technical specification. Buyers can read what is ours, what is allied, and how each stone can be cut.
+                  Fifteen owned varieties and nine allied varieties, each marked by source, formation, format compatibility, and technical specification. Buyers can read what is ours, what is allied, and how each stone can be cut.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={420}>

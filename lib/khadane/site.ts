@@ -19,11 +19,11 @@ export const SITE = {
   foundationYear: 1972,
   currentYear: 2026,
 
-  varietyCount: 23,
-  ownedVarieties: 14,
+  varietyCount: 24,
+  ownedVarieties: 15,
   alliedVarieties: 9,
   formatCount: 19,
-  surfaceTreatmentCount: 11,
+  surfaceTreatmentCount: 16,
   edgeProfileCount: 4,
   quarryCount: '100+',
   workforceCount: '500+',
@@ -60,6 +60,10 @@ export const NAV_ITEMS = [
   {
     "label": "Formats",
     "href": "/formats"
+  },
+  {
+    "label": "Surfaces",
+    "href": "/surfaces"
   },
   {
     "label": "The Quarry",
