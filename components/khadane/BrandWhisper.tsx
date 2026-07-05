@@ -23,6 +23,8 @@ export default function BrandWhisper({ variant = 'default', customLine }: BrandW
     return (
       <div className="container-editorial py-20 lg:py-28 text-center">
         <RevealOnScroll>
+          
+          
           <p className="font-display italic text-2xl lg:text-3xl text-quarry-gold no-justify">
             {SITE.tagline}
           </p>

@@ -281,7 +281,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     varietyCode: 'KHD-O-10',
     layoutHint: 'square',
     placeholderVariant: 'stone-warm',
-    swapPath: '/img/varieties/camel-dust-hero.jpg',
+    swapPath: '/img/varieties/camel-dust-hero-main.jpg',
   },
   {
     id: 'GAL-025',

@@ -98,7 +98,11 @@ export const VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     workedFormat:  d('1tsMDn4CU5ZJMooQTIoqyM7HPKb4-Vayu'),
     sourceContext: d('1kK8k69Dp8t7TCEPfUnL9gb_Ogb4KnQ1i'),
   },
-  'camel-dust': {},
+  'camel-dust': {
+    // Drive "Owned / Camel Dust" folder — "Camel Main .jpg" (Camel dust face)
+    hero:  d('1xG_nOxYrke43ECPbRllrRi5Lq6lXPmEj'),
+    thumb: d('1xG_nOxYrke43ECPbRllrRi5Lq6lXPmEj', 800),
+  },
   'red-choco': {
     hero:          d('1njKN6rxMyQC5jv-_ekt1gYo0l63DxLqf'),
     thumb:         d('1njKN6rxMyQC5jv-_ekt1gYo0l63DxLqf', 800),
@@ -124,16 +128,46 @@ export const VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   },
   'rainbow': {},
   'white-mint': {},
-  // Allied varieties — no Drive folder yet, will use placeholders
-  'agra-red': {},
-  'basalt-black': {},
-  'dholpur-beige': {},
-  'dholpur-pink': {},
-  'gwalior-mint': {},
-  'jaisalmer-yellow': {},
-  'lalitpur-yellow': {},
-  'sagar-black': {},
-  'teakwood': {},
+  // Allied varieties — heroes picked from the Drive "Allied" folder
+  // (one photo per stone). The picked photo is committed locally as
+  // /img/varieties/<slug>-hero.jpg; the Drive IDs below record the source.
+  'agra-red': {
+    hero:  d('1-4UrCIlto9Al1b1BYvlu9WFgEyE5DDLP'), // Agra-Red-Sandstone.jpg
+    thumb: d('1-4UrCIlto9Al1b1BYvlu9WFgEyE5DDLP', 800),
+  },
+  'basalt-black': {
+    hero:  d('1qL2s0OWpqXuRk76dqMBebZEW86z80a9i'), // BLACK BASALT FACE.jpg
+    thumb: d('1qL2s0OWpqXuRk76dqMBebZEW86z80a9i', 800),
+  },
+  'dholpur-beige': {
+    hero:  d('1ndG3d6DPswYb23K35GYh4k-IIbvRWqBx'), // Dholpur Beige Sandstone.jpg
+    thumb: d('1ndG3d6DPswYb23K35GYh4k-IIbvRWqBx', 800),
+  },
+  'dholpur-pink': {
+    hero:  d('1XQaK-z11Cn2wMah3MgDNP8rzfbRuGx1o'), // dholpur-pink-sandstone.jpg
+    thumb: d('1XQaK-z11Cn2wMah3MgDNP8rzfbRuGx1o', 800),
+  },
+  'gwalior-mint': {
+    hero:  d('109hllNGiTl0cz-zi5HVbEeWbND6dhQW8'), // gwalior-mint-sandstone.jpeg
+    thumb: d('109hllNGiTl0cz-zi5HVbEeWbND6dhQW8', 800),
+  },
+  'jaisalmer-yellow': {
+    hero:  d('14qCR1PUH5q2m25AeGb5uf_2w5CP2_SxH'), // jaisalmer-yellow-sandstone.jpg
+    thumb: d('14qCR1PUH5q2m25AeGb5uf_2w5CP2_SxH', 800),
+  },
+  'lalitpur-yellow': {
+    hero:  d('1BS7-XuajoBx_VB91zRDsv7i8QAegYKSv'), // Lalitpur-Yellow-Sandstone.jpg
+    thumb: d('1BS7-XuajoBx_VB91zRDsv7i8QAegYKSv', 800),
+  },
+  'sagar-black': {
+    hero:  d('1K_LkseOLyduQ0SptUT-jmf0W6Hc2v4Il'), // SAGAR BLACK.jpg
+    thumb: d('1K_LkseOLyduQ0SptUT-jmf0W6Hc2v4Il', 800),
+  },
+  'teakwood': {
+    // Drive file "Teak but rotate it.jpg.webp" — committed local hero is rotated 90°.
+    hero:  d('1_sWZefRK7M9NpdfaKbw4VxtaxqukJ4yt'),
+    thumb: d('1_sWZefRK7M9NpdfaKbw4VxtaxqukJ4yt', 800),
+  },
 }
 
 const local = (slug: string, fields: Array<keyof Omit<VarietyImageSet, 'hero' | 'thumb'>> = []): VarietyImageSet => {
@@ -166,7 +200,13 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   'mint': local('mint', ['slabFace', 'surfaceClose']),
   'fossil-mint': local('fossil-mint', ['slabFace', 'surfaceClose']),
   'buff': local('buff', ['slabFace', 'surfaceClose']),
-  'camel-dust': local('camel-dust', ['slabFace']),
+  // Camel Dust (KHD-O-10) — hero swapped to Drive "Camel Main .jpg";
+  // new filename busts stale browser/CDN caches of the old hero.
+  'camel-dust': {
+    ...local('camel-dust', ['slabFace']),
+    hero: '/img/varieties/camel-dust-hero-main.jpg',
+    thumb: '/img/varieties/camel-dust-hero-main.jpg',
+  },
   'red-choco': local('red-choco', ['slabFace']),
   'dual-tone': local('dual-tone', ['slabFace']),
   'multi-brown': local('multi-brown', ['slabFace', 'surfaceClose']),
