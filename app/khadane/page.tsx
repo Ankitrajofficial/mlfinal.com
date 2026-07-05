@@ -25,34 +25,28 @@ export default function HomePage() {
           SECTION 01 — HERO
           Cinematic full-bleed, word-rise headline, gold details
           ============================================================ */}
-      {/* Pinned hero video — stays fixed to the viewport while the hero
-          text (and the sections below) scroll up and over it. The opaque
-          sections after the hero slide over this and cover it. */}
-      <div className="fixed inset-0 -z-10 bg-obsidian pointer-events-none" aria-hidden="true">
-        <Image
-          src="/img/mls-home-hero-poster.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="pointer-events-none absolute inset-0 object-cover"
-          style={{ objectPosition: '50% 58%' }}
-        />
-        <HeroVideo
-          src="/videos/home-hero.mp4"
-          poster="/img/mls-home-hero-poster.jpg"
-          objectPosition="50% 58%"
-          background
-        />
-      </div>
-
-      <section className="relative min-h-[calc(100vh-4.5rem)] lg:min-h-[calc(100vh-4.75rem)] flex items-end overflow-hidden texture-lines">
-        {/* Scrims over the pinned video for headline legibility */}
-        <div className="pointer-events-none absolute inset-0">
+      <section className="relative min-h-[calc(100vh-4.5rem)] lg:min-h-[calc(100vh-4.75rem)] flex items-end overflow-hidden bg-obsidian texture-lines">
+        {/* Background video with static fallback */}
+        <div className="absolute inset-0">
+          <Image
+            src="/img/mls-home-hero-poster.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="pointer-events-none absolute inset-0 object-cover"
+            style={{ objectPosition: '50% 58%' }}
+            aria-hidden="true"
+          />
+          <HeroVideo
+            src="/videos/home-hero.mp4"
+            poster="/img/mls-home-hero-poster.jpg"
+            objectPosition="50% 58%"
+          />
           {/* Top scrim */}
-          <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-obsidian/70 via-obsidian/40 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-obsidian/70 via-obsidian/40 to-transparent" />
           {/* Bottom scrim */}
-          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-obsidian via-obsidian/70 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-obsidian via-obsidian/70 to-transparent" />
         </div>
 
         {/* Hero content */}

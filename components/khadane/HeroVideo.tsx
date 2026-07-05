@@ -7,15 +7,12 @@ interface HeroVideoProps {
   src: string
   poster?: string
   objectPosition?: string
-  /** Pinned ambient background: render muted with no audio control. */
-  background?: boolean
 }
 
 export default function HeroVideo({
   src,
   poster,
   objectPosition = '50% 50%',
-  background = false,
 }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [muted, setMuted] = useState(true)
@@ -85,7 +82,7 @@ export default function HeroVideo({
         <source src={src} type="video/mp4" />
       </video>
 
-      {!background && hasAudio && (
+      {hasAudio && (
       <div className="pointer-events-auto absolute left-6 bottom-6 z-50 rounded-full border border-warm-white/20 bg-obsidian/45 p-2 backdrop-blur-md lg:left-8 lg:bottom-8">
         <button
           type="button"

@@ -65,7 +65,7 @@ export default function KhadaneLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="text-obsidian min-h-screen" data-site="khadane">
+    <div className="bg-warm-white text-obsidian min-h-screen" data-site="khadane">
       <Navigation />
       <main className="min-h-screen">{children}</main>
       <Footer />
