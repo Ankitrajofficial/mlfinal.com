@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import HeroVideo from '@/components/khadane/HeroVideo'
 import { ArrowRight, BadgeCheck, Factory, Gem, MapPin, PackageCheck, Route, Users } from 'lucide-react'
 import { ASSETS, SITE, MLS_PUBLIC_URL } from '@/lib/khadane/site'
 import { VARIETIES, getOwnedVarieties, getAlliedVarieties } from '@/lib/khadane/varieties'
@@ -7,7 +8,6 @@ import { FORMATS } from '@/lib/khadane/formats'
 import { getVarietyImage } from '@/lib/khadane/variety-images'
 import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
-import HeroVideo from '@/components/khadane/HeroVideo'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import Marquee from '@/components/khadane/Marquee'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
@@ -16,7 +16,7 @@ import EnquiryForm from '@/components/khadane/EnquiryForm'
 export default function HomePage() {
   const ownedVarieties = getOwnedVarieties()
   const alliedVarieties = getAlliedVarieties()
-  const heroVarieties = VARIETIES.slice(0, 6)
+  const heroVarieties = VARIETIES.slice(0, 7)
   const heroFormats = FORMATS.slice(0, 6)
 
   return (
@@ -665,9 +665,35 @@ export default function HomePage() {
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={350}>
-                <p className="font-sans text-sm text-quarry-gold/80 uppercase tracking-wider no-justify">
+                <p className="font-sans text-sm text-quarry-gold/80 uppercase tracking-wider no-justify mb-10">
                   Every allied variety still ships under KHADANE custody.
                 </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={430}>
+                <p className="font-mono text-[10px] uppercase tracking-eyebrow text-warm-white/40 no-justify mb-4">
+                  Allied sources
+                </p>
+                <dl className="border-y border-warm-white/10 divide-y divide-warm-white/10">
+                  {[
+                    { region: 'Dholpur', stone: 'Agra Red' },
+                    { region: 'Marwar Basin', stone: 'Jaisalmer Yellow' },
+                    { region: 'Nagaur', stone: 'Teakwood' },
+                    { region: 'Madhya Pradesh', stone: 'Sagar Black' },
+                  ].map((s) => (
+                    <div key={s.region} className="flex items-baseline justify-between gap-4 py-4">
+                      <dt className="font-sans text-sm text-warm-white/70 no-justify">{s.region}</dt>
+                      <dd className="font-display text-lg text-quarry-gold no-justify">{s.stone}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </RevealOnScroll>
+              <RevealOnScroll delay={520}>
+                <Link
+                  href="/khadane/collection"
+                  className="mt-8 inline-flex items-center gap-3 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:text-quarry-gold no-justify"
+                >
+                  Browse all allied varieties <ArrowRight size={16} strokeWidth={1.6} />
+                </Link>
               </RevealOnScroll>
             </div>
             <div className="lg:col-span-7">
