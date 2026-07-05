@@ -220,7 +220,7 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-08",
     "rank": 8,
     "slug": "fossil-mint",
-    "name": "Fossil Mint",
+    "name": "Fossil",
     "nameHindi": "फॉसिल मिंट",
     "tier": "owned",
     "tierLabel": "Owned",
