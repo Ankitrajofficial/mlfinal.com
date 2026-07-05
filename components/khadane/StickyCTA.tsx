@@ -21,7 +21,7 @@ export default function StickyCTA() {
 
   return (
     <div
-      className={`fixed bottom-6 right-6 z-30 flex flex-col gap-3 transition-all duration-600 ease-editorial ${
+      className={`fixed bottom-28 right-6 z-30 flex flex-col gap-3 transition-all duration-600 ease-editorial ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'
       }`}
     >

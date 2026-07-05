@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Navigation from '@/components/khadane/Navigation'
 import Footer from '@/components/khadane/Footer'
 import StickyCTA from '@/components/khadane/StickyCTA'
+import KhadaneAssistant from '@/components/khadane/KhadaneAssistant'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://khadane.com'),
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     template: '%s · KHADANE™',
   },
   description:
-    'KHADANE™ works the Bijolia sandstone belt of Rajasthan, quarrying and exporting twenty-four sandstones across nineteen formats since 1972.',
+    'KHADANE™ works the Bijolia sandstone belt of Rajasthan, quarrying and exporting twenty-four sandstones across twenty formats since 1972.',
   keywords: [
     'Indian sandstone',
     'Bijolia sandstone',
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     siteName: 'KHADANE™',
     title: 'KHADANE™ — The sandstone catalogue of the Bijolia belt',
     description:
-      'Twenty-three sandstones across nineteen formats. Quarried in Bijolia, Rajasthan. Since 1972.',
+      'Twenty-three sandstones across twenty formats. Quarried in Bijolia, Rajasthan. Since 1972.',
     images: [
       {
         url: '/og-image.jpg',
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'KHADANE™ — Bijolia sandstone, exported direct.',
-    description: 'Twenty-three sandstones across nineteen formats. Since 1972.',
+    description: 'Twenty-three sandstones across twenty formats. Since 1972.',
   },
   robots: {
     index: true,
@@ -70,6 +71,7 @@ export default function KhadaneLayout({
       <main className="min-h-screen">{children}</main>
       <Footer />
       <StickyCTA />
+      <KhadaneAssistant />
     </div>
   )
 }
