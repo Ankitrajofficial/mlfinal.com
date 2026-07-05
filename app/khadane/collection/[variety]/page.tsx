@@ -12,10 +12,11 @@ import {
 import { VARIETIES, getVariety, getPrevVariety, getNextVariety } from '@/lib/khadane/varieties'
 import { FORMATS } from '@/lib/khadane/formats'
 import { SITE } from '@/lib/khadane/site'
-import { getVarietyImage } from '@/lib/khadane/variety-images'
+import { getVarietyImage, hasVarietyImage } from '@/lib/khadane/variety-images'
 import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
+import VisualReferenceSet from '@/components/khadane/VisualReferenceSet'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
 
 export function generateStaticParams() {
@@ -41,13 +42,18 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
   const v = getVariety(variety)
   if (!v) notFound()
 
+  const frameFor = (
+    path: string,
+    field: Parameters<typeof getVarietyImage>[1],
+  ): string | undefined =>
+    hasVarietyImage(v.slug, field) ? getVarietyImage(v.slug, field, path) : undefined
   const swapPathFor = (path: string): string | undefined => {
-    if (path.endsWith('-hero.jpg')) return getVarietyImage(v.slug, 'hero', path)
-    if (path.endsWith('/slab-face.jpg')) return getVarietyImage(v.slug, 'slabFace', path)
-    if (path.endsWith('/surface-close.jpg')) return getVarietyImage(v.slug, 'surfaceClose', path)
-    if (path.endsWith('/edge-profile.jpg')) return getVarietyImage(v.slug, 'edgeProfile', path)
-    if (path.endsWith('/worked-format.jpg')) return getVarietyImage(v.slug, 'workedFormat', path)
-    if (path.endsWith('/source-context.jpg')) return getVarietyImage(v.slug, 'sourceContext', path)
+    if (path.endsWith('-hero.jpg')) return frameFor(path, 'hero')
+    if (path.endsWith('/slab-face.jpg')) return frameFor(path, 'slabFace')
+    if (path.endsWith('/surface-close.jpg')) return frameFor(path, 'surfaceClose')
+    if (path.endsWith('/edge-profile.jpg')) return frameFor(path, 'edgeProfile')
+    if (path.endsWith('/worked-format.jpg')) return frameFor(path, 'workedFormat')
+    if (path.endsWith('/source-context.jpg')) return frameFor(path, 'sourceContext')
     return path
   }
   const prev = getPrevVariety(v.rank)
@@ -125,6 +131,12 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
       variant: v.tier === 'owned' ? ('quarry' as const) : ('belt' as const),
     },
   ]
+  // Allied stones only carry a slab-face photo — fill the remaining frames with
+  // the branded gradient placeholder so the grid still reads as a full set.
+  const referenceSlots = imageSlots.map((slot) => ({
+    ...slot,
+    fallbackToPlaceholder: v.tier === 'allied',
+  }))
 
   return (
     <>
@@ -289,31 +301,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:auto-rows-fr">
-            <RevealOnScroll className="lg:col-span-6 lg:row-span-2">
-              <PlaceholderImage
-                variant={imageSlots[0].variant}
-                label={imageSlots[0].label}
-                title={imageSlots[0].title}
-                spec={imageSlots[0].spec}
-                swapPath={imageSlots[0].swapPath}
-                aspectRatio="aspect-[4/3] lg:h-full"
-                className="shadow-[0_24px_60px_rgba(17,17,17,0.12)]"
-              />
-            </RevealOnScroll>
-            {imageSlots.slice(1, 5).map((slot, i) => (
-              <RevealOnScroll key={slot.label} delay={(i + 1) * 80} className="lg:col-span-3">
-                <PlaceholderImage
-                  variant={slot.variant}
-                  label={slot.label}
-                  title={slot.title}
-                  spec={slot.spec}
-                  swapPath={slot.swapPath}
-                  aspectRatio="aspect-[4/3]"
-                />
-              </RevealOnScroll>
-            ))}
-          </div>
+          <VisualReferenceSet slots={referenceSlots} />
         </div>
       </section>
 

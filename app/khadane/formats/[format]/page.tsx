@@ -5,6 +5,7 @@ import { VARIETIES } from '@/lib/khadane/varieties'
 import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
+import VisualReferenceSet, { type ReferenceSlot } from '@/components/khadane/VisualReferenceSet'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
 
 export function generateStaticParams() {
@@ -33,11 +34,58 @@ export default async function FormatPage({ params }: FormatPageProps) {
   const prev = getPrevFormat(f.rank)
   const next = getNextFormat(f.rank)
 
+  const formatVariant = f.placeholderClass.replace('placeholder-', '') as ReferenceSlot['variant']
+  // Formats carry a single hero photo — show it as the lead frame and fill the
+  // rest with branded placeholders, mirroring the stone "Visual reference set".
+  const referenceSlots: ReferenceSlot[] = [
+    {
+      label: 'FORMAT',
+      title: `${f.name} · Worked`,
+      spec: `Documentary · ${f.name} in production or completed installation.`,
+      swapPath: `/img/formats/${f.slug}-hero.jpg`,
+      aspectRatio: 'aspect-[4/3]',
+      variant: formatVariant,
+      fallbackToPlaceholder: true,
+    },
+    {
+      label: 'SURFACE',
+      title: `${f.name} · Surface`,
+      spec: 'Macro texture of the worked face and finish.',
+      aspectRatio: 'aspect-[4/3]',
+      variant: formatVariant,
+      fallbackToPlaceholder: true,
+    },
+    {
+      label: 'EDGE',
+      title: `${f.name} · Edge profile`,
+      spec: 'Thickness, edge finish, and dressed profile.',
+      aspectRatio: 'aspect-[4/3]',
+      variant: formatVariant,
+      fallbackToPlaceholder: true,
+    },
+    {
+      label: 'INSTALL',
+      title: `${f.name} · Installed`,
+      spec: 'Completed installation in a project context.',
+      aspectRatio: 'aspect-[4/3]',
+      variant: 'yard',
+      fallbackToPlaceholder: true,
+    },
+    {
+      label: 'DISPATCH',
+      title: `${f.name} · Packed for dispatch`,
+      spec: 'Crated, strapped, and stacked for export.',
+      aspectRatio: 'aspect-[16/10]',
+      variant: 'belt',
+      fallbackToPlaceholder: true,
+    },
+  ]
+
   // Available varieties — varieties that produce in this format
   const availableVarieties =
     f.slug === 'quarry-blocks'
       ? VARIETIES
-      : VARIETIES.filter((v) => !v.formatExceptions?.includes('block-first') || ['gangsaw-slabs', 'wall-cladding', 'cobble-setts', 'window-sills', 'copings', 'block-steps-treads'].includes(f.slug))
+      : VARIETIES.filter((v) => !v.formatExceptions?.includes('block-first') || ['gangsaw-slabs', 'wall-cladding', 'cobble-setts', 'window-sills', 'copings', 'block-steps-treads', 'pier-cap'].includes(f.slug))
 
   return (
     <>
@@ -81,6 +129,7 @@ export default async function FormatPage({ params }: FormatPageProps) {
                 spec={`Documentary · ${f.name} in production or completed installation`}
                 swapPath={`/img/formats/${f.slug}-hero.jpg`}
                 aspectRatio="aspect-[4/5]"
+                fallbackToPlaceholder
               />
             </div>
           </div>
@@ -128,6 +177,32 @@ export default async function FormatPage({ params }: FormatPageProps) {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Section 02b — Visual reference set */}
+      <section className="section-padding section-warm">
+        <div className="container-editorial">
+          <div className="mb-10 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16 lg:items-end">
+            <div className="lg:col-span-5">
+              <RevealOnScroll>
+                <p className="eyebrow-gold mb-6 no-justify">IMAGE SET</p>
+                <h2 className="section-heading mb-6">
+                  Visual reference
+                  <span className="block italic text-quarry-gold">set.</span>
+                </h2>
+              </RevealOnScroll>
+            </div>
+            <div className="lg:col-span-7">
+              <RevealOnScroll delay={150}>
+                <p className="editorial-body">
+                  Five compact frames cover the worked format, its surface, edge profile, a completed installation, and how it is packed for dispatch.
+                </p>
+              </RevealOnScroll>
+            </div>
+          </div>
+
+          <VisualReferenceSet slots={referenceSlots} />
         </div>
       </section>
 

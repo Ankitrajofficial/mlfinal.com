@@ -21,6 +21,12 @@ interface PlaceholderImageProps {
   aspectRatio?: string
   swapPath?: string
   showCaption?: boolean
+  /** When there is no real image, render the branded gradient placeholder
+   *  block instead of hiding the container entirely. */
+  fallbackToPlaceholder?: boolean
+  /** 'cover' fills the frame (may crop); 'contain' fits the whole image
+   *  inside the frame (no crop, may letterbox). Default 'cover'. */
+  objectFit?: 'cover' | 'contain'
 }
 
 export default function PlaceholderImage({
@@ -32,16 +38,28 @@ export default function PlaceholderImage({
   aspectRatio = 'aspect-[4/3]',
   swapPath,
   showCaption = true,
+  fallbackToPlaceholder = false,
+  objectFit = 'cover',
 }: PlaceholderImageProps) {
+  const fitClass = objectFit === 'contain' ? 'object-contain' : 'object-cover'
   const [imgFailed, setImgFailed] = useState(false)
   const variantClass = `placeholder-${variant}`
   const showImage = Boolean(swapPath && !imgFailed)
 
-  // Hide the container entirely when no real image is available.
   if (!showImage) {
     // `spec` and `showCaption` are unused in this mode but kept in the props API for callers.
     void spec
     void showCaption
+    // Render the branded gradient placeholder when asked; otherwise hide.
+    if (fallbackToPlaceholder) {
+      return (
+        <div
+          className={`placeholder-base ${variantClass} ${aspectRatio} ${className}`}
+          role="img"
+          aria-label={title || label}
+        />
+      )
+    }
     return null
   }
 
@@ -52,7 +70,7 @@ export default function PlaceholderImage({
         <img
           src={swapPath as string}
           alt={title || label}
-          className="absolute inset-0 h-full w-full object-cover"
+          className={`absolute inset-0 h-full w-full ${fitClass}`}
           onError={() => setImgFailed(true)}
         />
       ) : (
@@ -61,7 +79,7 @@ export default function PlaceholderImage({
           alt={title || label}
           fill
           sizes="(min-width: 1280px) 42vw, (min-width: 1024px) 50vw, 100vw"
-          className="object-cover"
+          className={fitClass}
           onError={() => setImgFailed(true)}
         />
       )}

@@ -494,7 +494,7 @@ export const FORMATS: Format[] = [
     "code": "KHF-018",
     "rank": 18,
     "slug": "gangsaw-slabs",
-    "name": "Gangsaw Slabs",
+    "name": "Sandstone Slabs",
     "oneLine": "Large-format slabs cut from raw blocks. For custom cladding and bespoke work.",
     "formatHeadline": "Large-format slabs cut from raw blocks. For custom cladding and bespoke work.",
     "description": "Gangsaw slabs are large-format cuts taken directly from raw quarry blocks via the yard's gangsaw line. Buyers specify thickness, and the slab gets cut to size at the destination yard. Used for custom cladding installations, sculpture bases, and bespoke architectural work.",
@@ -536,6 +536,34 @@ export const FORMATS: Format[] = [
     "coveragePerCrate": "",
     "containerLoading": "2–3 blocks per 20-ft container",
     "placeholderClass": "placeholder-yard"
+  },
+  {
+    "code": "KHF-020",
+    "rank": 20,
+    "slug": "pier-cap",
+    "name": "Pier Cap",
+    "oneLine": "The finishing cap for gate piers and boundary pillars. Weathered top, clean overhang.",
+    "formatHeadline": "The finishing cap for gate piers and boundary pillars. Weathered top, clean overhang.",
+    "description": "Pier caps are the dressed stone tops that finish gate piers, boundary pillars, and wall terminations. KHADANE cuts them to the pier dimension with a weathered or flat top and a clean drip overhang that throws water clear of the pier face. Supplied in standard pier sizes or cut to your drawing.",
+    "varietyAvailability": 24,
+    "exceptions": [],
+    "primaryUse": "Gate and entrance pier tops, Boundary pillar caps, Garden and wall pier terminations, Driveway entrance features",
+    "surfacesAvailable": [
+      "natural-riven",
+      "honed",
+      "sawn",
+      "rockfaced"
+    ],
+    "edgesAvailable": [
+      "machine-cut",
+      "hand-cut-straight",
+      "bullnose"
+    ],
+    "crateDimensions": "Cut to pier dimension",
+    "crateWeight": "By size and thickness",
+    "coveragePerCrate": "Per piece or per drawing",
+    "containerLoading": "By order volume",
+    "placeholderClass": "placeholder-stone"
   }
 ]
 

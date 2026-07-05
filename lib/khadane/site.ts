@@ -22,7 +22,7 @@ export const SITE = {
   varietyCount: 24,
   ownedVarieties: 15,
   alliedVarieties: 9,
-  formatCount: 19,
+  formatCount: 20,
   surfaceTreatmentCount: 16,
   edgeProfileCount: 4,
   quarryCount: '100+',

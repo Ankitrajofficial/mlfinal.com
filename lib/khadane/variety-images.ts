@@ -237,3 +237,11 @@ export function getVarietyImage(
   const url = LOCAL_VARIETY_IMAGES[slug]?.[field] ?? VARIETY_IMAGES[slug]?.[field]
   return url && url.length > 0 ? url : localFallback
 }
+
+// True only when a real image is configured for this slug+field (in either the
+// local or Drive map). Lets callers fall back to a placeholder instead of a
+// path that would 404.
+export function hasVarietyImage(slug: string, field: keyof VarietyImageSet): boolean {
+  const url = LOCAL_VARIETY_IMAGES[slug]?.[field] ?? VARIETY_IMAGES[slug]?.[field]
+  return Boolean(url && url.length > 0)
+}

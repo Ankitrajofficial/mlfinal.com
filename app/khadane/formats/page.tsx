@@ -16,8 +16,12 @@ import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
 
+// Format heroes to show in full (object-contain) on the card instead of
+// cropping to fill — the whole image is visible, with slim letterbox bars.
+const FIT_FULL_FORMAT_HEROES = new Set<string>()
+
 export const metadata = {
-  title: 'The Formats — 19 sandstone formats',
+  title: 'The Formats — 20 sandstone formats',
   description: 'Every form the trade asks for, plus the surface treatments and edge profiles that finish the stone before it ships.',
 }
 
@@ -32,7 +36,7 @@ export default function FormatsPage() {
     {
       label: 'Architectural Detail',
       note: 'Linear and profiled pieces for walls, openings, steps, copings, roofing, and custom detailing.',
-      slugs: ['kerbstones', 'copings', 'window-sills', 'door-frames', 'block-steps-treads', 'roofing', 'accessories'],
+      slugs: ['kerbstones', 'copings', 'pier-cap', 'window-sills', 'door-frames', 'block-steps-treads', 'roofing', 'accessories'],
     },
     {
       label: 'Landscape & Garden',
@@ -69,7 +73,9 @@ export default function FormatsPage() {
             title={f.name}
             spec={f.primaryUse}
             swapPath={`/img/formats/${f.slug}-hero.jpg`}
-            aspectRatio="aspect-[16/10]"
+            aspectRatio="aspect-[3/2]"
+            objectFit={FIT_FULL_FORMAT_HEROES.has(f.slug) ? 'contain' : 'cover'}
+            fallbackToPlaceholder
             className="transition-transform duration-700 ease-editorial group-hover:scale-[1.015]"
           />
           <div className="flex flex-1 flex-col p-6 lg:p-7">
