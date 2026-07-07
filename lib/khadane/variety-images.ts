@@ -204,7 +204,12 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     surfaceClose: '/img/varieties/kandla-grey/surface-close-v2.jpg',
     edgeProfile: '/img/varieties/kandla-grey/edge-profile-v2.jpg',
   },
-  'autumn-brown': local('autumn-brown', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
+  'autumn-brown': {
+    ...local('autumn-brown', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
+    // Slot 1 swapped to the paved-composition photo; -v2 filename busts stale
+    // browser/CDN/next-image caches of the previous slab-face.jpg.
+    slabFace: '/img/varieties/autumn-brown/slab-face-v2.jpg',
+  },
   'raj-blend': {
     ...local('raj-blend', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
     thumb: '/img/varieties/raj-blend-thumb.jpg',
