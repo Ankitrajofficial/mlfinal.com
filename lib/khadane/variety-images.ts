@@ -203,6 +203,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     // Slots 2 & 3 swapped to application photos; -v2 filenames bust stale caches.
     surfaceClose: '/img/varieties/kandla-grey/surface-close-v2.jpg',
     edgeProfile: '/img/varieties/kandla-grey/edge-profile-v2.jpg',
+    // Slot 5 = single Kandla Grey paving tile on neutral; -v2 busts caches.
+    sourceContext: '/img/varieties/kandla-grey/source-context-v2.jpg',
   },
   'autumn-brown': {
     ...local('autumn-brown', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
