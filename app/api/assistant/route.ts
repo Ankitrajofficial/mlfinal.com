@@ -16,8 +16,20 @@ const WINDOW_MS = 5 * 60 * 1000
 const MAX_PER_WINDOW = 20
 const hits = new Map<string, number[]>()
 
+// Sweep IP buckets whose timestamps have all aged out, so the map can't
+// grow unbounded on a warm instance as new IPs arrive. Runs lazily.
+function pruneStale(now: number) {
+  for (const [key, times] of hits) {
+    const fresh = times.filter((t) => now - t < WINDOW_MS)
+    if (fresh.length === 0) hits.delete(key)
+    else if (fresh.length !== times.length) hits.set(key, fresh)
+  }
+}
+
 function rateLimited(ip: string): boolean {
   const now = Date.now()
+  // Occasionally prune expired buckets (~1-in-20 calls) to bound memory.
+  if (Math.random() < 0.05) pruneStale(now)
   const recent = (hits.get(ip) || []).filter((t) => now - t < WINDOW_MS)
   recent.push(now)
   hits.set(ip, recent)
