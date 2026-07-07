@@ -206,9 +206,11 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   },
   'autumn-brown': {
     ...local('autumn-brown', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
-    // Slot 1 swapped to the paved-composition photo, rotated 90°; -v3 filename
-    // busts stale browser/CDN/next-image caches of the previous slab-face.
-    slabFace: '/img/varieties/autumn-brown/slab-face-v3.jpg',
+    // Slot 1 = the AB paved-composition photo; -v4 filename busts stale
+    // browser/CDN/next-image caches of the previous slab-face.
+    slabFace: '/img/varieties/autumn-brown/slab-face-v4.jpg',
+    // Slot 2 = the AB patio-application (lawn) photo; -v2 busts caches.
+    surfaceClose: '/img/varieties/autumn-brown/surface-close-v2.jpg',
   },
   'raj-blend': {
     ...local('raj-blend', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
