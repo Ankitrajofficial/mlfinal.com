@@ -206,6 +206,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   },
   'autumn-brown': {
     ...local('autumn-brown', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
+    // Product face (hero) + collection thumbnail = the AB surface-texture close-up.
+    hero: '/img/varieties/autumn-brown-face.jpg',
+    thumb: '/img/varieties/autumn-brown-face.jpg',
     // Slot 1 = the AB paved-composition photo; -v4 filename busts stale
     // browser/CDN/next-image caches of the previous slab-face.
     slabFace: '/img/varieties/autumn-brown/slab-face-v4.jpg',
