@@ -246,16 +246,18 @@ export default function MLSFooter() {
               >
                 Contact
               </a>
-              <a
-                href="https://inook.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-mls-gold transition-colors"
-              >
-                Powered by inook.in
-              </a>
             </nav>
           </div>
+
+          {/* Powered-by — last line, matching KHADANE */}
+          <a
+            href="https://inook.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-block font-mono text-xs text-mls-cream/50 hover:text-mls-gold transition-colors"
+          >
+            Powered by inook.in
+          </a>
         </div>
       </div>
     </footer>
