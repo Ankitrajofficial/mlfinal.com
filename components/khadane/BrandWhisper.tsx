@@ -36,6 +36,7 @@ export default function BrandWhisper({ variant = 'default', customLine }: BrandW
   if (variant === 'gold') {
     return (
       <div className="section-tobacco py-24 lg:py-32 text-center">
+        
         <div className="container-editorial">
           <RevealOnScroll>
             <p className="font-display italic text-3xl lg:text-4xl text-quarry-gold no-justify mb-6">

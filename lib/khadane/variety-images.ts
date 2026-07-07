@@ -188,8 +188,22 @@ const local = (slug: string, fields: Array<keyof Omit<VarietyImageSet, 'hero' | 
 }
 
 const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
-  'khadipur-grey': local('khadipur-grey', ['slabFace']),
-  'kandla-grey': local('kandla-grey', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
+  // Slab-face swapped to the paved-composition photo; -v2 filename busts stale
+  // browser/CDN caches of the previous slab-face.jpg.
+  'khadipur-grey': {
+    ...local('khadipur-grey', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
+    slabFace: '/img/varieties/khadipur-grey/slab-face-v2.jpg',
+    // KP Grey Face texture drives both the product hero (card face) and the
+    // collection thumbnail; new filename busts stale caches of the old hero.
+    hero: '/img/varieties/khadipur-grey-thumb.jpg',
+    thumb: '/img/varieties/khadipur-grey-thumb.jpg',
+  },
+  'kandla-grey': {
+    ...local('kandla-grey', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
+    // Slots 2 & 3 swapped to application photos; -v2 filenames bust stale caches.
+    surfaceClose: '/img/varieties/kandla-grey/surface-close-v2.jpg',
+    edgeProfile: '/img/varieties/kandla-grey/edge-profile-v2.jpg',
+  },
   'autumn-brown': local('autumn-brown', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
   'raj-blend': {
     ...local('raj-blend', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),

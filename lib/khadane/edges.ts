@@ -5,30 +5,18 @@ import type { Finish } from './surfaces'
 
 export const EDGES: Finish[] = [
   {
-    "slug": "machine-cut",
-    "name": "Machine Cut",
-    "tagline": "Clean, square profiles.",
-    "description": "Precision saw-cut edges giving clean, uniform, square profiles for tight jointing. The natural choice for contemporary slab and paver layouts.",
-    "hero": "/images/khadane/edges/machine-cut/machine-cut.webp",
-    "heroJpg": "/images/khadane/edges/machine-cut/machine-cut.jpg",
+    "slug": "hand-cut",
+    "name": "Hand Cut",
+    "tagline": "Traditional and rustic.",
+    "description": "Fully hand-dressed edges with natural variation, for a traditional, rustic joint. At home in heritage and garden paving.",
+    "hero": "/images/khadane/edges/hand-cut/hand-cut-v2.webp",
+    "heroJpg": "/images/khadane/edges/hand-cut/hand-cut-v2.jpg",
     "images": [
       {
-        "variety": "Machine Cut",
-        "file": "/images/khadane/edges/machine-cut/machine-cut.webp",
-        "jpg": "/images/khadane/edges/machine-cut/machine-cut.jpg",
-        "thumb": "/images/khadane/edges/machine-cut/machine-cut-thumb.webp"
-      },
-      {
-        "variety": "Slabs",
-        "file": "/images/khadane/edges/machine-cut/slabs.webp",
-        "jpg": "/images/khadane/edges/machine-cut/slabs.jpg",
-        "thumb": "/images/khadane/edges/machine-cut/slabs-thumb.webp"
-      },
-      {
-        "variety": "Pavers",
-        "file": "/images/khadane/edges/machine-cut/pavers.webp",
-        "jpg": "/images/khadane/edges/machine-cut/pavers.jpg",
-        "thumb": "/images/khadane/edges/machine-cut/pavers-thumb.webp"
+        "variety": "Hand Cut",
+        "file": "/images/khadane/edges/hand-cut/hand-cut-v2.webp",
+        "jpg": "/images/khadane/edges/hand-cut/hand-cut-v2.jpg",
+        "thumb": "/images/khadane/edges/hand-cut/hand-cut-v2-thumb.webp"
       }
     ]
   },
@@ -37,36 +25,30 @@ export const EDGES: Finish[] = [
     "name": "Straight Handcut",
     "tagline": "Crisp, with character.",
     "description": "Hand-cut to a straight line, carrying subtle irregularity — crisp but unmistakably handmade. Suited to copings and pavers.",
-    "hero": "/images/khadane/edges/straight-handcut/straight-handcut.webp",
-    "heroJpg": "/images/khadane/edges/straight-handcut/straight-handcut.jpg",
+    "hero": "/images/khadane/edges/straight-handcut/straight-handcut-v2.webp",
+    "heroJpg": "/images/khadane/edges/straight-handcut/straight-handcut-v2.jpg",
     "images": [
       {
         "variety": "Straight Handcut",
-        "file": "/images/khadane/edges/straight-handcut/straight-handcut.webp",
-        "jpg": "/images/khadane/edges/straight-handcut/straight-handcut.jpg",
-        "thumb": "/images/khadane/edges/straight-handcut/straight-handcut-thumb.webp"
-      },
-      {
-        "variety": "Copings",
-        "file": "/images/khadane/edges/straight-handcut/copings.webp",
-        "jpg": "/images/khadane/edges/straight-handcut/copings.jpg",
-        "thumb": "/images/khadane/edges/straight-handcut/copings-thumb.webp"
+        "file": "/images/khadane/edges/straight-handcut/straight-handcut-v2.webp",
+        "jpg": "/images/khadane/edges/straight-handcut/straight-handcut-v2.jpg",
+        "thumb": "/images/khadane/edges/straight-handcut/straight-handcut-v2-thumb.webp"
       }
     ]
   },
   {
-    "slug": "hand-cut",
-    "name": "Hand Cut",
-    "tagline": "Traditional and rustic.",
-    "description": "Fully hand-dressed edges with natural variation, for a traditional, rustic joint. At home in heritage and garden paving.",
-    "hero": "/images/khadane/edges/hand-cut/hand-cut.webp",
-    "heroJpg": "/images/khadane/edges/hand-cut/hand-cut.jpg",
+    "slug": "machine-cut",
+    "name": "Machine Cut",
+    "tagline": "Clean, square profiles.",
+    "description": "Precision saw-cut edges giving clean, uniform, square profiles for tight jointing. The natural choice for contemporary slab and paver layouts.",
+    "hero": "/images/khadane/edges/machine-cut/machine-cut-v2.webp",
+    "heroJpg": "/images/khadane/edges/machine-cut/machine-cut-v2.jpg",
     "images": [
       {
-        "variety": "Hand Cut",
-        "file": "/images/khadane/edges/hand-cut/hand-cut.webp",
-        "jpg": "/images/khadane/edges/hand-cut/hand-cut.jpg",
-        "thumb": "/images/khadane/edges/hand-cut/hand-cut-thumb.webp"
+        "variety": "Machine Cut",
+        "file": "/images/khadane/edges/machine-cut/machine-cut-v2.webp",
+        "jpg": "/images/khadane/edges/machine-cut/machine-cut-v2.jpg",
+        "thumb": "/images/khadane/edges/machine-cut/machine-cut-v2-thumb.webp"
       }
     ]
   },
@@ -75,14 +57,14 @@ export const EDGES: Finish[] = [
     "name": "Bullnose",
     "tagline": "Rounded and finished.",
     "description": "A rounded, half-round profile edge — soft, safe and neatly finished. The standard for steps, copings and pool edges.",
-    "hero": "/images/khadane/edges/bullnose/bullnose.webp",
-    "heroJpg": "/images/khadane/edges/bullnose/bullnose.jpg",
+    "hero": "/images/khadane/edges/bullnose/bullnose-v3.webp",
+    "heroJpg": "/images/khadane/edges/bullnose/bullnose-v3.jpg",
     "images": [
       {
         "variety": "Bullnose",
-        "file": "/images/khadane/edges/bullnose/bullnose.webp",
-        "jpg": "/images/khadane/edges/bullnose/bullnose.jpg",
-        "thumb": "/images/khadane/edges/bullnose/bullnose-thumb.webp"
+        "file": "/images/khadane/edges/bullnose/bullnose-v3.webp",
+        "jpg": "/images/khadane/edges/bullnose/bullnose-v3.jpg",
+        "thumb": "/images/khadane/edges/bullnose/bullnose-v3-thumb.webp"
       }
     ]
   }
