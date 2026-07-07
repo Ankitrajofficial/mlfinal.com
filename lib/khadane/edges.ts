@@ -25,14 +25,14 @@ export const EDGES: Finish[] = [
     "name": "Straight Handcut",
     "tagline": "Crisp, with character.",
     "description": "Hand-cut to a straight line, carrying subtle irregularity — crisp but unmistakably handmade. Suited to copings and pavers.",
-    "hero": "/images/khadane/edges/straight-handcut/straight-handcut-v2.webp",
-    "heroJpg": "/images/khadane/edges/straight-handcut/straight-handcut-v2.jpg",
+    "hero": "/images/khadane/edges/straight-handcut/straight-handcut-v3.webp",
+    "heroJpg": "/images/khadane/edges/straight-handcut/straight-handcut-v3.jpg",
     "images": [
       {
         "variety": "Straight Handcut",
-        "file": "/images/khadane/edges/straight-handcut/straight-handcut-v2.webp",
-        "jpg": "/images/khadane/edges/straight-handcut/straight-handcut-v2.jpg",
-        "thumb": "/images/khadane/edges/straight-handcut/straight-handcut-v2-thumb.webp"
+        "file": "/images/khadane/edges/straight-handcut/straight-handcut-v3.webp",
+        "jpg": "/images/khadane/edges/straight-handcut/straight-handcut-v3.jpg",
+        "thumb": "/images/khadane/edges/straight-handcut/straight-handcut-v3-thumb.webp"
       }
     ]
   },
