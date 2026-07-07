@@ -94,6 +94,26 @@ GOOGLE_ENQUIRY_WEBHOOK_URL=https://script.google.com/macros/s/.../exec
 GOOGLE_ENQUIRY_WEBHOOK_SECRET=change-this-long-random-secret
 ```
 
+### Secrets backup & recovery (so nothing is lost)
+
+`.env.local` is gitignored, so it is **not** in GitHub — a lost laptop or a
+fresh clone loses those secrets. Two backups keep them recoverable:
+
+1. **Vercel** — the production source of truth (Project Settings → Environment
+   Variables). Restore locally with `vercel env pull .env.local`.
+2. **Encrypted-in-git** — `scripts/secrets.sh` encrypts `.env.local` into
+   `.env.local.enc`, which *is* committed. `git clone` + your passphrase
+   restores everything, independent of Vercel.
+
+```bash
+./scripts/secrets.sh encrypt   # after changing secrets — then commit .env.local.enc
+./scripts/secrets.sh decrypt   # after a fresh clone — recreates .env.local
+```
+
+openssl prompts for the passphrase (never stored in shell history). Keep that
+passphrase in a password manager — **without it, the encrypted backup cannot be
+recovered.**
+
 ---
 
 ## Optional Google Sheets enquiry backend

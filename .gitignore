@@ -18,6 +18,8 @@ build/
 # env
 .env
 .env*.local
+# ...but the encrypted secrets backup IS committed (see scripts/secrets.sh)
+!.env.local.enc
 
 # debug
 npm-debug.log*
