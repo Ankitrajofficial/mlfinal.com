@@ -121,6 +121,18 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Powered-by */}
+      <div className="container-editorial pb-8 lg:pb-10">
+        <a
+          href="https://inook.in"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono text-xs text-warm-white/30 hover:text-quarry-gold transition-colors no-justify"
+        >
+          Powered by inook.in
+        </a>
+      </div>
     </footer>
   )
 }
