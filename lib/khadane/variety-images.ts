@@ -218,6 +218,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     edgeProfile: '/img/varieties/autumn-brown/edge-profile-v2.jpg',
     // Slot 4 = IMG_8935 (AB worked format); -v3 busts caches.
     workedFormat: '/img/varieties/autumn-brown/worked-format-v3.jpg',
+    // Slot 5 = AB single paving tile on white; -v2 busts caches.
+    sourceContext: '/img/varieties/autumn-brown/source-context-v2.jpg',
   },
   'raj-blend': {
     ...local('raj-blend', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
