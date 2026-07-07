@@ -214,6 +214,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     slabFace: '/img/varieties/autumn-brown/slab-face-v4.jpg',
     // Slot 2 = the AB patio-application (lawn) photo; -v2 busts caches.
     surfaceClose: '/img/varieties/autumn-brown/surface-close-v2.jpg',
+    // Slot 3 = the AB conservatory-patio application photo; -v2 busts caches.
+    edgeProfile: '/img/varieties/autumn-brown/edge-profile-v2.jpg',
     // Slot 4 = the AB paved-composition on white ground; -v2 busts caches.
     workedFormat: '/img/varieties/autumn-brown/worked-format-v2.jpg',
   },
