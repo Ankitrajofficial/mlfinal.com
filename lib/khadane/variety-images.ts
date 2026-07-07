@@ -200,6 +200,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   },
   'kandla-grey': {
     ...local('kandla-grey', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
+    // Slot 1 = KG paved-composition photo; -v2 busts caches.
+    slabFace: '/img/varieties/kandla-grey/slab-face-v2.jpg',
     // Slots 2 & 3 swapped to application photos; -v2 filenames bust stale caches.
     surfaceClose: '/img/varieties/kandla-grey/surface-close-v2.jpg',
     edgeProfile: '/img/varieties/kandla-grey/edge-profile-v2.jpg',
