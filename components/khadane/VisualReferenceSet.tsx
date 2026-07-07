@@ -23,6 +23,9 @@ export interface ReferenceSlot {
     | 'belt'
   /** Show the branded gradient placeholder when no real image exists. */
   fallbackToPlaceholder?: boolean
+  /** 'cover' (default) fills the frame and may crop; 'contain' fits the whole
+   *  image inside the frame with no crop (may letterbox). */
+  objectFit?: 'cover' | 'contain'
 }
 
 export default function VisualReferenceSet({ slots }: { slots: ReferenceSlot[] }) {
@@ -73,6 +76,7 @@ export default function VisualReferenceSet({ slots }: { slots: ReferenceSlot[] }
         spec={slot.spec}
         swapPath={slot.swapPath}
         fallbackToPlaceholder={slot.fallbackToPlaceholder}
+        objectFit={slot.objectFit}
         aspectRatio={aspectRatio}
         className={className}
       />

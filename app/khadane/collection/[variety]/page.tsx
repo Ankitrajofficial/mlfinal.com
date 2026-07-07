@@ -97,6 +97,9 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
       swapPath: swapPathFor(`/img/varieties/${v.slug}/slab-face.jpg`),
       aspectRatio: 'aspect-[4/5]',
       variant: stoneVariant,
+      // Autumn Brown's slab-face is a wide paved-composition photo; contain it
+      // so the whole layout stays in the lead frame instead of cropping.
+      objectFit: v.slug === 'autumn-brown' ? ('contain' as const) : undefined,
     },
     {
       label: 'SURFACE',
