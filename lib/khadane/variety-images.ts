@@ -193,6 +193,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   'khadipur-grey': {
     ...local('khadipur-grey', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
     slabFace: '/img/varieties/khadipur-grey/slab-face-v2.jpg',
+    // Slot 5 = KP Grey single paving tile; background recoloured to the page's
+    // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
+    sourceContext: '/img/varieties/khadipur-grey/source-context-v2.jpg',
     // KP Grey Face texture drives both the product hero (card face) and the
     // collection thumbnail; new filename busts stale caches of the old hero.
     hero: '/img/varieties/khadipur-grey-thumb.jpg',
@@ -205,8 +208,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     // Slots 2 & 3 swapped to application photos; -v2 filenames bust stale caches.
     surfaceClose: '/img/varieties/kandla-grey/surface-close-v2.jpg',
     edgeProfile: '/img/varieties/kandla-grey/edge-profile-v2.jpg',
-    // Slot 5 = single Kandla Grey paving tile on neutral; -v2 busts caches.
-    sourceContext: '/img/varieties/kandla-grey/source-context-v2.jpg',
+    // Slot 5 = single Kandla Grey paving tile; ground recoloured to the page's
+    // warm-white (#F0EDE6) so the frame blends in; -v3 busts caches.
+    sourceContext: '/img/varieties/kandla-grey/source-context-v3.jpg',
   },
   'autumn-brown': {
     ...local('autumn-brown', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
@@ -220,16 +224,25 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     surfaceClose: '/img/varieties/autumn-brown/surface-close-v2.jpg',
     // Slot 3 = the AB conservatory-patio application photo; -v2 busts caches.
     edgeProfile: '/img/varieties/autumn-brown/edge-profile-v2.jpg',
-    // Slot 4 = IMG_8935 (AB worked format); -v3 busts caches.
-    workedFormat: '/img/varieties/autumn-brown/worked-format-v3.jpg',
-    // Slot 5 = AB single paving tile on white; -v2 busts caches.
-    sourceContext: '/img/varieties/autumn-brown/source-context-v2.jpg',
+    // Slot 4 = the AB paved-composition, rotated 90° CW; -v5 busts caches.
+    workedFormat: '/img/varieties/autumn-brown/worked-format-v5.jpg',
+    // Slot 5 = AB single paving tile; ground recoloured to the page's
+    // warm-white (#F0EDE6) so the frame blends in; -v3 busts caches.
+    sourceContext: '/img/varieties/autumn-brown/source-context-v3.jpg',
   },
   'raj-blend': {
     ...local('raj-blend', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
     thumb: '/img/varieties/raj-blend-thumb.jpg',
+    // Slot 5 = single Raj Blend paving tile; ground recoloured to the page's
+    // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
+    sourceContext: '/img/varieties/raj-blend/source-context-v2.jpg',
   },
-  'garda-green': local('garda-green', ['slabFace', 'surfaceClose']),
+  'garda-green': {
+    ...local('garda-green', ['slabFace', 'surfaceClose']),
+    // Slot 5 = single Garda Green paving tile; ground recoloured to the page's
+    // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
+    sourceContext: '/img/varieties/garda-green/source-context-v2.jpg',
+  },
   'slate-grey': local('slate-grey', ['slabFace', 'surfaceClose']),
   'mint': local('mint', ['slabFace', 'surfaceClose']),
   'fossil-mint': local('fossil-mint', ['slabFace', 'surfaceClose']),
@@ -240,6 +253,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     ...local('camel-dust', ['slabFace']),
     hero: '/img/varieties/camel-dust-hero-main.jpg',
     thumb: '/img/varieties/camel-dust-hero-main.jpg',
+    // Slot 5 = single Camel Dust paving tile; ground recoloured to the page's
+    // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
+    sourceContext: '/img/varieties/camel-dust/source-context-v2.jpg',
   },
   'red-choco': local('red-choco', ['slabFace']),
   'dual-tone': local('dual-tone', ['slabFace']),
@@ -247,6 +263,11 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   // Rainbow (renamed from Multi Colours) — image files keep the original folder name
   'rainbow': {
     ...local('multi-colours', ['slabFace']),
+    // Slot 1 = Rainbow paved-composition photo; -v2 busts caches.
+    slabFace: '/img/varieties/multi-colours/slab-face-v2.jpg',
+    // Slots 2 & 3 = Rainbow patio-application photos; -v2 busts caches.
+    surfaceClose: '/img/varieties/multi-colours/surface-close-v2.jpg',
+    edgeProfile: '/img/varieties/multi-colours/edge-profile-v2.jpg',
   },
   'white-mint': {
     hero: '/images/khadane/varieties/white-mint/white-mint.jpg',
