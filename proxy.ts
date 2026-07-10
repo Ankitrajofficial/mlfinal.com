@@ -197,6 +197,21 @@ export function proxy(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // Restored static food-services page (copied verbatim from the legacy
+  // sandstone_mlswebsite repo) and the media it references.
+  if (
+    path === '/food-services.html' ||
+    path === '/styles.css' ||
+    path === '/script.js' ||
+    path === '/translate.js' ||
+    path === '/MLS_Logo.png' ||
+    path.startsWith('/assets/') ||
+    path.startsWith('/vyanjanam/') ||
+    path.startsWith('/MLS_SVG/')
+  ) {
+    return NextResponse.next()
+  }
+
   // Canonicalize internal route prefixes on public domains. The browser URL
   // should stay clean: khadane.com/collection, not khadane.com/khadane/collection.
   const hostTarget = resolveSite(host)
