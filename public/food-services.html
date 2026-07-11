@@ -419,7 +419,67 @@
             letter-spacing: 0.15em;
             margin-top: 8px;
         }
-        
+
+        /* Milestone Banner — 1 Million Meals */
+        .milestone-banner {
+            display: flex;
+            justify-content: center;
+            padding: 70px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .milestone-box {
+            width: 100%;
+            max-width: 760px;
+            text-align: center;
+            padding: 52px 40px;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.14), rgba(212, 165, 116, 0.04));
+            border: 1px solid rgba(212, 165, 116, 0.35);
+            border-radius: 14px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+            position: relative;
+        }
+        .milestone-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.78rem;
+            color: #D4A574;
+            text-transform: uppercase;
+            letter-spacing: 0.28em;
+            margin-bottom: 20px;
+        }
+        .milestone-eyebrow::before,
+        .milestone-eyebrow::after {
+            content: '';
+            width: 36px;
+            height: 1px;
+            background: rgba(212, 165, 116, 0.5);
+        }
+        .milestone-number {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 8vw, 4.75rem);
+            font-weight: 700;
+            color: #F5E6D3;
+            line-height: 1;
+            font-variant-numeric: lining-nums;
+        }
+        .milestone-label {
+            font-family: var(--font-serif);
+            font-size: clamp(1.15rem, 2.8vw, 1.5rem);
+            color: #D4A574;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            margin-top: 12px;
+        }
+        .milestone-sub {
+            font-size: 1rem;
+            color: #B89A7A;
+            line-height: 1.8;
+            max-width: 540px;
+            margin: 18px auto 0;
+        }
+
         /* Our Story Section */
         .our-story-section {
             padding: 80px 0;
@@ -2055,7 +2115,18 @@
                 flex-direction: column;
                 gap: 30px;
             }
-            
+
+            .milestone-banner {
+                padding: 50px 16px;
+            }
+            .milestone-box {
+                padding: 40px 24px;
+            }
+            .milestone-eyebrow::before,
+            .milestone-eyebrow::after {
+                width: 20px;
+            }
+
             .day-nav {
                 gap: 8px;
             }
@@ -2083,6 +2154,7 @@
             }
             .container,
             .stats-bar,
+            .milestone-banner,
             .why-choose-strip,
             .gallery-carousel-wrap,
             .testimonial-carousel-wrapper,
@@ -2868,6 +2940,19 @@
             <div class="stat-label">Certified Kitchen</div>
         </div>
     </div>
+
+    <!-- Milestone Banner -->
+    <section class="milestone-banner reveal" data-reveal>
+        <div class="milestone-box">
+            <div class="milestone-eyebrow">A Milestone We Are Proud Of</div>
+            <div class="milestone-number">1 Million</div>
+            <div class="milestone-label">Meals Served</div>
+            <p class="milestone-sub">
+                We have served 1 Million meals — every one of them pure vegetarian,
+                prepared in our FSSAI certified kitchen with heart, care, and the taste of home.
+            </p>
+        </div>
+    </section>
 
     <!-- Why Choose Us -->
     <section class="why-choose-strip reveal" data-reveal>
