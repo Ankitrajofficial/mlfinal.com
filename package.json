@@ -12,11 +12,15 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "audit:facts": "tsx scripts/audit-facts.ts",
+    "admin:migrate-neon": "tsx scripts/migrate-admin-to-neon.ts",
     "verify": "npm run lint && npm run typecheck && npm run audit:facts && npm run build"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "framer-motion": "^11.18.0",
+    "leaflet": "^1.9.4",
     "lucide-react": "^0.460.0",
+    "mongodb": "^7.5.0",
     "next": "^16.2.9",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -24,6 +28,7 @@
     "zod": "^3.24.0"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.21",
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

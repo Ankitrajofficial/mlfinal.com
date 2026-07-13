@@ -121,7 +121,7 @@ recovered.**
 Use `scripts/google-enquiry-webhook.gs` in Google Apps Script when you want every enquiry saved to a Google Sheet and want Apps Script to send both emails:
 
 1. Create or open the Google Sheet that should receive enquiries.
-2. In Extensions → Apps Script, paste `scripts/google-enquiry-webhook.gs`.
+2. Extensions → Apps Script → **delete any old code**, paste the full `scripts/google-enquiry-webhook.gs`.
 3. Replace the `CONFIG` constants at the top of the script:
 
 | Constant | Purpose |
@@ -135,23 +135,46 @@ Use `scripts/google-enquiry-webhook.gs` in Google Apps Script when you want ever
 | `WEBHOOK_SECRET` | Must match `GOOGLE_ENQUIRY_WEBHOOK_SECRET` |
 | `BUSINESS_NAME` | Name shown in confirmation email |
 
-4. Deploy → New deployment → Web app.
+4. Save the project, then **Deploy → New deployment → Web app**.
 5. Execute as: **Me**.
-6. Who has access: **Anyone**.
+6. Who has access: **Anyone** (required — server-to-server has no Google login).
 7. Copy the `/exec` URL into `GOOGLE_ENQUIRY_WEBHOOK_URL`.
+8. Put the same secret into `GOOGLE_ENQUIRY_WEBHOOK_SECRET` and restart the app.
 
 Keep `WEBHOOK_SECRET` long and private. The public web app URL is protected by that shared secret.
 
-### Notification email test
+### After every script edit
 
-Before testing the website form, run `testNotificationEmail()` inside Apps Script. Google will ask for permission the first time. If that email does not arrive:
+Deploy → **Manage deployments** → pencil icon → **Version: New version** → Deploy.  
+Editing code without a new deployment version leaves the live `/exec` URL on the old (often broken) build.
 
-- Check the configured `OWNER_EMAIL`, `NOTIFY_EMAIL`, or `KHADANE_OWNER_EMAIL`.
-- Check Spam, Promotions, and Updates tabs.
-- Confirm the Apps Script deployment runs as **Me**.
-- Confirm the deploying Google account has remaining `MailApp` quota.
+### Notification / self tests
 
-Local website submissions only call Apps Script when `.env.local` contains `GOOGLE_ENQUIRY_WEBHOOK_URL` and `GOOGLE_ENQUIRY_WEBHOOK_SECRET`, and the dev server has been restarted.
+In the Apps Script editor, run these once (approve permissions when prompted):
+
+| Function | Purpose |
+|---|---|
+| `testSheetSetup` | Opens/creates the Enquiries sheet |
+| `testNotificationEmail` | Sends a test owner email |
+| `testDoPostLocally` | Full path: sheet row + emails without the website |
+
+If owner mail does not arrive:
+
+- Check `OWNER_EMAIL` / `MLS_OWNER_EMAIL` / `KHADANE_OWNER_EMAIL`
+- Check Spam / Promotions
+- Confirm deployment is **Execute as: Me**, **Anyone**
+- Confirm the deploying account still has `MailApp` daily quota
+
+### Common failures (fixed in v2.1)
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| HTML “unable to open the file” / 302 errors | Stale deployment, or POST turned into GET on redirect | Paste latest `.gs`, redeploy **New version**; website client now re-POSTs across redirects |
+| `Missing required field` / random ReferenceError | Incomplete script (missing HTML helpers) | Use full `scripts/google-enquiry-webhook.gs` v2.1+ |
+| `Invalid webhook secret` | Secret mismatch | Same value in CONFIG `WEBHOOK_SECRET` and `GOOGLE_ENQUIRY_WEBHOOK_SECRET` |
+| Sheet not updating | Wrong `SHEET_ID` or sheet not shared with script owner | Fix ID; script owner must own/edit the sheet |
+
+Local website submissions only call Apps Script when `.env.local` contains `GOOGLE_ENQUIRY_WEBHOOK_URL` (and secret if configured), and the dev server has been restarted.
 
 ---
 

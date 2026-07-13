@@ -8,6 +8,7 @@ import { sendEmail, verifyTurnstile } from '@/lib/resend'
 import { sendGoogleEnquiryWebhook } from '@/lib/google-enquiry'
 import { checkRateLimit, getClientIp } from '@/lib/rate-limit'
 import { CONTACT, ENTITIES, FOUNDING } from '@/lib/facts'
+import { ingestWebsiteEnquiry } from '@/lib/admin/store'
 
 /**
  * Enquiry API — PRODUCTION.
@@ -134,7 +135,29 @@ export async function POST(request: NextRequest) {
   const reference = generateReferenceNumber(data.site)
   const inbox = routeEnquiryInbox(data.site, data.category)
 
-  // ─── 9. Google Apps Script webhook, if configured ───────────
+  // ─── 9. Record in the command-centre store FIRST ────────────
+  // Neon Postgres (with Mongo backup) is the source of truth; email and
+  // sheet layers below are notification views and must not gate storage.
+  try {
+    await ingestWebsiteEnquiry({
+      reference,
+      site: data.site,
+      category: data.category,
+      name: data.name,
+      email: data.email,
+      phone: data.phone || '',
+      company: data.company || '',
+      country: data.country || '',
+      variety: data.variety || '',
+      format: data.format || '',
+      volume: data.volume || '',
+      message: data.message,
+    })
+  } catch (err) {
+    console.error('[ENQUIRY · ADMIN STORE]', err)
+  }
+
+  // ─── 9b. Google Apps Script webhook, if configured ──────────
   const googleResult = await sendGoogleEnquiryWebhook({
     reference,
     enquiry: data,
@@ -144,28 +167,23 @@ export async function POST(request: NextRequest) {
     sourceUrl: request.headers.get('referer') ?? '',
   })
 
-  if (googleResult.configured) {
-    if (!googleResult.ok) {
-      console.error('[ENQUIRY · GOOGLE WEBHOOK ERROR]', {
-        reference,
-        error: googleResult.error,
-      })
-      return NextResponse.json(
-        {
-          ok: false,
-          error: `We received your enquiry (ref ${reference}) but could not complete the automated follow-up. Please write to ${CONTACT.officeMLS} mentioning this reference.`,
-          reference,
-        },
-        { status: 502 },
-      )
-    }
-
+  if (googleResult.configured && googleResult.ok) {
     return NextResponse.json({
       ok: true,
       reference,
       message:
         'Your enquiry has been received. A confirmation email has been sent.',
     })
+  }
+
+  if (googleResult.configured && !googleResult.ok) {
+    console.error('[ENQUIRY · GOOGLE WEBHOOK ERROR]', {
+      reference,
+      error: googleResult.error,
+      emailStatus: googleResult.emailStatus,
+    })
+    // Fall through to Resend / dev logging when Apps Script fails,
+    // so a broken deployment does not drop the enquiry entirely.
   }
 
   // ─── 10. Compose Resend email fallback ──────────────────────

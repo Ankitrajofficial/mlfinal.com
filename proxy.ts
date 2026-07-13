@@ -95,12 +95,14 @@ function resolveLocalSiteByPath(path: string): 'mls' | 'khadane' | null {
     path === '/collection' ||
     path === '/formats' ||
     path === '/quarry' ||
+    path === '/mines' ||
     path === '/yard' ||
     path === '/desk' ||
     path === '/about' ||
     path === '/group' ||
     path.startsWith('/collection/') ||
     path.startsWith('/formats/') ||
+    path.startsWith('/mines/') ||
     path.startsWith('/field-notes')
   ) {
     return 'khadane'
@@ -172,6 +174,7 @@ export function proxy(request: NextRequest) {
   if (
     path.startsWith('/_next') ||
     path.startsWith('/api') ||
+    path.startsWith('/admin') ||
     path.startsWith('/brand') ||
     path.startsWith('/img') ||
     path.startsWith('/images') ||

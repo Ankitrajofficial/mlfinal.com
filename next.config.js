@@ -55,6 +55,27 @@ const nextConfig = {
           },
         ],
       },
+      // The Mines GIS command centre uses device GPS (Live GPS button).
+      // This later rule overrides the site-wide Permissions-Policy for
+      // /admin only; the public sites stay fully locked down.
+      {
+        source: '/admin',
+        headers: [
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(self)',
+          },
+        ],
+      },
+      {
+        source: '/admin/:path*',
+        headers: [
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(self)',
+          },
+        ],
+      },
     ]
   },
 
@@ -63,6 +84,10 @@ const nextConfig = {
   turbopack: {
     root: __dirname,
   },
+
+  // Keep the MongoDB driver out of the bundler — it ships optional
+  // native/lazy requires that break when bundled.
+  serverExternalPackages: ['mongodb'],
 
   experimental: {
     // Next 16 features can be enabled here
