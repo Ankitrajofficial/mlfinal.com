@@ -249,7 +249,7 @@ export const SURFACES: Finish[] = [
         "thumb": "/images/khadane/surfaces/natural-riven/red-choco-thumb.webp"
       },
       {
-        "variety": "White Mint",
+        "variety": "White",
         "file": "/images/khadane/surfaces/natural-riven/white-mint.webp",
         "jpg": "/images/khadane/surfaces/natural-riven/white-mint.jpg",
         "thumb": "/images/khadane/surfaces/natural-riven/white-mint-thumb.webp"

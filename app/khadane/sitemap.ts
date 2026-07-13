@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/surfaces',
     '/gallery',
     '/quarry',
+    '/mines',
     '/yard',
     '/desk',
     '/about',
@@ -27,6 +28,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: p === '' ? 1.0 : 0.8,
+  }))
+
+  // Static fallback slugs (portfolio is dynamic; list known holdings for crawl)
+  const mineUrls = [
+    'bijolia-quarry-base',
+    'bundi-belt-sandstone',
+    'kota-inspection-yard',
+    'khatu-teakwood-partner',
+    'jaisalmer-yellow-prospect',
+  ].map((slug) => ({
+    url: `${base}/mines/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
   }))
 
   const varietyUrls = VARIETIES.map((v) => ({
@@ -50,5 +65,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  return [...staticUrls, ...varietyUrls, ...formatUrls, ...fieldNoteUrls]
+  return [...staticUrls, ...mineUrls, ...varietyUrls, ...formatUrls, ...fieldNoteUrls]
 }

@@ -197,9 +197,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
     sourceContext: '/img/varieties/khadipur-grey/source-context-v2.jpg',
     // KP Grey Face texture drives both the product hero (card face) and the
-    // collection thumbnail; new filename busts stale caches of the old hero.
-    hero: '/img/varieties/khadipur-grey-thumb.jpg',
-    thumb: '/img/varieties/khadipur-grey-thumb.jpg',
+    // collection thumbnail; -v2 = new field photo (2026-07), busts caches.
+    hero: '/img/varieties/khadipur-grey-thumb-v2.jpg',
+    thumb: '/img/varieties/khadipur-grey-thumb-v2.jpg',
   },
   'kandla-grey': {
     ...local('kandla-grey', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
@@ -211,6 +211,10 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     // Slot 5 = single Kandla Grey paving tile; ground recoloured to the page's
     // warm-white (#F0EDE6) so the frame blends in; -v3 busts caches.
     sourceContext: '/img/varieties/kandla-grey/source-context-v3.jpg',
+    // KG surface-texture field photo (2026-07) drives both the product hero
+    // (card face) and the collection thumbnail; -v2 filename busts caches.
+    hero: '/img/varieties/kandla-grey-thumb-v2.jpg',
+    thumb: '/img/varieties/kandla-grey-thumb-v2.jpg',
   },
   'autumn-brown': {
     ...local('autumn-brown', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
@@ -232,34 +236,63 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   },
   'raj-blend': {
     ...local('raj-blend', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
-    thumb: '/img/varieties/raj-blend-thumb.jpg',
+    // RB surface-texture field photo (2026-07) drives both the product hero
+    // (card face) and the collection thumbnail; -v2 filename busts caches.
+    hero: '/img/varieties/raj-blend-thumb-v2.jpg',
+    thumb: '/img/varieties/raj-blend-thumb-v2.jpg',
     // Slot 5 = single Raj Blend paving tile; ground recoloured to the page's
     // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
     sourceContext: '/img/varieties/raj-blend/source-context-v2.jpg',
   },
   'garda-green': {
     ...local('garda-green', ['slabFace', 'surfaceClose']),
+    // GG surface-texture field photo (2026-07) drives both the product hero
+    // (card face) and the collection thumbnail; -v2 filename busts caches.
+    hero: '/img/varieties/garda-green-thumb-v2.jpg',
+    thumb: '/img/varieties/garda-green-thumb-v2.jpg',
     // Slot 5 = single Garda Green paving tile; ground recoloured to the page's
     // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
     sourceContext: '/img/varieties/garda-green/source-context-v2.jpg',
   },
   'slate-grey': local('slate-grey', ['slabFace', 'surfaceClose']),
-  'mint': local('mint', ['slabFace', 'surfaceClose']),
+  'mint': {
+    ...local('mint', ['slabFace', 'surfaceClose']),
+    // Raveena surface-texture field photo (2026-07, full-res) drives both the
+    // product hero (card face) and the collection thumbnail; -v3 busts caches.
+    hero: '/img/varieties/mint-thumb-v3.jpg',
+    thumb: '/img/varieties/mint-thumb-v3.jpg',
+  },
   'fossil-mint': local('fossil-mint', ['slabFace', 'surfaceClose']),
-  'buff': local('buff', ['slabFace', 'surfaceClose']),
+  'buff': {
+    ...local('buff', ['slabFace', 'surfaceClose']),
+    // Buff surface-texture field photo (2026-07) drives both the product hero
+    // (card face) and the collection thumbnail; -v2 filename busts caches.
+    hero: '/img/varieties/buff-thumb-v2.jpg',
+    thumb: '/img/varieties/buff-thumb-v2.jpg',
+  },
   // Camel Dust (KHD-O-10) — hero swapped to Drive "Camel Main .jpg";
   // new filename busts stale browser/CDN caches of the old hero.
   'camel-dust': {
     ...local('camel-dust', ['slabFace']),
-    hero: '/img/varieties/camel-dust-hero-main.jpg',
-    thumb: '/img/varieties/camel-dust-hero-main.jpg',
+    // CD surface-texture field photo (2026-07, IMG_9597) drives both the
+    // product hero (card face) and the collection thumbnail; -v3 busts caches.
+    hero: '/img/varieties/camel-dust-thumb-v3.jpg',
+    thumb: '/img/varieties/camel-dust-thumb-v3.jpg',
     // Slot 5 = single Camel Dust paving tile; ground recoloured to the page's
     // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
     sourceContext: '/img/varieties/camel-dust/source-context-v2.jpg',
   },
   'red-choco': local('red-choco', ['slabFace']),
   'dual-tone': local('dual-tone', ['slabFace']),
-  'multi-brown': local('multi-brown', ['slabFace', 'surfaceClose']),
+  'multi-brown': {
+    ...local('multi-brown', ['slabFace', 'surfaceClose']),
+    // Mocha Blend surface-texture field photo (2026-07) drives both the
+    // product hero (card face) and the collection thumbnail; -v2 busts caches.
+    // NOTE: source is a 480×640 "Medium" export — swap for the full-res
+    // original (IMG_9167.jpeg) when available.
+    hero: '/img/varieties/multi-brown-thumb-v2.jpg',
+    thumb: '/img/varieties/multi-brown-thumb-v2.jpg',
+  },
   // Rainbow (renamed from Multi Colours) — image files keep the original folder name
   'rainbow': {
     ...local('multi-colours', ['slabFace']),

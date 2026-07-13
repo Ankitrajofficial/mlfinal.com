@@ -21,6 +21,8 @@ export const metadata = {
     'The Bijolia sandstone belt of Rajasthan. KHADANE’s owned quarries and the broader working belt, photographed from the cut.',
 }
 
+// Portfolio of named holdings lives at /mines
+
 const quarryVillages = [
   'Aroli',
   'Bansi Paharpur',

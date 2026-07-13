@@ -74,6 +74,7 @@ export const KHADANE_NAV = [
   { href: '/formats', label: 'Formats' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/quarry', label: 'The Quarry' },
+  { href: '/mines', label: 'Mines portfolio' },
   { href: '/yard', label: 'The Yard' },
   { href: '/desk', label: 'The Desk' },
   { href: '/field-notes', label: 'Field Notes' },

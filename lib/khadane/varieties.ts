@@ -220,7 +220,7 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-08",
     "rank": 8,
     "slug": "fossil-mint",
-    "name": "Fossil",
+    "name": "Mint",
     "nameHindi": "फॉसिल मिंट",
     "tier": "owned",
     "tierLabel": "Owned",
@@ -235,7 +235,8 @@ export const VARIETIES: Variety[] = [
     "formatScope": "All 20 formats",
     "placeholderClass": "placeholder-stone-green",
     "alternateNames": [
-      "Mint Fossil (alternative trade variant)"
+      "Mint Fossil (alternative trade variant)",
+      "Fossil Mint (former display name)"
     ],
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "Fossil layer fragile; primarily sold as calibrated paving and slabs, less commonly as hand-cut crazy paving",
@@ -367,7 +368,7 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-13",
     "rank": 13,
     "slug": "multi-brown",
-    "name": "Multi Brown",
+    "name": "Mocha Blend",
     "nameHindi": "मल्टी ब्राउन",
     "tier": "owned",
     "tierLabel": "Owned",
@@ -382,7 +383,8 @@ export const VARIETIES: Variety[] = [
     "formatScope": "All 20 formats",
     "placeholderClass": "placeholder-stone-warm",
     "alternateNames": [
-      "Mix Brown Sandstone (some Indian catalogues)"
+      "Mix Brown Sandstone (some Indian catalogues)",
+      "Multi Brown (former display name)"
     ],
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
@@ -432,7 +434,7 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-15",
     "rank": 15,
     "slug": "white-mint",
-    "name": "White Mint",
+    "name": "White",
     "nameHindi": "व्हाइट मिंट",
     "tier": "owned",
     "tierLabel": "Owned · Newest",
@@ -446,6 +448,9 @@ export const VARIETIES: Variety[] = [
     "inHandHeadline": "A soft off-white ground with cool mint-grey undertones and fine natural veining. One of the lightest stones in the KHADANE owned range.",
     "formatScope": "Full format range — on enquiry",
     "placeholderClass": "placeholder-stone-grey",
+    "alternateNames": [
+      "White Mint (former display name)"
+    ],
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
     "renamedByKhadane": "No",
