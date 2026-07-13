@@ -1,4 +1,62 @@
 import { NextResponse, type NextRequest } from 'next/server'
+import {
+  ADMIN_GATE_COOKIE,
+  ADMIN_GATE_MAX_AGE,
+  gateCookieValue,
+  gateEnabled,
+  gateSecret,
+  timingSafeEqualStr,
+} from '@/lib/admin/gate'
+
+/**
+ * Edge access gate for the admin panel. Returns:
+ *   - null          → request is authorized (or the gate is disabled); continue
+ *   - NextResponse  → a redirect (unlock) or a 404 (blocked); return it as-is
+ *
+ * Applies only to /admin and /api/admin. Unauthorized visitors get a bare 404
+ * so the panel's existence is not revealed.
+ */
+async function adminGate(request: NextRequest): Promise<NextResponse | null> {
+  const url = request.nextUrl
+  const path = url.pathname
+
+  const isAdminArea =
+    path === '/admin' ||
+    path.startsWith('/admin/') ||
+    path.startsWith('/api/admin')
+  if (!isAdminArea) return null
+
+  // Gate not configured (local dev) → behave exactly as before.
+  if (!gateEnabled()) return null
+
+  const expected = await gateCookieValue()
+  const cookie = request.cookies.get(ADMIN_GATE_COOKIE)?.value ?? ''
+
+  // Already unlocked on this device.
+  if (cookie && timingSafeEqualStr(cookie, expected)) return null
+
+  // One-time unlock via ?k=<secret>: set the gate cookie and strip the key.
+  const provided = url.searchParams.get('k')
+  if (provided && timingSafeEqualStr(provided, gateSecret())) {
+    const clean = url.clone()
+    clean.searchParams.delete('k')
+    const res = NextResponse.redirect(clean)
+    res.cookies.set(ADMIN_GATE_COOKIE, expected, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: ADMIN_GATE_MAX_AGE,
+    })
+    return res
+  }
+
+  // Not authorized → pretend the admin panel does not exist.
+  return new NextResponse('Not Found', {
+    status: 404,
+    headers: { 'content-type': 'text/plain; charset=utf-8' },
+  })
+}
 
 /**
  * Host-based routing proxy (Next.js 16 replacement for middleware).
@@ -164,10 +222,15 @@ function prefixedSiteForPath(path: string): 'mls' | 'khadane' | null {
   return null
 }
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const url = request.nextUrl
   const host = request.headers.get('host')?.toLowerCase() ?? ''
   const path = url.pathname
+
+  // ─── Admin access gate (runs before anything else) ─────────────
+  // Blocks/redirects unauthorized access to /admin and /api/admin.
+  const gated = await adminGate(request)
+  if (gated) return gated
 
   // ─── True bypasses (paths that are NEVER per-site) ─────────────
   // These resolve to top-level files or Next internals only.
