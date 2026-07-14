@@ -192,7 +192,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   // browser/CDN caches of the previous slab-face.jpg.
   'khadipur-grey': {
     ...local('khadipur-grey', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
-    slabFace: '/img/varieties/khadipur-grey/slab-face-v2.jpg',
+    // Slot 1 = KP Grey Versailles-pattern paving render (2026-07); -v3 busts caches.
+    slabFace: '/img/varieties/khadipur-grey/slab-face-v3.jpg',
     // Slot 5 = KP Grey single paving tile; background recoloured to the page's
     // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
     sourceContext: '/img/varieties/khadipur-grey/source-context-v2.jpg',
@@ -203,8 +204,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   },
   'kandla-grey': {
     ...local('kandla-grey', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
-    // Slot 1 = KG paved-composition photo; -v2 busts caches.
-    slabFace: '/img/varieties/kandla-grey/slab-face-v2.jpg',
+    // Slot 1 = KG Versailles-pattern paving render (2026-07); -v3 busts caches.
+    slabFace: '/img/varieties/kandla-grey/slab-face-v3.jpg',
     // Slots 2 & 3 swapped to application photos; -v2 filenames bust stale caches.
     surfaceClose: '/img/varieties/kandla-grey/surface-close-v2.jpg',
     edgeProfile: '/img/varieties/kandla-grey/edge-profile-v2.jpg',
@@ -236,6 +237,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   },
   'raj-blend': {
     ...local('raj-blend', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
+    // Slot 1 = RB Versailles-pattern paving render (2026-07); -v2 busts caches.
+    slabFace: '/img/varieties/raj-blend/slab-face-v2.jpg',
     // RB surface-texture field photo (2026-07) drives both the product hero
     // (card face) and the collection thumbnail; -v2 filename busts caches.
     hero: '/img/varieties/raj-blend-thumb-v2.jpg',
@@ -257,6 +260,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   'slate-grey': local('slate-grey', ['slabFace', 'surfaceClose']),
   'mint': {
     ...local('mint', ['slabFace', 'surfaceClose']),
+    // Slot 1 = Raveena Versailles-pattern paving render (2026-07); -v2 busts caches.
+    slabFace: '/img/varieties/mint/slab-face-v2.jpg',
     // Raveena surface-texture field photo (2026-07, full-res) drives both the
     // product hero (card face) and the collection thumbnail; -v3 busts caches.
     hero: '/img/varieties/mint-thumb-v3.jpg',
@@ -265,6 +270,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   'fossil-mint': local('fossil-mint', ['slabFace', 'surfaceClose']),
   'buff': {
     ...local('buff', ['slabFace', 'surfaceClose']),
+    // Slot 1 = Buff Versailles-pattern paving render (2026-07); -v2 busts caches.
+    slabFace: '/img/varieties/buff/slab-face-v2.jpg',
     // Buff surface-texture field photo (2026-07) drives both the product hero
     // (card face) and the collection thumbnail; -v2 filename busts caches.
     hero: '/img/varieties/buff-thumb-v2.jpg',
@@ -274,6 +281,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   // new filename busts stale browser/CDN caches of the old hero.
   'camel-dust': {
     ...local('camel-dust', ['slabFace']),
+    // Slot 1 = Camel Dust Versailles-pattern paving render (2026-07); -v2 busts caches.
+    slabFace: '/img/varieties/camel-dust/slab-face-v2.jpg',
     // CD surface-texture field photo (2026-07, IMG_9597) drives both the
     // product hero (card face) and the collection thumbnail; -v3 busts caches.
     hero: '/img/varieties/camel-dust-thumb-v3.jpg',
@@ -283,9 +292,20 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     sourceContext: '/img/varieties/camel-dust/source-context-v2.jpg',
   },
   'red-choco': local('red-choco', ['slabFace']),
-  'dual-tone': local('dual-tone', ['slabFace']),
+  'dual-tone': {
+    ...local('dual-tone', ['slabFace']),
+    // Slot 1 = Dual Tone Versailles-pattern paving render (2026-07); -v2 busts caches.
+    slabFace: '/img/varieties/dual-tone/slab-face-v2.jpg',
+    // Slot 2 = Dual Tone patio lifestyle render (sofa + planting, 2026-07); -v2 busts caches.
+    surfaceClose: '/img/varieties/dual-tone/surface-close-v2.jpg',
+  },
   'multi-brown': {
     ...local('multi-brown', ['slabFace', 'surfaceClose']),
+    // Slot 1 = Mocha Blend Versailles-pattern paving render (2026-07); -v2 busts caches.
+    slabFace: '/img/varieties/multi-brown/slab-face-v2.jpg',
+    // Slot 2 = field photo cropped to the slab layout (dirt/board edges removed,
+    // white lifted); -v2 busts caches.
+    surfaceClose: '/img/varieties/multi-brown/surface-close-v2.jpg',
     // Mocha Blend surface-texture field photo (2026-07) drives both the
     // product hero (card face) and the collection thumbnail; -v2 busts caches.
     // NOTE: source is a 480×640 "Medium" export — swap for the full-res
@@ -296,8 +316,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   // Rainbow (renamed from Multi Colours) — image files keep the original folder name
   'rainbow': {
     ...local('multi-colours', ['slabFace']),
-    // Slot 1 = Rainbow paved-composition photo; -v2 busts caches.
-    slabFace: '/img/varieties/multi-colours/slab-face-v2.jpg',
+    // Slot 1 = Rainbow Versailles-pattern paving render (2026-07); -v4 busts caches.
+    slabFace: '/img/varieties/multi-colours/slab-face-v4.jpg',
     // Slots 2 & 3 = Rainbow patio-application photos; -v2 busts caches.
     surfaceClose: '/img/varieties/multi-colours/surface-close-v2.jpg',
     edgeProfile: '/img/varieties/multi-colours/edge-profile-v2.jpg',
