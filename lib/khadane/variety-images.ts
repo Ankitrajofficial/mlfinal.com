@@ -264,6 +264,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     surfaceClose: '/img/varieties/garda-green/surface-close-v2.jpg',
     // Slot 3 = GG zen-garden pathway render (2026-07); -v2 busts caches.
     edgeProfile: '/img/varieties/garda-green/edge-profile-v2.jpg',
+    // Slot 4 = field photo cropped to the slab layout (gravel border + feet
+    // removed); -v2 busts caches.
+    workedFormat: '/img/varieties/garda-green/worked-format-v2.jpg',
     // GG surface-texture field photo (2026-07) drives both the product hero
     // (card face) and the collection thumbnail; -v2 filename busts caches.
     hero: '/img/varieties/garda-green-thumb-v2.jpg',
