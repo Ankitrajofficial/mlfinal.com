@@ -134,9 +134,13 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
       variant: v.tier === 'owned' ? ('quarry' as const) : ('belt' as const),
     },
   ]
+  // Some varieties run a 4-frame reference set: Dual Tone drops FORMAT (SOURCE
+  // moves up into the fourth position); Buff drops SOURCE.
+  const droppedSlotLabel: Record<string, string> = { 'dual-tone': 'FORMAT', buff: 'SOURCE' }
+  const varietySlots = imageSlots.filter((slot) => slot.label !== droppedSlotLabel[v.slug])
   // Allied stones only carry a slab-face photo — fill the remaining frames with
   // the branded gradient placeholder so the grid still reads as a full set.
-  const referenceSlots = imageSlots.map((slot) => ({
+  const referenceSlots = varietySlots.map((slot) => ({
     ...slot,
     fallbackToPlaceholder: v.tier === 'allied',
   }))

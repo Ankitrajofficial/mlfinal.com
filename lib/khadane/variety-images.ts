@@ -206,9 +206,13 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     ...local('kandla-grey', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
     // Slot 1 = KG Versailles-pattern paving render (2026-07); -v3 busts caches.
     slabFace: '/img/varieties/kandla-grey/slab-face-v3.jpg',
-    // Slots 2 & 3 swapped to application photos; -v2 filenames bust stale caches.
-    surfaceClose: '/img/varieties/kandla-grey/surface-close-v2.jpg',
+    // Slot 2 = KG courtyard application render (bench + planter, 2026-07); -v3 busts caches.
+    surfaceClose: '/img/varieties/kandla-grey/surface-close-v3.jpg',
+    // Slot 3 swapped to an application photo; -v2 filename busts stale caches.
     edgeProfile: '/img/varieties/kandla-grey/edge-profile-v2.jpg',
+    // Slot 4 = field photo cropped to the slab layout (gravel border removed);
+    // -v2 busts caches.
+    workedFormat: '/img/varieties/kandla-grey/worked-format-v2.jpg',
     // Slot 5 = single Kandla Grey paving tile; ground recoloured to the page's
     // warm-white (#F0EDE6) so the frame blends in; -v3 busts caches.
     sourceContext: '/img/varieties/kandla-grey/source-context-v3.jpg',
@@ -239,6 +243,11 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     ...local('raj-blend', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
     // Slot 1 = RB Versailles-pattern paving render (2026-07); -v2 busts caches.
     slabFace: '/img/varieties/raj-blend/slab-face-v2.jpg',
+    // Slots 2 & 3 = RB patio application renders (2026-07); -v2 busts caches.
+    surfaceClose: '/img/varieties/raj-blend/surface-close-v2.jpg',
+    edgeProfile: '/img/varieties/raj-blend/edge-profile-v2.jpg',
+    // Slot 4 = RB slab-layout field photo, uncropped (2026-07); -v3 busts caches.
+    workedFormat: '/img/varieties/raj-blend/worked-format-v3.jpg',
     // RB surface-texture field photo (2026-07) drives both the product hero
     // (card face) and the collection thumbnail; -v2 filename busts caches.
     hero: '/img/varieties/raj-blend-thumb-v2.jpg',
@@ -249,6 +258,10 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   },
   'garda-green': {
     ...local('garda-green', ['slabFace', 'surfaceClose']),
+    // Slot 2 = GG courtyard patio render (fountain + bench, 2026-07); -v2 busts caches.
+    surfaceClose: '/img/varieties/garda-green/surface-close-v2.jpg',
+    // Slot 3 = GG zen-garden pathway render (2026-07); -v2 busts caches.
+    edgeProfile: '/img/varieties/garda-green/edge-profile-v2.jpg',
     // GG surface-texture field photo (2026-07) drives both the product hero
     // (card face) and the collection thumbnail; -v2 filename busts caches.
     hero: '/img/varieties/garda-green-thumb-v2.jpg',
@@ -272,6 +285,10 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     ...local('buff', ['slabFace', 'surfaceClose']),
     // Slot 1 = Buff Versailles-pattern paving render (2026-07); -v2 busts caches.
     slabFace: '/img/varieties/buff/slab-face-v2.jpg',
+    // Slot 2 = Buff patio lifestyle render (sofa + planting, 2026-07); -v2 busts caches.
+    surfaceClose: '/img/varieties/buff/surface-close-v2.jpg',
+    // Slot 3 = Buff garden patio render (pergola + lawn, 2026-07); -v2 busts caches.
+    edgeProfile: '/img/varieties/buff/edge-profile-v2.jpg',
     // Buff surface-texture field photo (2026-07) drives both the product hero
     // (card face) and the collection thumbnail; -v2 filename busts caches.
     hero: '/img/varieties/buff-thumb-v2.jpg',
@@ -283,6 +300,10 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     ...local('camel-dust', ['slabFace']),
     // Slot 1 = Camel Dust Versailles-pattern paving render (2026-07); -v2 busts caches.
     slabFace: '/img/varieties/camel-dust/slab-face-v2.jpg',
+    // Slot 2 = Camel Dust patio application render (2026-07); -v2 busts caches.
+    surfaceClose: '/img/varieties/camel-dust/surface-close-v2.jpg',
+    // Slot 3 = Camel Dust lounger patio render (2026-07); -v3 busts caches.
+    edgeProfile: '/img/varieties/camel-dust/edge-profile-v3.jpg',
     // CD surface-texture field photo (2026-07, IMG_9597) drives both the
     // product hero (card face) and the collection thumbnail; -v3 busts caches.
     hero: '/img/varieties/camel-dust-thumb-v3.jpg',
@@ -294,18 +315,24 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   'red-choco': local('red-choco', ['slabFace']),
   'dual-tone': {
     ...local('dual-tone', ['slabFace']),
-    // Slot 1 = Dual Tone Versailles-pattern paving render (2026-07); -v2 busts caches.
-    slabFace: '/img/varieties/dual-tone/slab-face-v2.jpg',
-    // Slot 2 = Dual Tone patio lifestyle render (sofa + planting, 2026-07); -v2 busts caches.
-    surfaceClose: '/img/varieties/dual-tone/surface-close-v2.jpg',
+    // Slot 1 = Dual Tone mixed-format tile layout (2026-07); -v3 busts caches.
+    slabFace: '/img/varieties/dual-tone/slab-face-v3.jpg',
+    // Slot 2 = Dual Tone patio lifestyle render (sofa + planting, 2026-07); -v3 busts caches.
+    surfaceClose: '/img/varieties/dual-tone/surface-close-v3.jpg',
+    // Slot 3 = Dual Tone poolside application render (2026-07); -v2 busts caches.
+    edgeProfile: '/img/varieties/dual-tone/edge-profile-v2.jpg',
+    // Dual Tone's FORMAT frame is dropped on the variety page (4-frame set);
+    // worked-format-v2.jpg (cropped field photo) stays on disk if it returns.
   },
   'multi-brown': {
     ...local('multi-brown', ['slabFace', 'surfaceClose']),
     // Slot 1 = Mocha Blend Versailles-pattern paving render (2026-07); -v2 busts caches.
     slabFace: '/img/varieties/multi-brown/slab-face-v2.jpg',
-    // Slot 2 = field photo cropped to the slab layout (dirt/board edges removed,
-    // white lifted); -v2 busts caches.
-    surfaceClose: '/img/varieties/multi-brown/surface-close-v2.jpg',
+    // Slot 2 = Mocha Blend Mediterranean courtyard render (olive pot + bistro
+    // set, 2026-07); -v3 busts caches.
+    surfaceClose: '/img/varieties/multi-brown/surface-close-v3.jpg',
+    // Slot 3 = Mocha Blend alpine chalet terrace render (2026-07); -v2 busts caches.
+    edgeProfile: '/img/varieties/multi-brown/edge-profile-v2.jpg',
     // Mocha Blend surface-texture field photo (2026-07) drives both the
     // product hero (card face) and the collection thumbnail; -v2 busts caches.
     // NOTE: source is a 480×640 "Medium" export — swap for the full-res
