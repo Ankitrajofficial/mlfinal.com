@@ -258,6 +258,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
   },
   'garda-green': {
     ...local('garda-green', ['slabFace', 'surfaceClose']),
+    // Slot 1 = GG mixed-format tile layout (2026-07); -v2 busts caches.
+    slabFace: '/img/varieties/garda-green/slab-face-v2.jpg',
     // Slot 2 = GG courtyard patio render (fountain + bench, 2026-07); -v2 busts caches.
     surfaceClose: '/img/varieties/garda-green/surface-close-v2.jpg',
     // Slot 3 = GG zen-garden pathway render (2026-07); -v2 busts caches.
