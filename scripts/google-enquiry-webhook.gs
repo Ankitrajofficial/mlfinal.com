@@ -1,38 +1,28 @@
 /**
- * MLS + KHADANE enquiry notifier — Google Apps Script (v3.0)
- * ===========================================================
+ * MLS + KHADANE enquiry webhook for Google Apps Script
+ * =====================================================
  *
- * ROLE (changed in v3):
- *   The database of record is now Neon Postgres (with a MongoDB backup),
- *   written by the Next.js app BEFORE this webhook is called. This script
- *   is the NOTIFICATION layer only:
- *
- *     1. Website POST /api/enquiry → app stores enquiry in Neon → this web app
- *     2. Validate shared secret
- *     3. Append a row to the Google Sheet (human-readable mirror, NOT the
- *        source of truth — the admin panel at /admin reads from Neon)
- *     4. Email the owner desk(s) + send the customer a confirmation
- *
- *   If this script fails, the enquiry is already safe in the database and
- *   the app falls back to Resend for email. Nothing here should be treated
- *   as the primary record.
+ * Flow:
+ *  1. Website POST /api/enquiry → this web app
+ *  2. Validate shared secret
+ *  3. Append row to Google Sheet
+ *  4. Email owner(s) + customer confirmation
  *
  * SETUP
  * -----
- * 1. Create a Google Sheet (or reuse the existing enquiries sheet).
- * 2. Extensions → Apps Script → replace everything with THIS file.
- * 3. Configure below (CONFIG) or via Project Settings → Script Properties
- *    (properties win over placeholders; real CONFIG values win over properties).
+ * 1. Create a Google Sheet (or use an existing one).
+ * 2. Extensions → Apps Script → paste THIS entire file.
+ 
+ * 3. Fill CONFIG below (SHEET_ID, emails, WEBHOOK_SECRET).
  * 4. Deploy → New deployment → Web app
  *      - Execute as: Me
  *      - Who has access: Anyone
- * 5. Copy the /exec URL into GOOGLE_ENQUIRY_WEBHOOK_URL (Vercel + .env.local).
- * 6. Put the same WEBHOOK_SECRET into GOOGLE_ENQUIRY_WEBHOOK_SECRET.
+ * 5. Copy the /exec URL into GOOGLE_ENQUIRY_WEBHOOK_URL
+ * 6. Put the same WEBHOOK_SECRET into GOOGLE_ENQUIRY_WEBHOOK_SECRET
  * 7. Run testNotificationEmail() once to grant MailApp permissions.
  *
- * IMPORTANT: After every code change: Deploy → Manage deployments →
- * Edit (pencil) → Version: New version → Deploy. The /exec URL only serves
- * the deployed version, not the editor draft.
+ * IMPORTANT: After every code change, Deploy → Manage deployments →
+ * Edit (pencil) → Version: New version → Deploy.
  */
 
 var CONFIG = {
@@ -40,7 +30,7 @@ var CONFIG = {
   SHEET_ID: 'PASTE_GOOGLE_SHEET_ID_HERE',
   SHEET_NAME: 'Enquiries',
 
-  // Comma-separated lists are allowed in every email field.
+  // Comma-separated emails are allowed.
   OWNER_EMAIL: 'office@mohanlalsonsgroup.com',
   NOTIFY_EMAIL: '',
   MLS_OWNER_EMAIL: 'office@mohanlalsonsgroup.com',
@@ -76,24 +66,21 @@ var HEADERS = [
   'Raw JSON'
 ];
 
-// Payload fields that never belong in the sheet's Raw JSON column.
-var PRIVATE_FIELDS = ['secret', 'honeypot', 'submittedAtClient', 'turnstileToken'];
-
 // ─── HTTP entry points ───────────────────────────────────────
 
 function doGet() {
   return json_({
     ok: true,
-    service: 'MLS + KHADANE enquiry notifier',
-    role: 'notifications only — database of record is Neon Postgres',
-    message: 'Webhook is live. Use POST with a JSON body.',
-    version: '3.0'
+    service: 'MLS + KHADANE enquiry webhook',
+    message: 'Webhook is live. Use POST with JSON body.',
+    version: '2.1'
   });
 }
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
-  if (!lock.tryLock(30000)) {
+  var gotLock = lock.tryLock(30000);
+  if (!gotLock) {
     return json_({ ok: false, error: 'Server busy — please retry in a moment.' });
   }
 
@@ -103,60 +90,71 @@ function doPost(e) {
     validatePayload_(payload);
 
     var enquiry = normalizeEnquiry_(payload);
+    var sheet = getSheet_();
+    ensureHeaders_(sheet);
 
-    // Sheet append is best-effort in v3: the database already has the
-    // enquiry, so a sheet problem must not block the emails.
-    var sheet = null;
-    var sheetStatus = 'Saved';
-    try {
-      sheet = getSheet_();
-      ensureHeaders_(sheet);
-      appendEnquiryRow_(sheet, enquiry, payload);
-    } catch (sheetErr) {
-      sheet = null;
-      sheetStatus = 'Sheet failed: ' + errMessage_(sheetErr);
-      console.error(sheetStatus);
-    }
+    sheet.appendRow([
+      enquiry.submittedAt,
+      enquiry.reference,
+      enquiry.site,
+      enquiry.category,
+      enquiry.name,
+      enquiry.email,
+      enquiry.phone,
+      enquiry.company,
+      enquiry.country,
+      enquiry.variety,
+      enquiry.format,
+      enquiry.finish,
+      enquiry.volume,
+      enquiry.targetArrival,
+      enquiry.message,
+      enquiry.notifyTo,
+      enquiry.ip,
+      enquiry.userAgent,
+      enquiry.sourceUrl,
+      'Pending',
+      JSON.stringify(withoutSecret_(payload))
+    ]);
 
-    var emailStatus;
+    // Emails are best-effort: sheet row is already saved.
+    var emailStatus = 'Skipped';
     try {
       emailStatus = sendEmails_(enquiry);
     } catch (mailErr) {
       emailStatus = 'Failed: ' + errMessage_(mailErr);
       console.error('Email send failed: ' + emailStatus);
     }
-    if (sheet) updateLastEmailStatus_(sheet, emailStatus);
+    updateLastEmailStatus_(sheet, emailStatus);
 
-    // ok:true as long as at least one channel worked; the app's Resend
-    // fallback kicks in when we report failure.
-    var anySuccess = sheetStatus === 'Saved' || emailStatus.indexOf('Owner: sent') === 0;
     return json_({
-      ok: anySuccess,
+      ok: true,
       reference: enquiry.reference,
-      sheetStatus: sheetStatus,
-      emailStatus: emailStatus,
-      error: anySuccess ? undefined : 'Sheet and email both failed. ' + sheetStatus + ' | ' + emailStatus
+      emailStatus: emailStatus
     });
   } catch (err) {
     console.error(err && err.stack ? err.stack : err);
-    return json_({ ok: false, error: errMessage_(err) });
+    return json_({
+      ok: false,
+      error: errMessage_(err)
+    });
   } finally {
     lock.releaseLock();
   }
 }
 
-// ─── Manual tests (run from the Apps Script editor) ──────────
+// ─── Manual tests (run from Apps Script editor) ──────────────
 
 function testNotificationEmail() {
   var recipients = notifyEmailsForSite_('khadane', 'office@khadane.com');
   if (!recipients.length) {
-    throw new Error('No recipient emails configured in CONFIG / Script Properties.');
+    throw new Error('No recipient emails configured in CONFIG.');
   }
   MailApp.sendEmail({
     to: recipients.join(','),
     subject: 'MLS/KHADANE enquiry notification test',
     body:
-      'This is a test from Google Apps Script (v3).\n\n' +
+      'This is a test from Google Apps Script.\n\n' +
       'If you received it, owner notification delivery works.\n' +
       'Recipients: ' + recipients.join(', ')
   });
@@ -176,16 +174,14 @@ function testDoPostLocally() {
       contents: JSON.stringify({
         secret: getProp_('WEBHOOK_SECRET') || '',
         reference: 'TEST-' + new Date().getTime(),
-        site: 'khadane',
-        category: 'trade-enquiry',
+        site: 'mls',
+        category: 'other',
         name: 'Script Self-Test',
         email: 'test@example.com',
         phone: '+91 90000 00000',
         company: 'Test Co',
         country: 'India',
-        variety: 'KHD-01 · Kota Honey',
-        format: 'F2 · Cut-to-size',
-        message: 'Self-test from testDoPostLocally() in the Apps Script editor.',
+        message: 'Self-test from testDoPostLocally() in Apps Script editor.',
         notifyTo: getProp_('OWNER_EMAIL') || 'office@mohanlalsonsgroup.com',
         ip: '127.0.0.1',
         userAgent: 'AppsScript-self-test',
@@ -202,7 +198,7 @@ function testDoPostLocally() {
 function parsePayload_(e) {
   if (!e) throw new Error('Missing request event');
 
-  // Standard Apps Script web-app body (the site POSTs text/plain JSON).
+  // Standard Apps Script web-app body
   if (e.postData && e.postData.contents) {
     try {
       return JSON.parse(e.postData.contents);
@@ -211,7 +207,7 @@ function parsePayload_(e) {
     }
   }
 
-  // Some proxies move fields onto e.parameter.
+  // Some proxies put fields on e.parameter
   if (e.parameter && e.parameter.payload) {
     try {
       return JSON.parse(e.parameter.payload);
@@ -224,12 +220,12 @@ function parsePayload_(e) {
     return e.parameter;
   }
 
-  throw new Error('Missing POST body. Redeploy the web app as "Anyone" and POST JSON as text/plain.');
+  throw new Error('Missing POST body. Redeploy web app as "Anyone" and POST JSON text/plain.');
 }
 
 function validateSecret_(payload) {
   var expected = getProp_('WEBHOOK_SECRET');
-  // No secret configured → allow (dev only). Production must set one.
+  // If secret is not configured, allow (dev only). Production should set it.
   if (!expected) return;
 
   var provided = payload && payload.secret != null ? String(payload.secret) : '';
@@ -318,6 +314,7 @@ function getSheet_() {
 }
 
 function ensureHeaders_(sheet) {
+  var lastCol = Math.max(sheet.getLastColumn(), HEADERS.length);
   var existing = sheet.getRange(1, 1, 1, HEADERS.length).getValues()[0];
   var needsWrite = false;
 
@@ -328,38 +325,17 @@ function ensureHeaders_(sheet) {
     }
   }
 
-  if (needsWrite) {
-    if (sheet.getLastRow() <= 1) sheet.clear();
+  if (needsWrite && sheet.getLastRow() <= 1) {
+    sheet.clear();
+    sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
+  } else if (needsWrite) {
     sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
   }
 
   sheet.setFrozenRows(1);
-}
-
-function appendEnquiryRow_(sheet, enquiry, payload) {
-  sheet.appendRow([
-    enquiry.submittedAt,
-    enquiry.reference,
-    enquiry.site,
-    enquiry.category,
-    enquiry.name,
-    enquiry.email,
-    enquiry.phone,
-    enquiry.company,
-    enquiry.country,
-    enquiry.variety,
-    enquiry.format,
-    enquiry.finish,
-    enquiry.volume,
-    enquiry.targetArrival,
-    enquiry.message,
-    enquiry.notifyTo,
-    enquiry.ip,
-    enquiry.userAgent,
-    enquiry.sourceUrl,
-    'Pending',
-    JSON.stringify(publicPayload_(payload))
-  ]);
+  if (lastCol < HEADERS.length) {
+    // no-op: keeps linter quiet in some environments
+  }
 }
 
 function updateLastEmailStatus_(sheet, status) {
@@ -375,7 +351,7 @@ function updateLastEmailStatus_(sheet, status) {
 function sendEmails_(enquiry) {
   if (!enquiry.notifyEmails || !enquiry.notifyEmails.length) {
     throw new Error(
-      'No notification email configured. Set OWNER_EMAIL / MLS_OWNER_EMAIL / KHADANE_OWNER_EMAIL.'
+      'No notification email configured. Set OWNER_EMAIL / MLS_OWNER_EMAIL / KHADANE_OWNER_EMAIL in CONFIG.'
     );
   }
 
@@ -388,7 +364,12 @@ function sendEmails_(enquiry) {
       to: enquiry.notifyEmails.join(','),
       replyTo: enquiry.email,
       subject:
-        'New ' + siteLabel_(enquiry.site) + ' enquiry | ' + enquiry.reference + ' | ' + enquiry.name,
+        'New ' +
+        siteLabel_(enquiry.site) +
+        ' enquiry | ' +
+        enquiry.reference +
+        ' | ' +
+        enquiry.name,
       body: ownerText_(enquiry),
       htmlBody: ownerHtml_(enquiry)
     });
@@ -411,14 +392,16 @@ function sendEmails_(enquiry) {
   }
 
   var status =
-    'Owner: ' + (ownerSent ? 'sent' : 'failed') +
-    ' | Customer: ' + (customerSent ? 'sent' : 'failed');
+    'Owner: ' +
+    (ownerSent ? 'sent' : 'failed') +
+    ' | Customer: ' +
+    (customerSent ? 'sent' : 'failed');
 
   if (errors.length) {
     status += ' | ' + errors.join('; ');
   }
 
-  // Owner mail failing is a hard failure (customer failure is partial success).
+  // Only hard-fail if owner mail failed (customer failure is still partial success).
   if (!ownerSent) {
     throw new Error(status);
   }
@@ -429,7 +412,7 @@ function sendEmails_(enquiry) {
 function notifyEmailsForSite_(site, notifyTo) {
   var recipients = [];
 
-  // Prefer the explicit route computed by the website.
+  // Prefer explicit route from website (office@… / office@khadane.com)
   addEmail_(recipients, notifyTo);
 
   addEmail_(recipients, getProp_('OWNER_EMAIL'));
@@ -465,7 +448,7 @@ function addEmail_(recipients, value) {
     });
 }
 
-// ─── Plain-text templates ────────────────────────────────────
+// ─── Plain text templates ────────────────────────────────────
 
 function ownerText_(enquiry) {
   return [
@@ -494,10 +477,11 @@ function ownerText_(enquiry) {
     'Source: ' + (enquiry.sourceUrl || '-'),
     'IP: ' + (enquiry.ip || '-'),
     '',
-    'Full record: /admin command centre (database of record).',
     'Reply directly to this email to respond to the buyer.'
   ]
-    .filter(notNull_)
+    .filter(function (line) {
+      return line !== null;
+    })
     .join('\n');
 }
 
@@ -505,7 +489,8 @@ function customerText_(enquiry) {
   return [
     'Dear ' + enquiry.name + ',',
     '',
-    'Thank you for writing to ' + siteLabel_(enquiry.site) +
+    'Thank you for writing to ' +
+      siteLabel_(enquiry.site) +
       '. Your enquiry has been received and logged with our desk.',
     'Reference: ' + enquiry.reference,
     '',
@@ -527,17 +512,15 @@ function customerText_(enquiry) {
     '',
     getBusinessName_()
   ]
-    .filter(notNull_)
+    .filter(function (line) {
+      return line !== null;
+    })
     .join('\n');
 }
 
 function optionalLine_(label, value) {
   if (!value) return null;
   return label + ': ' + value;
-}
-
-function notNull_(line) {
-  return line !== null;
 }
 
 // ─── HTML templates ──────────────────────────────────────────
@@ -548,9 +531,11 @@ function ownerHtml_(enquiry) {
     detailRow_('Name', enquiry.name),
     detailRow_(
       'Email',
-      '<a href="mailto:' + esc_(enquiry.email) +
+      '<a href="mailto:' +
+        esc_(enquiry.email) +
         '" style="color:#B8962E;text-decoration:none;word-break:break-word">' +
-        esc_(enquiry.email) + '</a>',
+        esc_(enquiry.email) +
+        '</a>',
       true
     ),
     optionalDetailRow_('Phone', enquiry.phone),
@@ -578,16 +563,17 @@ function ownerHtml_(enquiry) {
       messageBlock_('Message', enquiry.message),
       noticeBlock_(
         'Action',
-        'Reply directly to this email — the reply-to address is set to ' + enquiry.email +
-          '. The full record lives in the /admin command centre.'
+        'Reply directly to this email. The reply-to address is set to ' + enquiry.email + '.'
       ),
       '<p style="margin:18px 0 0;font-size:12px;line-height:18px;color:#8A8376;word-break:break-word">Source: ' +
         esc_(enquiry.sourceUrl || '-') +
-        '<br>IP: ' + esc_(enquiry.ip || '-') +
-        '<br>Received: ' + esc_(String(enquiry.submittedAt)) +
+        '<br>IP: ' +
+        esc_(enquiry.ip || '-') +
+        '<br>Received: ' +
+        esc_(String(enquiry.submittedAt)) +
         '</p>'
     ].join(''),
-    footer: 'Website enquiry notification · database of record: command centre'
+    footer: 'Website enquiry notification'
   });
 }
 
@@ -617,7 +603,8 @@ function customerHtml_(enquiry) {
         'If anything is missing, our desk will ask for clarification. Otherwise, we will respond within one business day.'
       ),
       '<p style="margin:24px 0 0;font-size:14px;line-height:22px;color:#4B4740">' +
-        esc_(getBusinessName_()) + '</p>'
+        esc_(getBusinessName_()) +
+        '</p>'
     ].join(''),
     footer: 'This is an automatic confirmation. Reply to this email to continue the conversation.'
   });
@@ -631,20 +618,24 @@ function emailShell_(opts) {
     '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#FFFCFA;border:1px solid #E4DED0;border-radius:12px;overflow:hidden">',
     '<tr><td style="background:#1A1410;padding:22px 24px">',
     '<div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#B8962E;margin-bottom:8px">' +
-      esc_(opts.eyebrow) + '</div>',
+      esc_(opts.eyebrow) +
+      '</div>',
     '<div style="font-size:26px;line-height:1.2;color:#F5F1E8">' + esc_(opts.title) + '</div>',
     opts.reference
       ? '<div style="margin-top:10px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#C8B48A">Ref ' +
-        esc_(opts.reference) + '</div>'
+        esc_(opts.reference) +
+        '</div>'
       : '',
     '</td></tr>',
     '<tr><td style="padding:24px">',
     '<p style="margin:0 0 18px;font-size:15px;line-height:1.55;color:#4B4740">' +
-      esc_(opts.intro) + '</p>',
+      esc_(opts.intro) +
+      '</p>',
     opts.body || '',
     '</td></tr>',
     '<tr><td style="padding:14px 24px 20px;border-top:1px solid #E4DED0;font-size:11px;color:#8A8376">' +
-      esc_(opts.footer || '') + '</td></tr>',
+      esc_(opts.footer || '') +
+      '</td></tr>',
     '</table></td></tr></table></body></html>'
   ].join('');
 }
@@ -653,9 +644,11 @@ function emailSection_(title, rowsHtml) {
   return [
     '<div style="margin:0 0 18px">',
     '<div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A8376;margin:0 0 8px">' +
-      esc_(title) + '</div>',
+      esc_(title) +
+      '</div>',
     '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse">' +
-      rowsHtml + '</table>',
+      rowsHtml +
+      '</table>',
     '</div>'
   ].join('');
 }
@@ -664,9 +657,11 @@ function messageBlock_(title, message) {
   return [
     '<div style="margin:0 0 18px">',
     '<div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A8376;margin:0 0 8px">' +
-      esc_(title) + '</div>',
+      esc_(title) +
+      '</div>',
     '<div style="padding:14px 16px;background:#F7F4EC;border:1px solid #E4DED0;border-radius:8px;font-size:14px;line-height:1.55;color:#1A1410;white-space:pre-wrap">' +
-      esc_(message) + '</div>',
+      esc_(message) +
+      '</div>',
     '</div>'
   ].join('');
 }
@@ -675,7 +670,8 @@ function noticeBlock_(title, text) {
   return [
     '<div style="margin:0 0 8px;padding:14px 16px;background:#FAF4E0;border:1px solid #E8D9A8;border-radius:8px">',
     '<div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A6A1E;margin:0 0 6px">' +
-      esc_(title) + '</div>',
+      esc_(title) +
+      '</div>',
     '<div style="font-size:13px;line-height:1.5;color:#4A3B14">' + esc_(text) + '</div>',
     '</div>'
   ].join('');
@@ -685,9 +681,11 @@ function detailRow_(label, value, rawValue) {
   return [
     '<tr>',
     '<td style="width:38%;padding:10px 12px;border:1px solid #E4DED0;background:#F7F4EC;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8A8376;vertical-align:top">' +
-      esc_(label) + '</td>',
+      esc_(label) +
+      '</td>',
     '<td style="padding:10px 12px;border:1px solid #E4DED0;background:#FFFFFF;font-size:14px;color:#1A1410;vertical-align:top">' +
-      (rawValue ? String(value || '-') : esc_(value || '-')) + '</td>',
+      (rawValue ? String(value || '-') : esc_(value || '-')) +
+      '</td>',
     '</tr>'
   ].join('');
 }
@@ -707,7 +705,6 @@ function getBusinessName_() {
   return getProp_('BUSINESS_NAME') || 'Mohan Lal & Sons';
 }
 
-/** Real CONFIG values win; placeholders defer to Script Properties. */
 function getProp_(key) {
   var constantValue = CONFIG[key];
   if (constantValue != null && !isPlaceholder_(constantValue)) {
@@ -737,10 +734,10 @@ function cleanLong_(value) {
     .slice(0, 5000);
 }
 
-function publicPayload_(payload) {
+function withoutSecret_(payload) {
   var clone = {};
   Object.keys(payload || {}).forEach(function (key) {
-    if (PRIVATE_FIELDS.indexOf(key) === -1) clone[key] = payload[key];
+    if (key !== 'secret') clone[key] = payload[key];
   });
   return clone;
 }
