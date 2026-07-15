@@ -350,9 +350,10 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     ...local('multi-colours', ['slabFace']),
     // Slot 1 = Rainbow Versailles-pattern paving render (2026-07); -v4 busts caches.
     slabFace: '/img/varieties/multi-colours/slab-face-v4.jpg',
-    // Slots 2 & 3 = Rainbow patio-application photos; -v2 busts caches.
+    // Slot 2 = Rainbow patio-application photo; -v2 busts caches.
     surfaceClose: '/img/varieties/multi-colours/surface-close-v2.jpg',
-    edgeProfile: '/img/varieties/multi-colours/edge-profile-v2.jpg',
+    // Slot 3 = Rainbow lemon-terrace render (umbrella + olive tree, 2026-07); -v3 busts caches.
+    edgeProfile: '/img/varieties/multi-colours/edge-profile-v3.jpg',
   },
   'white-mint': {
     hero: '/images/khadane/varieties/white-mint/white-mint.jpg',
