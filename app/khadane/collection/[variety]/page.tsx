@@ -135,8 +135,9 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
     },
   ]
   // Some varieties run a 4-frame reference set: Dual Tone drops FORMAT (SOURCE
-  // moves up into the fourth position); Buff drops SOURCE.
-  const droppedSlotLabel: Record<string, string> = { 'dual-tone': 'FORMAT', buff: 'SOURCE' }
+  // moves up into the fourth position). Buff dropped SOURCE until it had a
+  // single-tile photo of its own (2026-07); it runs the full set again now.
+  const droppedSlotLabel: Record<string, string> = { 'dual-tone': 'FORMAT' }
   const varietySlots = imageSlots.filter((slot) => slot.label !== droppedSlotLabel[v.slug])
   // Allied stones only carry a slab-face photo — fill the remaining frames with
   // the branded gradient placeholder so the grid still reads as a full set.

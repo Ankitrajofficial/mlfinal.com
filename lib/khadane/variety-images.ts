@@ -194,9 +194,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     ...local('khadipur-grey', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
     // Slot 1 = KP Grey Versailles-pattern paving render (2026-07); -v3 busts caches.
     slabFace: '/img/varieties/khadipur-grey/slab-face-v3.jpg',
-    // Slot 5 = KP Grey single paving tile; background recoloured to the page's
-    // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
-    sourceContext: '/img/varieties/khadipur-grey/source-context-v2.jpg',
+    // Slot 5 = KP Grey single paving tile, re-rendered (2026-07) on the
+    // studio sweep; -v3 busts caches.
+    sourceContext: '/img/varieties/khadipur-grey/source-context-v3.jpg',
     // KP Grey Face texture drives both the product hero (card face) and the
     // collection thumbnail; -v2 = new field photo (2026-07), busts caches.
     hero: '/img/varieties/khadipur-grey-thumb-v2.jpg',
@@ -213,9 +213,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     // Slot 4 = field photo cropped to the slab layout (gravel border removed);
     // -v2 busts caches.
     workedFormat: '/img/varieties/kandla-grey/worked-format-v2.jpg',
-    // Slot 5 = single Kandla Grey paving tile; ground recoloured to the page's
-    // warm-white (#F0EDE6) so the frame blends in; -v3 busts caches.
-    sourceContext: '/img/varieties/kandla-grey/source-context-v3.jpg',
+    // Slot 5 = single Kandla Grey paving tile, re-rendered (2026-07) on the
+    // studio sweep; -v4 busts caches.
+    sourceContext: '/img/varieties/kandla-grey/source-context-v4.jpg',
     // KG surface-texture field photo (2026-07) drives both the product hero
     // (card face) and the collection thumbnail; -v2 filename busts caches.
     hero: '/img/varieties/kandla-grey-thumb-v2.jpg',
@@ -235,9 +235,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     edgeProfile: '/img/varieties/autumn-brown/edge-profile-v2.jpg',
     // Slot 4 = the AB paved-composition, rotated 90° CW; -v5 busts caches.
     workedFormat: '/img/varieties/autumn-brown/worked-format-v5.jpg',
-    // Slot 5 = AB single paving tile; ground recoloured to the page's
-    // warm-white (#F0EDE6) so the frame blends in; -v3 busts caches.
-    sourceContext: '/img/varieties/autumn-brown/source-context-v3.jpg',
+    // Slot 5 = AB single paving tile, re-rendered (2026-07) on the studio
+    // sweep; -v4 busts caches.
+    sourceContext: '/img/varieties/autumn-brown/source-context-v4.jpg',
   },
   'raj-blend': {
     ...local('raj-blend', ['slabFace', 'surfaceClose', 'edgeProfile', 'workedFormat', 'sourceContext']),
@@ -252,9 +252,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     // (card face) and the collection thumbnail; -v2 filename busts caches.
     hero: '/img/varieties/raj-blend-thumb-v2.jpg',
     thumb: '/img/varieties/raj-blend-thumb-v2.jpg',
-    // Slot 5 = single Raj Blend paving tile; ground recoloured to the page's
-    // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
-    sourceContext: '/img/varieties/raj-blend/source-context-v2.jpg',
+    // Slot 5 = single Raj Blend paving tile, re-rendered (2026-07) on the
+    // studio sweep; -v3 busts caches.
+    sourceContext: '/img/varieties/raj-blend/source-context-v3.jpg',
   },
   'garda-green': {
     ...local('garda-green', ['slabFace', 'surfaceClose']),
@@ -271,21 +271,44 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     // (card face) and the collection thumbnail; -v2 filename busts caches.
     hero: '/img/varieties/garda-green-thumb-v2.jpg',
     thumb: '/img/varieties/garda-green-thumb-v2.jpg',
-    // Slot 5 = single Garda Green paving tile; ground recoloured to the page's
-    // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
-    sourceContext: '/img/varieties/garda-green/source-context-v2.jpg',
+    // Slot 5 = single Garda Green paving tile, re-rendered (2026-07) on the
+    // studio sweep; -v3 busts caches.
+    sourceContext: '/img/varieties/garda-green/source-context-v3.jpg',
   },
-  'slate-grey': local('slate-grey', ['slabFace', 'surfaceClose']),
+  'slate-grey': {
+    ...local('slate-grey', ['slabFace', 'surfaceClose']),
+    // Slot 1 = SG dry mixed-format tile layout (2026-07). Files keep their
+    // original slot names; slots 1 and 3 are deliberately crossed over.
+    slabFace: '/img/varieties/slate-grey/edge-profile-v2.jpg',
+    // Slot 2 = SG courtyard patio render (sofa + topiary, 2026-07); -v2 busts caches.
+    surfaceClose: '/img/varieties/slate-grey/surface-close-v2.jpg',
+    // Slot 3 = SG walled rose-garden patio render (bench, 2026-07).
+    edgeProfile: '/img/varieties/slate-grey/slab-face-v2.jpg',
+    // Slot 5 = single Slate Grey paving tile on the studio sweep; -v2 busts caches.
+    sourceContext: '/img/varieties/slate-grey/source-context-v2.jpg',
+  },
   'mint': {
     ...local('mint', ['slabFace', 'surfaceClose']),
     // Slot 1 = Raveena Versailles-pattern paving render (2026-07); -v2 busts caches.
     slabFace: '/img/varieties/mint/slab-face-v2.jpg',
+    // Slot 5 = single Raveena paving tile on the studio sweep.
+    sourceContext: '/img/varieties/mint/source-context.jpg',
     // Raveena surface-texture field photo (2026-07, full-res) drives both the
     // product hero (card face) and the collection thumbnail; -v3 busts caches.
     hero: '/img/varieties/mint-thumb-v3.jpg',
     thumb: '/img/varieties/mint-thumb-v3.jpg',
   },
-  'fossil-mint': local('fossil-mint', ['slabFace', 'surfaceClose']),
+  'fossil-mint': {
+    ...local('fossil-mint', ['slabFace', 'surfaceClose']),
+    // Slot 1 = Fossil Mint mixed-format tile layout (2026-07); -v2 busts caches.
+    slabFace: '/img/varieties/fossil-mint/slab-face-v2.jpg',
+    // Slot 2 = FM contemporary courtyard render (bench + corten planters, 2026-07).
+    surfaceClose: '/img/varieties/fossil-mint/surface-close-v2.jpg',
+    // Slot 3 = FM alpine chalet terrace render (2026-07).
+    edgeProfile: '/img/varieties/fossil-mint/edge-profile-v2.jpg',
+    // Slot 5 = single Mint paving tile on the studio sweep.
+    sourceContext: '/img/varieties/fossil-mint/source-context.jpg',
+  },
   'buff': {
     ...local('buff', ['slabFace', 'surfaceClose']),
     // Slot 1 = Buff Versailles-pattern paving render (2026-07); -v2 busts caches.
@@ -294,6 +317,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     surfaceClose: '/img/varieties/buff/surface-close-v2.jpg',
     // Slot 3 = Buff garden patio render (pergola + lawn, 2026-07); -v2 busts caches.
     edgeProfile: '/img/varieties/buff/edge-profile-v2.jpg',
+    // Slot 5 = single Buff paving tile on the studio sweep.
+    sourceContext: '/img/varieties/buff/source-context.jpg',
     // Buff surface-texture field photo (2026-07) drives both the product hero
     // (card face) and the collection thumbnail; -v2 filename busts caches.
     hero: '/img/varieties/buff-thumb-v2.jpg',
@@ -313,11 +338,21 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     // product hero (card face) and the collection thumbnail; -v3 busts caches.
     hero: '/img/varieties/camel-dust-thumb-v3.jpg',
     thumb: '/img/varieties/camel-dust-thumb-v3.jpg',
-    // Slot 5 = single Camel Dust paving tile; ground recoloured to the page's
-    // warm-white (#F0EDE6) so the frame blends in; -v2 busts caches.
-    sourceContext: '/img/varieties/camel-dust/source-context-v2.jpg',
+    // Slot 5 = single Camel Dust paving tile, re-rendered (2026-07) on the
+    // studio sweep; -v3 busts caches.
+    sourceContext: '/img/varieties/camel-dust/source-context-v3.jpg',
   },
-  'red-choco': local('red-choco', ['slabFace']),
+  'red-choco': {
+    ...local('red-choco', ['slabFace']),
+    // Slot 1 = Red Chocolate mixed-format tile layout (2026-07); -v2 busts caches.
+    slabFace: '/img/varieties/red-choco/slab-face-v2.jpg',
+    // Slot 2 = RC Mediterranean courtyard render (olive pot + bistro table, 2026-07).
+    surfaceClose: '/img/varieties/red-choco/surface-close-v2.jpg',
+    // Slot 3 = RC poolside terrace render (loungers + lavender, 2026-07).
+    edgeProfile: '/img/varieties/red-choco/edge-profile-v2.jpg',
+    // Slot 5 = single Red Chocolate paving tile on the studio sweep.
+    sourceContext: '/img/varieties/red-choco/source-context.jpg',
+  },
   'dual-tone': {
     ...local('dual-tone', ['slabFace']),
     // Slot 1 = Dual Tone mixed-format tile layout (2026-07); -v3 busts caches.
@@ -326,6 +361,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     surfaceClose: '/img/varieties/dual-tone/surface-close-v3.jpg',
     // Slot 3 = Dual Tone poolside application render (2026-07); -v2 busts caches.
     edgeProfile: '/img/varieties/dual-tone/edge-profile-v2.jpg',
+    // Slot 5 = single Dual Tone paving tile on the studio sweep.
+    sourceContext: '/img/varieties/dual-tone/source-context.jpg',
     // Dual Tone's FORMAT frame is dropped on the variety page (4-frame set);
     // worked-format-v2.jpg (cropped field photo) stays on disk if it returns.
   },
@@ -338,6 +375,8 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     surfaceClose: '/img/varieties/multi-brown/surface-close-v3.jpg',
     // Slot 3 = Mocha Blend alpine chalet terrace render (2026-07); -v2 busts caches.
     edgeProfile: '/img/varieties/multi-brown/edge-profile-v2.jpg',
+    // Slot 5 = single Mocha Blend paving tile on the studio sweep.
+    sourceContext: '/img/varieties/multi-brown/source-context.jpg',
     // Mocha Blend surface-texture field photo (2026-07) drives both the
     // product hero (card face) and the collection thumbnail; -v2 busts caches.
     // NOTE: source is a 480×640 "Medium" export — swap for the full-res
@@ -354,10 +393,20 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     surfaceClose: '/img/varieties/multi-colours/surface-close-v2.jpg',
     // Slot 3 = Rainbow lemon-terrace render (umbrella + olive tree, 2026-07); -v3 busts caches.
     edgeProfile: '/img/varieties/multi-colours/edge-profile-v3.jpg',
+    // Slot 5 = single Rainbow paving tile on the studio sweep.
+    sourceContext: '/img/varieties/multi-colours/source-context.jpg',
   },
   'white-mint': {
     hero: '/images/khadane/varieties/white-mint/white-mint.jpg',
     thumb: '/images/khadane/varieties/white-mint/white-mint-thumb.webp',
+    // Slot 1 = White mixed-format tile layout (2026-07).
+    slabFace: '/img/varieties/white-mint/slab-face.jpg',
+    // Slot 2 = White courtyard patio render (bench + birch, 2026-07).
+    surfaceClose: '/img/varieties/white-mint/surface-close.jpg',
+    // Slot 3 = White Mediterranean courtyard render (fountain, 2026-07).
+    edgeProfile: '/img/varieties/white-mint/edge-profile.jpg',
+    // Slot 5 = single White paving tile on the studio sweep.
+    sourceContext: '/img/varieties/white-mint/source-context.jpg',
   },
   'agra-red': local('agra-red', ['slabFace']),
   'basalt-black': local('basalt-black', ['slabFace']),
