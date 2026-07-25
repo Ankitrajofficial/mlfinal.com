@@ -1,8 +1,8 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -95,3 +95,6 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+
+
+
