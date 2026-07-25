@@ -168,6 +168,14 @@ export async function POST(request: NextRequest) {
   })
 
   if (googleResult.configured && googleResult.ok) {
+    // Apps Script returns ok:true even when a MailApp send failed, so the
+    // per-recipient status is the only signal that mail actually went out.
+    if (googleResult.emailStatus && !/^Owner: sent \| Customer: sent$/.test(googleResult.emailStatus)) {
+      console.error('[ENQUIRY · GOOGLE WEBHOOK MAIL]', {
+        reference,
+        emailStatus: googleResult.emailStatus,
+      })
+    }
     return NextResponse.json({
       ok: true,
       reference,

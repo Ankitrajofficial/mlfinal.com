@@ -25,12 +25,13 @@ interface AppsScriptResponse {
 }
 
 /**
- * POST to a Google Apps Script web app while preserving the POST method
- * across Google's 302 redirects.
+ * POST to a Google Apps Script web app.
  *
- * Node/undici (and browsers) convert 302 POST → GET by default, which
- * hits doGet() instead of doPost() and breaks the webhook. We follow
- * redirects manually and re-POST the same body each hop.
+ * Apps Script answers a POST to /exec with a 302 to
+ * script.googleusercontent.com/macros/echo?user_content_key=…
+ * That echo URL holds the result doPost() already produced, and it only
+ * serves GET — re-POSTing to it returns HTTP 405 and a "Page not found"
+ * HTML page. So: POST the first hop, then follow redirects with GET.
  */
 async function postAppsScript(
   url: string,
@@ -40,13 +41,16 @@ async function postAppsScript(
   let current = url
 
   for (let hop = 0; hop < 6; hop++) {
+    const isFirstHop = hop === 0
     const res = await fetch(current, {
-      method: 'POST',
-      headers: {
-        // text/plain avoids CORS preflight and is the Apps Script-recommended body type
-        'Content-Type': 'text/plain;charset=utf-8',
-      },
-      body,
+      method: isFirstHop ? 'POST' : 'GET',
+      headers: isFirstHop
+        ? {
+            // text/plain avoids CORS preflight and is the Apps Script-recommended body type
+            'Content-Type': 'text/plain;charset=utf-8',
+          }
+        : undefined,
+      body: isFirstHop ? body : undefined,
       redirect: 'manual',
       signal: AbortSignal.timeout(timeoutMs),
     })
