@@ -782,6 +782,17 @@ export default function HomePage() {
                   <p>{SITE.contact.publicEmail}</p>
                   <p>{SITE.contact.publicPhone}</p>
                   <p>{SITE.contact.hours}</p>
+                  <div className="space-y-3 border-t border-warm-white/10 pt-5">
+                    <p className="font-sans text-xs uppercase tracking-eyebrow text-quarry-gold">
+                      Business Hours
+                    </p>
+                    {SITE.contact.businessHours.map((slot) => (
+                      <p key={slot.region} className="leading-relaxed">
+                        {slot.region}: {slot.time}
+                        <span className="block text-warm-white/40">({slot.note})</span>
+                      </p>
+                    ))}
+                  </div>
                   <a
                     href={SITE.contact.whatsappUrl}
                     target="_blank"

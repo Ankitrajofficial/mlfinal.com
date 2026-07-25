@@ -38,6 +38,18 @@ export const SITE = {
     whatsappNumber: '919828571143',
     whatsappUrl: 'https://wa.me/919828571143',
     hours: "Monday–Saturday, 09:00–18:00 IST",
+    businessHours: [
+      {
+        region: "Europe & UK",
+        time: "5:30 AM – 3:30 PM",
+        note: "local times may vary due to daylight saving",
+      },
+      {
+        region: "India",
+        time: "9:00 AM – 6:00 PM IST",
+        note: "UTC+5:30",
+      },
+    ],
   },
 
   parent: {
