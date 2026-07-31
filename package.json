@@ -12,6 +12,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "audit:facts": "tsx scripts/audit-facts.ts",
+    "export:catalogue": "tsx scripts/export-catalogue.ts",
     "admin:migrate-neon": "tsx scripts/migrate-admin-to-neon.ts",
     "verify": "npm run lint && npm run typecheck && npm run audit:facts && npm run build"
   },

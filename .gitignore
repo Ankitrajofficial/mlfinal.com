@@ -45,3 +45,6 @@ khadane-website/
 .gstack/
 .context/
 data/admin/store.json
+
+# generated catalogue export — regenerate with npm run export:catalogue
+exports/
