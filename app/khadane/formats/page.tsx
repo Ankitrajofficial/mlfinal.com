@@ -176,7 +176,7 @@ export default function FormatsPage() {
           <RevealOnScroll>
             <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
               {[
-                { title: 'Form', body: 'The physical object being ordered: slab, sett, coping, sill, block, tile, or custom part.' },
+                { title: 'Form', body: 'The physical object being ordered: slab, sett, coping, cill, block, tile, or custom part.' },
                 { title: 'Surface', body: 'The face treatment: natural riven, honed, sandblast, flamed, brushed, leather, or another catalogue finish.' },
                 { title: 'Edge', body: 'The visible profile: hand cut, hand-cut straight, machine cut, or bullnose where the format allows it.' },
                 { title: 'Packing unit', body: 'How the format is shipped: crate, pallet, slab rack, raw block loading, or per-drawing custom packing.' },

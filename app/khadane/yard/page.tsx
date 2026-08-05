@@ -46,7 +46,7 @@ export default function YardPage() {
     {
       num: '03',
       title: 'Cutting & sizing',
-      body: 'Each format takes its own route. The hand line cuts and splits riven pavers, cobbles, flagstones, and roofing; the machine line — block cutter, bridge cutter, edge and profiling machines, and the gangsaw — squares slabs, tiles, sills, frames, kerbs, copings, and steps.',
+      body: 'Each format takes its own route. The hand line cuts and splits riven pavers, cobbles, flagstones, and roofing; the machine line — block cutter, bridge cutter, edge and profiling machines, and the gangsaw — squares slabs, tiles, cills, frames, kerbs, copings, and steps.',
       icon: Factory,
       variant: 'stone' as const,
       record: 'Route · machine · size',

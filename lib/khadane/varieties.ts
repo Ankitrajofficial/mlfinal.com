@@ -722,7 +722,7 @@ export const VARIETIES: Variety[] = [
       "Bundi Teakwood"
     ],
     "splittable": "No — block-only, machine-cut downstream",
-    "splittabilityNote": "Block-only, machine-cut downstream. Available in machine-cut formats only — gangsaw slabs, calibrated paving, architectural cladding, cobbles, sills, copings, steps and treads.",
+    "splittabilityNote": "Block-only, machine-cut downstream. Available in machine-cut formats only — gangsaw slabs, calibrated paving, architectural cladding, cobbles, cills, copings, steps and treads.",
     "workedSince": "the 2010s",
     "renamedByKhadane": "No",
     "provenanceLine": "Sourced from a family-allied quarry at Garda village in Bundi District, Rajasthan. The bed yields the catalogue’s most figured stone — natural wood-grain striations across each face. Also known in the trade as Bundi Teakwood.",
