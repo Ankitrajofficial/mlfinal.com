@@ -71,7 +71,9 @@ export const VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     workedFormat:  d('1ZGEPbaHpJqGl5BuUP2bfUKssoqii05LK'), // surface texture
     sourceContext: d('1Ipzpxg41DXqhDvx79pKdKMQT_IlRdMsr'), // pale grey surface
   },
-  'mint': {
+  // Keyed on the variety slug. KHD-O-07 was re-slugged mint -> raveena and
+  // KHD-O-08 fossil-mint -> mint (2026-08); the Drive IDs below did not move.
+  'raveena': {
     hero:          d('1zle5V1XTQL_v-KpcA_R8GVttdcw2HHPH'),
     thumb:         d('1zle5V1XTQL_v-KpcA_R8GVttdcw2HHPH', 800),
     slabFace:      d('1zle5V1XTQL_v-KpcA_R8GVttdcw2HHPH'),
@@ -80,7 +82,7 @@ export const VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     workedFormat:  d('1ysKkBSDRmF0C3Vp6HU9L6Zp9MpRdh1mf'),
     sourceContext: d('1LrQOG9Y_u5p_mJocbF5v_87BcMgjhZmp'),
   },
-  'fossil-mint': {
+  'mint': {
     hero:          d('1tkBEdzQzlAoB_xhdinFp3gDAvqocTVa-'),
     thumb:         d('1tkBEdzQzlAoB_xhdinFp3gDAvqocTVa-', 800),
     slabFace:      d('1tkBEdzQzlAoB_xhdinFp3gDAvqocTVa-'),
@@ -117,7 +119,7 @@ export const VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     workedFormat:  d('142xXAgWbp74pYoMkvdsLRRiAYMbXey-l'),
     sourceContext: d('16ATBHIEQuohdohxd9_avyMYrbdPwqVKS'),
   },
-  'multi-brown': {
+  'mocha-blend': {
     hero:          d('1XM6FKloE7NwOk4nbgneId-gA6IpcaXmM'),
     thumb:         d('1XM6FKloE7NwOk4nbgneId-gA6IpcaXmM', 800),
     slabFace:      d('1XM6FKloE7NwOk4nbgneId-gA6IpcaXmM'),
@@ -127,7 +129,7 @@ export const VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     sourceContext: d('17EzqL2R-BemfisNPBi6zDcpHihMgQ-vG'),
   },
   'rainbow': {},
-  'white-mint': {},
+  'white': {},
   // Allied varieties — heroes picked from the Drive "Allied" folder
   // (one photo per stone). The picked photo is committed locally as
   // /img/varieties/<slug>-hero.jpg; the Drive IDs below record the source.
@@ -289,7 +291,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     // Slot 5 = single Slate Grey paving tile on the studio sweep; -v2 busts caches.
     sourceContext: '/img/varieties/slate-grey/source-context-v2.jpg',
   },
-  'mint': {
+  // KHD-O-07. Re-slugged mint -> raveena (2026-08). The asset directory on
+  // disk is still /img/varieties/mint/ — key and paths deliberately differ.
+  'raveena': {
     ...local('mint', ['slabFace', 'surfaceClose']),
     // Slot 1 = Raveena mixed-format tile-swatch layout (2026-07); -v3 busts caches.
     slabFace: '/img/varieties/mint/slab-face-v3.jpg',
@@ -307,7 +311,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     hero: '/img/varieties/mint-thumb-v3.jpg',
     thumb: '/img/varieties/mint-thumb-v3.jpg',
   },
-  'fossil-mint': {
+  // KHD-O-08. Re-slugged fossil-mint -> mint (2026-08); assets stay under
+  // /img/varieties/fossil-mint/.
+  'mint': {
     ...local('fossil-mint', ['slabFace', 'surfaceClose']),
     // Slot 1 = Fossil Mint mixed-format tile layout (2026-07); -v2 busts caches.
     slabFace: '/img/varieties/fossil-mint/slab-face-v2.jpg',
@@ -379,7 +385,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     // Slot 5 = single Dual Tone paving tile on the studio sweep.
     sourceContext: '/img/varieties/dual-tone/source-context.jpg',
   },
-  'multi-brown': {
+  // KHD-O-13. Re-slugged multi-brown -> mocha-blend (2026-08); assets stay
+  // under /img/varieties/multi-brown/.
+  'mocha-blend': {
     ...local('multi-brown', ['slabFace', 'surfaceClose']),
     // Slot 1 = Mocha Blend Versailles-pattern paving render (2026-07); -v2 busts caches.
     slabFace: '/img/varieties/multi-brown/slab-face-v2.jpg',
@@ -413,7 +421,9 @@ const LOCAL_VARIETY_IMAGES: Record<string, VarietyImageSet> = {
     // Slot 5 = single Rainbow paving tile on the studio sweep.
     sourceContext: '/img/varieties/multi-colours/source-context.jpg',
   },
-  'white-mint': {
+  // KHD-O-15. Re-slugged white-mint -> white (2026-08); assets stay under
+  // /img/varieties/white-mint/.
+  'white': {
     hero: '/images/khadane/varieties/white-mint/white-mint.jpg',
     thumb: '/images/khadane/varieties/white-mint/white-mint-thumb.webp',
     // Slot 1 = White mixed-format tile layout (2026-07).

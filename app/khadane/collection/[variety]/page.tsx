@@ -59,10 +59,12 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
   const prev = getPrevVariety(v.rank)
   const next = getNextVariety(v.rank)
 
-  // Format availability for this variety
-  const availableFormats = v.formatExceptions?.includes('block-first')
-    ? FORMATS.filter((f) => ['quarry-blocks', 'gangsaw-slabs', 'wall-cladding', 'cobble-setts', 'window-sills', 'copings', 'block-steps-treads'].includes(f.slug))
-    : FORMATS
+  // Format availability for this variety. Formats own the rule (2026-08);
+  // this used to be a hardcoded slug list here that had drifted out of sync
+  // with the near-identical list in app/khadane/formats/[format]/page.tsx.
+  const availableFormats = FORMATS.filter(
+    (f) => !f.varietyExceptions.includes(v.code),
+  )
   const technicalRows = [
     { label: 'Catalogue code', value: v.code },
     { label: 'Source classification', value: v.tierLabel },

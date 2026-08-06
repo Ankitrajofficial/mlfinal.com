@@ -32,6 +32,42 @@ const nextConfig = {
         destination: '/collection/rainbow',
         permanent: true,
       },
+
+      // Variety slug/name reconciliation (2026-08). Four varieties had been
+      // renamed without their slugs following, so URLs served the wrong stone.
+      //
+      // Deliberately NO redirect from the old /mint: it was serving Raveena,
+      // which was already wrong. It now serves Mint, which is correct.
+      {
+        source: '/collection/fossil-mint',
+        destination: '/collection/mint',
+        permanent: true,
+      },
+      {
+        source: '/khadane/collection/fossil-mint',
+        destination: '/collection/mint',
+        permanent: true,
+      },
+      {
+        source: '/collection/multi-brown',
+        destination: '/collection/mocha-blend',
+        permanent: true,
+      },
+      {
+        source: '/khadane/collection/multi-brown',
+        destination: '/collection/mocha-blend',
+        permanent: true,
+      },
+      {
+        source: '/collection/white-mint',
+        destination: '/collection/white',
+        permanent: true,
+      },
+      {
+        source: '/khadane/collection/white-mint',
+        destination: '/collection/white',
+        permanent: true,
+      },
     ]
   },
 

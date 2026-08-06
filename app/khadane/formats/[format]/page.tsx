@@ -83,11 +83,11 @@ export default async function FormatPage({ params }: FormatPageProps) {
     },
   ]
 
-  // Available varieties — varieties that produce in this format
-  const availableVarieties =
-    f.slug === 'quarry-blocks'
-      ? VARIETIES
-      : VARIETIES.filter((v) => !v.formatExceptions?.includes('block-first') || ['gangsaw-slabs', 'wall-cladding', 'cobble-setts', 'window-sills', 'copings', 'block-steps-treads', 'pier-cap'].includes(f.slug))
+  // Available varieties — varieties that produce in this format. The format's
+  // varietyExceptions is the single source of truth (2026-08).
+  const availableVarieties = VARIETIES.filter(
+    (v) => !f.varietyExceptions.includes(v.code),
+  )
 
   return (
     <>

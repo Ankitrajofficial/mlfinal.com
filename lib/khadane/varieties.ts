@@ -194,7 +194,7 @@ export const VARIETIES: Variety[] = [
   {
     "code": "KHD-O-07",
     "rank": 7,
-    "slug": "mint",
+    "slug": "raveena",
     "name": "Raveena",
     "nameHindi": "मिंट",
     "tier": "owned",
@@ -219,7 +219,7 @@ export const VARIETIES: Variety[] = [
   {
     "code": "KHD-O-08",
     "rank": 8,
-    "slug": "fossil-mint",
+    "slug": "mint",
     "name": "Mint",
     "nameHindi": "फॉसिल मिंट",
     "tier": "owned",
@@ -367,7 +367,7 @@ export const VARIETIES: Variety[] = [
   {
     "code": "KHD-O-13",
     "rank": 13,
-    "slug": "multi-brown",
+    "slug": "mocha-blend",
     "name": "Mocha Blend",
     "nameHindi": "मल्टी ब्राउन",
     "tier": "owned",
@@ -433,7 +433,7 @@ export const VARIETIES: Variety[] = [
   {
     "code": "KHD-O-15",
     "rank": 15,
-    "slug": "white-mint",
+    "slug": "white",
     "name": "White",
     "nameHindi": "व्हाइट मिंट",
     "tier": "owned",

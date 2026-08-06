@@ -1,14 +1,15 @@
 import Link from 'next/link'
 import { ArrowRight, Send } from 'lucide-react'
-import { SURFACES } from '@/lib/khadane/surfaces'
+import { PUBLISHED_SURFACES } from '@/lib/khadane/surfaces'
 import { EDGES } from '@/lib/khadane/edges'
 import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import FinishBlock from '@/components/khadane/FinishBlock'
 
+// Counts track PUBLISHED_SURFACES so holding or publishing a finish cannot
+// leave the copy claiming a number the page does not render.
 export const metadata = {
-  title: 'Surfaces & Edges — Sixteen finishes, four edge profiles',
-  description:
-    'The sixteen surface finishes and four edge profiles KHADANE works to order. From sawn and honed to flamed, shotblast, and hand-chiseled. Photographed on the stone itself.',
+  title: `Surfaces & Edges — ${PUBLISHED_SURFACES.length} finishes, four edge profiles`,
+  description: `The ${PUBLISHED_SURFACES.length} surface finishes and four edge profiles KHADANE works to order. From sawn and honed to flamed, shotblast, and rockfaced. Photographed on the stone itself.`,
 }
 
 export default function SurfacesPage() {
@@ -30,7 +31,7 @@ export default function SurfacesPage() {
             <div className="lg:col-span-6 lg:self-end">
               <RevealOnScroll delay={150}>
                 <p className="editorial-body">
-                  Every stone leaves the yard with a surface and an edge that were chosen, not defaulted. Sixteen finishes and four edge profiles cover the range the trade specifies. Each one below is photographed on the stone itself, at the yard.
+                  Every stone leaves the yard with a surface and an edge that were chosen, not defaulted. {PUBLISHED_SURFACES.length} finishes and four edge profiles cover the range the trade specifies. Each one below is photographed on the stone itself, at the yard.
                 </p>
               </RevealOnScroll>
             </div>
@@ -38,13 +39,13 @@ export default function SurfacesPage() {
         </div>
       </section>
 
-      {/* Sixteen finishes */}
+      {/* Published finishes */}
       <section id="finishes" className="section-padding section-warm">
         <div className="container-editorial">
           <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <RevealOnScroll>
-                <p className="eyebrow-gold mb-6 no-justify">SIXTEEN FINISHES</p>
+                <p className="eyebrow-gold mb-6 no-justify">{PUBLISHED_SURFACES.length} FINISHES</p>
                 <h2 className="section-heading mb-6">
                   From smooth
                   <span className="block italic text-quarry-gold">to textured.</span>
@@ -54,14 +55,14 @@ export default function SurfacesPage() {
             <div className="lg:col-span-7">
               <RevealOnScroll delay={150}>
                 <p className="editorial-body">
-                  The order runs smooth to textured. Sawn and honed at one end, riven, rockfaced, and hand-chiseled at the other. Where a finish carries more than one photograph, the thumbnails expand.
+                  The order runs smooth to textured. Sawn and honed at one end, riven and rockfaced at the other. Where a finish carries more than one photograph, the thumbnails expand.
                 </p>
               </RevealOnScroll>
             </div>
           </div>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-            {SURFACES.map((finish, i) => (
+            {PUBLISHED_SURFACES.map((finish, i) => (
               <RevealOnScroll key={finish.slug} delay={Math.min(i * 40, 400)}>
                 <FinishBlock finish={finish} index={i} />
               </RevealOnScroll>

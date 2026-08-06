@@ -1,6 +1,8 @@
 // KHADANE™ — Surface finishes — v3.0 (Surfaces/Edges/White Mint pack, 2026-07-03)
 // Source of truth: KHADANE-surfaces-edges-whitemint/data — display order locked.
 // 16 finishes replace the old 11 — hero + expandable thumbnails render on the Surfaces page only.
+// 2026-08: 6 of the 16 are held (published: false) — defined here but attached to no
+// format, so they do not render. See PUBLISHED_SURFACES at the foot of this file.
 
 export interface FinishImage {
   variety: string
@@ -17,6 +19,10 @@ export interface Finish {
   hero: string
   heroJpg: string
   images: FinishImage[]
+  // Absent or true = renders on the Surfaces page. Set false to author a
+  // finish before it is offered, or to hold one that no format currently
+  // carries. Held finishes stay defined here; they just stop rendering.
+  published?: boolean
 }
 
 export const SURFACES: Finish[] = [
@@ -60,6 +66,9 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "matte",
+    // Held 2026-08: no format currently carries this finish. Attach it to a
+    // format's surfacesAvailable and flip this to true to publish.
+    "published": false,
     "name": "Matte",
     "tagline": "Soft, low sheen.",
     "description": "A smooth surface with minimal reflection — gentler than honed, quiet and understated. Well suited to interiors and covered applications.",
@@ -164,6 +173,9 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "shotblasted-cotton",
+    // Held 2026-08: no format currently carries this finish. Attach it to a
+    // format's surfacesAvailable and flip this to true to publish.
+    "published": false,
     "name": "Shotblasted Cotton",
     "tagline": "Textured, then softened.",
     "description": "Shotblast followed by a cotton brush — textured for grip, then softened for a matte, tactile hand. A refined surface for external and transitional spaces.",
@@ -208,6 +220,9 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "blasted-flamed",
+    // Held 2026-08: no format currently carries this finish. Attach it to a
+    // format's surfacesAvailable and flip this to true to publish.
+    "published": false,
     "name": "Blasted Flamed",
     "tagline": "Dual-textured, deep tone.",
     "description": "Blasted and flamed in combination for a deep, dual-worked surface — enriched tonal contrast with high slip resistance. A statement finish for demanding external settings.",
@@ -258,6 +273,9 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "riven-shotblasted",
+    // Held 2026-08: no format currently carries this finish. Attach it to a
+    // format's surfacesAvailable and flip this to true to publish.
+    "published": false,
     "name": "Riven Shotblasted",
     "tagline": "Riven, with extra grip.",
     "description": "A natural riven face further shotblasted to even the texture and lift slip resistance, while keeping the cleft character intact. For external paving that needs both character and grip.",
@@ -318,6 +336,9 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "hand-chiseled",
+    // Held 2026-08: no format currently carries this finish. Attach it to a
+    // format's surfacesAvailable and flip this to true to publish.
+    "published": false,
     "name": "Hand Chiseled",
     "tagline": "Hand-tooled lines.",
     "description": "Chisel-worked by hand for a linear, tooled texture with genuine artisanal variation. A characterful finish for feature walls, borders and steps.",
@@ -352,6 +373,9 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "sparkling",
+    // Held 2026-08: no format currently carries this finish. Attach it to a
+    // format's surfacesAvailable and flip this to true to publish.
+    "published": false,
     "name": "Sparkling",
     "tagline": "Catches the light.",
     "description": "A surface treatment that draws out the natural mica and quartz in the stone, so it sparkles under light. A decorative finish for feature areas.",
@@ -371,3 +395,10 @@ export const SURFACES: Finish[] = [
 export function getSurface(slug: string): Finish | undefined {
   return SURFACES.find((s) => s.slug === slug)
 }
+
+// Finishes currently offered against at least one format. The Surfaces page
+// renders from this, not from SURFACES, so held finishes stay authored but
+// stop being advertised.
+export const PUBLISHED_SURFACES: Finish[] = SURFACES.filter(
+  (s) => s.published !== false,
+)

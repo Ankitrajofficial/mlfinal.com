@@ -125,8 +125,10 @@ const formats = activeFormats.map((f) => ({
   plan_length_mm: null,
   plan_width_mm: null,
   thicknesses_mm: null,
-  variety_availability_count: f.varietyAvailability,
-  variety_exceptions: f.exceptions,
+  // Derived, not read from f.varietyAvailability — that stored field is stale
+  // (still 24 everywhere) and is superseded by varietyExceptions.
+  variety_availability_count: VARIETIES.length - f.varietyExceptions.length,
+  variety_exceptions: f.varietyExceptions,
   surfaces_available: f.surfacesAvailable,
   edges_available: f.edgesAvailable,
   crate_dimensions_packing_only: f.crateDimensions ?? '',
@@ -142,6 +144,9 @@ const surfaces = SURFACES.map((s) => ({
   code: s.slug,
   name: s.name,
   tagline: s.tagline,
+  // false = held: authored but attached to no format and not rendered on the
+  // site. Do not offer these for sale until Rahul rules on them.
+  published: s.published !== false,
 }))
 
 const edges = EDGES.map((e) => ({
@@ -154,22 +159,10 @@ const edges = EDGES.map((e) => ({
 // 6. AVAILABILITY MATRIX
 // Expanded from what the site actually enforces.
 //
-// The variety x format rule is NOT in the data — it is hardcoded in
-// app/khadane/formats/[format]/page.tsx:90. Block-first varieties are
-// excluded from every format EXCEPT the machine-cut list below. The
-// `varietyAvailability: 24` field on every format is unused by the page
-// and contradicts what renders. Mirrored here so the export matches the
-// site; if that page changes, this list must change with it.
+// As of 2026-08 the variety x format rule IS in the data: each format carries
+// a varietyExceptions array of excluded variety codes, and both page
+// components filter on it. This no longer mirrors a hardcoded page list.
 // ------------------------------------------------------------
-const BLOCK_FIRST_ALLOWED_FORMATS = new Set([
-  'gangsaw-slabs',
-  'wall-cladding',
-  'cobble-setts',
-  'window-sills',
-  'copings',
-  'block-steps-treads',
-  'pier-cap',
-])
 const surfaceCodes = new Set(surfaces.map((s) => s.code))
 const edgeCodes = new Set(edges.map((e) => e.code))
 
@@ -185,14 +178,13 @@ type MatrixRow = {
 const matrix: MatrixRow[] = []
 for (const v of VARIETIES) {
   for (const f of activeFormats) {
-    // Block-first varieties produce only in the machine-cut formats.
+    // Availability lives in the format data only (2026-08).
     if (
-      v.formatExceptions?.includes('block-first') &&
-      !BLOCK_FIRST_ALLOWED_FORMATS.has(f.slug)
+      f.varietyExceptions.includes(v.code) ||
+      f.varietyExceptions.includes(v.slug)
     ) {
       continue
     }
-    if (f.exceptions.includes(v.code) || f.exceptions.includes(v.slug)) continue
     for (const surface of f.surfacesAvailable) {
       matrix.push({
         variety_code: v.code,
@@ -236,7 +228,9 @@ const gaps = {
   product_family:
     'No structured field. Mapped by slug in this script, not authored in the catalogue.',
   availability_enforcement:
-    'Partly enforced, and the rule is not in the data. Variety x format IS restricted: the 2 block-first varieties (Basalt Black, Teakwood) produce only in 7 machine-cut formats, so most formats offer 22 of 24 varieties. That rule is hardcoded in app/khadane/formats/[format]/page.tsx:90, NOT in formats.ts — whose varietyAvailability: 24 field is unused and contradicts what the page renders. Do not read that column as truth. Variety x surface is NOT restricted at all: surfaces and edges are limited per format only, and nothing narrows them by variety. This matrix mirrors the page logic.',
+    'Enforced, and as of 2026-08 the rule lives in the data. Each format carries a varietyExceptions array of excluded variety codes; both the collection and format page components filter on it, so there is one source of truth. The 2 block-first varieties (KHD-A-02 Basalt Black, KHD-A-09 Teakwood) are excluded from 12 of 20 formats and produce only in the 8 block-derived or machine-cut ones, so those 12 formats offer 22 of 24 varieties. The stored varietyAvailability: 24 field is stale and unused — variety_availability_count above is derived from varietyExceptions instead. Variety x surface is NOT restricted at all: surfaces and edges are limited per format only, and nothing narrows them by variety.',
+  held_surfaces:
+    'Surfaces carry a `published` flag. 6 of 16 are held (published: false) — authored but attached to no format and not rendered on the site. They are exported so the catalogue stays complete; do not offer them for sale until they are attached to a format.',
 }
 
 // ------------------------------------------------------------
@@ -291,13 +285,15 @@ Quarry Blocks (KHF-019) excluded on request — 19 of 20 formats here.
 
 - **No plan dimensions, no thicknesses.** The catalogue does not carry them.
   \`crate_*\` columns are packing dimensions — not product sizes.
-- **Availability is not enforced.** All formats are offered against all 24
-  varieties. Surfaces and edges vary by format only, never by variety.
-- **Surfaces: 16 defined, 11 offered.** The surfaces page was upgraded to 16
-  finishes; the format data still lists the old 11. Six finishes are visible
-  on the site but orderable against nothing.
-- **\`brushed\` and \`hand-cut-straight\` are broken references** — offered by
-  formats, absent from the surface and edge files.
+- **Availability IS enforced, from the data.** Each format carries
+  \`variety_exceptions\`. Basalt Black and Teakwood are block-first and produce
+  only in the 8 block-derived or machine-cut formats; the other 12 offer 22 of
+  24 varieties. Surfaces and edges still vary by format only, never by variety.
+- **Surfaces: 16 defined, 10 offered.** The 6 unattached finishes are now
+  flagged \`published: false\` and no longer render on the site. They are
+  exported for completeness — do not offer them for sale.
+- **No broken references.** Every surface and edge a format lists resolves to
+  an entry in the surface and edge files.
 - **stone_family is derived**, not authored. Check \`stone_family_confidence\`.
   There is no quartzite in the catalogue: it is sandstone, limestone, basalt.
 - **product_family is authored in the export script**, not in the catalogue.
