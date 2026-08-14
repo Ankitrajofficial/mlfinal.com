@@ -46,7 +46,7 @@ export default function FormatsPage() {
     {
       label: 'Wall, Raw & Custom',
       note: 'Large-format, vertical, raw-block, and buyer-specific material for yards and architectural projects.',
-      slugs: ['wall-cladding', 'gangsaw-slabs', 'quarry-blocks'],
+      slugs: ['wall-cladding', 'dry-stone-walling', 'gangsaw-slabs', 'quarry-blocks'],
     },
   ].map((category) => ({
     ...category,
@@ -54,6 +54,17 @@ export default function FormatsPage() {
       .map((slug) => FORMATS.find((format) => format.slug === slug))
       .filter((format): format is (typeof FORMATS)[number] => Boolean(format)),
   }))
+
+  // This index is the only route into the format pages, and it is keyed on a
+  // hand-written slug list. A new format that nobody added here would build
+  // fine and never be linked, so fail the build instead.
+  const categorised = new Set(categories.flatMap((c) => c.slugs))
+  const uncategorised = FORMATS.filter((f) => !categorised.has(f.slug))
+  if (uncategorised.length > 0) {
+    throw new Error(
+      `Format(s) missing from the formats index categories: ${uncategorised.map((f) => f.slug).join(', ')}`,
+    )
+  }
 
   const FormatCard = ({
     f,
@@ -92,7 +103,7 @@ export default function FormatsPage() {
             <div className={`mt-auto grid grid-cols-2 gap-4 border-t pt-5 ${dark ? 'border-warm-white/10' : 'border-obsidian/10'}`}>
               <div>
                 <p className={`font-mono text-[9px] uppercase tracking-eyebrow no-justify ${dark ? 'text-warm-white/35' : 'text-tobacco/45'}`}>Surfaces</p>
-                <p className={`mt-1 font-sans text-xs no-justify ${dark ? 'text-warm-white/75' : 'text-obsidian'}`}>{f.surfacesAvailable.length || 'On enquiry'}</p>
+                <p className={`mt-1 font-sans text-xs no-justify ${dark ? 'text-warm-white/75' : 'text-obsidian'}`}>{f.surfacesRegular.length + f.surfacesAvailable.length || 'On enquiry'}</p>
               </div>
               <div>
                 <p className={`font-mono text-[9px] uppercase tracking-eyebrow no-justify ${dark ? 'text-warm-white/35' : 'text-tobacco/45'}`}>Edges</p>

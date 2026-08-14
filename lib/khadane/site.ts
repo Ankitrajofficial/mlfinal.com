@@ -22,7 +22,8 @@ export const SITE = {
   varietyCount: 24,
   ownedVarieties: 15,
   alliedVarieties: 9,
-  formatCount: 20,
+  // 21 since patch v2.1 added KHF-021 Dry Stone Walling.
+  formatCount: 21,
   surfaceTreatmentCount: 16,
   edgeProfileCount: 4,
   quarryCount: '100+',

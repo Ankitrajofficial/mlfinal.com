@@ -298,7 +298,7 @@ export default function HomePage() {
 
       {/* ============================================================
           SECTION 05 — THE FORMATS
-          20 formats grid
+          21 formats grid
           ============================================================ */}
       <section className="section-padding section-warm">
         <div className="container-editorial">
@@ -315,7 +315,7 @@ export default function HomePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={250}>
                 <p className="editorial-body mb-8">
-                  KHADANE cuts and dresses the stone before it leaves the yard. Twenty formats run through the yard, with surface treatments and edge profiles cross-listed against each form.
+                  KHADANE cuts and dresses the stone before it leaves the yard. Twenty-one formats run through the yard, with surface treatments and edge profiles cross-listed against each form.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={350}>

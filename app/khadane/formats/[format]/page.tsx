@@ -83,11 +83,44 @@ export default async function FormatPage({ params }: FormatPageProps) {
     },
   ]
 
-  // Available varieties — varieties that produce in this format. The format's
-  // varietyExceptions is the single source of truth (2026-08).
+  // Available varieties. varietyExceptions is empty on every format as of
+  // patch v2.1 — availability is not a constraint — but the filter stays so
+  // the data keeps deciding rather than the component.
   const availableVarieties = VARIETIES.filter(
     (v) => !f.varietyExceptions.includes(v.code),
   )
+
+  // Only regular sizes render. Bespoke stays off the page and on enquiry.
+  const regularSizes = (f.sizes ?? []).filter((s) => s.regular)
+  // Sub-lines within the format — tread / riser, upright / flat-laid. Formats
+  // with a single ungrouped size list come through as one unlabelled group.
+  const sizeGroups = regularSizes.reduce<{ group: string | null; sizes: typeof regularSizes }[]>(
+    (acc, size) => {
+      const group = size.group ?? null
+      const last = acc[acc.length - 1]
+      if (last && last.group === group) last.sizes.push(size)
+      else acc.push({ group, sizes: [size] })
+      return acc
+    },
+    [],
+  )
+
+  const soldBy = [f.unit, ...(f.alsoUnits ?? [])].filter(Boolean).join(' · ')
+
+  const specRows = [
+    { label: 'Code', value: f.code },
+    { label: 'Primary use', value: f.primaryUse },
+    { label: 'Variety availability', value: `${availableVarieties.length} of ${VARIETIES.length} varieties` },
+    ...(soldBy ? [{ label: 'Sold by', value: soldBy }] : []),
+    // Standing production and made-to-order are not the same offer and are
+    // not shown as one (patch v2.1).
+    { label: 'Surfaces in standing production', value: f.surfacesRegular.join(', ') || 'None — every finish worked to order' },
+    { label: 'Surfaces worked to order', value: f.surfacesAvailable.join(', ') || 'On enquiry' },
+    { label: 'Edges available', value: f.edgesAvailable.join(', ') || 'On enquiry' },
+    ...(f.productionRoutes?.length
+      ? [{ label: 'Production route', value: f.productionRoutes.join(' · ') }]
+      : []),
+  ]
 
   return (
     <>
@@ -152,13 +185,7 @@ export default async function FormatPage({ params }: FormatPageProps) {
             </div>
             <div className="lg:col-span-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-obsidian/10">
-                {[
-                  { label: 'Code', value: f.code },
-                  { label: 'Primary use', value: f.primaryUse },
-                  { label: 'Variety availability', value: `${availableVarieties.length} of ${VARIETIES.length} varieties` },
-                  { label: 'Surfaces available', value: f.surfacesAvailable.join(', ') || 'On enquiry' },
-                  { label: 'Edges available', value: f.edgesAvailable.join(', ') || 'On enquiry' },
-                ].map((row, i, arr) => (
+                {specRows.map((row, i, arr) => (
                   <RevealOnScroll
                     key={row.label}
                     delay={i * 50}
@@ -177,6 +204,115 @@ export default async function FormatPage({ params }: FormatPageProps) {
                   </RevealOnScroll>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 02a — Sizes. Every format shows a size table or says why it
+          has none. Thickness is stated per size, never per format. */}
+      <section className="section-padding section-warm">
+        <div className="container-editorial">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+            <div className="lg:col-span-4">
+              <RevealOnScroll>
+                <p className="eyebrow mb-6 no-justify">SIZES</p>
+                <h2 className="font-display text-3xl lg:text-4xl tracking-tight leading-tight text-obsidian no-justify mb-6">
+                  {sizeGroups.length > 0 ? 'Cut to these sizes.' : 'Cut to specification.'}
+                </h2>
+                {f.sizeBasis && (
+                  <p className="editorial-body">{f.sizeBasis}</p>
+                )}
+              </RevealOnScroll>
+            </div>
+            <div className="lg:col-span-8">
+              {sizeGroups.length > 0 ? (
+                <div className="space-y-8">
+                  {sizeGroups.map((group, gi) => (
+                    <RevealOnScroll key={group.group ?? `group-${gi}`} delay={gi * 50}>
+                      {group.group && (
+                        <p className="font-mono text-xs uppercase tracking-eyebrow text-quarry-gold no-justify mb-3">
+                          {group.group}
+                        </p>
+                      )}
+                      <div className="overflow-x-auto">
+                        <table className="w-full border-collapse">
+                          <thead>
+                            <tr className="border-b border-obsidian/20">
+                              <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3 pr-6">Size (mm)</th>
+                              <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3 pr-6">Thickness (mm)</th>
+                              <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3">Notes</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {group.sizes.map((size) => (
+                              <tr key={`${group.group ?? ''}-${size.code}`} className="border-b border-obsidian/10">
+                                <td className="font-display text-lg text-obsidian no-justify py-3 pr-6 whitespace-nowrap">
+                                  {size.code}
+                                </td>
+                                <td className="font-sans text-sm text-tobacco no-justify py-3 pr-6 whitespace-nowrap">
+                                  {size.thicknessesMm.length > 0 ? size.thicknessesMm.join(', ') : 'Per drawing'}
+                                </td>
+                                <td className="font-sans text-sm text-tobacco/80 no-justify py-3">
+                                  {[
+                                    size.calibrated ? 'Calibrated' : null,
+                                    size.market && size.market !== 'special' ? `${size.market} size` : null,
+                                    size.note ?? null,
+                                  ]
+                                    .filter(Boolean)
+                                    .join(' · ') || '—'}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </RevealOnScroll>
+                  ))}
+                  {f.sizeNote && (
+                    <RevealOnScroll>
+                      <p className="font-sans text-sm text-tobacco/80 no-justify">{f.sizeNote}</p>
+                    </RevealOnScroll>
+                  )}
+                </div>
+              ) : (
+                <RevealOnScroll>
+                  <p className="editorial-body mb-6">
+                    {f.sizeNote ??
+                      (f.sizeBasis
+                        ? 'Tell us the specification and the quote comes back against it.'
+                        : 'Sizes are set per order. Tell us the specification and the quote comes back against it.')}
+                  </p>
+                </RevealOnScroll>
+              )}
+
+              {f.thicknessesMm && f.thicknessesMm.length > 0 && sizeGroups.length === 0 && (
+                <RevealOnScroll delay={100}>
+                  <div className="mt-8 bg-warm-white p-6 lg:p-8">
+                    <p className="font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify mb-2">
+                      Thicknesses (mm)
+                    </p>
+                    <p className="font-display text-lg lg:text-xl text-obsidian no-justify">
+                      {f.thicknessesMm.join(', ')}
+                    </p>
+                  </div>
+                </RevealOnScroll>
+              )}
+
+              {f.specDetails && f.specDetails.length > 0 && (
+                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-px bg-obsidian/10">
+                  {f.specDetails.map((detail, i) => (
+                    <RevealOnScroll key={detail.label} delay={i * 40} className="h-full">
+                      <div className="h-full bg-warm-white p-6">
+                        <p className="font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify mb-2">
+                          {detail.label}
+                        </p>
+                        <p className="font-sans text-sm text-obsidian no-justify">{detail.value}</p>
+                      </div>
+                    </RevealOnScroll>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>

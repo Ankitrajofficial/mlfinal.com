@@ -23,6 +23,11 @@ export interface Variety {
   oneLine: string
   inHandHeadline: string
   formatScope: string
+  // WITHDRAWN 2026-08 by catalogue patch v2.1. Material is held across the full
+  // quarry estate in every thickness the belt produces, so format availability
+  // is not a constraint: all varieties, all formats. Basalt Black and Teakwood
+  // carried "block-first" here; both are now empty. Kept only so the field does
+  // not have to be reintroduced. Do not build an availability matrix on it.
   formatExceptions?: string[]
   placeholderClass: string
   alliedRelationship?: string
@@ -53,7 +58,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Catalogued under its trade name",
     "oneLine": "A cool, restrained grey from the Khadipur block of the Bijolia belt.",
     "inHandHeadline": "Quarried from the family's owned block at Khadipur village, Bhilwara District. Catalogued under its trade name.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-grey",
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
@@ -78,7 +83,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Catalogued under its trade name",
     "oneLine": "The founding stone. Worked since 1972 across the Bijolia belt.",
     "inHandHeadline": "Kandla Grey is KHADANE's founding stone, first quarried from the family's block at Parana village, Bundi District, in the early years of the operation. Today the stone is worked across multiple owned beds in the Bijolia sandstone belt, spanning the Bhilwara and Bundi sides of the region.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-grey",
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
@@ -103,7 +108,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Catalogued under its trade name",
     "oneLine": "The warm-brown anchor of the Bijolia belt — Nayanagar quarry, since the 1980s.",
     "inHandHeadline": "Quarried from the family's owned block at Nayanagar village, within the Bijolia tehsil of Bhilwara District. Worked since the 1980s.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-warm",
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
@@ -128,7 +133,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Catalogued under its trade name",
     "oneLine": "A naturally variegated warm bed from the Bijolia tehsil.",
     "inHandHeadline": "Quarried from the family's owned variegated beds across the Bijolia tehsil of Bhilwara District, including the Choti Bijolia block. Worked since the 1980s.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-warm",
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
@@ -153,7 +158,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Raj Green (international trade); Rajpura Green — for stones from the neighbouring quarries",
     "oneLine": "A sage-to-khaki green from the family’s owned Garda block, Bundi District.",
     "inHandHeadline": "Garda Green is quarried from the family's owned block at Garda village, Bundi District. Also known in the trade as Raj Green, or Rajpura Green for stones from the neighbouring quarries.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-green",
     "alternateNames": [
       "Raj Green (international trade)",
@@ -182,7 +187,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Catalogued under its trade name",
     "oneLine": "A dark, uniform grey from the founding-era Bundi blocks. Since 1972.",
     "inHandHeadline": "Slate Grey is quarried from the family's owned blocks in the Dabi-Budhpura area of Bundi District, within the broader sandstone belt that runs across Bundi and Bhilwara. Worked since the founding years of the operation, 1972.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-grey",
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
@@ -207,7 +212,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Catalogued under its trade name",
     "oneLine": "A pale celadon-mint from the Khoki block. Worked since the 1990s.",
     "inHandHeadline": "Mint is quarried from the family's owned block at Khoki village, near Sukhpura, within the Bijolia tehsil of Bhilwara District. Worked since the 1990s.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-green",
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
@@ -232,7 +237,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Mint Fossil (alternative trade variant)",
     "oneLine": "The fossil-bearing mint bed. Marine impressions across selected slabs.",
     "inHandHeadline": "Quarried from the family's owned fossil-bearing mint bed in the Bijolia tehsil of Bhilwara District. Worked since the 2000s.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-green",
     "alternateNames": [
       "Mint Fossil (alternative trade variant)",
@@ -265,7 +270,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Catalogued under its trade name",
     "oneLine": "A pale yellow-beige from the family’s Bhooti block and the wider Bijolia tehsil.",
     "inHandHeadline": "Quarried from the family's owned blocks across the Bijolia tehsil of Bhilwara District, with Bhooti village as the primary source. Worked since the 1980s.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-warm",
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
@@ -290,7 +295,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Catalogued under its trade name",
     "oneLine": "A tan-to-camel mid-tone from the Bijolia tehsil. Bhooti and beyond.",
     "inHandHeadline": "Quarried from the family's owned blocks across the Bijolia tehsil of Bhilwara District, with Bhooti village as one of the primary sources. Worked since the 1990s.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-warm",
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
@@ -315,7 +320,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Kaansiya Red — older village-name designation used historically by Indian buyers",
     "oneLine": "A deep cocoa-red from the Kaansiya block. Renamed from the trade’s Kaansiya Red.",
     "inHandHeadline": "Red Choco is quarried from the family's owned block at Kaansiya village, within the Bijolia tehsil of Bhilwara District. Also known in the trade as Kaansiya Red — the older village-name designation.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-red",
     "alternateNames": [
       "Kaansiya Red"
@@ -347,7 +352,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Two Tone Sandstone (Indian export trade); Indian York Sandstone (UK paving market)",
     "oneLine": "Buff and dove-grey in a single slab. The UK trade’s Indian York.",
     "inHandHeadline": "Dual Tone is quarried from the family's owned blocks at Sadaram Ji ka Khera, Bhooti, and Udpuriya villages, within the Bijolia tehsil of Bhilwara District. Also known in the trade as Two Tone Sandstone, or Indian York Sandstone in the UK paving market.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-warm",
     "alternateNames": [
       "Two Tone Sandstone (Indian export trade)",
@@ -380,7 +385,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Mix Brown Sandstone (some Indian catalogues)",
     "oneLine": "Honey, walnut, cinnamon, cocoa — the variegated brown bed of three KHADANE blocks.",
     "inHandHeadline": "Multi Brown is quarried from the family's owned blocks at Bhawanipura, Aroli, and Nayanagar villages, within the Bijolia tehsil of Bhilwara District. Also known in some Indian catalogues as Mix Brown Sandstone.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-warm",
     "alternateNames": [
       "Mix Brown Sandstone (some Indian catalogues)",
@@ -413,7 +418,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Rainbow Sandstone (international trade)",
     "oneLine": "The full-spectrum variegated bed. Warm and cool tones blend across each piece; no two are alike.",
     "inHandHeadline": "Rainbow is quarried from several of the family's owned blocks across the Bijolia tehsil of Bhilwara District — the variegated bed surfaces in multiple KHADANE quarries within the tehsil. Also known in the trade as Rainbow Sandstone.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-warm",
     "alternateNames": [
       "Rainbow Sandstone (international trade)",
@@ -477,7 +482,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Bansi Paharpur Red — village-name designation",
     "oneLine": "The historic Mughal-era red. Quarried at Bansi Paharpur, Bharatpur District.",
     "inHandHeadline": "Sourced from a family-allied quarry at Bansi Paharpur village in Bayana tehsil of Bharatpur District, Rajasthan. Also known in the trade as Bansi Paharpur Red — the village-name designation used by Indian buyers.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-red",
     "alternateNames": [
       "Bansi Paharpur Red"
@@ -507,9 +512,6 @@ export const VARIETIES: Variety[] = [
     "oneLine": "The catalogue’s only igneous stone. Deccan Trap basalt from Kota.",
     "inHandHeadline": "Sourced from a family-allied quarry in Kota District, Rajasthan. The stone is volcanic basalt from the Deccan Trap formation, distinct from the sandstone catalogue. Also known in the trade as Rajasthan Black Basalt.",
     "formatScope": "Machine-cut / block-first formats",
-    "formatExceptions": [
-      "block-first"
-    ],
     "placeholderClass": "placeholder-stone-grey",
     "alternateNames": [
       "Rajasthan Black Basalt (most common international name)"
@@ -538,7 +540,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Dholpur Creme (alternative international name)",
     "oneLine": "The Vindhyan beige of Mughal-era monuments. Sarmathura quarry, Dholpur.",
     "inHandHeadline": "Sourced from a family-allied quarry at Sarmathura, within Dholpur District of Rajasthan. The bed sits in the same Vindhyan sandstone formation that built the Red Fort and Humayun’s Tomb. Also known in some catalogues as Dholpur Creme.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-warm",
     "alternateNames": [
       "Dholpur Creme (alternative international name)"
@@ -567,7 +569,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Catalogued under its trade name",
     "oneLine": "The hematite-rich pink of Sarmathura. From the same belt as Dholpur Beige.",
     "inHandHeadline": "Sourced from a family-allied quarry at Sarmathura, within Dholpur District of Rajasthan. The pink colour comes from natural hematite content in the Vindhyan sandstone bed.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-red",
     "splittable": "Yes — splits cleanly along its natural bedding plane",
     "splittabilityNote": "",
@@ -593,7 +595,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Mint Natural Stone (alternative international name); Gwalior Greenish White (some operators)",
     "oneLine": "Cream-and-mint from the central Indian Vindhyan extension. Gwalior District, MP.",
     "inHandHeadline": "Sourced from a family-allied quarry in the sandstone outcrops of Gwalior District, Madhya Pradesh. The stone is from the central Indian extension of the Vindhyan formation.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-green",
     "alternateNames": [
       "Mint Natural Stone (alternative international name)",
@@ -623,7 +625,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Jaisalmer Golden Limestone (IUGS classification); Jaisalmer Yellow Limestone (trade variant)",
     "oneLine": "The stone of Jaisalmer Fort. Jurassic yellow limestone, geologically distinct from the sandstone catalogue.",
     "inHandHeadline": "Sourced from a family-allied quarry in the Jethwai and Moolsagar quarry network of Jaisalmer District, Rajasthan. The stone is technically Jurassic yellow limestone — the same formation that built the Jaisalmer Fort, classified by IUGS as Jaisalmer Golden Limestone.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-warm",
     "alternateNames": [
       "Jaisalmer Golden Limestone (IUGS classification)",
@@ -653,7 +655,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "L Yellow Sandstone (trade abbreviation); Sun Yellow Sandstone (alternative name)",
     "oneLine": "A warm yellow Vindhyan from Lalitpur, UP. Frost-resistant and salt-air-tolerant.",
     "inHandHeadline": "Sourced from a family-allied quarry in Lalitpur District, Uttar Pradesh. The bed is Vindhyan sandstone, yellow-iron-oxide-rich, frost and salt-air resistant — specified often for sea-shore cladding for these reasons.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-warm",
     "alternateNames": [
       "L Yellow Sandstone (trade abbreviation)",
@@ -683,7 +685,7 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Black Saga Sandstone (international variant); Kalabari Black Sandstone (alternate Indian name)",
     "oneLine": "The deepest black character in the catalogue. Sagar District, MP.",
     "inHandHeadline": "Sourced from a family-allied quarry in Sagar District, Madhya Pradesh. The bed yields the deepest black character in the catalogue — quartz and feldspar matrix with high iron-oxide mineral concentration.",
-    "formatScope": "All 20 formats",
+    "formatScope": "All 21 formats",
     "placeholderClass": "placeholder-stone-grey",
     "alternateNames": [
       "Black Saga Sandstone (international variant)",
@@ -714,9 +716,6 @@ export const VARIETIES: Variety[] = [
     "oneLine": "The catalogue’s most figured stone — wood-grain striations across each slab.",
     "inHandHeadline": "Sourced from a family-allied quarry at Garda village in Bundi District, Rajasthan. The bed yields the catalogue’s most figured stone — natural wood-grain striations across each face. Also known in the trade as Bundi Teakwood.",
     "formatScope": "Machine-cut / block-first formats",
-    "formatExceptions": [
-      "block-first"
-    ],
     "placeholderClass": "placeholder-stone-warm",
     "alternateNames": [
       "Bundi Teakwood"

@@ -20,14 +20,22 @@ function varietyLine(v: (typeof VARIETIES)[number]): string {
 }
 
 function formatLine(f: (typeof FORMATS)[number]): string {
-  const surfaces = f.surfacesAvailable?.length ? `Surfaces: ${f.surfacesAvailable.join(', ')}.` : ''
+  const regular = f.surfacesRegular?.length ? `Surfaces in standing production: ${f.surfacesRegular.join(', ')}.` : ''
+  const surfaces = f.surfacesAvailable?.length ? `Surfaces worked to order: ${f.surfacesAvailable.join(', ')}.` : ''
   const edges = f.edgesAvailable?.length ? `Edges: ${f.edgesAvailable.join(', ')}.` : ''
+  const routes = f.productionRoutes?.length ? `Production route: ${f.productionRoutes.join(', ')}.` : ''
+  const sizes = f.sizes?.filter((s) => s.regular).length
+    ? `Regular sizes (mm): ${f.sizes.filter((s) => s.regular).map((s) => s.code).join(', ')}.`
+    : f.sizeBasis ?? ''
   const bits = [
     `${f.name} (${f.code})`,
     f.oneLine,
     f.primaryUse ? `Used for: ${f.primaryUse}.` : '',
+    sizes,
+    regular,
     surfaces,
     edges,
+    routes,
   ].filter(Boolean)
   return `- ${bits.join(' ')}`
 }

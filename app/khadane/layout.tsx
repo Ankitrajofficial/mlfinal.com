@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: '%s · KHADANE™',
   },
   description:
-    'KHADANE™ works the Bijolia sandstone belt of Rajasthan, quarrying and exporting twenty-four sandstones across twenty formats since 1972.',
+    'KHADANE™ works the Bijolia sandstone belt of Rajasthan, quarrying and exporting twenty-four sandstones across twenty-one formats since 1972.',
   keywords: [
     'Indian sandstone',
     'Bijolia sandstone',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: 'KHADANE™',
     title: 'KHADANE™ — The sandstone catalogue of the Bijolia belt',
     description:
-      'Twenty-three sandstones across twenty formats. Quarried in Bijolia, Rajasthan. Since 1972.',
+      'Twenty-three sandstones across twenty-one formats. Quarried in Bijolia, Rajasthan. Since 1972.',
     images: [
       {
         url: '/og-image.jpg',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'KHADANE™ — Bijolia sandstone, exported direct.',
-    description: 'Twenty-three sandstones across twenty formats. Since 1972.',
+    description: 'Twenty-three sandstones across twenty-one formats. Since 1972.',
   },
   robots: {
     index: true,

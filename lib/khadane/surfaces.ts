@@ -1,8 +1,10 @@
 // KHADANE™ — Surface finishes — v3.0 (Surfaces/Edges/White Mint pack, 2026-07-03)
 // Source of truth: KHADANE-surfaces-edges-whitemint/data — display order locked.
 // 16 finishes replace the old 11 — hero + expandable thumbnails render on the Surfaces page only.
-// 2026-08: 6 of the 16 are held (published: false) — defined here but attached to no
-// format, so they do not render. See PUBLISHED_SURFACES at the foot of this file.
+// 2026-08: all 16 are published. Six were held by patch v1 for being attached to no
+// format; patch v2.1 attached them, as surfacesAvailable rather than surfacesRegular —
+// real finishes, worked to order rather than held in standing production. The
+// published flag stays as the mechanism. See PUBLISHED_SURFACES at the foot of this file.
 
 export interface FinishImage {
   variety: string
@@ -66,9 +68,8 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "matte",
-    // Held 2026-08: no format currently carries this finish. Attach it to a
-    // format's surfacesAvailable and flip this to true to publish.
-    "published": false,
+    // Released 2026-08 by patch v2.1: attached to the formats it suits as
+    // surfacesAvailable — real, worked to order, not standing production.
     "name": "Matte",
     "tagline": "Soft, low sheen.",
     "description": "A smooth surface with minimal reflection — gentler than honed, quiet and understated. Well suited to interiors and covered applications.",
@@ -173,9 +174,8 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "shotblasted-cotton",
-    // Held 2026-08: no format currently carries this finish. Attach it to a
-    // format's surfacesAvailable and flip this to true to publish.
-    "published": false,
+    // Released 2026-08 by patch v2.1: attached to the formats it suits as
+    // surfacesAvailable — real, worked to order, not standing production.
     "name": "Shotblasted Cotton",
     "tagline": "Textured, then softened.",
     "description": "Shotblast followed by a cotton brush — textured for grip, then softened for a matte, tactile hand. A refined surface for external and transitional spaces.",
@@ -220,9 +220,8 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "blasted-flamed",
-    // Held 2026-08: no format currently carries this finish. Attach it to a
-    // format's surfacesAvailable and flip this to true to publish.
-    "published": false,
+    // Released 2026-08 by patch v2.1: attached to the formats it suits as
+    // surfacesAvailable — real, worked to order, not standing production.
     "name": "Blasted Flamed",
     "tagline": "Dual-textured, deep tone.",
     "description": "Blasted and flamed in combination for a deep, dual-worked surface — enriched tonal contrast with high slip resistance. A statement finish for demanding external settings.",
@@ -273,9 +272,8 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "riven-shotblasted",
-    // Held 2026-08: no format currently carries this finish. Attach it to a
-    // format's surfacesAvailable and flip this to true to publish.
-    "published": false,
+    // Released 2026-08 by patch v2.1: attached to the formats it suits as
+    // surfacesAvailable — real, worked to order, not standing production.
     "name": "Riven Shotblasted",
     "tagline": "Riven, with extra grip.",
     "description": "A natural riven face further shotblasted to even the texture and lift slip resistance, while keeping the cleft character intact. For external paving that needs both character and grip.",
@@ -336,9 +334,8 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "hand-chiseled",
-    // Held 2026-08: no format currently carries this finish. Attach it to a
-    // format's surfacesAvailable and flip this to true to publish.
-    "published": false,
+    // Released 2026-08 by patch v2.1: attached to the formats it suits as
+    // surfacesAvailable — real, worked to order, not standing production.
     "name": "Hand Chiseled",
     "tagline": "Hand-tooled lines.",
     "description": "Chisel-worked by hand for a linear, tooled texture with genuine artisanal variation. A characterful finish for feature walls, borders and steps.",
@@ -373,9 +370,8 @@ export const SURFACES: Finish[] = [
   },
   {
     "slug": "sparkling",
-    // Held 2026-08: no format currently carries this finish. Attach it to a
-    // format's surfacesAvailable and flip this to true to publish.
-    "published": false,
+    // Released 2026-08 by patch v2.1: attached to the formats it suits as
+    // surfacesAvailable — real, worked to order, not standing production.
     "name": "Sparkling",
     "tagline": "Catches the light.",
     "description": "A surface treatment that draws out the natural mica and quartz in the stone, so it sparkles under light. A decorative finish for feature areas.",
