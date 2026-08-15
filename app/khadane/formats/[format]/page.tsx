@@ -107,6 +107,33 @@ export default async function FormatPage({ params }: FormatPageProps) {
     [],
   )
 
+  // "900x600" reads as a product code; "900 × 600" reads as a dimension.
+  // Only touch codes that are purely digits and separators — Circles and
+  // Boulders carry "1500 dia" and "900 round", which stay as written.
+  const prettySize = (code: string) =>
+    /^\d+(x\d+)+$/.test(code) ? code.split('x').join(' × ') : code
+
+  // Thickness and calibration are stated per size, but on most formats every
+  // size in a group carries the same value — Roofing repeats "22" twelve
+  // times, Copings repeats one set eleven times. Anything uniform across the
+  // group is hoisted out and said once; the table then carries only what
+  // actually varies. Where nothing but the size varies, there is no table to
+  // draw and the sizes render as a plain list.
+  const describeGroup = (sizes: typeof regularSizes) => {
+    const uniq = (xs: string[]) => [...new Set(xs)]
+    const thicknessKeys = uniq(sizes.map((s) => s.thicknessesMm.join(',')))
+    const calibrationKeys = uniq(sizes.map((s) => String(s.calibrated)))
+    return {
+      uniformThickness:
+        thicknessKeys.length === 1 && sizes[0].thicknessesMm.length > 0
+          ? sizes[0].thicknessesMm
+          : null,
+      uniformCalibrated: calibrationKeys.length === 1 ? sizes[0].calibrated : null,
+      hasNotes: sizes.some((s) => Boolean(s.note)),
+      hasMarkets: uniq(sizes.map((s) => s.market ?? '')).filter(Boolean).length > 0,
+    }
+  }
+
   const soldBy = [f.unit, ...(f.alsoUnits ?? [])].filter(Boolean).join(' · ')
 
   const specRows = [
@@ -216,7 +243,9 @@ export default async function FormatPage({ params }: FormatPageProps) {
       <section className="section-padding section-warm">
         <div className="container-editorial">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-            <div className="lg:col-span-4">
+            {/* Sticky so the heading stays with the table on the long size
+                lists rather than scrolling away and leaving the column empty. */}
+            <div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
               <RevealOnScroll>
                 <p className="eyebrow mb-6 no-justify">SIZES</p>
                 <h2 className="font-display text-3xl lg:text-4xl tracking-tight leading-tight text-obsidian no-justify mb-6">
@@ -225,52 +254,121 @@ export default async function FormatPage({ params }: FormatPageProps) {
                 {f.sizeBasis && (
                   <p className="editorial-body">{f.sizeBasis}</p>
                 )}
+                {regularSizes.length > 0 && (
+                  <p className="font-sans text-sm text-tobacco/70 no-justify mt-6">
+                    {regularSizes.length} standing {regularSizes.length === 1 ? 'size' : 'sizes'}.
+                    {' '}Anything else is cut to your drawing.
+                  </p>
+                )}
               </RevealOnScroll>
             </div>
             <div className="lg:col-span-8">
               {sizeGroups.length > 0 ? (
                 <div className="space-y-8">
-                  {sizeGroups.map((group, gi) => (
+                  {sizeGroups.map((group, gi) => {
+                    const meta = describeGroup(group.sizes)
+                    // A table earns its place only when something varies down
+                    // the column. If thickness and calibration are constant and
+                    // no size carries a note, the sizes are just a list.
+                    const needsTable = !meta.uniformThickness || meta.hasNotes
+                    return (
                     <RevealOnScroll key={group.group ?? `group-${gi}`} delay={gi * 50}>
                       {group.group && (
                         <p className="font-mono text-xs uppercase tracking-eyebrow text-quarry-gold no-justify mb-3">
                           {group.group}
                         </p>
                       )}
-                      <div className="overflow-x-auto">
-                        <table className="w-full border-collapse">
-                          <thead>
-                            <tr className="border-b border-obsidian/20">
-                              <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3 pr-6">Size (mm)</th>
-                              <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3 pr-6">Thickness (mm)</th>
-                              <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3">Notes</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {group.sizes.map((size) => (
-                              <tr key={`${group.group ?? ''}-${size.code}`} className="border-b border-obsidian/10">
-                                <td className="font-display text-lg text-obsidian no-justify py-3 pr-6 whitespace-nowrap">
-                                  {size.code}
-                                </td>
-                                <td className="font-sans text-sm text-tobacco no-justify py-3 pr-6 whitespace-nowrap">
-                                  {size.thicknessesMm.length > 0 ? size.thicknessesMm.join(', ') : 'Per drawing'}
-                                </td>
-                                <td className="font-sans text-sm text-tobacco/80 no-justify py-3">
-                                  {[
-                                    size.calibrated ? 'Calibrated' : null,
-                                    size.market && size.market !== 'special' ? `${size.market} size` : null,
-                                    size.note ?? null,
-                                  ]
-                                    .filter(Boolean)
-                                    .join(' · ') || '—'}
-                                </td>
+
+                      {/* Whatever holds true for every size in the group, said
+                          once here instead of repeated down a column. */}
+                      {(meta.uniformThickness || meta.uniformCalibrated !== null) && (
+                        <div className="flex flex-wrap items-baseline gap-x-8 gap-y-2 border-b border-obsidian/20 pb-4 mb-1">
+                          {meta.uniformThickness && (
+                            <p className="no-justify">
+                              <span className="font-mono text-xs uppercase tracking-eyebrow text-tobacco/60">Thickness </span>
+                              <span className="font-sans text-sm text-obsidian tabular-nums">
+                                {meta.uniformThickness.join(', ')} mm
+                              </span>
+                            </p>
+                          )}
+                          {meta.uniformCalibrated !== null && (
+                            <p className="no-justify">
+                              <span className="font-mono text-xs uppercase tracking-eyebrow text-tobacco/60">Cut </span>
+                              <span className="font-sans text-sm text-obsidian">
+                                {meta.uniformCalibrated ? 'Calibrated' : 'Uncalibrated'}
+                              </span>
+                            </p>
+                          )}
+                        </div>
+                      )}
+
+                      {needsTable ? (
+                        <div className="overflow-x-auto">
+                          <table className="w-full border-collapse">
+                            <thead>
+                              <tr className="border-b border-obsidian/20">
+                                <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3 pr-6">Size (mm)</th>
+                                {!meta.uniformThickness && (
+                                  <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3 pr-6">Thickness (mm)</th>
+                                )}
+                                {meta.hasNotes && (
+                                  <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3">Notes</th>
+                                )}
                               </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
+                            </thead>
+                            <tbody>
+                              {group.sizes.map((size) => (
+                                <tr key={`${group.group ?? ''}-${size.code}`} className="border-b border-obsidian/10">
+                                  <td className="py-3 pr-6 whitespace-nowrap">
+                                    <span className="font-display text-lg text-obsidian no-justify tabular-nums lining-nums">
+                                      {prettySize(size.code)}
+                                    </span>
+                                    {size.market && size.market !== 'special' && (
+                                      <span className="ml-3 font-mono text-[0.625rem] uppercase tracking-eyebrow text-quarry-gold align-middle">
+                                        {size.market}
+                                      </span>
+                                    )}
+                                  </td>
+                                  {!meta.uniformThickness && (
+                                    <td className="font-sans text-sm text-tobacco no-justify py-3 pr-6 whitespace-nowrap tabular-nums">
+                                      {size.thicknessesMm.length > 0 ? size.thicknessesMm.join(', ') : 'Per drawing'}
+                                    </td>
+                                  )}
+                                  {meta.hasNotes && (
+                                    <td className="font-sans text-sm text-tobacco/80 no-justify py-3">
+                                      {size.note ?? ''}
+                                    </td>
+                                  )}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      ) : (
+                        // Per-cell borders, not a 1px gap over a coloured
+                        // container: a size count that does not divide by the
+                        // column count would paint the leftover cells grey.
+                        <ul className="grid grid-cols-2 sm:grid-cols-3 border-t border-l border-obsidian/10 mt-4">
+                          {group.sizes.map((size) => (
+                            <li
+                              key={`${group.group ?? ''}-${size.code}`}
+                              className="bg-warm-white px-4 py-4 flex items-baseline justify-between gap-2 border-r border-b border-obsidian/10"
+                            >
+                              <span className="font-display text-lg text-obsidian no-justify tabular-nums lining-nums whitespace-nowrap">
+                                {prettySize(size.code)}
+                              </span>
+                              {size.market && size.market !== 'special' && (
+                                <span className="font-mono text-[0.625rem] uppercase tracking-eyebrow text-quarry-gold">
+                                  {size.market}
+                                </span>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </RevealOnScroll>
-                  ))}
+                    )
+                  })}
                   {f.sizeNote && (
                     <RevealOnScroll>
                       <p className="font-sans text-sm text-tobacco/80 no-justify">{f.sizeNote}</p>
@@ -301,11 +399,15 @@ export default async function FormatPage({ params }: FormatPageProps) {
                 </RevealOnScroll>
               )}
 
+              {/* Dividers are drawn per cell, not as a 1px grid gap over a
+                  coloured container. Eleven of the formats carry an odd number
+                  of details, and the old approach painted the leftover cell as
+                  an empty grey block. */}
               {f.specDetails && f.specDetails.length > 0 && (
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-px bg-obsidian/10">
+                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 border-t border-l border-obsidian/10">
                   {f.specDetails.map((detail, i) => (
                     <RevealOnScroll key={detail.label} delay={i * 40} className="h-full">
-                      <div className="h-full bg-warm-white p-6">
+                      <div className="h-full bg-warm-white p-6 border-r border-b border-obsidian/10">
                         <p className="font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify mb-2">
                           {detail.label}
                         </p>
