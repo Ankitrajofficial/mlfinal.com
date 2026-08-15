@@ -6,6 +6,36 @@
 
 export type Tier = 'owned' | 'allied'
 
+// The rock, authored. Added by the allied varieties patch (2026-08).
+// Until now nothing in the catalogue carried the rock name as data:
+// scripts/export-catalogue.ts keyword-matched it out of the `formation`
+// prose and stamped the guesses `stone_family_confidence: inferred`.
+// Two of the twenty-four are not sandstone and a specifier checking
+// against EN standards will notice.
+export type StoneFamily =
+  | 'sandstone'
+  | 'quartzitic sandstone'
+  | 'limestone'
+  | 'basalt'
+
+// Structured geology alongside the `formation` prose line the page renders.
+// The prose stays the published sentence; this is the queryable version, and
+// the field that lets us say truthfully that an allied variety is
+// geologically continuous with our own quarried stone — Bijolia is Lower
+// Vindhyan, the Dholpur belt is Bhander Group, same supergroup, same basin,
+// different horizon.
+export interface FormationDetail {
+  supergroup: string | null
+  group: string | null
+  district: string[]
+  state: string
+  locality?: string
+}
+
+// How `densityKgM3` was arrived at. Nothing is `measured` yet — treat every
+// figure in this file as provisional until a crate is weighed.
+export type DensityBasis = 'measured' | 'published' | 'inferred'
+
 export interface Variety {
   code: string
   rank: number
@@ -39,6 +69,39 @@ export interface Variety {
   provenanceLine?: string
   editorialBody?: string[]
   foundingStone?: boolean
+
+  // ---- allied varieties patch, 2026-08 ----
+
+  // Authored on all 24. Read this, never the `formation` free text.
+  stoneFamily: StoneFamily
+  formationDetail?: FormationDetail
+  // kg/m3. Weight and container area derive from THIS, never from a global
+  // constant. The old 0.00225 factor is a density of 2,250 and is correct for
+  // Bijolia sandstone only; across the range the spread is 40 percent, 2,070 to
+  // 2,900. At 22 mm that is 563 sq.m per container at one end and 402 at the
+  // other. When the assumption runs low the container ships less area than
+  // quoted AND weighs more than declared — the second is a VGM exposure and it
+  // carries the shipper's signature.
+  densityKgM3: number
+  densityBasis: DensityBasis
+  densityNote?: string
+  // Etches on contact with acid. Drives the care warning and keeps the stone
+  // off kitchen worktops and chlorinated pool surrounds.
+  acidSensitive?: boolean
+  careWarning?: string
+  // Trade names that misdescribe the rock. Never publish these, and never let
+  // one through in copy — a specifier who sees limestone sold as marble stops
+  // trusting the rest of the page.
+  prohibitedTerms?: string[]
+  // Banded stone only. Vein cut and cross cut off the same block are
+  // unrecognisable as the same product; this is the primary source of dispute
+  // on figured stone anywhere in the world, so it is a required line on the
+  // order, not a preference.
+  cutDirectionNote?: string
+  namingConflict?: string
+  // Raised by the patch and not settled from sources. Internal — these are the
+  // questions for the quarry managers, and none of them is rendered.
+  openQuestions?: string[]
 }
 
 export const VARIETIES: Variety[] = [
@@ -46,6 +109,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-01",
     "rank": 1,
     "slug": "khadipur-grey",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Khadipur, Bijolia tehsil"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Khadipur Grey",
     "nameHindi": "खादीपुर ग्रे",
     "tier": "owned",
@@ -71,6 +147,20 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-02",
     "rank": 2,
     "slug": "kandla-grey",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bundi",
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Parana (founding bed)"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation. PRIORITY WEIGHING — this is the volume stone, so the assumption costs most here.",
     "name": "Kandla Grey",
     "nameHindi": "कंदला ग्रे",
     "tier": "owned",
@@ -96,6 +186,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-03",
     "rank": 3,
     "slug": "autumn-brown",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Nayanagar, Bijolia tehsil"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Autumn Brown",
     "nameHindi": "ऑटम ब्राउन",
     "tier": "owned",
@@ -121,6 +224,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-04",
     "rank": 4,
     "slug": "raj-blend",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Choti Bijolia, Bijolia tehsil"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Raj Blend",
     "nameHindi": "राज ब्लेंड",
     "tier": "owned",
@@ -146,6 +262,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-05",
     "rank": 5,
     "slug": "garda-green",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bundi"
+      ],
+      "state": "Rajasthan",
+      "locality": "Garda"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Garda Green",
     "nameHindi": "गरडा ग्रीन",
     "tier": "owned",
@@ -175,6 +304,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-06",
     "rank": 6,
     "slug": "slate-grey",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bundi"
+      ],
+      "state": "Rajasthan",
+      "locality": "Dabi-Budhpura"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Slate Grey",
     "nameHindi": "स्लेट ग्रे",
     "tier": "owned",
@@ -200,6 +342,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-07",
     "rank": 7,
     "slug": "raveena",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Khoki, Bijolia tehsil"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Raveena",
     "nameHindi": "मिंट",
     "tier": "owned",
@@ -225,6 +380,20 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-08",
     "rank": 8,
     "slug": "mint",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Bijolia tehsil — fossil-bearing strata"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
+    "namingConflict": "KHD-A-05 Gwalior Mint is genuinely mint-toned — cream with greenish-yellow tinting. This stone reads warm brown with dark dendritic markings and is only called Mint. Selling both under names that differ by one word invites a legitimate claim. SETTLE THE NAMING BEFORE GWALIOR MINT GOES ON THE SITE.",
     "name": "Mint",
     "nameHindi": "फॉसिल मिंट",
     "tier": "owned",
@@ -258,6 +427,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-09",
     "rank": 9,
     "slug": "buff",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Bhooti, Bijolia tehsil"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Buff",
     "nameHindi": "बफ़",
     "tier": "owned",
@@ -283,6 +465,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-10",
     "rank": 10,
     "slug": "camel-dust",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Bhooti, Bijolia tehsil"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Camel Dust",
     "nameHindi": "कैमल डस्ट",
     "tier": "owned",
@@ -308,6 +503,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-11",
     "rank": 11,
     "slug": "red-choco",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Kaansiya, Bijolia tehsil"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Red Choco",
     "nameHindi": "रेड चॉको",
     "tier": "owned",
@@ -340,6 +548,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-12",
     "rank": 12,
     "slug": "dual-tone",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Sadaram Ji ka Khera, Bhooti and Udpuriya, Bijolia tehsil"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Dual Tone",
     "nameHindi": "ड्यूल टोन",
     "tier": "owned",
@@ -373,6 +594,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-13",
     "rank": 13,
     "slug": "mocha-blend",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Bhawanipura, Aroli and Nayanagar, Bijolia tehsil"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Mocha Blend",
     "nameHindi": "मल्टी ब्राउन",
     "tier": "owned",
@@ -406,6 +640,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-14",
     "rank": 14,
     "slug": "rainbow",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Bijolia tehsil, multiple blocks"
+    },
+    "densityKgM3": 2250,
+    "densityBasis": "inferred",
+    "densityNote": "Working figure for Bijolia sandstone, ASSUMED and never measured. Applies to 14 of the 15 owned varieties. Settle it by weighing one crate: density = crate stone weight (kg) / (sq.m x thickness in metres), which also settles crate tare and effective thickness in the same operation.",
     "name": "Rainbow",
     "nameHindi": "रेनबो",
     "tier": "owned",
@@ -439,6 +686,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-O-15",
     "rank": 15,
     "slug": "white",
+    "stoneFamily": "quartzitic sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Lower Vindhyan",
+      "district": [
+        "Bhilwara"
+      ],
+      "state": "Rajasthan",
+      "locality": "Bijolia belt — block on record with the desk"
+    },
+    "densityKgM3": 2450,
+    "densityBasis": "inferred",
+    "densityNote": "The one owned variety NOT on the 2,250 working figure. Quartzitic and likely the heaviest owned stone. PRIORITY WEIGHING.",
     "name": "White",
     "nameHindi": "व्हाइट मिंट",
     "tier": "owned",
@@ -470,6 +730,25 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-A-01",
     "rank": 16,
     "slug": "agra-red",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Bhander",
+      "district": [
+        "Bharatpur"
+      ],
+      "state": "Rajasthan",
+      "locality": "Bansi Paharpur, Bayana tehsil"
+    },
+    "densityKgM3": 2400,
+    "densityBasis": "inferred",
+    "prohibitedTerms": [
+      "Agra sandstone quarried in Agra",
+      "Uttar Pradesh sandstone"
+    ],
+    "openQuestions": [
+      "PROVENANCE CONFLICT. This file has Bansi Paharpur, Bayana tehsil, Bharatpur District — which already satisfies the patch requirement that no page states Agra or Uttar Pradesh; the name comes from Agra Fort and the Red Fort, both built from the stone, not from the quarry. The allied varieties patch instead puts Agra Red in Dholpur and Karauli districts around Sarmathura, and puts Bansi Paharpur in Karauli. Bansi Paharpur is in Bharatpur. Both cannot stand and both cannot be Bansi Paharpur — see KHD-A-04. Settle with the quarry before anything is republished."
+    ],
     "name": "Agra Red",
     "nameHindi": "आगरा रेड",
     "tier": "allied",
@@ -499,6 +778,21 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-A-02",
     "rank": 17,
     "slug": "basalt-black",
+    "stoneFamily": "basalt",
+    "formationDetail": {
+      "supergroup": null,
+      "group": "volcanic",
+      "district": [
+        "Kota"
+      ],
+      "state": "Rajasthan"
+    },
+    "densityKgM3": 2900,
+    "densityBasis": "published",
+    "densityNote": "Published range 2800-3000. The outlier of the catalogue and 29 percent above the old global 2,250 — a 22 percent container error if the constant is used. PRIORITY WEIGHING.",
+    "openQuestions": [
+      "Which quarry, and confirm the density. This file states Deccan Trap; the trade publishes Rajasthan basalt without naming the trap. Confirm before the formation line is republished."
+    ],
     "name": "Basalt Black",
     "nameHindi": "बेसाल्ट ब्लैक",
     "tier": "allied",
@@ -511,13 +805,13 @@ export const VARIETIES: Variety[] = [
     "tradeNames": "Rajasthan Black Basalt (most common international name)",
     "oneLine": "The catalogue’s only igneous stone. Deccan Trap basalt from Kota.",
     "inHandHeadline": "Sourced from a family-allied quarry in Kota District, Rajasthan. The stone is volcanic basalt from the Deccan Trap formation, distinct from the sandstone catalogue. Also known in the trade as Rajasthan Black Basalt.",
-    "formatScope": "Machine-cut / block-first formats",
+    "formatScope": "All 21 formats except Roofing",
     "placeholderClass": "placeholder-stone-grey",
     "alternateNames": [
       "Rajasthan Black Basalt (most common international name)"
     ],
-    "splittable": "No — block-only, machine-cut downstream",
-    "splittabilityNote": "Basalt is dense igneous rock; block-only, machine-cut downstream.",
+    "splittable": "Yes — parts along its cooling joints, not along a bedding plane",
+    "splittabilityNote": "Basalt has no sedimentary bedding, but it fractures along its cooling joints, which gives a riven face on a different geometry. The trade publishes Indian basalt with natural-split and rock-faced hand-cut finishes, hand-cut edges alongside machine-cut, and sells it as cobbles at 100×100, 150×150, 200×100 and 300×100, plus crazy paving and stepping stones — all split-dependent formats. The exception is Roofing (KHF-011): a roof slate needs a flat, consistent cleave at 22 mm across 770 mm, and cooling-joint fracture will not give that.",
     "workedSince": "the 2010s",
     "renamedByKhadane": "No",
     "provenanceLine": "Sourced from a family-allied quarry in Kota District, Rajasthan. The stone is volcanic basalt from the Deccan Trap formation, distinct from the sandstone catalogue. Also known in the trade as Rajasthan Black Basalt.",
@@ -528,6 +822,19 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-A-03",
     "rank": 18,
     "slug": "dholpur-beige",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Bhander",
+      "district": [
+        "Dholpur"
+      ],
+      "state": "Rajasthan",
+      "locality": "Sarmathura, Bari and Baseri"
+    },
+    "densityKgM3": 2500,
+    "densityBasis": "published",
+    "densityNote": "Published 2.4-2.6 g/cm3.",
     "name": "Dholpur Beige",
     "nameHindi": "धौलपुर बेज",
     "tier": "allied",
@@ -557,6 +864,23 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-A-04",
     "rank": 19,
     "slug": "dholpur-pink",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Bhander",
+      "district": [
+        "Dholpur"
+      ],
+      "state": "Rajasthan",
+      "locality": "Sarmathura and Bari"
+    },
+    "densityKgM3": 2070,
+    "densityBasis": "published",
+    "densityNote": "Published and SUSPECT — below the normal sandstone range. Three sources give three different figures for this stone. Weigh before anything is quoted on it.",
+    "openQuestions": [
+      "PROVENANCE CONFLICT. This file has Sarmathura, Dholpur District. The allied varieties patch puts the stone at Bansi Paharpur in Karauli district, traded as Bansi Stone and specified for the Ram Mandir at Ayodhya. Bansi Paharpur is in Bharatpur, and this file already assigns it to KHD-A-01 Agra Red. One of the two is wrong. Settle with the quarry.",
+      "Published strength figures exist — compressive 1850 kg/cm2, 1530 after freezing, modulus of rupture 390-400, water absorption 0.53 percent, abrasion 0.9 mm — but three sources disagree. They are deliberately not carried in this file. No strength, absorption or porosity figure goes on a technical datasheet without accredited testing."
+    ],
     "name": "Dholpur Pink",
     "nameHindi": "धौलपुर पिंक",
     "tier": "allied",
@@ -583,6 +907,22 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-A-05",
     "rank": 20,
     "slug": "gwalior-mint",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": null,
+      "group": null,
+      "district": [
+        "Gwalior"
+      ],
+      "state": "Madhya Pradesh",
+      "locality": "Behat-Pichhore area"
+    },
+    "densityKgM3": 2400,
+    "densityBasis": "inferred",
+    "namingConflict": "KHD-O-08 is also called Mint but reads warm brown with dark dendritic markings, nothing mint about it. This stone is the genuinely mint-toned one. Selling both under names that differ by one word is a dispute waiting to happen. SETTLE THE NAMING BEFORE THIS VARIETY GOES ON THE SITE.",
+    "openQuestions": [
+      "The Gwalior quarries also produce Fossil, Dholpur Beige, Shivpuri Pink, Teakwood, Rainbow, Gwalior Yellow and Dholpur Pink. One relationship could reach four or five allied varieties."
+    ],
     "name": "Gwalior Mint",
     "nameHindi": "ग्वालियर मिंट",
     "tier": "allied",
@@ -613,6 +953,30 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-A-06",
     "rank": 21,
     "slug": "jaisalmer-yellow",
+    "stoneFamily": "limestone",
+    "formationDetail": {
+      "supergroup": null,
+      "group": "Jaisalmer Formation",
+      "district": [
+        "Jaisalmer"
+      ],
+      "state": "Rajasthan",
+      "locality": "Jethwai and Moolsagar"
+    },
+    "densityKgM3": 2600,
+    "densityBasis": "inferred",
+    "densityNote": "Inferred — limestone runs heavier than the sandstone range.",
+    "acidSensitive": true,
+    "careWarning": "This stone is limestone, and limestone etches on contact with acid — rain, cleaning chemicals, citrus and chlorine will all mark the surface. It is not a specification for kitchen worktops or for chlorinated pool surrounds. Talk to the desk before it goes anywhere it will meet acid regularly.",
+    "prohibitedTerms": [
+      "Yellow Marble",
+      "Yellow Jaisalmer Marble",
+      "Jaisalmer Marble"
+    ],
+    "openQuestions": [
+      "Limestone or calcareous sandstone. The Jaisalmer Formation carries BOTH a golden limestone and a calcareous sandstone (arenite), and both are sold as Jaisalmer Yellow. Confirm which we buy. Field test: dilute acid fizzes on limestone, not on quartz-cemented sandstone. stoneFamily reads limestone on the strength of the IUGS designation in the formation line; if the arenite is what ships, this field and the care warning both change.",
+      "This file states the bed splits cleanly. The patch research has it block-only. Confirm before roofing or crazy paving is quoted on it."
+    ],
     "name": "Jaisalmer Yellow",
     "nameHindi": "जैसलमेर यलो",
     "tier": "allied",
@@ -643,6 +1007,21 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-A-07",
     "rank": 22,
     "slug": "lalitpur-yellow",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": "Vindhyan",
+      "group": "Bhander",
+      "district": [
+        "Lalitpur"
+      ],
+      "state": "Uttar Pradesh"
+    },
+    "densityKgM3": 2500,
+    "densityBasis": "inferred",
+    "openQuestions": [
+      "Acid, thermal and frost resistance are claimed everywhere in the trade and quantified nowhere. If tested to an accredited standard this becomes a datasheet line no other variety in the range can carry — a specification argument rather than a colour argument, and the reason the stone is specified for seaside exterior cladding.",
+      "Lalitpur Grey — same district, same resistance, uniform subtle colour, heavy European landscaping demand — is not in the range. Worth adding as a twenty-fifth variety."
+    ],
     "name": "Lalitpur Yellow",
     "nameHindi": "ललितपुर यलो",
     "tier": "allied",
@@ -673,6 +1052,22 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-A-08",
     "rank": 23,
     "slug": "sagar-black",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": null,
+      "group": null,
+      "district": [
+        "Sagar"
+      ],
+      "state": "Madhya Pradesh"
+    },
+    "densityKgM3": 2500,
+    "densityBasis": "inferred",
+    "densityNote": "Inferred — low porosity and low water absorption are stated by the trade.",
+    "openQuestions": [
+      "Not to be confused with KHD-A-02 Basalt Black. This is a coarse-grained sandstone, dark grey to charcoal with faint yellow at the edges — the edging is the identifier. Basalt Black is igneous, true black and fine grained.",
+      "Described by the trade as available from limited quarries and therefore exclusive. The strongest scarcity case of the allied nine, if it can be substantiated."
+    ],
     "name": "Sagar Black",
     "nameHindi": "सागर ब्लैक",
     "tier": "allied",
@@ -703,6 +1098,22 @@ export const VARIETIES: Variety[] = [
     "code": "KHD-A-09",
     "rank": 24,
     "slug": "teakwood",
+    "stoneFamily": "sandstone",
+    "formationDetail": {
+      "supergroup": null,
+      "group": "Bundi sandstone formation",
+      "district": [
+        "Bundi"
+      ],
+      "state": "Rajasthan",
+      "locality": "Garda"
+    },
+    "densityKgM3": 2400,
+    "densityBasis": "inferred",
+    "cutDirectionNote": "Teakwood must be ordered vein cut or cross cut, and the two are not variations on a theme. Vein cut runs along the bedding and gives the wood-grain stripes the stone is named for. Cross cut runs across it and gives a cloudy, mottled face with no stripes at all. The same block yields both. State the direction on the order — it is not a preference the yard can infer.",
+    "openQuestions": [
+      "This file has Garda, Bundi District. The patch research places Teakwood in the Jaisalmer and Gwalior belts. Confirm which belt supplies us."
+    ],
     "name": "Teakwood",
     "nameHindi": "टीकवुड",
     "tier": "allied",

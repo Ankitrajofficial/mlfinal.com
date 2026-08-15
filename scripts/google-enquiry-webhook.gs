@@ -42,26 +42,6 @@ var CONFIG = {
   BUSINESS_NAME: 'Mohan Lal & Sons'
 };
 
-// KHADANE buyer-welcome content. Kept in sync with lib/khadane/site.ts.
-var KHADANE = {
-  siteUrl: 'https://khadane.com',
-  email: 'office@khadane.com',
-  phone: '+91 98285 71143',
-  whatsapp: 'https://wa.me/919828571143',
-  signature: 'The sandstone catalogue of the Bijolia belt. Rajasthan. Since 1972.',
-
-  hoursDays: 'Monday – Saturday',
-  hoursIndia: '9:00 AM – 6:00 PM IST (UTC+5:30)',
-  hoursEurope: '5:30 AM – 3:30 PM (local times may vary due to daylight saving)',
-
-  links: [
-    { label: 'The Collection — 24 varieties', path: '/collection' },
-    { label: 'Formats — 20 worked formats', path: '/formats' },
-    { label: 'Surfaces — 16 finishes', path: '/surfaces' },
-    { label: 'The Record — stone in the field', path: '/gallery' }
-  ]
-};
-
 var HEADERS = [
   'Submitted At',
   'Reference',
@@ -402,9 +382,7 @@ function sendEmails_(enquiry) {
     MailApp.sendEmail({
       to: enquiry.email,
       replyTo: primaryNotifyEmail_(enquiry),
-      subject: isKhadane_(enquiry.site)
-        ? 'Welcome to KHADANE | your enquiry ' + enquiry.reference
-        : siteLabel_(enquiry.site) + ' enquiry received | ' + enquiry.reference,
+      subject: siteLabel_(enquiry.site) + ' enquiry received | ' + enquiry.reference,
       body: customerText_(enquiry),
       htmlBody: customerHtml_(enquiry)
     });
@@ -438,11 +416,10 @@ function notifyEmailsForSite_(site, notifyTo) {
   addEmail_(recipients, notifyTo);
 
   addEmail_(recipients, getProp_('OWNER_EMAIL'));
+  addEmail_(recipients, getProp_('NOTIFY_EMAIL'));
 
   if (String(site || '').toLowerCase() === 'khadane') {
     addEmail_(recipients, getProp_('KHADANE_OWNER_EMAIL'));
-    // NOTIFY_EMAIL is a KHADANE-only copy — MLS enquiries do not go there.
-    addEmail_(recipients, getProp_('NOTIFY_EMAIL'));
   } else {
     addEmail_(recipients, getProp_('MLS_OWNER_EMAIL'));
   }
@@ -509,8 +486,6 @@ function ownerText_(enquiry) {
 }
 
 function customerText_(enquiry) {
-  if (isKhadane_(enquiry.site)) return khadaneWelcomeText_(enquiry);
-
   return [
     'Dear ' + enquiry.name + ',',
     '',
@@ -603,8 +578,6 @@ function ownerHtml_(enquiry) {
 }
 
 function customerHtml_(enquiry) {
-  if (isKhadane_(enquiry.site)) return khadaneWelcomeHtml_(enquiry);
-
   var site = siteLabel_(enquiry.site);
   var requestRows = [
     detailRow_('Category', enquiry.category),
@@ -635,165 +608,6 @@ function customerHtml_(enquiry) {
     ].join(''),
     footer: 'This is an automatic confirmation. Reply to this email to continue the conversation.'
   });
-}
-
-// ─── KHADANE buyer welcome ───────────────────────────────────
-
-function khadaneWelcomeText_(enquiry) {
-  var lines = [
-    'Dear ' + enquiry.name + ',',
-    '',
-    'Welcome to KHADANE.',
-    '',
-    KHADANE.signature,
-    '',
-    'Your enquiry has reached our desk and is logged.',
-    'Reference: ' + enquiry.reference,
-    '',
-    'Your request:',
-    'Category: ' + enquiry.category,
-    optionalLine_('Variety', enquiry.variety),
-    optionalLine_('Format', enquiry.format),
-    optionalLine_('Finish', enquiry.finish),
-    optionalLine_('Volume', enquiry.volume),
-    optionalLine_('Target arrival', enquiry.targetArrival),
-    '',
-    'Your message:',
-    enquiry.message,
-    '',
-    'What happens next:',
-    '1. The desk reviews the stone, the format, and what the project needs.',
-    '2. If anything is missing, we will write back to ask.',
-    '3. You will have a reply within one business day.',
-    '',
-    'While you wait — the catalogue:'
-  ];
-
-  for (var i = 0; i < KHADANE.links.length; i++) {
-    lines.push('- ' + KHADANE.links[i].label + ': ' + KHADANE.siteUrl + KHADANE.links[i].path);
-  }
-
-  lines.push(
-    '',
-    'Physical samples:',
-    'We send cut samples of any variety free of charge. To arrange them, reply to',
-    'this email with the varieties and finishes you want, a full postal address,',
-    'and a contact number for the courier. Samples ship worldwide.',
-    '',
-    'Business hours (' + KHADANE.hoursDays + '):',
-    'Europe & UK: ' + KHADANE.hoursEurope,
-    'India: ' + KHADANE.hoursIndia,
-    '',
-    'Faster than email:',
-    'WhatsApp: ' + KHADANE.whatsapp,
-    'Phone: ' + KHADANE.phone,
-    'Email: ' + KHADANE.email,
-    '',
-    'KHADANE — a ' + getBusinessName_() + ' operation.'
-  );
-
-  return lines
-    .filter(function (line) {
-      return line !== null;
-    })
-    .join('\n');
-}
-
-function khadaneWelcomeHtml_(enquiry) {
-  var requestRows = [
-    detailRow_('Category', enquiry.category),
-    optionalDetailRow_('Variety', enquiry.variety),
-    optionalDetailRow_('Format', enquiry.format),
-    optionalDetailRow_('Finish', enquiry.finish),
-    optionalDetailRow_('Volume', enquiry.volume),
-    optionalDetailRow_('Country', enquiry.country),
-    optionalDetailRow_('Target arrival', enquiry.targetArrival)
-  ].join('');
-
-  var hoursRows = [
-    detailRow_('Europe & UK', KHADANE.hoursEurope),
-    detailRow_('India', KHADANE.hoursIndia)
-  ].join('');
-
-  var contactRows = [
-    detailRow_(
-      'WhatsApp',
-      '<a href="' +
-        esc_(KHADANE.whatsapp) +
-        '" style="color:#B8962E;text-decoration:none">Message the desk directly</a>',
-      true
-    ),
-    detailRow_(
-      'Phone',
-      '<a href="tel:' +
-        esc_(KHADANE.phone.replace(/\s/g, '')) +
-        '" style="color:#B8962E;text-decoration:none">' +
-        esc_(KHADANE.phone) +
-        '</a>',
-      true
-    ),
-    detailRow_(
-      'Email',
-      '<a href="mailto:' +
-        esc_(KHADANE.email) +
-        '" style="color:#B8962E;text-decoration:none">' +
-        esc_(KHADANE.email) +
-        '</a>',
-      true
-    )
-  ].join('');
-
-  return emailShell_({
-    eyebrow: 'Welcome to KHADANE',
-    title: 'Your enquiry has reached the desk.',
-    intro:
-      'Dear ' +
-      enquiry.name +
-      ', thank you for writing to KHADANE. ' +
-      KHADANE.signature,
-    reference: enquiry.reference,
-    body: [
-      emailSection_('Your request', requestRows),
-      messageBlock_('Your message', enquiry.message),
-      noticeBlock_(
-        'What happens next',
-        'The desk reviews the stone, the format, and what the project needs. If anything is missing we will write back to ask — otherwise you will have a reply within one business day.'
-      ),
-      linkListBlock_('While you wait — the catalogue', KHADANE.links),
-      noticeBlock_(
-        'Physical samples',
-        'We send cut samples of any variety free of charge. Reply to this email with the varieties and finishes you want, a full postal address, and a contact number for the courier. Samples ship worldwide.'
-      ),
-      emailSection_('Business hours · ' + KHADANE.hoursDays, hoursRows),
-      emailSection_('Faster than email', contactRows),
-      '<p style="margin:24px 0 0;font-size:14px;line-height:22px;color:#4B4740">KHADANE — a ' +
-        esc_(getBusinessName_()) +
-        ' operation.</p>'
-    ].join(''),
-    footer:
-      'This is an automatic confirmation. Reply to this email to continue the conversation with the desk.'
-  });
-}
-
-function linkListBlock_(title, links) {
-  var items = links
-    .map(function (link) {
-      return (
-        '<tr><td style="padding:9px 12px;border:1px solid #E4DED0;background:#FFFFFF">' +
-        '<a href="' +
-        esc_(KHADANE.siteUrl + link.path) +
-        '" style="color:#B8962E;text-decoration:none;font-size:14px">' +
-        esc_(link.label) +
-        ' &rarr;</a></td></tr>'
-      );
-    })
-    .join('');
-
-  return emailSection_(title, items);
-}
-
-function isKhadane_(site) {
-  return String(site || '').toLowerCase() === 'khadane';
 }
 
 function emailShell_(opts) {
@@ -884,7 +698,7 @@ function optionalDetailRow_(label, value) {
 // ─── Config / utils ──────────────────────────────────────────
 
 function siteLabel_(site) {
-  return isKhadane_(site) ? 'KHADANE' : 'MLS';
+  return String(site || '').toLowerCase() === 'khadane' ? 'KHADANE' : 'MLS';
 }
 
 function getBusinessName_() {
@@ -948,3 +762,4 @@ function json_(obj) {
     ContentService.MimeType.JSON
   );
 }
+

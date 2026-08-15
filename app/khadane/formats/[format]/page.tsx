@@ -83,9 +83,11 @@ export default async function FormatPage({ params }: FormatPageProps) {
     },
   ]
 
-  // Available varieties. varietyExceptions is empty on every format as of
-  // patch v2.1 — availability is not a constraint — but the filter stays so
-  // the data keeps deciding rather than the component.
+  // Available varieties. Patch v2.1 emptied varietyExceptions everywhere —
+  // availability is not a supply constraint, the estate holds all of it. The
+  // allied varieties patch then put back exactly one, and it is physics rather
+  // than stock: Roofing cannot be made in Basalt Black or Teakwood. The filter
+  // stays so the data keeps deciding rather than the component.
   const availableVarieties = VARIETIES.filter(
     (v) => !f.varietyExceptions.includes(v.code),
   )

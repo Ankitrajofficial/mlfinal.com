@@ -572,7 +572,14 @@ export const FORMATS: Format[] = [
     "formatHeadline": "Slate-bedded roofing tiles. Heritage and rural-architecture roofing.",
     "description": "Roofing tiles are thin-cut slate-bedded sandstone for heritage and rural architectural roofing. Available only from varieties with the right bedding character; not all KHADANE stones split thin enough for roofing use.",
     "varietyAvailability": 24,
-    "varietyExceptions": [],
+    // The one real exclusion in the catalogue, and not a supply constraint —
+    // these two cannot physically make the product. A roof slate needs a flat,
+    // consistent cleave at 22 mm across 770 mm. Basalt Black (KHD-A-02) parts
+    // along cooling joints, which fracture on the wrong geometry; Teakwood
+    // (KHD-A-09) is block-only and sawn. Everything else in the estate is a
+    // question of splitting thin enough, which the belt does. This is not the
+    // beginning of an availability matrix — see the note on the field.
+    "varietyExceptions": ["KHD-A-02", "KHD-A-09"],
     "primaryUse": "Heritage building roofing, Rural architectural roofing, Garden buildings and outbuildings, Decorative roof feature courses",
     "unit": "sqm_roof",
     "declareUnit": "SQM",
@@ -683,7 +690,11 @@ export const FORMATS: Format[] = [
     ],
     "specDetails": [
       { "label": "Palisade — mixed height", "value": "250–2000 mm high, 120 mm wide, 110 / 120 / 130 mm thick" },
-      { "label": "Weight per running metre", "value": "height mm × thickness mm × 0.00225 = kg per rm of run" }
+      // Was `× 0.00225` — a hardcoded density of 2,250 kg/m3. That is the
+      // Bijolia sandstone working figure and it is wrong for the rest of the
+      // range by up to 29 percent (Basalt Black runs 2,900). Density is a
+      // variety field now: see `densityKgM3` in lib/khadane/varieties.ts.
+      { "label": "Weight per running metre", "value": "height mm × thickness mm × (variety density kg/m³ ÷ 1,000,000) = kg per rm of run" }
     ],
     "placeholderClass": "placeholder-stone"
   },
@@ -981,11 +992,27 @@ export const FORMATS: Format[] = [
     "primaryUse": "Dry stone garden and boundary walls, Retaining walls, Field and estate walling, Cottage and heritage walling repair",
     "unit": "tonne",
     "declareUnit": "MTS",
-    "surfacesRegular": [],
+    // The walling faces from the patch v2.1 payload — pitched, split, tumbled —
+    // resolved onto real surface slugs. A pitched or split face is what the
+    // catalogue calls natural-riven and it is what the wall is normally built
+    // from, so it is standing production; rockfaced is the dressed pitched face
+    // and tumbled the aged one, both worked to order.
+    "surfacesRegular": [
+      "natural-riven"
+    ],
     "surfacesAvailable": [
+      "rockfaced",
+      "sawn",
       "tumbled"
     ],
-    "edgesAvailable": [],
+    // Was empty — the only format in the catalogue carrying no edge at all.
+    // Walling splits both ways: random, coursed and cottage are parted off the
+    // bed and take plain hand-cut; sawn and ashlar are cut and take machine-cut.
+    "edgesAvailable": [
+      "hand-cut",
+      "machine-cut"
+    ],
+    "productionRoutes": ["split", "sawn"],
     "sizeBasis": "Sold by the tonne in random lengths of 250 to 450 mm, specified by bed depth and course height rather than by plan size.",
     "thicknessesMm": [100, 125, 150, 175, 200, 225],
     "volumeThicknessMm": 140,

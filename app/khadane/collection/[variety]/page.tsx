@@ -68,6 +68,10 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
   const technicalRows = [
     { label: 'Catalogue code', value: v.code },
     { label: 'Source classification', value: v.tierLabel },
+    // Authored on the variety since the allied varieties patch. Two of the
+    // twenty-four are not sandstone and a specifier checking against EN
+    // standards will look for this before anything else on the page.
+    { label: 'Stone family', value: v.stoneFamily },
     { label: 'Geological formation', value: v.formation },
     { label: 'Splittable', value: v.splittable },
     { label: v.tier === 'owned' ? 'Worked since' : 'Partnership since', value: v.workedSince },
@@ -348,6 +352,31 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
                   </div>
                 ))}
               </div>
+              {/* Specification warning. Currently only Jaisalmer Yellow, which
+                  is limestone and etches on contact with acid — it must not go
+                  into a kitchen worktop or a chlorinated pool surround without
+                  the buyer being told. This has to read as a caution, not as
+                  another technical row. */}
+              {v.careWarning && (
+                <div className="mt-8 border-l-2 border-quarry-gold bg-stone-linen/60 px-6 py-5">
+                  <p className="font-sans text-xs font-semibold uppercase tracking-eyebrow text-quarry-gold no-justify">
+                    Specification note
+                  </p>
+                  <p className="mt-3 font-sans text-base lg:text-lg leading-relaxed text-graphite">
+                    {v.careWarning}
+                  </p>
+                </div>
+              )}
+              {v.cutDirectionNote && (
+                <div className="mt-4 border-l-2 border-quarry-gold bg-stone-linen/60 px-6 py-5">
+                  <p className="font-sans text-xs font-semibold uppercase tracking-eyebrow text-quarry-gold no-justify">
+                    Cut direction
+                  </p>
+                  <p className="mt-3 font-sans text-base lg:text-lg leading-relaxed text-graphite">
+                    {v.cutDirectionNote}
+                  </p>
+                </div>
+              )}
               <p className="mt-8 font-sans text-base lg:text-lg leading-relaxed text-graphite">
                 Full technical datasheet (density, water absorption, compressive strength, flexural strength, freeze-thaw cycles, slip resistance) available on enquiry, or as a downloadable PDF.
               </p>

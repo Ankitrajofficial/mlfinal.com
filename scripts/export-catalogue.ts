@@ -23,25 +23,19 @@ const OUT_DIR = join(process.cwd(), 'exports', 'khadane-catalogue')
 const EXCLUDED_FORMAT_SLUGS = new Set(['quarry-blocks'])
 
 // ------------------------------------------------------------
-// Stone family — derived from the `formation` free-text string.
-// The catalogue has no structured stone-family field.
+// Stone family is now AUTHORED on the variety (allied varieties patch,
+// 2026-08) and is read straight off `v.stoneFamily`.
 // ------------------------------------------------------------
-// `confidence: explicit`  — the rock name is written in the formation text.
-// `confidence: inferred`  — rock name omitted; taken from the named geological
-//                           belt, which is sandstone-bearing throughout.
-function stoneFamily(formation: string): { family: string; confidence: string } {
-  const f = formation.toLowerCase()
-  if (f.includes('basalt')) return { family: 'basalt', confidence: 'explicit' }
-  if (f.includes('limestone')) return { family: 'limestone', confidence: 'explicit' }
-  if (f.includes('quartzit')) return { family: 'quartzitic sandstone', confidence: 'explicit' }
-  if (f.includes('sandstone')) return { family: 'sandstone', confidence: 'explicit' }
-  // Bijolia belt / Lower Vindhyan / Bhander Group are sandstone formations —
-  // some entries name the belt without repeating the rock type.
-  if (/bijolia|vindhyan|bhander|bundi/.test(f)) {
-    return { family: 'sandstone', confidence: 'inferred' }
-  }
-  return { family: 'unknown', confidence: 'none' }
-}
+// This used to keyword-match the rock name out of the `formation` free text
+// and stamp anything it could only guess at `confidence: inferred` — which is
+// what flagged the allied nine and prompted the patch. The research turned up
+// two that were not sandstone at all. Nothing is derived here any more, so
+// there is no confidence grade to publish: `stone_family_basis` reads
+// `authored` on every row and the column stays only so consumers that keyed
+// off the old one do not break.
+//
+// Do not reintroduce the keyword match. If a rock name is wrong, fix it on the
+// variety.
 
 // ------------------------------------------------------------
 // Product family per format — authored here, not in the catalogue.
@@ -96,9 +90,23 @@ const varieties = VARIETIES.map((v) => ({
   code: v.code,
   name: v.name,
   slug: v.slug,
-  stone_family: stoneFamily(v.formation).family,
-  stone_family_confidence: stoneFamily(v.formation).confidence,
+  stone_family: v.stoneFamily,
+  stone_family_basis: 'authored',
   formation_source_text: v.formation,
+  formation_supergroup: v.formationDetail?.supergroup ?? '',
+  formation_group: v.formationDetail?.group ?? '',
+  formation_district: v.formationDetail?.district ?? [],
+  formation_state: v.formationDetail?.state ?? '',
+  formation_locality: v.formationDetail?.locality ?? '',
+  // Weight and container area derive from this. There is no global constant
+  // any more — see the schema note.
+  density_kg_m3: v.densityKgM3,
+  density_basis: v.densityBasis,
+  density_note: v.densityNote ?? '',
+  acid_sensitive: v.acidSensitive ?? false,
+  care_warning: v.careWarning ?? '',
+  prohibited_terms: v.prohibitedTerms ?? [],
+  cut_direction_note: v.cutDirectionNote ?? '',
   tier: v.tier,
   format_scope: v.formatScope,
   format_exceptions: v.formatExceptions ?? [],
@@ -270,11 +278,15 @@ const gaps = {
   bespoke_sizes:
     'Sizes with regular: false are real but cut to order. They are exported so the pricing system knows they exist; the site does not render them.',
   stone_family:
-    'No structured field. Derived here from the `formation` free text. stone_family_confidence=explicit means the rock name was written in the source; =inferred means it was taken from the named geological belt because the source omitted the rock name. Nothing in the catalogue is quartzite proper — the families present are sandstone, limestone and basalt.',
+    'AUTHORED as of the allied varieties patch (2026-08), on lib/khadane/varieties.ts. It was previously derived here by keyword-matching the `formation` free text, which flagged the allied nine as inferred and hid two varieties that are not sandstone at all: KHD-A-02 Basalt Black is extrusive igneous and KHD-A-06 Jaisalmer Yellow is limestone. Both matter to a specifier checking against EN standards. stone_family_basis now reads authored on every row. The families present are sandstone, quartzitic sandstone, limestone and basalt — nothing in the catalogue is quartzite proper.',
+  density:
+    'NEW in the allied varieties patch. density_kg_m3 is a VARIETY field and weight must be derived from it, never from a global constant. The old hardcoded 0.00225 factor is a density of 2,250 kg/m3, correct for Bijolia sandstone only; across the range the spread is 40 percent, 2,070 to 2,900, which at 22 mm is 563 sq.m per container at one end and 402 at the other. Where the assumption runs low the container ships LESS area than quoted and weighs MORE than declared, and the second is a VGM exposure carrying the shipper\'s signature. Read density_basis before quoting: nothing is `measured` yet. Fourteen of the fifteen owned varieties sit on an assumed 2,250 that has never been checked. Priority weighings are KHD-O-02 Kandla Grey (the volume stone), KHD-O-15 White (likely the heaviest owned) and KHD-A-02 Basalt Black (the outlier). One crate settles it: density = crate stone weight / (sq.m x thickness in metres).',
+  strength_figures:
+    'DELIBERATELY ABSENT. Published compressive, flexural, absorption, porosity and abrasion figures circulate for several varieties and the sources disagree with each other — three different compressive strengths for KHD-A-04 Dholpur Pink alone. None is carried in the catalogue and none goes on a technical datasheet without accredited testing.',
   product_family:
     'No structured field. Mapped by slug in this script, not authored in the catalogue.',
   availability_enforcement:
-    'WITHDRAWN by catalogue patch v2.1. There is no variety x format availability model and none should be built. Material is held across the full quarry estate in every thickness the belt produces, so availability is not a constraint: all varieties, all formats. varietyExceptions is empty on every format and formatExceptions is gone from Basalt Black and Teakwood; both fields survive only as the hook if that ever changes. Variety x surface was never restricted either — surfaces and edges are limited per format only.',
+    'WITHDRAWN by catalogue patch v2.1. There is no variety x format availability model and none should be built. Material is held across the full quarry estate in every thickness the belt produces, so availability is not a constraint: all varieties, all formats. formatExceptions is gone from Basalt Black and Teakwood and survives only as the hook if that ever changes. ONE genuine exception was reinstated by the allied varieties patch (2026-08): KHF-011 Roofing excludes KHD-A-02 Basalt Black and KHD-A-09 Teakwood. That is not a supply constraint, it is physics — a roof slate needs a flat, consistent cleave at 22 mm across 770 mm; basalt parts along cooling joints, which fracture on the wrong geometry, and Teakwood is block-only and sawn. Do not read it as the start of a matrix. Variety x surface was never restricted either — surfaces and edges are limited per format only.',
   surface_supply:
     'New in patch v2.1. surfaces_regular is standing production; surfaces_available_to_order is real but outsourced, with a longer lead time. They are not the same offer and should not be priced or shown as one. All 16 surfaces are now attached to at least one format, so none are held.',
   production_route:
@@ -352,8 +364,22 @@ Quarry Blocks (KHF-019) excluded on request — ${formats.length} of ${FORMATS.l
   block are different products at different prices.
 - **No broken references.** Every surface and edge a format lists resolves to
   an entry in the surface and edge files.
-- **stone_family is derived**, not authored. Check \`stone_family_confidence\`.
-  There is no quartzite in the catalogue: it is sandstone, limestone, basalt.
+- **stone_family is authored** as of the allied varieties patch, and no longer
+  guessed from the formation text. Two varieties are not sandstone: KHD-A-02
+  Basalt Black is extrusive igneous, KHD-A-06 Jaisalmer Yellow is limestone.
+  There is no quartzite proper in the catalogue.
+- **Density is per variety, never a constant.** Derive weight from
+  \`density_kg_m3\`, not from the old 0.00225 factor — that is a density of
+  2,250 and it is right for Bijolia sandstone only. The range spans 2,070 to
+  2,900, a 40 percent spread and 160 sq.m of container area at 22 mm. Check
+  \`density_basis\`: nothing is \`measured\` yet.
+- **KHD-A-06 Jaisalmer Yellow is acid sensitive.** It etches on rain, cleaning
+  chemicals, citrus and chlorine. Carry \`care_warning\` anywhere it is quoted,
+  and never let \`prohibited_terms\` through — it is limestone, not marble.
+- **KHD-A-09 Teakwood needs a cut direction on every order.** Vein cut and
+  cross cut off the same block are unrecognisable as the same product.
+- **No strength or absorption figures.** Deliberately absent; sources disagree
+  and nothing is accredited.
 - **product_family is authored in the export script**, not in the catalogue.
 `
 
