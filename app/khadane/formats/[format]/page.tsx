@@ -129,10 +129,31 @@ export default async function FormatPage({ params }: FormatPageProps) {
           ? sizes[0].thicknessesMm
           : null,
       uniformCalibrated: calibrationKeys.length === 1 ? sizes[0].calibrated : null,
-      hasNotes: sizes.some((s) => Boolean(s.note)),
-      hasMarkets: uniq(sizes.map((s) => s.market ?? '')).filter(Boolean).length > 0,
     }
   }
+
+  // Only 11 of the 104 standing sizes carry a note, so a Notes column is blank
+  // on nine rows out of ten and reads as missing data rather than as nothing to
+  // say. The note belongs to one size, so it sits with that size.
+  const SizeCell = ({ size }: { size: (typeof regularSizes)[number] }) => (
+    <>
+      <span className="flex items-baseline gap-3">
+        <span className="font-display text-lg text-obsidian no-justify tabular-nums lining-nums whitespace-nowrap">
+          {prettySize(size.code)}
+        </span>
+        {size.market && size.market !== 'special' && (
+          <span className="font-mono text-[0.625rem] uppercase tracking-eyebrow text-quarry-gold">
+            {size.market}
+          </span>
+        )}
+      </span>
+      {size.note && (
+        <span className="block font-sans text-sm text-tobacco/70 no-justify mt-1 max-w-md">
+          {size.note}
+        </span>
+      )}
+    </>
+  )
 
   const soldBy = [f.unit, ...(f.alsoUnits ?? [])].filter(Boolean).join(' · ')
 
@@ -270,7 +291,9 @@ export default async function FormatPage({ params }: FormatPageProps) {
                     // A table earns its place only when something varies down
                     // the column. If thickness and calibration are constant and
                     // no size carries a note, the sizes are just a list.
-                    const needsTable = !meta.uniformThickness || meta.hasNotes
+                    // Thickness is the only thing that can still need a column;
+                    // notes now ride along with their size.
+                    const needsTable = !meta.uniformThickness
                     return (
                     <RevealOnScroll key={group.group ?? `group-${gi}`} delay={gi * 50}>
                       {group.group && (
@@ -309,34 +332,19 @@ export default async function FormatPage({ params }: FormatPageProps) {
                               <tr className="border-b border-obsidian/20">
                                 <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3 pr-6">Size (mm)</th>
                                 {!meta.uniformThickness && (
-                                  <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3 pr-6">Thickness (mm)</th>
-                                )}
-                                {meta.hasNotes && (
-                                  <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3">Notes</th>
+                                  <th className="text-left font-mono text-xs uppercase tracking-eyebrow text-tobacco/60 no-justify py-3 pr-6 align-top">Thickness (mm)</th>
                                 )}
                               </tr>
                             </thead>
                             <tbody>
                               {group.sizes.map((size) => (
                                 <tr key={`${group.group ?? ''}-${size.code}`} className="border-b border-obsidian/10">
-                                  <td className="py-3 pr-6 whitespace-nowrap">
-                                    <span className="font-display text-lg text-obsidian no-justify tabular-nums lining-nums">
-                                      {prettySize(size.code)}
-                                    </span>
-                                    {size.market && size.market !== 'special' && (
-                                      <span className="ml-3 font-mono text-[0.625rem] uppercase tracking-eyebrow text-quarry-gold align-middle">
-                                        {size.market}
-                                      </span>
-                                    )}
+                                  <td className="py-3 pr-6 align-top">
+                                    <SizeCell size={size} />
                                   </td>
                                   {!meta.uniformThickness && (
-                                    <td className="font-sans text-sm text-tobacco no-justify py-3 pr-6 whitespace-nowrap tabular-nums">
+                                    <td className="font-sans text-sm text-tobacco no-justify py-3 pr-6 whitespace-nowrap tabular-nums align-top">
                                       {size.thicknessesMm.length > 0 ? size.thicknessesMm.join(', ') : 'Per drawing'}
-                                    </td>
-                                  )}
-                                  {meta.hasNotes && (
-                                    <td className="font-sans text-sm text-tobacco/80 no-justify py-3">
-                                      {size.note ?? ''}
                                     </td>
                                   )}
                                 </tr>
@@ -352,16 +360,9 @@ export default async function FormatPage({ params }: FormatPageProps) {
                           {group.sizes.map((size) => (
                             <li
                               key={`${group.group ?? ''}-${size.code}`}
-                              className="bg-warm-white px-4 py-4 flex items-baseline justify-between gap-2 border-r border-b border-obsidian/10"
+                              className="bg-warm-white px-4 py-4 border-r border-b border-obsidian/10"
                             >
-                              <span className="font-display text-lg text-obsidian no-justify tabular-nums lining-nums whitespace-nowrap">
-                                {prettySize(size.code)}
-                              </span>
-                              {size.market && size.market !== 'special' && (
-                                <span className="font-mono text-[0.625rem] uppercase tracking-eyebrow text-quarry-gold">
-                                  {size.market}
-                                </span>
-                              )}
+                              <SizeCell size={size} />
                             </li>
                           ))}
                         </ul>
