@@ -36,14 +36,7 @@ export const metadata: Metadata = {
     title: 'KHADANE™ — The sandstone catalogue of the Bijolia belt',
     description:
       'Twenty-three sandstones across twenty-one formats. Quarried in Bijolia, Rajasthan. Since 1972.',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'KHADANE™ — Bijolia, Rajasthan',
-      },
-    ],
+    // og:image supplied by ./opengraph-image.png (Next.js file convention)
   },
   twitter: {
     card: 'summary_large_image',
