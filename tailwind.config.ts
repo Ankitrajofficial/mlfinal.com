@@ -68,6 +68,7 @@ const config: Config = {
         // Body: Inter Tight (with Inter fallback)
         // Mono: JetBrains Mono
         display: [
+          'var(--font-display)',
           'Cormorant Garamond',
           'Cormorant',
           'Garamond',
@@ -75,6 +76,7 @@ const config: Config = {
           'serif',
         ],
         body: [
+          'var(--font-body)',
           'Inter Tight',
           'Inter',
           '-apple-system',
@@ -85,6 +87,7 @@ const config: Config = {
         ],
         // V1 alias — many KHADANE v1 components use `font-sans`
         sans: [
+          'var(--font-body)',
           'Inter Tight',
           'Inter',
           '-apple-system',
@@ -94,6 +97,7 @@ const config: Config = {
           'sans-serif',
         ],
         mono: [
+          'var(--font-mono)',
           'JetBrains Mono',
           'ui-monospace',
           'SFMono-Regular',

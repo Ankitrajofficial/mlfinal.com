@@ -244,7 +244,7 @@
     padding: 2rem;
     text-align: center;
     color: rgba(232, 227, 215, 0.85);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono), 'JetBrains Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.08em;
     line-height: 1.6;
@@ -260,7 +260,7 @@
   }
 
   .placeholder-caption .ph-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-display), 'Cormorant Garamond', serif;
     font-size: 1.5rem;
     font-style: italic;
     color: rgba(232, 227, 215, 0.95);
@@ -317,7 +317,7 @@
 
   /* Hindi tagline styling */
   .hindi-tag {
-    font-family: 'Kohinoor Devanagari', 'Cormorant Garamond', serif;
+    font-family: 'Kohinoor Devanagari', var(--font-display), 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--color-quarry-gold);
   }
