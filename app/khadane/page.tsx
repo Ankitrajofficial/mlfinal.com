@@ -270,6 +270,7 @@ export default function HomePage() {
                           getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-hero.jpg`),
                         )}
                         aspectRatio="aspect-[5/4]"
+                        sizes="(min-width: 1024px) 28vw, (min-width: 640px) 50vw, 100vw"
                         className="transition-transform duration-700 ease-editorial group-hover:scale-[1.02]"
                       />
                       <div className="flex items-start justify-between gap-4 pt-5">
@@ -703,6 +704,7 @@ export default function HomePage() {
                         title={v.name}
                         swapPath={getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-hero.jpg`)}
                         aspectRatio="aspect-square"
+                        sizes="(min-width: 1024px) 18vw, 33vw"
                         className="border border-quarry-gold/20 transition-transform duration-700 ease-editorial group-hover:scale-[1.02]"
                       />
                     </Link>

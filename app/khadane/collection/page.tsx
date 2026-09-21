@@ -37,6 +37,7 @@ export default function CollectionPage() {
             title={v.name}
             spec={v.district}
             aspectRatio="aspect-[4/3]"
+            sizes={dark ? '(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw' : '(min-width: 1024px) 22vw, (min-width: 640px) 50vw, 100vw'}
             swapPath={getVarietyImage(v.slug, 'thumb', getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-thumb.jpg`))}
             className="transition-transform duration-700 ease-editorial group-hover:scale-[1.015]"
           />
@@ -204,6 +205,7 @@ export default function CollectionPage() {
                       getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-hero.jpg`),
                     )}
                     aspectRatio="aspect-[5/4]"
+                    sizes="(min-width: 1024px) 15vw, (min-width: 768px) 33vw, 100vw"
                     className="mb-5 transition-transform duration-700 ease-editorial group-hover:scale-[1.02]"
                   />
                   <p className="font-mono text-[10px] uppercase tracking-eyebrow text-quarry-gold no-justify mb-2">{v.code}</p>

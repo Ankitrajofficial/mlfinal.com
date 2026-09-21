@@ -3,6 +3,10 @@
 import Image from 'next/image'
 import { useState } from 'react'
 
+// Default matches the widest common frame (a hero column at desktop). Grids
+// pass their own so the browser is not handed a 42vw candidate for a 25vw tile.
+const DEFAULT_SIZES = '(min-width: 1280px) 42vw, (min-width: 1024px) 50vw, 100vw'
+
 interface PlaceholderImageProps {
   className?: string
   variant?:
@@ -27,6 +31,10 @@ interface PlaceholderImageProps {
   /** 'cover' fills the frame (may crop); 'contain' fits the whole image
    *  inside the frame (no crop, may letterbox). Default 'cover'. */
   objectFit?: 'cover' | 'contain'
+  /** Responsive sizes hint forwarded to next/image. */
+  sizes?: string
+  /** Above-the-fold image: preload it and skip lazy loading. */
+  priority?: boolean
 }
 
 export default function PlaceholderImage({
@@ -40,6 +48,8 @@ export default function PlaceholderImage({
   showCaption = true,
   fallbackToPlaceholder = false,
   objectFit = 'cover',
+  sizes = DEFAULT_SIZES,
+  priority = false,
 }: PlaceholderImageProps) {
   const fitClass = objectFit === 'contain' ? 'object-contain' : 'object-cover'
   const [imgFailed, setImgFailed] = useState(false)
@@ -70,6 +80,8 @@ export default function PlaceholderImage({
         <img
           src={swapPath as string}
           alt={title || label}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
           className={`absolute inset-0 h-full w-full ${fitClass}`}
           onError={() => setImgFailed(true)}
         />
@@ -78,7 +90,8 @@ export default function PlaceholderImage({
           src={swapPath as string}
           alt={title || label}
           fill
-          sizes="(min-width: 1280px) 42vw, (min-width: 1024px) 50vw, 100vw"
+          sizes={sizes}
+          priority={priority}
           className={fitClass}
           onError={() => setImgFailed(true)}
         />

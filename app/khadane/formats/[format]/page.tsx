@@ -215,6 +215,7 @@ export default async function FormatPage({ params }: FormatPageProps) {
                 swapPath={`/img/formats/${f.slug}-hero.jpg`}
                 aspectRatio="aspect-[4/5]"
                 fallbackToPlaceholder
+                priority
               />
             </div>
           </div>

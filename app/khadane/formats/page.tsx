@@ -85,6 +85,7 @@ export default function FormatsPage() {
             spec={f.primaryUse}
             swapPath={`/img/formats/${f.slug}-hero.jpg`}
             aspectRatio="aspect-[3/2]"
+            sizes="(min-width: 1024px) 30vw, (min-width: 768px) 50vw, 100vw"
             objectFit={FIT_FULL_FORMAT_HEROES.has(f.slug) ? 'contain' : 'cover'}
             fallbackToPlaceholder
             className="transition-transform duration-700 ease-editorial group-hover:scale-[1.015]"

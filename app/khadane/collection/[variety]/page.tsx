@@ -232,6 +232,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
                   spec={`${sourceLabel} · ${v.district}`}
                   swapPath={swapPathFor(`/img/varieties/${v.slug}-hero.jpg`)}
                   aspectRatio="aspect-[4/5]"
+                  priority
                   className="relative shadow-[0_32px_80px_rgba(17,17,17,0.16)]"
                 />
                 <div className="relative mt-4 grid grid-cols-2 gap-px bg-obsidian/10">
