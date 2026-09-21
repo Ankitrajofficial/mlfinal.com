@@ -63,7 +63,7 @@ export default async function FieldNotePage({ params }: FieldNotePageProps) {
             baseDelay={250}
             staggerDelay={70}
           />
-          <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1400ms' }}>
+          <div className="opacity-0 animate-fade-in" style={{ animationDelay: '300ms' }}>
             <p className="font-display italic text-2xl text-quarry-gold no-justify leading-snug">
               {note.excerpt}
             </p>

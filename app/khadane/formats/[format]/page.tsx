@@ -189,7 +189,7 @@ export default async function FormatPage({ params }: FormatPageProps) {
                 baseDelay={200}
                 staggerDelay={130}
               />
-              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '900ms' }}>
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '250ms' }}>
                 <p className="font-display italic text-2xl text-quarry-gold mb-10 no-justify max-w-xl">
                   {f.formatHeadline}
                 </p>

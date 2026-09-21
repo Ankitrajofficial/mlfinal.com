@@ -183,7 +183,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
                 baseDelay={200}
                 staggerDelay={130}
               />
-              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '900ms' }}>
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '250ms' }}>
                 <p className="hindi-tag text-3xl lg:text-4xl mb-8 no-justify">
                   {v.nameHindi}
                 </p>

@@ -28,7 +28,7 @@ export default function FieldNotesPage() {
               baseDelay={250}
               staggerDelay={120}
             />
-            <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1500ms' }}>
+            <div className="opacity-0 animate-fade-in" style={{ animationDelay: '300ms' }}>
               <p className="font-display italic text-2xl md:text-3xl text-quarry-gold no-justify max-w-3xl mb-8">
                 Geology. Process. Trade. Written from the quarry.
               </p>

@@ -78,7 +78,7 @@ export default function GalleryPage() {
               baseDelay={250}
                 staggerDelay={130}
             />
-              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1100ms' }}>
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <p className="font-display italic text-2xl md:text-3xl text-quarry-gold no-justify max-w-4xl mb-10">
                   Stone face, quarry source, yard process, finished work.
               </p>
@@ -98,7 +98,7 @@ export default function GalleryPage() {
               </div>
             </div>
             <div className="lg:col-span-5">
-              <div className="border border-obsidian/10 bg-stone-linen/55 p-5 lg:p-6 opacity-0 animate-fade-in" style={{ animationDelay: '750ms' }}>
+              <div className="border border-obsidian/10 bg-stone-linen/55 p-5 lg:p-6 opacity-0 animate-fade-in" style={{ animationDelay: '250ms' }}>
                 <div className="mb-5 bg-obsidian p-7 lg:p-8">
                   <div className="mb-16 flex items-center justify-between gap-4">
                     <span className="font-mono text-xs uppercase tracking-eyebrow text-quarry-gold no-justify">Archive register</span>

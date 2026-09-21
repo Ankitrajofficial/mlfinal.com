@@ -278,22 +278,15 @@
   /* Reveal-on-scroll base state */
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 1000ms var(--ease-editorial), transform 1000ms var(--ease-editorial);
+    transform: translateY(12px);
+    transition: opacity 500ms var(--ease-editorial), transform 500ms var(--ease-editorial);
+    will-change: opacity, transform;
   }
 
   .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
   }
-
-  /* Stagger reveal delays */
-  .reveal[data-delay="100"] { transition-delay: 100ms; }
-  .reveal[data-delay="200"] { transition-delay: 200ms; }
-  .reveal[data-delay="300"] { transition-delay: 300ms; }
-  .reveal[data-delay="400"] { transition-delay: 400ms; }
-  .reveal[data-delay="500"] { transition-delay: 500ms; }
-  .reveal[data-delay="600"] { transition-delay: 600ms; }
 
   /* Word-rise animation for hero headlines */
   .word-rise {
@@ -307,12 +300,14 @@
 
   .word-rise > span {
     display: inline-block;
+    opacity: 0;
     transform: translateY(110%);
-    animation: word-rise 1100ms var(--ease-editorial) forwards;
+    animation: word-rise 600ms var(--ease-editorial) forwards;
+    will-change: opacity, transform;
   }
 
   @keyframes word-rise {
-    to { transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* Hindi tagline styling */

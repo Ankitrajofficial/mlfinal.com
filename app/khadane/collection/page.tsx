@@ -94,7 +94,7 @@ export default function CollectionPage() {
                 baseDelay={250}
                 staggerDelay={140}
               />
-              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1200ms' }}>
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <p className="font-display italic text-2xl md:text-3xl text-quarry-gold no-justify max-w-3xl">
                   Owned at the source. Allied under one custody. Every stone documented the same way.
                 </p>
@@ -128,7 +128,7 @@ export default function CollectionPage() {
                     <div
                       key={stat.label}
                       className="opacity-0 animate-fade-in bg-warm-white p-6 lg:p-7"
-                      style={{ animationDelay: `${900 + i * 120}ms` }}
+                      style={{ animationDelay: `${250 + i * 60}ms` }}
                     >
                       <Icon size={20} strokeWidth={1.5} className="mb-6 text-quarry-gold" />
                       <p className="font-display text-3xl text-obsidian no-justify">{stat.value}</p>

@@ -67,7 +67,7 @@ export default function HomePage() {
 
             <div
               className="opacity-0 animate-fade-in"
-              style={{ animationDelay: '1800ms' }}
+              style={{ animationDelay: '350ms' }}
             >
               <p className="font-display italic text-xl md:text-2xl text-warm-white mb-12 no-justify max-w-2xl">
                 Owned quarries, and a network of allied quarries across northern India. Cut and dressed in every form the trade specifies.
@@ -89,7 +89,7 @@ export default function HomePage() {
           {/* Bottom corner — coordinates badge (Quiet Authority detail) */}
           <div
             className="absolute bottom-8 right-8 lg:bottom-12 lg:right-16 opacity-0 animate-fade-in"
-            style={{ animationDelay: '2400ms' }}
+            style={{ animationDelay: '400ms' }}
           >
             <div className="text-right">
               <p className="font-mono text-[10px] tracking-widest text-warm-white/40 no-justify">
