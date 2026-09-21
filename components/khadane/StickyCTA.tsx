@@ -11,10 +11,21 @@ export default function StickyCTA() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 800)
+    let frame = 0
+    const update = () => {
+      frame = 0
+      setVisible(window.scrollY > 800)
+    }
+    const onScroll = () => {
+      if (frame) return
+      frame = window.requestAnimationFrame(update)
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
+    update()
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   if (pathname === '/desk' || pathname?.startsWith('/desk/')) return null

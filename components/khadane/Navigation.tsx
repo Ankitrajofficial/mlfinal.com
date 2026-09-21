@@ -19,15 +19,24 @@ export default function Navigation() {
   const navOnDark = overHero
 
   useEffect(() => {
-    const onScroll = () => {
+    // Coalesce the burst of scroll events into one read per frame so the
+    // nav re-renders at most once per paint.
+    let frame = 0
+    const update = () => {
+      frame = 0
       const y = window.scrollY
       setScrolled(y > 40)
       setOverHero(isHome && y < window.innerHeight * 0.72)
     }
+    const onScroll = () => {
+      if (frame) return
+      frame = window.requestAnimationFrame(update)
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll, { passive: true })
-    onScroll()
+    update()
     return () => {
+      if (frame) window.cancelAnimationFrame(frame)
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
     }
