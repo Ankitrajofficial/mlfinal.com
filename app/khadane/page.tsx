@@ -38,11 +38,7 @@ export default function HomePage() {
             style={{ objectPosition: '50% 58%' }}
             aria-hidden="true"
           />
-          <HeroVideo
-            src="/videos/home-hero.mp4"
-            poster="/img/mls-home-hero-poster.jpg"
-            objectPosition="50% 58%"
-          />
+          <HeroVideo src="/videos/home-hero.mp4" objectPosition="50% 58%" />
           {/* Top scrim */}
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-obsidian/70 via-obsidian/40 to-transparent" />
           {/* Bottom scrim */}
