@@ -37,6 +37,7 @@ export default function CollectionPage() {
             title={v.name}
             spec={v.district}
             aspectRatio="aspect-[4/3]"
+            sizes={dark ? '(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw' : '(min-width: 1024px) 22vw, (min-width: 640px) 50vw, 100vw'}
             swapPath={getVarietyImage(v.slug, 'thumb', getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-thumb.jpg`))}
             className="transition-transform duration-700 ease-editorial group-hover:scale-[1.015]"
           />
@@ -67,7 +68,7 @@ export default function CollectionPage() {
                 <p className={`mt-1 font-sans text-xs no-justify ${dark ? 'text-warm-white/75' : 'text-obsidian'}`}>{v.formatScope}</p>
               </div>
             </div>
-            <p className={`mt-5 inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider no-justify transition-all group-hover:gap-3 ${dark ? 'text-quarry-gold' : 'text-tobacco'}`}>
+            <p className={`mt-5 inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider no-justify transition-all ${dark ? 'text-quarry-gold' : 'text-tobacco'}`}>
               View stone <ArrowRight size={13} strokeWidth={1.6} />
             </p>
           </div>
@@ -93,7 +94,7 @@ export default function CollectionPage() {
                 baseDelay={250}
                 staggerDelay={140}
               />
-              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1200ms' }}>
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <p className="font-display italic text-2xl md:text-3xl text-quarry-gold no-justify max-w-3xl">
                   Owned at the source. Allied under one custody. Every stone documented the same way.
                 </p>
@@ -127,7 +128,7 @@ export default function CollectionPage() {
                     <div
                       key={stat.label}
                       className="opacity-0 animate-fade-in bg-warm-white p-6 lg:p-7"
-                      style={{ animationDelay: `${900 + i * 120}ms` }}
+                      style={{ animationDelay: `${250 + i * 60}ms` }}
                     >
                       <Icon size={20} strokeWidth={1.5} className="mb-6 text-quarry-gold" />
                       <p className="font-display text-3xl text-obsidian no-justify">{stat.value}</p>
@@ -204,6 +205,7 @@ export default function CollectionPage() {
                       getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-hero.jpg`),
                     )}
                     aspectRatio="aspect-[5/4]"
+                    sizes="(min-width: 1024px) 15vw, (min-width: 768px) 33vw, 100vw"
                     className="mb-5 transition-transform duration-700 ease-editorial group-hover:scale-[1.02]"
                   />
                   <p className="font-mono text-[10px] uppercase tracking-eyebrow text-quarry-gold no-justify mb-2">{v.code}</p>

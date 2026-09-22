@@ -1,11 +1,36 @@
 import type { Metadata } from 'next'
+import { Cormorant_Garamond, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+
+// Self-hosted through next/font: no render-blocking stylesheet from Google,
+// files preloaded from our own origin, and a size-adjusted fallback face so
+// the swap does not reflow the page. Montserrat was in the old <link> but is
+// referenced nowhere in the app, so it is dropped.
+const display = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-display',
+})
+const body = Inter_Tight({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-body',
+})
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-mono',
+})
 
 /**
  * Root layout.
  *
- * Provides the <html> + <body> shell and loads shared fonts
- * (Cormorant Garamond + Inter Tight + JetBrains Mono — shared by both sites).
+ * Provides the <html> + <body> shell and the shared next/font faces
+ * (Cormorant Garamond + Inter Tight + JetBrains Mono, both sites).
  *
  * Site-specific chrome (Navigation, Footer, per-site metadata) is provided
  * by the route group layouts: app/(mls)/layout.tsx and app/(khadane)/layout.tsx.
@@ -25,18 +50,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" data-scroll-behavior="smooth" className={`scroll-smooth ${display.variable} ${body.variable} ${mono.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
         {/* Favicons — KHADANE™ transparent K-only mark (Quarry Gold #B8962E) */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

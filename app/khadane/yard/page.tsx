@@ -98,7 +98,7 @@ export default function YardPage() {
                 baseDelay={250}
                 staggerDelay={130}
               />
-              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1300ms' }}>
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <p className="font-display italic text-2xl md:text-3xl text-quarry-gold no-justify max-w-3xl mb-10">
                   The sequence at Bijolia.
                 </p>
@@ -132,7 +132,7 @@ export default function YardPage() {
                     <div
                       key={stat.label}
                       className="opacity-0 animate-fade-in bg-warm-white p-6 lg:p-7"
-                      style={{ animationDelay: `${900 + i * 120}ms` }}
+                      style={{ animationDelay: `${250 + i * 60}ms` }}
                     >
                       <Icon size={20} strokeWidth={1.5} className="mb-6 text-quarry-gold" />
                       <p className="font-display text-3xl text-obsidian no-justify">{stat.value}</p>
@@ -314,7 +314,7 @@ export default function YardPage() {
                       </div>
                     ))}
                   </div>
-                  <Link href="/khadane/desk" className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-tobacco no-justify">
+                  <Link href="/khadane/desk" className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-tobacco no-justify">
                     Write to The Desk
                     <ArrowRight size={16} strokeWidth={1.6} />
                   </Link>

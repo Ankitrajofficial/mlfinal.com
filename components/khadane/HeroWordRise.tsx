@@ -1,7 +1,3 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-
 interface HeroWordRiseProps {
   words: string[]
   className?: string
@@ -10,6 +6,13 @@ interface HeroWordRiseProps {
   as?: 'h1' | 'h2' | 'h3' | 'p' | 'div'
 }
 
+// The headline rise is a pure CSS animation (.word-rise in globals.css), so it
+// runs from the first paint without waiting for hydration and never leaves the
+// heading blank if JavaScript is slow. Delays are capped so the whole line is
+// on screen within roughly 900 ms of paint whatever the page asks for.
+const MAX_BASE_DELAY_MS = 150
+const MAX_STAGGER_MS = 60
+
 export default function HeroWordRise({
   words,
   className = '',
@@ -17,31 +20,14 @@ export default function HeroWordRise({
   staggerDelay = 110,
   as: Tag = 'h1',
 }: HeroWordRiseProps) {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const base = Math.min(baseDelay, MAX_BASE_DELAY_MS)
+  const stagger = Math.min(staggerDelay, MAX_STAGGER_MS)
 
   return (
     <Tag className={`${className} no-justify`}>
       {words.map((word, i) => (
-        <span
-          key={i}
-          className="inline-block overflow-hidden align-bottom"
-          style={{ marginRight: '0.25em' }}
-        >
-          <span
-            className="inline-block"
-            style={{
-              transform: mounted ? 'translateY(0)' : 'translateY(110%)',
-              opacity: mounted ? 1 : 0,
-              transition: `transform 1100ms cubic-bezier(0.16, 1, 0.3, 1), opacity 800ms cubic-bezier(0.16, 1, 0.3, 1)`,
-              transitionDelay: `${baseDelay + i * staggerDelay}ms`,
-            }}
-          >
-            {word}
-          </span>
+        <span key={i} className="word-rise align-bottom" style={{ marginRight: '0.25em' }}>
+          <span style={{ animationDelay: `${base + i * stagger}ms` }}>{word}</span>
         </span>
       ))}
     </Tag>

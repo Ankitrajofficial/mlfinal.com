@@ -93,6 +93,20 @@
   * {
     -webkit-tap-highlight-color: transparent;
   }
+
+  /* Standard interactive behaviour: no 300 ms tap delay on touch, pointer
+     cursor on anything clickable, and a consistent press response. */
+  a, button, [role="button"], input, select, textarea, label {
+    touch-action: manipulation;
+  }
+
+  a[href], button:not(:disabled), [role="button"] {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
 }
 
 @layer components {
@@ -134,25 +148,27 @@
     @apply font-mono text-xs tracking-wider text-tobacco bg-stone-linen/60 px-2 py-1;
   }
 
+  /* Buttons animate colour and transform only (never gap or size, which
+     relayout on every hover), settle in 200 ms, and dip 2% on press. */
   .cta-primary {
     @apply inline-flex items-center gap-3 px-8 py-4 bg-obsidian text-warm-white;
     @apply font-sans text-sm tracking-wider uppercase;
-    @apply transition-all duration-400 ease-editorial;
-    @apply hover:bg-tobacco hover:gap-4;
+    @apply transition-[color,background-color,border-color,transform] duration-200 ease-out;
+    @apply hover:bg-tobacco active:scale-[0.98];
   }
 
   .cta-secondary {
     @apply inline-flex items-center gap-3 px-8 py-4 border border-obsidian text-obsidian;
     @apply font-sans text-sm tracking-wider uppercase;
-    @apply transition-all duration-400 ease-editorial;
-    @apply hover:bg-obsidian hover:text-warm-white hover:gap-4;
+    @apply transition-[color,background-color,border-color,transform] duration-200 ease-out;
+    @apply hover:bg-obsidian hover:text-warm-white active:scale-[0.98];
   }
 
   .cta-text {
     @apply inline-flex items-center gap-2 text-obsidian;
     @apply font-sans text-sm tracking-wider uppercase;
-    @apply transition-all duration-400 ease-editorial;
-    @apply hover:text-quarry-gold hover:gap-3;
+    @apply transition-[color,border-color] duration-200 ease-out;
+    @apply hover:text-quarry-gold;
     @apply border-b border-obsidian/20 hover:border-quarry-gold pb-1;
   }
 
@@ -244,7 +260,7 @@
     padding: 2rem;
     text-align: center;
     color: rgba(232, 227, 215, 0.85);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono), 'JetBrains Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.08em;
     line-height: 1.6;
@@ -260,7 +276,7 @@
   }
 
   .placeholder-caption .ph-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-display), 'Cormorant Garamond', serif;
     font-size: 1.5rem;
     font-style: italic;
     color: rgba(232, 227, 215, 0.95);
@@ -278,22 +294,16 @@
   /* Reveal-on-scroll base state */
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 1000ms var(--ease-editorial), transform 1000ms var(--ease-editorial);
+    transform: translateY(12px);
+    transition: opacity 500ms var(--ease-editorial), transform 500ms var(--ease-editorial);
+    will-change: opacity, transform;
   }
 
   .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
+    will-change: auto;
   }
-
-  /* Stagger reveal delays */
-  .reveal[data-delay="100"] { transition-delay: 100ms; }
-  .reveal[data-delay="200"] { transition-delay: 200ms; }
-  .reveal[data-delay="300"] { transition-delay: 300ms; }
-  .reveal[data-delay="400"] { transition-delay: 400ms; }
-  .reveal[data-delay="500"] { transition-delay: 500ms; }
-  .reveal[data-delay="600"] { transition-delay: 600ms; }
 
   /* Word-rise animation for hero headlines */
   .word-rise {
@@ -307,17 +317,19 @@
 
   .word-rise > span {
     display: inline-block;
+    opacity: 0;
     transform: translateY(110%);
-    animation: word-rise 1100ms var(--ease-editorial) forwards;
+    animation: word-rise 600ms var(--ease-editorial) forwards;
+    will-change: opacity, transform;
   }
 
   @keyframes word-rise {
-    to { transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* Hindi tagline styling */
   .hindi-tag {
-    font-family: 'Kohinoor Devanagari', 'Cormorant Garamond', serif;
+    font-family: 'Kohinoor Devanagari', var(--font-display), 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--color-quarry-gold);
   }
@@ -368,6 +380,16 @@
   line-height: 0.78;
   color: #B8962E;
   padding: 0.06em 0.12em 0 0;
+}
+
+/* Touch screens have no hover: keep the image-zoom hover effects from
+   sticking on after a tap. */
+@media (hover: none) {
+  .group:hover .group-hover\:scale-\[1\.015\],
+  .group:hover .group-hover\:scale-\[1\.02\],
+  .group:hover .group-hover\:scale-\[1\.04\] {
+    transform: none;
+  }
 }
 
 /* ============================================================

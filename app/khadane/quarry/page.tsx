@@ -96,7 +96,7 @@ export default function QuarryPage() {
                 baseDelay={250}
                 staggerDelay={130}
               />
-              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1300ms' }}>
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <p className="font-display italic text-2xl md:text-3xl text-quarry-gold no-justify max-w-3xl mb-10">
                   A working belt of Bijolia. Founding beds still in extraction since 1972.
                 </p>
@@ -106,11 +106,11 @@ export default function QuarryPage() {
                   </p>
                 </div>
                 <div className="mt-10 flex flex-wrap gap-3">
-                  <a href="#villages" className="inline-flex items-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-400 ease-editorial hover:bg-warm-white no-justify">
+                  <a href="#villages" className="inline-flex items-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
                     <MapPin size={16} strokeWidth={1.6} />
                     Quarry villages
                   </a>
-                  <Link href="/khadane/yard" className="inline-flex items-center gap-3 border border-warm-white/35 px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-warm-white hover:text-obsidian no-justify">
+                  <Link href="/khadane/yard" className="inline-flex items-center gap-3 border border-warm-white/35 px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-warm-white hover:text-obsidian no-justify">
                     <Truck size={16} strokeWidth={1.6} />
                     To the yard
                   </Link>
@@ -130,7 +130,7 @@ export default function QuarryPage() {
                     <div
                       key={stat.label}
                       className="opacity-0 animate-fade-in bg-obsidian/50 p-6 lg:p-7"
-                      style={{ animationDelay: `${900 + i * 120}ms` }}
+                      style={{ animationDelay: `${250 + i * 60}ms` }}
                     >
                       <Icon size={20} strokeWidth={1.5} className="mb-6 text-quarry-gold" />
                       <p className="font-display text-3xl text-warm-white no-justify">{stat.value}</p>
@@ -279,7 +279,7 @@ export default function QuarryPage() {
                     <Link key={slug} href={`/khadane/collection/${slug}`} className="group bg-warm-white/[0.05] border border-warm-white/10 p-6 transition-colors hover:bg-warm-white/[0.08]">
                       <p className="font-display text-2xl text-warm-white no-justify group-hover:text-quarry-gold transition-colors">{name}</p>
                       <p className="mt-3 font-sans text-sm text-warm-white/62 no-justify">{note}</p>
-                      <p className="mt-6 inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-quarry-gold no-justify transition-all group-hover:gap-3">
+                      <p className="mt-6 inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-quarry-gold no-justify transition-all">
                         View stone <ArrowRight size={13} strokeWidth={1.6} />
                       </p>
                     </Link>

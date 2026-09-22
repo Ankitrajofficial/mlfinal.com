@@ -27,7 +27,7 @@ export default function DeskPage() {
               baseDelay={250}
               staggerDelay={140}
             />
-            <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1100ms' }}>
+            <div className="opacity-0 animate-fade-in" style={{ animationDelay: '300ms' }}>
               <p className="font-display italic text-2xl md:text-3xl text-quarry-gold no-justify max-w-3xl mb-8">
                 Quote within one business day.
               </p>

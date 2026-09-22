@@ -38,11 +38,7 @@ export default function HomePage() {
             style={{ objectPosition: '50% 58%' }}
             aria-hidden="true"
           />
-          <HeroVideo
-            src="/videos/home-hero.mp4"
-            poster="/img/mls-home-hero-poster.jpg"
-            objectPosition="50% 58%"
-          />
+          <HeroVideo src="/videos/home-hero.mp4" objectPosition="50% 58%" />
           {/* Top scrim */}
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-obsidian/70 via-obsidian/40 to-transparent" />
           {/* Bottom scrim */}
@@ -71,7 +67,7 @@ export default function HomePage() {
 
             <div
               className="opacity-0 animate-fade-in"
-              style={{ animationDelay: '1800ms' }}
+              style={{ animationDelay: '350ms' }}
             >
               <p className="font-display italic text-xl md:text-2xl text-warm-white mb-12 no-justify max-w-2xl">
                 Owned quarries, and a network of allied quarries across northern India. Cut and dressed in every form the trade specifies.
@@ -82,7 +78,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/khadane/desk"
-                  className="inline-flex items-center gap-3 px-8 py-4 border border-warm-white/30 text-warm-white font-sans text-sm tracking-wider uppercase transition-all duration-400 ease-editorial hover:bg-warm-white hover:text-obsidian hover:gap-4 no-justify"
+                  className="inline-flex items-center gap-3 px-8 py-4 border border-warm-white/30 text-warm-white font-sans text-sm tracking-wider uppercase transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] hover:bg-warm-white hover:text-obsidian no-justify"
                 >
                   Write to The Desk
                 </Link>
@@ -93,7 +89,7 @@ export default function HomePage() {
           {/* Bottom corner — coordinates badge (Quiet Authority detail) */}
           <div
             className="absolute bottom-8 right-8 lg:bottom-12 lg:right-16 opacity-0 animate-fade-in"
-            style={{ animationDelay: '2400ms' }}
+            style={{ animationDelay: '400ms' }}
           >
             <div className="text-right">
               <p className="font-mono text-[10px] tracking-widest text-warm-white/40 no-justify">
@@ -218,7 +214,7 @@ export default function HomePage() {
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={420}>
-                <Link href="/khadane/collection" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-quarry-gold hover:text-obsidian no-justify">
+                <Link href="/khadane/collection" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-quarry-gold hover:text-obsidian no-justify">
                   Browse all {SITE.varietyCount} varieties <ArrowRight size={16} strokeWidth={1.6} />
                 </Link>
               </RevealOnScroll>
@@ -226,7 +222,7 @@ export default function HomePage() {
 
             <div className="lg:col-span-7">
               <RevealOnScroll>
-                <Link href={`/khadane/collection/${heroVarieties[0].slug}`} className="group mb-5 block border border-obsidian/10 bg-warm-white p-5 transition-colors duration-400 ease-editorial hover:border-quarry-gold/50">
+                <Link href={`/khadane/collection/${heroVarieties[0].slug}`} className="group mb-5 block border border-obsidian/10 bg-warm-white p-5 transition-colors duration-200 ease-out hover:border-quarry-gold/50">
                   <div className="grid grid-cols-1 gap-5 md:grid-cols-12 md:items-stretch">
                     <div className="md:col-span-7">
                       <PlaceholderImage
@@ -263,7 +259,7 @@ export default function HomePage() {
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 {heroVarieties.slice(1).map((v, i) => (
                   <RevealOnScroll key={v.slug} delay={100 + i * 70}>
-                    <Link href={`/khadane/collection/${v.slug}`} className="group block h-full border border-obsidian/10 bg-warm-white p-4 transition-colors duration-400 ease-editorial hover:border-quarry-gold/50">
+                    <Link href={`/khadane/collection/${v.slug}`} className="group block h-full border border-obsidian/10 bg-warm-white p-4 transition-colors duration-200 ease-out hover:border-quarry-gold/50">
                       <PlaceholderImage
                         variant={v.placeholderClass.replace('placeholder-', '') as any}
                         label={v.code}
@@ -274,6 +270,7 @@ export default function HomePage() {
                           getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-hero.jpg`),
                         )}
                         aspectRatio="aspect-[5/4]"
+                        sizes="(min-width: 1024px) 28vw, (min-width: 640px) 50vw, 100vw"
                         className="transition-transform duration-700 ease-editorial group-hover:scale-[1.02]"
                       />
                       <div className="flex items-start justify-between gap-4 pt-5">
@@ -326,7 +323,7 @@ export default function HomePage() {
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-px bg-obsidian/10">
               {heroFormats.map((f, i) => (
                 <RevealOnScroll key={f.slug} delay={i * 50} className="h-full">
-                  <Link href={`/khadane/formats/${f.slug}`} className="flex h-full min-h-44 flex-col bg-warm-white p-6 lg:p-8 hover:bg-stone-linen transition-colors duration-400 ease-editorial group">
+                  <Link href={`/khadane/formats/${f.slug}`} className="flex h-full min-h-44 flex-col bg-warm-white p-6 lg:p-8 hover:bg-stone-linen transition-colors duration-200 ease-out group">
                     <p className="font-mono text-xs text-quarry-gold no-justify mb-3">{f.code}</p>
                     <h3 className="font-display text-xl lg:text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors mb-3">
                       {f.name}
@@ -387,7 +384,7 @@ export default function HomePage() {
                 </div>
               </RevealOnScroll>
               <RevealOnScroll delay={500}>
-                <Link href="/khadane/quarry" className="inline-flex items-center gap-3 text-warm-white font-sans text-sm tracking-wider uppercase border-b border-warm-white/30 hover:border-quarry-gold hover:text-quarry-gold pb-1 transition-all duration-400 no-justify">
+                <Link href="/khadane/quarry" className="inline-flex items-center gap-3 text-warm-white font-sans text-sm tracking-wider uppercase border-b border-warm-white/30 hover:border-quarry-gold hover:text-quarry-gold pb-1 transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] no-justify">
                   Inside the quarry →
                 </Link>
               </RevealOnScroll>
@@ -690,7 +687,7 @@ export default function HomePage() {
               <RevealOnScroll delay={520}>
                 <Link
                   href="/khadane/collection"
-                  className="mt-8 inline-flex items-center gap-3 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:text-quarry-gold no-justify"
+                  className="mt-8 inline-flex items-center gap-3 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:text-quarry-gold no-justify"
                 >
                   Browse all allied varieties <ArrowRight size={16} strokeWidth={1.6} />
                 </Link>
@@ -707,6 +704,7 @@ export default function HomePage() {
                         title={v.name}
                         swapPath={getVarietyImage(v.slug, 'hero', `/img/varieties/${v.slug}-hero.jpg`)}
                         aspectRatio="aspect-square"
+                        sizes="(min-width: 1024px) 18vw, 33vw"
                         className="border border-quarry-gold/20 transition-transform duration-700 ease-editorial group-hover:scale-[1.02]"
                       />
                     </Link>

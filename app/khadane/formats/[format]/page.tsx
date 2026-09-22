@@ -189,7 +189,7 @@ export default async function FormatPage({ params }: FormatPageProps) {
                 baseDelay={200}
                 staggerDelay={130}
               />
-              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '900ms' }}>
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '250ms' }}>
                 <p className="font-display italic text-2xl text-quarry-gold mb-10 no-justify max-w-xl">
                   {f.formatHeadline}
                 </p>
@@ -215,6 +215,7 @@ export default async function FormatPage({ params }: FormatPageProps) {
                 swapPath={`/img/formats/${f.slug}-hero.jpg`}
                 aspectRatio="aspect-[4/5]"
                 fallbackToPlaceholder
+                priority
               />
             </div>
           </div>
@@ -493,7 +494,7 @@ export default async function FormatPage({ params }: FormatPageProps) {
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={400}>
-              <Link href="/khadane/desk" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify">
+              <Link href="/khadane/desk" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] no-justify">
                 Quote for {f.name} →
               </Link>
             </RevealOnScroll>

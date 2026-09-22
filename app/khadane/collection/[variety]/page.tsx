@@ -183,7 +183,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
                 baseDelay={200}
                 staggerDelay={130}
               />
-              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '900ms' }}>
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '250ms' }}>
                 <p className="hindi-tag text-3xl lg:text-4xl mb-8 no-justify">
                   {v.nameHindi}
                 </p>
@@ -232,6 +232,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
                   spec={`${sourceLabel} · ${v.district}`}
                   swapPath={swapPathFor(`/img/varieties/${v.slug}-hero.jpg`)}
                   aspectRatio="aspect-[4/5]"
+                  priority
                   className="relative shadow-[0_32px_80px_rgba(17,17,17,0.16)]"
                 />
                 <div className="relative mt-4 grid grid-cols-2 gap-px bg-obsidian/10">
@@ -451,7 +452,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
           <div className="grid grid-cols-1 gap-px bg-obsidian/10 sm:grid-cols-2 lg:grid-cols-4">
             {featuredFormats.map((f, i) => (
               <RevealOnScroll key={f.slug} delay={Math.min(i * 40, 400)} className="h-full">
-                <Link href={`/khadane/formats/${f.slug}`} className="group flex h-full min-h-44 flex-col justify-between bg-warm-white p-6 transition-colors duration-400 ease-editorial hover:bg-stone-linen">
+                <Link href={`/khadane/formats/${f.slug}`} className="group flex h-full min-h-44 flex-col justify-between bg-warm-white p-6 transition-colors duration-200 ease-out hover:bg-stone-linen">
                   <div>
                     <p className="font-mono text-xs text-quarry-gold no-justify mb-4">{f.code}</p>
                     <p className="font-display text-2xl leading-tight text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
@@ -513,7 +514,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
                       </div>
                     ))}
                   </div>
-                  <Link href="/khadane/desk" className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-400 ease-editorial hover:bg-warm-white no-justify">
+                  <Link href="/khadane/desk" className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
                     <Send size={16} strokeWidth={1.6} />
                     Send enquiry
                   </Link>

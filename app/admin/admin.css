@@ -26,7 +26,7 @@
   min-height: 100dvh;
   background: var(--admin-bg);
   color: var(--admin-ink);
-  font-family: 'Inter Tight', Inter, system-ui, sans-serif;
+  font-family: var(--font-body), 'Inter Tight', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   /* Isolate from public site paint/layout work */
   contain: layout style;
@@ -62,7 +62,7 @@
 .admin-root h2,
 .admin-root h3,
 .admin-root h4 {
-  font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+  font-family: var(--font-display), 'Cormorant Garamond', Georgia, serif;
   letter-spacing: -0.01em;
   color: var(--admin-ink);
   margin: 0;
@@ -178,7 +178,7 @@
 }
 
 .admin-brand-title {
-  font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+  font-family: var(--font-display), 'Cormorant Garamond', Georgia, serif;
   font-size: 1.25rem;
   line-height: 1.1;
   color: #f5f1e8;
@@ -187,7 +187,7 @@
 
 .admin-brand-sub {
   margin: 4px 0 0;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -206,7 +206,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -283,7 +283,7 @@
   border-radius: 999px;
   background: linear-gradient(135deg, #b8962e, #7a5038);
   color: #1a1410;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
   font-weight: 600;
   font-size: 14px;
   display: flex;
@@ -397,7 +397,7 @@
   border-radius: 999px;
   border: 1px solid var(--admin-line);
   background: var(--admin-surface);
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 11px;
   color: var(--admin-muted);
   white-space: nowrap;
@@ -497,7 +497,7 @@
   border-radius: 999px;
   border: 1px solid var(--admin-line);
   background: var(--admin-surface);
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -552,7 +552,7 @@
 
 .admin-eyebrow {
   margin: 0 0 6px;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -675,7 +675,7 @@
 
 .admin-kpi .value {
   margin: 8px 0 0;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
   font-size: 1.7rem;
   font-weight: 500;
   line-height: 1.1;
@@ -784,7 +784,7 @@
 }
 
 .admin-chart-label {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 9px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -869,7 +869,7 @@
 }
 
 .admin-alert h4 {
-  font-family: 'Inter Tight', Inter, system-ui, sans-serif;
+  font-family: var(--font-body), 'Inter Tight', system-ui, sans-serif;
   font-size: 13px;
   font-weight: 600;
   margin: 6px 0 0;
@@ -901,7 +901,7 @@
 }
 
 .admin-list-row h4 {
-  font-family: 'Inter Tight', Inter, system-ui, sans-serif;
+  font-family: var(--font-body), 'Inter Tight', system-ui, sans-serif;
   font-size: 13px;
   font-weight: 600;
   margin: 0;
@@ -916,7 +916,7 @@
 
 .admin-list-row .meta {
   margin-top: 4px;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
   color: var(--admin-gold);
 }
@@ -1038,7 +1038,7 @@
 
 .admin-vcard .rev {
   margin: 12px 0 0;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 13px;
   color: var(--admin-tobacco);
   font-weight: 500;
@@ -1109,7 +1109,7 @@
 }
 
 .admin-table td.mono {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 12px;
   color: var(--admin-gold);
 }
@@ -1143,7 +1143,7 @@
 
 .admin-stat .value {
   margin: 6px 0 0;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--admin-ink);
@@ -1187,7 +1187,7 @@
   border-radius: 14px;
   background: var(--admin-sidebar);
   color: var(--admin-gold);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
   font-size: 1rem;
   display: flex;
   align-items: center;
@@ -1219,7 +1219,7 @@
 
 .admin-metric .mvalue {
   margin: 4px 0 0;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
   font-size: 1.15rem;
   color: var(--admin-ink);
 }
@@ -1267,7 +1267,7 @@
 
 .admin-site-card .coords {
   margin: 12px 0 0;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 11px;
   color: var(--admin-gold);
 }
@@ -1321,7 +1321,7 @@
   border-radius: 999px;
   background: linear-gradient(135deg, #4a3520, #1a1410);
   color: var(--admin-gold);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -1344,7 +1344,7 @@
 
 .admin-leader .gen {
   margin-top: 4px;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1394,7 +1394,7 @@
 }
 
 .admin-donut-legend-row .pct {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   color: var(--admin-ink);
   font-size: 12px;
 }
@@ -1417,7 +1417,7 @@
 }
 
 .admin-budget-row .head span:last-child {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 11px;
   color: var(--admin-muted);
 }
@@ -1519,7 +1519,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 11px;
   color: var(--admin-gold);
 }
@@ -1701,7 +1701,7 @@
 
 .admin-login-brand-name {
   margin: 0;
-  font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+  font-family: var(--font-display), 'Cormorant Garamond', Georgia, serif;
   font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.15;
@@ -1742,7 +1742,7 @@
   align-items: center;
   gap: 7px;
   margin: 0 0 14px;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1751,7 +1751,7 @@
 
 .admin-login-brand-hero h1 {
   margin: 0;
-  font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+  font-family: var(--font-display), 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(2.2rem, 3.4vw, 2.85rem);
   font-weight: 500;
   line-height: 1.12;
@@ -1802,7 +1802,7 @@
 
 .admin-login-stats strong {
   display: block;
-  font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+  font-family: var(--font-display), 'Cormorant Garamond', Georgia, serif;
   font-size: 1.35rem;
   font-weight: 500;
   color: #f5f1e8;
@@ -1876,7 +1876,7 @@
 
 .admin-login-mobile-title {
   margin: 0;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
   font-size: 1.15rem;
   font-weight: 500;
   color: #1a1410;
@@ -1884,7 +1884,7 @@
 
 .admin-login-mobile-sub {
   margin: 2px 0 0;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1897,7 +1897,7 @@
 
 .admin-login-form-eyebrow {
   margin: 0 0 8px;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1907,7 +1907,7 @@
 
 .admin-login-form-head h2 {
   margin: 0;
-  font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+  font-family: var(--font-display), 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(1.85rem, 4vw, 2.25rem);
   font-weight: 500;
   line-height: 1.15;
@@ -2169,7 +2169,7 @@
 }
 
 .admin-login-dev-note code {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 11px;
   color: #4a3520;
   background: rgba(255, 255, 255, 0.55);
@@ -2647,7 +2647,7 @@
 }
 
 .mines-coords {
-  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace !important;
   color: var(--admin-gold) !important;
 }
 
@@ -2729,7 +2729,7 @@
 
 .mines-plan-totals strong {
   display: block;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
   font-size: 1.4rem;
   color: var(--admin-ink);
 }
@@ -2840,7 +2840,7 @@
 }
 .weather-temp .emoji { font-size: 2rem; }
 .weather-temp strong {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
   font-size: 2.4rem;
   color: var(--admin-ink);
 }
@@ -2969,7 +2969,7 @@
   color: var(--admin-faint);
 }
 .plan-dual strong {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
   font-size: 1.5rem;
   color: var(--admin-ink);
 }
@@ -3148,7 +3148,7 @@
   color: var(--admin-muted);
 }
 .dash-mine-meta {
-  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace !important;
   font-size: 10px !important;
   color: var(--admin-gold) !important;
   margin-top: 6px !important;

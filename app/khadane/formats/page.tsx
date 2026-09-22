@@ -85,6 +85,7 @@ export default function FormatsPage() {
             spec={f.primaryUse}
             swapPath={`/img/formats/${f.slug}-hero.jpg`}
             aspectRatio="aspect-[3/2]"
+            sizes="(min-width: 1024px) 30vw, (min-width: 768px) 50vw, 100vw"
             objectFit={FIT_FULL_FORMAT_HEROES.has(f.slug) ? 'contain' : 'cover'}
             fallbackToPlaceholder
             className="transition-transform duration-700 ease-editorial group-hover:scale-[1.015]"
@@ -133,7 +134,7 @@ export default function FormatsPage() {
                 baseDelay={250}
                 staggerDelay={130}
               />
-              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1300ms' }}>
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <p className="font-display italic text-2xl md:text-3xl text-quarry-gold no-justify max-w-3xl mb-10">
                   Form first. Surface and edge after.
                 </p>
@@ -167,7 +168,7 @@ export default function FormatsPage() {
                     <div
                       key={stat.label}
                       className="opacity-0 animate-fade-in bg-warm-white p-6 lg:p-7"
-                      style={{ animationDelay: `${900 + i * 120}ms` }}
+                      style={{ animationDelay: `${250 + i * 60}ms` }}
                     >
                       <Icon size={20} strokeWidth={1.5} className="mb-6 text-quarry-gold" />
                       <p className="font-display text-3xl text-obsidian no-justify">{stat.value}</p>
@@ -294,7 +295,7 @@ export default function FormatsPage() {
             </div>
             <div className="lg:col-span-5">
               <RevealOnScroll delay={150}>
-                <Link href="/khadane/desk" className="inline-flex w-full items-center justify-center gap-3 bg-quarry-gold px-8 py-5 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-400 ease-editorial hover:bg-warm-white no-justify">
+                <Link href="/khadane/desk" className="inline-flex w-full items-center justify-center gap-3 bg-quarry-gold px-8 py-5 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
                   <Ruler size={16} strokeWidth={1.6} />
                   Send custom specification
                 </Link>
