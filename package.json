@@ -42,9 +42,14 @@
     "typescript": "^5.7.0"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": "24.x"
   },
   "overrides": {
     "postcss": "$postcss"
+  },
+  "allowScripts": {
+    "sharp@0.34.5": true,
+    "esbuild@0.28.1": true,
+    "unrs-resolver@1.12.2": true
   }
 }
