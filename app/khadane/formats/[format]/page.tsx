@@ -494,7 +494,7 @@ export default async function FormatPage({ params }: FormatPageProps) {
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={400}>
-              <Link href="/khadane/desk" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify">
+              <Link href="/khadane/desk" className="inline-flex items-center gap-3 px-10 py-5 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] no-justify">
                 Quote for {f.name} →
               </Link>
             </RevealOnScroll>

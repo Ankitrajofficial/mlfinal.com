@@ -86,11 +86,11 @@ export default function GalleryPage() {
                   A trade-facing image archive for KHADANE™: material details, working quarry records, processing checkpoints, container preparation, and in-situ reference frames for buyers, architects, press, and specifiers.
               </p>
                 <div className="mt-10 flex flex-wrap gap-3">
-                  <a href="#archive" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-quarry-gold hover:text-obsidian no-justify">
+                  <a href="#archive" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-quarry-gold hover:text-obsidian no-justify">
                     <Grid3X3 size={16} strokeWidth={1.6} />
                     Open archive
                   </a>
-                  <Link href="/khadane/desk" className="inline-flex items-center gap-3 border border-obsidian/70 px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-400 ease-editorial hover:bg-obsidian hover:text-warm-white no-justify">
+                  <Link href="/khadane/desk" className="inline-flex items-center gap-3 border border-obsidian/70 px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-obsidian hover:text-warm-white no-justify">
                     <Camera size={16} strokeWidth={1.6} />
                     Request images
                   </Link>
@@ -223,7 +223,7 @@ export default function GalleryPage() {
                 </h2>
               </div>
               <div className="lg:col-span-4 lg:text-right">
-                <Link href="/khadane/desk" className="inline-flex items-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-400 ease-editorial hover:bg-warm-white no-justify">
+                <Link href="/khadane/desk" className="inline-flex items-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
                   Request via desk <ArrowRight size={16} strokeWidth={1.6} />
                 </Link>
               </div>

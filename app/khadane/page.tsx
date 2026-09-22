@@ -78,7 +78,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/khadane/desk"
-                  className="inline-flex items-center gap-3 px-8 py-4 border border-warm-white/30 text-warm-white font-sans text-sm tracking-wider uppercase transition-all duration-400 ease-editorial hover:bg-warm-white hover:text-obsidian hover:gap-4 no-justify"
+                  className="inline-flex items-center gap-3 px-8 py-4 border border-warm-white/30 text-warm-white font-sans text-sm tracking-wider uppercase transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] hover:bg-warm-white hover:text-obsidian no-justify"
                 >
                   Write to The Desk
                 </Link>
@@ -214,7 +214,7 @@ export default function HomePage() {
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={420}>
-                <Link href="/khadane/collection" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-quarry-gold hover:text-obsidian no-justify">
+                <Link href="/khadane/collection" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-quarry-gold hover:text-obsidian no-justify">
                   Browse all {SITE.varietyCount} varieties <ArrowRight size={16} strokeWidth={1.6} />
                 </Link>
               </RevealOnScroll>
@@ -222,7 +222,7 @@ export default function HomePage() {
 
             <div className="lg:col-span-7">
               <RevealOnScroll>
-                <Link href={`/khadane/collection/${heroVarieties[0].slug}`} className="group mb-5 block border border-obsidian/10 bg-warm-white p-5 transition-colors duration-400 ease-editorial hover:border-quarry-gold/50">
+                <Link href={`/khadane/collection/${heroVarieties[0].slug}`} className="group mb-5 block border border-obsidian/10 bg-warm-white p-5 transition-colors duration-200 ease-out hover:border-quarry-gold/50">
                   <div className="grid grid-cols-1 gap-5 md:grid-cols-12 md:items-stretch">
                     <div className="md:col-span-7">
                       <PlaceholderImage
@@ -259,7 +259,7 @@ export default function HomePage() {
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 {heroVarieties.slice(1).map((v, i) => (
                   <RevealOnScroll key={v.slug} delay={100 + i * 70}>
-                    <Link href={`/khadane/collection/${v.slug}`} className="group block h-full border border-obsidian/10 bg-warm-white p-4 transition-colors duration-400 ease-editorial hover:border-quarry-gold/50">
+                    <Link href={`/khadane/collection/${v.slug}`} className="group block h-full border border-obsidian/10 bg-warm-white p-4 transition-colors duration-200 ease-out hover:border-quarry-gold/50">
                       <PlaceholderImage
                         variant={v.placeholderClass.replace('placeholder-', '') as any}
                         label={v.code}
@@ -323,7 +323,7 @@ export default function HomePage() {
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-px bg-obsidian/10">
               {heroFormats.map((f, i) => (
                 <RevealOnScroll key={f.slug} delay={i * 50} className="h-full">
-                  <Link href={`/khadane/formats/${f.slug}`} className="flex h-full min-h-44 flex-col bg-warm-white p-6 lg:p-8 hover:bg-stone-linen transition-colors duration-400 ease-editorial group">
+                  <Link href={`/khadane/formats/${f.slug}`} className="flex h-full min-h-44 flex-col bg-warm-white p-6 lg:p-8 hover:bg-stone-linen transition-colors duration-200 ease-out group">
                     <p className="font-mono text-xs text-quarry-gold no-justify mb-3">{f.code}</p>
                     <h3 className="font-display text-xl lg:text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors mb-3">
                       {f.name}
@@ -384,7 +384,7 @@ export default function HomePage() {
                 </div>
               </RevealOnScroll>
               <RevealOnScroll delay={500}>
-                <Link href="/khadane/quarry" className="inline-flex items-center gap-3 text-warm-white font-sans text-sm tracking-wider uppercase border-b border-warm-white/30 hover:border-quarry-gold hover:text-quarry-gold pb-1 transition-all duration-400 no-justify">
+                <Link href="/khadane/quarry" className="inline-flex items-center gap-3 text-warm-white font-sans text-sm tracking-wider uppercase border-b border-warm-white/30 hover:border-quarry-gold hover:text-quarry-gold pb-1 transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] no-justify">
                   Inside the quarry →
                 </Link>
               </RevealOnScroll>
@@ -687,7 +687,7 @@ export default function HomePage() {
               <RevealOnScroll delay={520}>
                 <Link
                   href="/khadane/collection"
-                  className="mt-8 inline-flex items-center gap-3 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:text-quarry-gold no-justify"
+                  className="mt-8 inline-flex items-center gap-3 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:text-quarry-gold no-justify"
                 >
                   Browse all allied varieties <ArrowRight size={16} strokeWidth={1.6} />
                 </Link>

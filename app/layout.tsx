@@ -50,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${display.variable} ${body.variable} ${mono.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`scroll-smooth ${display.variable} ${body.variable} ${mono.variable}`}>
       <head>
         {/* Favicons — KHADANE™ transparent K-only mark (Quarry Gold #B8962E) */}
         <link rel="icon" href="/favicon.ico" sizes="any" />

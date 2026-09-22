@@ -295,7 +295,7 @@ export default function FormatsPage() {
             </div>
             <div className="lg:col-span-5">
               <RevealOnScroll delay={150}>
-                <Link href="/khadane/desk" className="inline-flex w-full items-center justify-center gap-3 bg-quarry-gold px-8 py-5 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-400 ease-editorial hover:bg-warm-white no-justify">
+                <Link href="/khadane/desk" className="inline-flex w-full items-center justify-center gap-3 bg-quarry-gold px-8 py-5 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
                   <Ruler size={16} strokeWidth={1.6} />
                   Send custom specification
                 </Link>

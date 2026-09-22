@@ -148,11 +148,11 @@ export default function GroupPage() {
                   Mohan Lal & Sons operates across stone and export, automotive and fuel, hospitality, student housing, and food services. KHADANE™ is the stone export vertical of that house.
                 </p>
                 <div className="mt-10 flex flex-wrap gap-3">
-                  <a href="#verticals" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-quarry-gold hover:text-obsidian no-justify">
+                  <a href="#verticals" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-quarry-gold hover:text-obsidian no-justify">
                     <Building2 size={16} strokeWidth={1.6} />
                     The five verticals
                   </a>
-                  <Link href="/khadane/desk" className="inline-flex items-center gap-3 border border-obsidian/70 px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-400 ease-editorial hover:bg-obsidian hover:text-warm-white no-justify">
+                  <Link href="/khadane/desk" className="inline-flex items-center gap-3 border border-obsidian/70 px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-obsidian hover:text-warm-white no-justify">
                     <Mail size={16} strokeWidth={1.6} />
                     Buyer desk
                   </Link>
@@ -233,7 +233,7 @@ export default function GroupPage() {
               const Icon = vertical.icon
               return (
                 <RevealOnScroll key={vertical.code} delay={Math.min(index * 80, 300)}>
-                  <article className="flex h-full min-h-[430px] min-w-0 flex-col justify-between border border-obsidian/8 bg-stone-linen/55 p-7 transition-colors duration-400 ease-editorial hover:bg-warm-white">
+                  <article className="flex h-full min-h-[430px] min-w-0 flex-col justify-between border border-obsidian/8 bg-stone-linen/55 p-7 transition-colors duration-200 ease-out hover:bg-warm-white">
                     <div>
                       <div className="mb-10 flex items-start justify-between gap-5">
                         <div>
@@ -366,7 +366,7 @@ export default function GroupPage() {
                   href={SITE.parent.site}
                   target="_blank"
                   rel="noopener"
-                  className="inline-flex items-center gap-3 border border-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-quarry-gold transition-all duration-400 ease-editorial hover:bg-quarry-gold hover:text-obsidian no-justify"
+                  className="inline-flex items-center gap-3 border border-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-quarry-gold transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] hover:bg-quarry-gold hover:text-obsidian no-justify"
                 >
                   Mohan Lal & Sons <ArrowRight size={16} strokeWidth={1.6} />
                 </a>
@@ -383,10 +383,10 @@ export default function GroupPage() {
                   ))}
                 </div>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Link href="/khadane/desk" className="inline-flex items-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-400 ease-editorial hover:bg-warm-white no-justify">
+                  <Link href="/khadane/desk" className="inline-flex items-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
                     Open the desk <ArrowRight size={16} strokeWidth={1.6} />
                   </Link>
-                  <a href={`mailto:${SITE.contact.publicEmail}`} className="inline-flex items-center gap-3 border border-warm-white/35 px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-warm-white hover:text-obsidian no-justify">
+                  <a href={`mailto:${SITE.contact.publicEmail}`} className="inline-flex items-center gap-3 border border-warm-white/35 px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-warm-white hover:text-obsidian no-justify">
                     Email export desk <Mail size={16} strokeWidth={1.6} />
                   </a>
                 </div>

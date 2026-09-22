@@ -68,7 +68,7 @@ export default function CollectionPage() {
                 <p className={`mt-1 font-sans text-xs no-justify ${dark ? 'text-warm-white/75' : 'text-obsidian'}`}>{v.formatScope}</p>
               </div>
             </div>
-            <p className={`mt-5 inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider no-justify transition-all group-hover:gap-3 ${dark ? 'text-quarry-gold' : 'text-tobacco'}`}>
+            <p className={`mt-5 inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider no-justify transition-all ${dark ? 'text-quarry-gold' : 'text-tobacco'}`}>
               View stone <ArrowRight size={13} strokeWidth={1.6} />
             </p>
           </div>

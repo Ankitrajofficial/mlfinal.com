@@ -78,7 +78,7 @@ export default function Gallery() {
                 <button
                   key={cat.value}
                   onClick={() => setActiveCategory(cat.value)}
-                  className={`group inline-flex items-center gap-2 border px-4 py-3 font-sans text-xs uppercase tracking-eyebrow transition-all duration-400 ease-editorial no-justify ${
+                  className={`group inline-flex items-center gap-2 border px-4 py-3 font-sans text-xs uppercase tracking-eyebrow transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] no-justify ${
                     active
                       ? 'border-obsidian bg-obsidian text-warm-white'
                       : 'border-obsidian/15 bg-warm-white text-obsidian hover:border-quarry-gold hover:text-quarry-gold'
@@ -333,7 +333,7 @@ function GalleryTile({
   return (
     <button
       onClick={() => onClick(item)}
-      className="group block w-full overflow-hidden border border-obsidian/8 bg-warm-white text-left transition-colors duration-400 ease-editorial hover:border-quarry-gold/45"
+      className="group block w-full overflow-hidden border border-obsidian/8 bg-warm-white text-left transition-colors duration-200 ease-out hover:border-quarry-gold/45"
       aria-label={`Open ${item.title}`}
     >
       <div className="relative overflow-hidden bg-obsidian">

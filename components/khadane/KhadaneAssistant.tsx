@@ -98,7 +98,7 @@ export default function KhadaneAssistant() {
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? 'Close KHADANE assistant' : 'Ask the KHADANE assistant'}
         aria-expanded={open}
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-quarry-gold px-5 py-4 text-obsidian shadow-lg transition-all duration-400 ease-editorial hover:bg-obsidian hover:text-quarry-gold"
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-quarry-gold px-5 py-4 text-obsidian shadow-lg transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] hover:bg-obsidian hover:text-quarry-gold"
       >
         {open ? <X size={20} strokeWidth={1.6} /> : <Sparkles size={20} strokeWidth={1.6} />}
         {!open && (

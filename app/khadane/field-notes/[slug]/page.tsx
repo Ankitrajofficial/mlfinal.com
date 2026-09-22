@@ -196,7 +196,7 @@ export default async function FieldNotePage({ params }: FieldNotePageProps) {
             </p>
             <a
               href="mailto:office@khadane.com?subject=Subscribe%20to%20Field%20Notes"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-all duration-400 ease-editorial no-justify"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-quarry-gold text-obsidian font-sans text-sm tracking-wider uppercase hover:bg-warm-white transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] no-justify"
             >
               Subscribe →
             </a>

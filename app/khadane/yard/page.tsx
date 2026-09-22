@@ -314,7 +314,7 @@ export default function YardPage() {
                       </div>
                     ))}
                   </div>
-                  <Link href="/khadane/desk" className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-400 ease-editorial hover:bg-tobacco no-justify">
+                  <Link href="/khadane/desk" className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-tobacco no-justify">
                     Write to The Desk
                     <ArrowRight size={16} strokeWidth={1.6} />
                   </Link>

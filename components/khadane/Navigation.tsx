@@ -49,14 +49,14 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-editorial ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color] duration-300 ease-out ${
           overHero
             ? 'bg-transparent border-b border-transparent'
             : 'bg-white border-b border-obsidian/8'
         }`}
       >
         <div
-          className={`container-editorial flex items-center justify-between gap-4 transition-all duration-500 ease-editorial ${
+          className={`container-editorial flex items-center justify-between gap-4 transition-[height] duration-300 ease-out ${
             scrolled && !overHero ? 'h-11 lg:h-[58px]' : 'h-12 lg:h-[68px]'
           }`}
         >
@@ -78,7 +78,7 @@ export default function Navigation() {
                 <li key={item.href}>
                   <Link
                     href={href}
-                    className={`relative px-3 py-1.5 font-sans text-xs leading-none tracking-wider uppercase transition-colors duration-400 ${
+                    className={`relative px-3 py-2.5 font-sans text-xs leading-none tracking-wider uppercase transition-colors duration-400 ${
                       active
                         ? 'text-quarry-gold'
                         : navOnDark
@@ -97,7 +97,7 @@ export default function Navigation() {
             <li className="ml-2">
               <Link
                 href={withRouteBase('/desk')}
-                className={`px-4 py-2 border font-sans text-xs leading-none tracking-wider uppercase transition-all duration-400 ease-editorial inline-flex items-center gap-2 ${
+                className={`px-4 py-2.5 border font-sans text-xs leading-none tracking-wider uppercase transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] inline-flex items-center gap-2 ${
                   navOnDark
                     ? 'border-warm-white/35 text-warm-white/85 hover:bg-warm-white hover:text-obsidian'
                     : 'border-obsidian text-obsidian hover:bg-obsidian hover:text-warm-white'
