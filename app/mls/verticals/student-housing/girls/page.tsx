@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { buildMetadata } from '@/lib/seo'
 import {
@@ -81,6 +82,9 @@ export default function GirlsCampusPage() {
                 body: "The older of the two campuses. Established in 2018. Carries the institutional knowledge that the family built up across the first six years of student housing.",
                 variant: 'mls-tobacco' as const,
                 label: 'PRINCESS · DOCUMENTARY',
+                logo: '/img/logos/the-princess.png',
+                logoWidth: 1200,
+                logoHeight: 437,
               },
               {
                 title: 'Victoria Palace',
@@ -89,6 +93,9 @@ export default function GirlsCampusPage() {
                 body: 'The newer campus. Opened in 2023. Built with the lessons of the first five years of Princess operation already in place.',
                 variant: 'documentary' as const,
                 label: 'VICTORIA · DOCUMENTARY',
+                logo: '/img/logos/victorias-palace.png',
+                logoWidth: 1200,
+                logoHeight: 329,
               },
             ].map((house, i) => (
               <RevealOnScroll key={house.title} delay={i * 100}>
@@ -99,11 +106,18 @@ export default function GirlsCampusPage() {
                     aspectRatio="aspect-[3/2]"
                     variant={house.variant}
                   />
-                  <div className="mt-6 flex items-baseline justify-between mb-4">
+                  <div className="mt-6 flex items-end justify-between gap-6 mb-4">
                     <h3 className="font-display text-3xl text-mls-ink">
-                      {house.title}
+                      <Image
+                        src={house.logo}
+                        alt={house.title}
+                        width={house.logoWidth}
+                        height={house.logoHeight}
+                        sizes="(min-width: 1024px) 320px, 60vw"
+                        className="h-14 md:h-16 w-auto"
+                      />
                     </h3>
-                    <p className="font-mono text-[10px] uppercase tracking-marker text-mls-slate">
+                    <p className="font-mono text-[10px] uppercase tracking-marker text-mls-slate whitespace-nowrap">
                       Since {house.year}
                     </p>
                   </div>
