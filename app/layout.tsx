@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+import ContentProtection from '@/components/shared/ContentProtection'
 
 // Self-hosted through next/font: no render-blocking stylesheet from Google,
 // files preloaded from our own origin, and a size-adjusted fallback face so
@@ -62,7 +63,10 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#B8962E" />
       </head>
-      <body className="antialiased font-body">{children}</body>
+      <body className="antialiased font-body">
+        {children}
+        <ContentProtection />
+      </body>
     </html>
   )
 }
