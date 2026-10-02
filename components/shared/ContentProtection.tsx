@@ -10,7 +10,7 @@ import { useEffect } from 'react'
  *   - no "Save image as…" context menu, drag-out, or iOS long-press save
  *   - Cmd/Ctrl+S (save page) and Cmd/Ctrl+P (print) are swallowed
  *   - PrintScreen wipes the clipboard and briefly blanks the page
- *   - imagery blurs while the window is unfocused (snipping tools steal focus)
+ *   - imagery hides while the window is unfocused (snipping tools steal focus)
  * Print output is hidden by the print rule in app/globals.css.
  *
  * Mounted once in the root layout, so it covers both sites and /admin.

@@ -17,9 +17,9 @@ type NetworkInformationLike = {
 
 // The video is decoration over a poster that is already the LCP image. It is
 // only mounted after hydration, and only when the visitor has not asked for
-// reduced motion or reduced data, so the page never pays for it up front.
+// reduced data, so the page never pays for it up front. It is a muted ambient
+// loop, so it plays under Reduce Motion too, matching the MLS hero.
 function videoAllowed(): boolean {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false
   const nav = navigator as Navigator & { connection?: NetworkInformationLike }
   const conn = nav.connection
   if (conn?.saveData) return false
