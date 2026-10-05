@@ -12,7 +12,7 @@ interface RevealOnScrollProps {
 
 /**
  * Reveals children with a subtle fade + lift when scrolled into view.
- * Respects prefers-reduced-motion automatically (no transform/transition then).
+ * Under prefers-reduced-motion it fades without the lift.
  * Shared between MLS and KHADANE; works without any wrapper.
  */
 export default function RevealOnScroll({
@@ -28,13 +28,6 @@ export default function RevealOnScroll({
   useEffect(() => {
     const el = ref.current
     if (!el) return
-
-    // Respect reduced motion
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (mq.matches) {
-      setVisible(true)
-      return
-    }
 
     const obs = new IntersectionObserver(
       (entries) => {
@@ -55,7 +48,7 @@ export default function RevealOnScroll({
     <div
       ref={ref}
       data-delay={delay}
-      className={`${className} ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'} transition-all duration-700 ease-editorial`}
+      className={`${className} ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'} transition-all duration-700 ease-editorial motion-reduce:transform-none`}
       style={{ transitionDelay: visible ? `${delay}ms` : '0ms' }}
     >
       {children}

@@ -400,15 +400,44 @@
     animation-duration: 0.01ms !important;
     animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
   .word-rise > span { opacity: 1 !important; transform: none !important; }
+  /* Reveals still fade in, they just don't travel. Snapping everything in
+     at once made scrolling feel jerky. */
+  .reveal { transform: none; transition: opacity 400ms var(--ease-editorial); }
   /* The marquee strips are content banners, not entrance effects —
      freezing them strands the items mid-clip with no way to read the rest.
      Keep them looping (the gentlest continuous motion on the page). */
   .animate-marquee {
     animation-duration: 40s !important;
     animation-iteration-count: infinite !important;
+  }
+}
+
+/* ============================================================
+   Content protection — whole site (see ContentProtection.tsx)
+   ============================================================ */
+img,
+picture,
+video,
+svg {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+html.capture-guard :is(img, picture, video, canvas) {
+  visibility: hidden;
+}
+
+html.capture-blank body {
+  visibility: hidden;
+}
+
+@media print {
+  body {
+    display: none !important;
   }
 }

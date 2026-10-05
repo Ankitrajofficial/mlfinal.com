@@ -47,7 +47,6 @@ export default function RevealOnScroll({
     const el = ref.current
     if (!el) return
     if (typeof IntersectionObserver === 'undefined') return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const inView = el.getBoundingClientRect().top < window.innerHeight
     // On hydration the browser has already painted this block. Hiding it now
