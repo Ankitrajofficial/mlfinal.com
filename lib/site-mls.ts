@@ -100,4 +100,4 @@ export const MLS_HERO_VIDEO = '/videos/home-hero.mp4'
 export const KHADANE_PUBLIC_URL =
   process.env.NODE_ENV === 'development'
     ? '/khadane'
-    : process.env.NEXT_PUBLIC_KHADANE_URL ?? 'https://www.khadane.com'
+    : process.env.NEXT_PUBLIC_KHADANE_URL ?? 'https://khadane.com'

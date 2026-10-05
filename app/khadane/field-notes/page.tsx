@@ -4,10 +4,12 @@ import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
+import { khadanePageUrls } from '@/lib/seo'
 
 export const metadata = {
   title: 'Field Notes — Editorial briefs from the belt',
   description: 'Editorial briefs from the Bijolia sandstone belt. Geology, process, trade. Written from the quarry.',
+  ...khadanePageUrls('/field-notes'),
 }
 
 
@@ -46,7 +48,7 @@ export default function FieldNotesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             {FIELD_NOTES.map((note, i) => (
               <RevealOnScroll key={note.id} delay={i * 80}>
-                <Link href={`/khadane/field-notes/${note.slug}`} className="group block">
+                <Link href={`/field-notes/${note.slug}`} className="group block">
                   <PlaceholderImage
                     variant={note.placeholderVariant}
                     label={note.id}

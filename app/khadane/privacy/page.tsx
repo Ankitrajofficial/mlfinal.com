@@ -1,10 +1,12 @@
 import { SITE } from '@/lib/khadane/site'
 import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
+import { khadanePageUrls } from '@/lib/seo'
 
 export const metadata = {
   title: 'Privacy',
   description: 'KHADANE™ privacy practices regarding enquiry data.',
+  ...khadanePageUrls('/privacy'),
 }
 
 export default function PrivacyPage() {

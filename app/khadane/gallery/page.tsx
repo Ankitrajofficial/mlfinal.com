@@ -16,10 +16,12 @@ import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
 import Gallery from '@/components/khadane/Gallery'
+import { khadanePageUrls } from '@/lib/seo'
 
 export const metadata = {
   title: 'The Record — Gallery of stone, quarry, yard, installations',
   description: 'An editorial gallery of KHADANE™ — stone close-ups, the working quarry face, the yard, real installations, and stills from the Belt Film.',
+  ...khadanePageUrls('/gallery'),
 }
 
 export default function GalleryPage() {
@@ -90,7 +92,7 @@ export default function GalleryPage() {
                     <Grid3X3 size={16} strokeWidth={1.6} />
                     Open archive
                   </a>
-                  <Link href="/khadane/desk" className="inline-flex items-center gap-3 border border-obsidian/70 px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-obsidian hover:text-warm-white no-justify">
+                  <Link href="/desk" className="inline-flex items-center gap-3 border border-obsidian/70 px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-obsidian hover:text-warm-white no-justify">
                     <Camera size={16} strokeWidth={1.6} />
                     Request images
                   </Link>
@@ -223,7 +225,7 @@ export default function GalleryPage() {
                 </h2>
               </div>
               <div className="lg:col-span-4 lg:text-right">
-                <Link href="/khadane/desk" className="inline-flex items-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
+                <Link href="/desk" className="inline-flex items-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
                   Request via desk <ArrowRight size={16} strokeWidth={1.6} />
                 </Link>
               </div>

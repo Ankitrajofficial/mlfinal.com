@@ -4,10 +4,12 @@ import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
+import { khadanePageUrls } from '@/lib/seo'
 
 export const metadata = {
   title: 'About KHADANE™',
   description: 'KHADANE™ is the sandstone export brand of Mohan Lal & Sons, quarrying and shipping Indian sandstone direct from the Bijolia belt of Rajasthan since 1972.',
+  ...khadanePageUrls('/about'),
 }
 
 export default function AboutPage() {
@@ -99,7 +101,7 @@ export default function AboutPage() {
                 <p className="font-mono text-xs uppercase tracking-eyebrow text-tobacco mb-6 no-justify">
                   Founder at KHADANE — Rahul Dhakar
                 </p>
-                <Link href="/khadane/group" className="cta-text mt-4">The full group →</Link>
+                <Link href="/group" className="cta-text mt-4">The full group →</Link>
               </RevealOnScroll>
             </div>
           </div>
@@ -132,7 +134,7 @@ export default function AboutPage() {
               Have a project
               <span className="block italic text-quarry-gold">to talk about?</span>
             </h2>
-            <Link href="/khadane/desk" className="cta-primary no-justify">Write to The Desk →</Link>
+            <Link href="/desk" className="cta-primary no-justify">Write to The Desk →</Link>
           </RevealOnScroll>
         </div>
       </section>

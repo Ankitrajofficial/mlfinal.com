@@ -18,6 +18,7 @@ import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import VisualReferenceSet from '@/components/khadane/VisualReferenceSet'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
+import { khadanePageUrls } from '@/lib/seo'
 
 export function generateStaticParams() {
   return VARIETIES.map((v) => ({ variety: v.slug }))
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: VarietyPageProps) {
   return {
     title: `${v.name} — ${v.code}`,
     description: v.oneLine,
+    ...khadanePageUrls(`/collection/${v.slug}`),
   }
 }
 
@@ -211,11 +213,11 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
                   })}
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <Link href="/khadane/desk" className="cta-primary no-justify">
+                  <Link href="/desk" className="cta-primary no-justify">
                     <Send size={16} strokeWidth={1.6} />
                     Quote for {v.name}
                   </Link>
-                  <Link href="/khadane/collection" className="cta-secondary no-justify">
+                  <Link href="/collection" className="cta-secondary no-justify">
                     <ArrowRight size={16} strokeWidth={1.6} />
                     All varieties
                   </Link>
@@ -333,7 +335,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
                     Technical Specification
                   </h2>
                 </div>
-                <Link href="/khadane/desk" className="cta-secondary no-justify">
+                <Link href="/desk" className="cta-secondary no-justify">
                   <FileText size={16} strokeWidth={1.6} />
                   Request datasheet
                 </Link>
@@ -452,7 +454,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
           <div className="grid grid-cols-1 gap-px bg-obsidian/10 sm:grid-cols-2 lg:grid-cols-4">
             {featuredFormats.map((f, i) => (
               <RevealOnScroll key={f.slug} delay={Math.min(i * 40, 400)} className="h-full">
-                <Link href={`/khadane/formats/${f.slug}`} className="group flex h-full min-h-44 flex-col justify-between bg-warm-white p-6 transition-colors duration-200 ease-out hover:bg-stone-linen">
+                <Link href={`/formats/${f.slug}`} className="group flex h-full min-h-44 flex-col justify-between bg-warm-white p-6 transition-colors duration-200 ease-out hover:bg-stone-linen">
                   <div>
                     <p className="font-mono text-xs text-quarry-gold no-justify mb-4">{f.code}</p>
                     <p className="font-display text-2xl leading-tight text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
@@ -469,7 +471,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
           {availableFormats.length > featuredFormats.length && (
             <RevealOnScroll delay={400}>
               <div className="mt-10 flex justify-center">
-                <Link href="/khadane/formats" className="cta-text no-justify">
+                <Link href="/formats" className="cta-text no-justify">
                   View all compatible formats <ArrowRight size={15} strokeWidth={1.6} />
                 </Link>
               </div>
@@ -514,7 +516,7 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
                       </div>
                     ))}
                   </div>
-                  <Link href="/khadane/desk" className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
+                  <Link href="/desk" className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
                     <Send size={16} strokeWidth={1.6} />
                     Send enquiry
                   </Link>
@@ -529,13 +531,13 @@ export default async function VarietyPage({ params }: VarietyPageProps) {
       <section className="section-warm border-t border-obsidian/10">
         <div className="container-editorial py-12 lg:py-16">
           <div className="grid grid-cols-2 gap-4">
-            <Link href={`/khadane/collection/${prev.slug}`} className="group block">
+            <Link href={`/collection/${prev.slug}`} className="group block">
               <p className="font-mono text-xs text-tobacco/60 mb-2 no-justify">← PREVIOUS · {prev.code}</p>
               <p className="font-display text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
                 {prev.name}
               </p>
             </Link>
-            <Link href={`/khadane/collection/${next.slug}`} className="group block text-right">
+            <Link href={`/collection/${next.slug}`} className="group block text-right">
               <p className="font-mono text-xs text-tobacco/60 mb-2 no-justify">NEXT · {next.code} →</p>
               <p className="font-display text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors">
                 {next.name}

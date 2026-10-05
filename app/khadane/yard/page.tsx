@@ -17,10 +17,12 @@ import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
+import { khadanePageUrls } from '@/lib/seo'
 
 export const metadata = {
   title: 'The Yard — Processing, calibration, shipping',
   description: 'The Bijolia processing yard, where the cut is decided. Block arrival, sorting, cutting, edge and surface, calibration, crating, and dispatch.',
+  ...khadanePageUrls('/yard'),
 }
 
 export default function YardPage() {
@@ -112,7 +114,7 @@ export default function YardPage() {
                     <Factory size={16} strokeWidth={1.6} />
                     Six checkpoints
                   </a>
-                  <Link href="/khadane/desk" className="cta-secondary no-justify">
+                  <Link href="/desk" className="cta-secondary no-justify">
                     <Send size={16} strokeWidth={1.6} />
                     Visit or specify
                   </Link>
@@ -314,7 +316,7 @@ export default function YardPage() {
                       </div>
                     ))}
                   </div>
-                  <Link href="/khadane/desk" className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-tobacco no-justify">
+                  <Link href="/desk" className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-tobacco no-justify">
                     Write to The Desk
                     <ArrowRight size={16} strokeWidth={1.6} />
                   </Link>

@@ -14,11 +14,13 @@ import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
+import { khadanePageUrls } from '@/lib/seo'
 
 export const metadata = {
   title: 'The Quarry',
   description:
     'The Bijolia sandstone belt of Rajasthan. KHADANE’s owned quarries and the broader working belt, photographed from the cut.',
+  ...khadanePageUrls('/quarry'),
 }
 
 // Portfolio of named holdings lives at /mines
@@ -110,7 +112,7 @@ export default function QuarryPage() {
                     <MapPin size={16} strokeWidth={1.6} />
                     Quarry villages
                   </a>
-                  <Link href="/khadane/yard" className="inline-flex items-center gap-3 border border-warm-white/35 px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-warm-white hover:text-obsidian no-justify">
+                  <Link href="/yard" className="inline-flex items-center gap-3 border border-warm-white/35 px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-warm-white hover:text-obsidian no-justify">
                     <Truck size={16} strokeWidth={1.6} />
                     To the yard
                   </Link>
@@ -276,7 +278,7 @@ export default function QuarryPage() {
                     ['Kandla Grey', 'kandla-grey', 'First quarried from the Parana block.'],
                     ['Slate Grey', 'slate-grey', 'Worked from the Dabi-Budhpura area.'],
                   ].map(([name, slug, note]) => (
-                    <Link key={slug} href={`/khadane/collection/${slug}`} className="group bg-warm-white/[0.05] border border-warm-white/10 p-6 transition-colors hover:bg-warm-white/[0.08]">
+                    <Link key={slug} href={`/collection/${slug}`} className="group bg-warm-white/[0.05] border border-warm-white/10 p-6 transition-colors hover:bg-warm-white/[0.08]">
                       <p className="font-display text-2xl text-warm-white no-justify group-hover:text-quarry-gold transition-colors">{name}</p>
                       <p className="mt-3 font-sans text-sm text-warm-white/62 no-justify">{note}</p>
                       <p className="mt-6 inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-quarry-gold no-justify transition-all">
@@ -317,7 +319,7 @@ export default function QuarryPage() {
                 <p className="editorial-body mb-8">
                   Raw blocks extracted from the quarries travel by truck to the Bijolia processing yard, where cutting, calibration, surface treatment, edging, quality check, crating, and dispatch happen.
                 </p>
-                <Link href="/khadane/yard" className="cta-primary no-justify">
+                <Link href="/yard" className="cta-primary no-justify">
                   The Yard <ArrowRight size={16} strokeWidth={1.6} />
                 </Link>
               </RevealOnScroll>

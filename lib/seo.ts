@@ -65,6 +65,51 @@ export function buildMetadata({
 }
 
 /**
+ * Absolute KHADANE URL for a route path, in the one style the sitemap,
+ * canonical tags and og:url all share: no trailing slash, home page
+ * included (https://khadane.com), which is also how Next renders canonicals.
+ */
+export function khadaneUrl(path: string) {
+  const base = KHADANE_SITE.url.replace(/\/$/, '')
+  return path === '/' || path === '' ? base : `${base}${path}`
+}
+
+/**
+ * Shared Open Graph fields for KHADANE pages. A page that sets openGraph
+ * replaces the layout's openGraph entirely, so these are repeated per page.
+ * The image points at its final URL (khadane.com/opengraph-image.png), not
+ * the internal /khadane/ path that would redirect.
+ */
+export const KHADANE_OPEN_GRAPH = {
+  type: 'website',
+  locale: 'en_GB',
+  siteName: 'KHADANE™',
+  title: 'KHADANE™ — The sandstone catalogue of the Bijolia belt',
+  description:
+    'Twenty-three sandstones across twenty-one formats. Quarried in Bijolia, Rajasthan. Since 1972.',
+  images: [
+    {
+      url: '/opengraph-image.png',
+      width: 1200,
+      height: 630,
+      type: 'image/png',
+    },
+  ],
+} satisfies Metadata['openGraph']
+
+/**
+ * Self-referencing canonical and og:url for a KHADANE page.
+ * Spread into the page's metadata: { title, description, ...khadanePageUrls('/collection') }
+ */
+export function khadanePageUrls(path: string): Pick<Metadata, 'alternates' | 'openGraph'> {
+  const url = khadaneUrl(path)
+  return {
+    alternates: { canonical: url },
+    openGraph: { ...KHADANE_OPEN_GRAPH, url },
+  }
+}
+
+/**
  * JSON-LD generators per build prompt §4.7
  */
 export function buildOrganizationLD(site: SiteName) {

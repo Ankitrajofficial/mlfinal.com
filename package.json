@@ -14,6 +14,7 @@
     "audit:facts": "tsx scripts/audit-facts.ts",
     "export:catalogue": "tsx scripts/export-catalogue.ts",
     "admin:migrate-neon": "tsx scripts/migrate-admin-to-neon.ts",
+    "check:sitemap": "node scripts/check-sitemap.mjs",
     "verify": "npm run lint && npm run typecheck && npm run audit:facts && npm run build"
   },
   "dependencies": {

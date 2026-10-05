@@ -19,11 +19,13 @@ import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
+import { khadanePageUrls } from '@/lib/seo'
 
 export const metadata = {
   title: 'The Group',
   description:
     'Mohan Lal & Sons is a working enterprise across stone and export, automotive and fuel, hospitality, student housing, and food services, based in Bijolia since 1972.',
+  ...khadanePageUrls('/group'),
 }
 
 const groupStats = [
@@ -57,7 +59,7 @@ const verticals = [
     note: 'The founding vertical',
     description:
       'Twenty-three sandstones quarried and allied across Rajasthan, Madhya Pradesh, and Uttar Pradesh. Cut, dressed, packed, and shipped from the Bijolia yard for international buyers.',
-    href: '/khadane/collection',
+    href: '/collection',
   },
   {
     code: 'II',
@@ -152,7 +154,7 @@ export default function GroupPage() {
                     <Building2 size={16} strokeWidth={1.6} />
                     The five verticals
                   </a>
-                  <Link href="/khadane/desk" className="inline-flex items-center gap-3 border border-obsidian/70 px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-obsidian hover:text-warm-white no-justify">
+                  <Link href="/desk" className="inline-flex items-center gap-3 border border-obsidian/70 px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-obsidian hover:text-warm-white no-justify">
                     <Mail size={16} strokeWidth={1.6} />
                     Buyer desk
                   </Link>
@@ -383,7 +385,7 @@ export default function GroupPage() {
                   ))}
                 </div>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Link href="/khadane/desk" className="inline-flex items-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
+                  <Link href="/desk" className="inline-flex items-center gap-3 bg-quarry-gold px-8 py-4 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
                     Open the desk <ArrowRight size={16} strokeWidth={1.6} />
                   </Link>
                   <a href={`mailto:${SITE.contact.publicEmail}`} className="inline-flex items-center gap-3 border border-warm-white/35 px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-warm-white hover:text-obsidian no-justify">

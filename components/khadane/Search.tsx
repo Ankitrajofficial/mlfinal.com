@@ -21,12 +21,12 @@ const STATIC_PAGES: SearchResult[] = [
   { type: 'page', title: 'The Quarry', subtitle: 'The working face', href: '/quarry' },
   { type: 'page', title: 'The Yard', subtitle: 'Processing & shipping', href: '/yard' },
   { type: 'page', title: 'The Desk', subtitle: 'Write to us', href: '/desk' },
-  { type: 'page', title: 'The Group', subtitle: 'Mohan Lal & Sons', href: '/khadane/group' },
-  { type: 'page', title: 'The Record', subtitle: 'Stone, quarry, yard, in-situ', href: '/khadane/gallery' },
-  { type: 'page', title: 'Collection', subtitle: `All ${SITE.varietyCount} varieties`, href: '/khadane/collection' },
-  { type: 'page', title: 'Formats', subtitle: `All ${SITE.formatCount} formats`, href: '/khadane/formats' },
-  { type: 'page', title: 'Field Notes', subtitle: 'Editorial briefs', href: '/khadane/field-notes' },
-  { type: 'page', title: 'About', subtitle: 'About KHADANE™', href: '/khadane/about' },
+  { type: 'page', title: 'The Group', subtitle: 'Mohan Lal & Sons', href: '/group' },
+  { type: 'page', title: 'The Record', subtitle: 'Stone, quarry, yard, in-situ', href: '/gallery' },
+  { type: 'page', title: 'Collection', subtitle: `All ${SITE.varietyCount} varieties`, href: '/collection' },
+  { type: 'page', title: 'Formats', subtitle: `All ${SITE.formatCount} formats`, href: '/formats' },
+  { type: 'page', title: 'Field Notes', subtitle: 'Editorial briefs', href: '/field-notes' },
+  { type: 'page', title: 'About', subtitle: 'About KHADANE™', href: '/about' },
 ]
 
 interface SearchProps {
@@ -40,7 +40,12 @@ export default function Search({ tone = 'light' }: SearchProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
   const pathname = usePathname()
-  const routeBase = pathname.startsWith('/khadane') ? '/khadane' : ''
+  // Clean khadane.com URLs in server HTML; the /khadane prefix only after
+  // hydration, when the browser is on an internal /khadane URL.
+  const [routeBase, setRouteBase] = useState('')
+  useEffect(() => {
+    setRouteBase(window.location.pathname.startsWith('/khadane') ? '/khadane' : '')
+  }, [pathname])
   const withRouteBase = useCallback(
     (href: string) => (routeBase && href.startsWith('/') ? `${routeBase}${href}` : href),
     [routeBase]
@@ -60,21 +65,21 @@ export default function Search({ tone = 'light' }: SearchProps) {
       type: 'variety' as const,
       title: v.name,
       subtitle: `${v.code} · ${v.district}`,
-      href: `/khadane/collection/${v.slug}`,
+      href: `/collection/${v.slug}`,
       code: v.code,
     }))
     const formatResults: SearchResult[] = FORMATS.map((f) => ({
       type: 'format' as const,
       title: f.name,
       subtitle: `${f.code} · ${f.primaryUse}`,
-      href: `/khadane/formats/${f.slug}`,
+      href: `/formats/${f.slug}`,
       code: f.code,
     }))
     const noteResults: SearchResult[] = FIELD_NOTES.map((n) => ({
       type: 'field-note' as const,
       title: n.title,
       subtitle: `${n.id} · ${n.categoryLabel}`,
-      href: `/khadane/field-notes/${n.slug}`,
+      href: `/field-notes/${n.slug}`,
       code: n.id,
     }))
     return [...varietyResults, ...formatResults, ...noteResults, ...STATIC_PAGES]

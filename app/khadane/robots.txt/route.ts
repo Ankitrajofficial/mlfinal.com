@@ -1,4 +1,4 @@
-import { SITE } from '@/lib/khadane/site'
+import { khadaneUrl } from '@/lib/seo'
 
 /**
  * KHADANE robots.txt — allow all, point to the sitemap.
@@ -9,7 +9,6 @@ import { SITE } from '@/lib/khadane/site'
  * /khadane/robots.txt).
  */
 export function GET() {
-  const base = SITE.url.replace(/\/$/, '')
   const body = [
     'User-agent: *',
     'Allow: /',
@@ -17,7 +16,7 @@ export function GET() {
     'Disallow: /brand/transparency-test.html',
     'Disallow: /unsubscribe',
     '',
-    `Sitemap: ${base}/sitemap.xml`,
+    `Sitemap: ${khadaneUrl('/sitemap.xml')}`,
     '',
   ].join('\n')
 
