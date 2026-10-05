@@ -15,6 +15,7 @@ export function GET() {
     'Allow: /',
     'Disallow: /api/',
     'Disallow: /brand/transparency-test.html',
+    'Disallow: /unsubscribe',
     '',
     `Sitemap: ${base}/sitemap.xml`,
     '',

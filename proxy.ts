@@ -278,6 +278,12 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // Email unsubscribe page (KHADANE only). next.config.js rewrites it to the
+  // n8n webhook; it must not be prefixed with /khadane or redirected here.
+  if (path === '/unsubscribe' && resolveSite(host) === 'khadane') {
+    return NextResponse.next()
+  }
+
   // Canonicalize internal route prefixes on public domains. The browser URL
   // should stay clean: khadane.com/collection, not khadane.com/khadane/collection.
   const hostTarget = resolveSite(host)
