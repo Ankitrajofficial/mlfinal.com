@@ -4,10 +4,12 @@ import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
 import EnquiryForm from '@/components/khadane/EnquiryForm'
+import { khadanePageUrls } from '@/lib/seo'
 
 export const metadata = {
   title: 'The Desk — Write to us',
   description: 'Tell us the variety, format, finish, size, and volume. Quote returned within one business day.',
+  ...khadanePageUrls('/desk'),
 }
 
 export default function DeskPage() {

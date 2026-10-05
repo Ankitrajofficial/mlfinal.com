@@ -46,7 +46,7 @@ export default function StickyCTA() {
         <MessageCircle size={22} strokeWidth={1.5} />
       </a>
       <Link
-        href="/khadane/desk"
+        href="/desk"
         aria-label="Write to The Desk"
         className="hidden md:flex bg-obsidian text-warm-white rounded-full p-4 shadow-lg hover:bg-quarry-gold hover:text-obsidian transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98]"
       >

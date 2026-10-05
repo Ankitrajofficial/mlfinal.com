@@ -7,10 +7,12 @@ import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
+import { khadanePageUrls } from '@/lib/seo'
 
 export const metadata = {
   title: 'The Collection — 24 sandstone varieties',
   description: 'Twenty-four sandstones, owned and allied. Each one, the surfaces and edges and formats it can take.',
+  ...khadanePageUrls('/collection'),
 }
 
 export default function CollectionPage() {
@@ -29,7 +31,7 @@ export default function CollectionPage() {
     delay: number
   }) => (
     <RevealOnScroll delay={delay}>
-      <Link href={`/khadane/collection/${v.slug}`} className="group block h-full">
+      <Link href={`/collection/${v.slug}`} className="group block h-full">
         <div className={`flex h-full flex-col ${dark ? 'bg-warm-white/[0.04]' : 'bg-warm-white'} transition-colors duration-400 ease-editorial ${dark ? 'hover:bg-warm-white/[0.07]' : 'hover:bg-stone-linen/70'}`}>
           <PlaceholderImage
             variant={v.placeholderClass.replace('placeholder-', '') as any}
@@ -157,7 +159,7 @@ export default function CollectionPage() {
             <div className="lg:col-span-8 grid grid-cols-1 gap-4 md:grid-cols-2">
               {founding.map((v, i) => (
                 <RevealOnScroll key={v.slug} delay={i * 100}>
-                  <Link href={`/khadane/collection/${v.slug}`} className="group flex items-center justify-between gap-6 bg-warm-white p-6 transition-colors hover:bg-stone-linen/60">
+                  <Link href={`/collection/${v.slug}`} className="group flex items-center justify-between gap-6 bg-warm-white p-6 transition-colors hover:bg-stone-linen/60">
                     <div>
                       <p className="font-mono text-xs text-quarry-gold no-justify mb-2">{v.code}</p>
                       <p className="font-display text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors">{v.name}</p>
@@ -194,7 +196,7 @@ export default function CollectionPage() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-6">
             {heroStones.map((v, i) => (
               <RevealOnScroll key={v.slug} delay={i * 60}>
-                <Link href={`/khadane/collection/${v.slug}`} className="group block bg-warm-white p-5 transition-colors hover:bg-stone-linen/70">
+                <Link href={`/collection/${v.slug}`} className="group block bg-warm-white p-5 transition-colors hover:bg-stone-linen/70">
                   <PlaceholderImage
                     variant={v.placeholderClass.replace('placeholder-', '') as any}
                     label={v.code}

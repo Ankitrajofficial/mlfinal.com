@@ -1,10 +1,12 @@
 import { SITE } from '@/lib/khadane/site'
 import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
+import { khadanePageUrls } from '@/lib/seo'
 
 export const metadata = {
   title: 'Terms',
   description: 'KHADANE™ trade terms and site terms of use.',
+  ...khadanePageUrls('/terms'),
 }
 
 export default function TermsPage() {

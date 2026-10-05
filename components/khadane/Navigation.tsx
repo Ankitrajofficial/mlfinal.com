@@ -10,11 +10,17 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
-  const routeBase = pathname.startsWith('/khadane') ? '/khadane' : ''
+  // Server HTML always links to the clean khadane.com URLs. The /khadane
+  // prefix is added after hydration, only when the browser itself is on an
+  // internal /khadane URL (local dev, Vercel previews).
+  const [routeBase, setRouteBase] = useState('')
+  useEffect(() => {
+    setRouteBase(window.location.pathname.startsWith('/khadane') ? '/khadane' : '')
+  }, [pathname])
   const homeHref = routeBase || '/'
   const withRouteBase = (href: string) =>
     routeBase && href.startsWith('/') ? `${routeBase}${href}` : href
-  const isHome = pathname === homeHref || pathname === `${homeHref}/`
+  const isHome = pathname === '/' || pathname === '/khadane' || pathname === '/khadane/'
   const [overHero, setOverHero] = useState(isHome)
   const navOnDark = overHero
 

@@ -3,9 +3,11 @@ import Navigation from '@/components/khadane/Navigation'
 import Footer from '@/components/khadane/Footer'
 import StickyCTA from '@/components/khadane/StickyCTA'
 import KhadaneAssistant from '@/components/khadane/KhadaneAssistant'
+import { KHADANE_SITE } from '@/lib/site-khadane'
+import { khadaneUrl } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://khadane.com'),
+  metadataBase: new URL(KHADANE_SITE.url),
   title: {
     default: 'KHADANE™ — The sandstone catalogue of the Bijolia belt. Rajasthan. Since 1972.',
     template: '%s · KHADANE™',
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://khadane.com',
+    url: khadaneUrl('/'),
     siteName: 'KHADANE™',
     title: 'KHADANE™ — The sandstone catalogue of the Bijolia belt',
     description:

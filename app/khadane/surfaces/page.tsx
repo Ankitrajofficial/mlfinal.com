@@ -4,12 +4,14 @@ import { PUBLISHED_SURFACES } from '@/lib/khadane/surfaces'
 import { EDGES } from '@/lib/khadane/edges'
 import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import FinishBlock from '@/components/khadane/FinishBlock'
+import { khadanePageUrls } from '@/lib/seo'
 
 // Counts track PUBLISHED_SURFACES so holding or publishing a finish cannot
 // leave the copy claiming a number the page does not render.
 export const metadata = {
   title: `Surfaces & Edges — ${PUBLISHED_SURFACES.length} finishes, four edge profiles`,
   description: `The ${PUBLISHED_SURFACES.length} surface finishes and four edge profiles KHADANE works to order. From sawn and honed to flamed, shotblast, and rockfaced. Photographed on the stone itself.`,
+  ...khadanePageUrls('/surfaces'),
 }
 
 export default function SurfacesPage() {
@@ -119,7 +121,7 @@ export default function SurfacesPage() {
             <div className="lg:col-span-4 lg:text-right">
               <RevealOnScroll delay={150}>
                 <Link
-                  href="/khadane/desk"
+                  href="/desk"
                   className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors hover:bg-tobacco no-justify"
                 >
                   <Send size={16} strokeWidth={1.6} />

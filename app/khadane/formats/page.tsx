@@ -15,6 +15,7 @@ import RevealOnScroll from '@/components/khadane/RevealOnScroll'
 import HeroWordRise from '@/components/khadane/HeroWordRise'
 import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
+import { khadanePageUrls } from '@/lib/seo'
 
 // Format heroes to show in full (object-contain) on the card instead of
 // cropping to fill — the whole image is visible, with slim letterbox bars.
@@ -23,6 +24,7 @@ const FIT_FULL_FORMAT_HEROES = new Set<string>()
 export const metadata = {
   title: 'The Formats — 20 sandstone formats',
   description: 'Every form the trade asks for, plus the surface treatments and edge profiles that finish the stone before it ships.',
+  ...khadanePageUrls('/formats'),
 }
 
 export default function FormatsPage() {
@@ -76,7 +78,7 @@ export default function FormatsPage() {
     dark?: boolean
   }) => (
     <RevealOnScroll delay={delay}>
-      <Link href={`/khadane/formats/${f.slug}`} className="group block h-full">
+      <Link href={`/formats/${f.slug}`} className="group block h-full">
         <div className={`flex h-full flex-col ${dark ? 'bg-warm-white/[0.04]' : 'bg-warm-white'} transition-colors duration-400 ease-editorial ${dark ? 'hover:bg-warm-white/[0.07]' : 'hover:bg-stone-linen/70'}`}>
           <PlaceholderImage
             variant={f.placeholderClass.replace('placeholder-', '') as any}
@@ -148,7 +150,7 @@ export default function FormatsPage() {
                     <Boxes size={16} strokeWidth={1.6} />
                     View formats
                   </a>
-                  <Link href="/khadane/desk" className="cta-secondary no-justify">
+                  <Link href="/desk" className="cta-secondary no-justify">
                     <Ruler size={16} strokeWidth={1.6} />
                     Custom drawing
                   </Link>
@@ -295,7 +297,7 @@ export default function FormatsPage() {
             </div>
             <div className="lg:col-span-5">
               <RevealOnScroll delay={150}>
-                <Link href="/khadane/desk" className="inline-flex w-full items-center justify-center gap-3 bg-quarry-gold px-8 py-5 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
+                <Link href="/desk" className="inline-flex w-full items-center justify-center gap-3 bg-quarry-gold px-8 py-5 font-sans text-sm uppercase tracking-wider text-obsidian transition-colors duration-200 ease-out hover:bg-warm-white no-justify">
                   <Ruler size={16} strokeWidth={1.6} />
                   Send custom specification
                 </Link>

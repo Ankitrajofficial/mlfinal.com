@@ -12,6 +12,9 @@ import PlaceholderImage from '@/components/khadane/PlaceholderImage'
 import Marquee from '@/components/khadane/Marquee'
 import BrandWhisper from '@/components/khadane/BrandWhisper'
 import EnquiryForm from '@/components/khadane/EnquiryForm'
+import { khadanePageUrls } from '@/lib/seo'
+
+export const metadata = khadanePageUrls('/')
 
 export default function HomePage() {
   const ownedVarieties = getOwnedVarieties()
@@ -73,11 +76,11 @@ export default function HomePage() {
                 Owned quarries, and a network of allied quarries across northern India. Cut and dressed in every form the trade specifies.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/khadane/collection" className="cta-primary no-justify">
+                <Link href="/collection" className="cta-primary no-justify">
                   Browse the Collection
                 </Link>
                 <Link
-                  href="/khadane/desk"
+                  href="/desk"
                   className="inline-flex items-center gap-3 px-8 py-4 border border-warm-white/30 text-warm-white font-sans text-sm tracking-wider uppercase transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] hover:bg-warm-white hover:text-obsidian no-justify"
                 >
                   Write to The Desk
@@ -214,7 +217,7 @@ export default function HomePage() {
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={420}>
-                <Link href="/khadane/collection" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-quarry-gold hover:text-obsidian no-justify">
+                <Link href="/collection" className="inline-flex items-center gap-3 bg-obsidian px-8 py-4 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:bg-quarry-gold hover:text-obsidian no-justify">
                   Browse all {SITE.varietyCount} varieties <ArrowRight size={16} strokeWidth={1.6} />
                 </Link>
               </RevealOnScroll>
@@ -222,7 +225,7 @@ export default function HomePage() {
 
             <div className="lg:col-span-7">
               <RevealOnScroll>
-                <Link href={`/khadane/collection/${heroVarieties[0].slug}`} className="group mb-5 block border border-obsidian/10 bg-warm-white p-5 transition-colors duration-200 ease-out hover:border-quarry-gold/50">
+                <Link href={`/collection/${heroVarieties[0].slug}`} className="group mb-5 block border border-obsidian/10 bg-warm-white p-5 transition-colors duration-200 ease-out hover:border-quarry-gold/50">
                   <div className="grid grid-cols-1 gap-5 md:grid-cols-12 md:items-stretch">
                     <div className="md:col-span-7">
                       <PlaceholderImage
@@ -259,7 +262,7 @@ export default function HomePage() {
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 {heroVarieties.slice(1).map((v, i) => (
                   <RevealOnScroll key={v.slug} delay={100 + i * 70}>
-                    <Link href={`/khadane/collection/${v.slug}`} className="group block h-full border border-obsidian/10 bg-warm-white p-4 transition-colors duration-200 ease-out hover:border-quarry-gold/50">
+                    <Link href={`/collection/${v.slug}`} className="group block h-full border border-obsidian/10 bg-warm-white p-4 transition-colors duration-200 ease-out hover:border-quarry-gold/50">
                       <PlaceholderImage
                         variant={v.placeholderClass.replace('placeholder-', '') as any}
                         label={v.code}
@@ -316,14 +319,14 @@ export default function HomePage() {
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={350}>
-                <Link href="/khadane/formats" className="cta-text">All {SITE.formatCount} formats →</Link>
+                <Link href="/formats" className="cta-text">All {SITE.formatCount} formats →</Link>
               </RevealOnScroll>
             </div>
 
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-px bg-obsidian/10">
               {heroFormats.map((f, i) => (
                 <RevealOnScroll key={f.slug} delay={i * 50} className="h-full">
-                  <Link href={`/khadane/formats/${f.slug}`} className="flex h-full min-h-44 flex-col bg-warm-white p-6 lg:p-8 hover:bg-stone-linen transition-colors duration-200 ease-out group">
+                  <Link href={`/formats/${f.slug}`} className="flex h-full min-h-44 flex-col bg-warm-white p-6 lg:p-8 hover:bg-stone-linen transition-colors duration-200 ease-out group">
                     <p className="font-mono text-xs text-quarry-gold no-justify mb-3">{f.code}</p>
                     <h3 className="font-display text-xl lg:text-2xl text-obsidian no-justify group-hover:text-quarry-gold transition-colors mb-3">
                       {f.name}
@@ -384,7 +387,7 @@ export default function HomePage() {
                 </div>
               </RevealOnScroll>
               <RevealOnScroll delay={500}>
-                <Link href="/khadane/quarry" className="inline-flex items-center gap-3 text-warm-white font-sans text-sm tracking-wider uppercase border-b border-warm-white/30 hover:border-quarry-gold hover:text-quarry-gold pb-1 transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] no-justify">
+                <Link href="/quarry" className="inline-flex items-center gap-3 text-warm-white font-sans text-sm tracking-wider uppercase border-b border-warm-white/30 hover:border-quarry-gold hover:text-quarry-gold pb-1 transition-[color,background-color,border-color,transform] duration-200 ease-out active:scale-[0.98] no-justify">
                   Inside the quarry →
                 </Link>
               </RevealOnScroll>
@@ -461,7 +464,7 @@ export default function HomePage() {
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={400}>
-                <Link href="/khadane/yard" className="cta-text">Inside the yard →</Link>
+                <Link href="/yard" className="cta-text">Inside the yard →</Link>
               </RevealOnScroll>
             </div>
             <div className="lg:col-span-6 order-1 lg:order-2">
@@ -499,7 +502,7 @@ export default function HomePage() {
               </RevealOnScroll>
             </div>
             <RevealOnScroll delay={250}>
-              <Link href="/khadane/gallery" className="cta-text">Open the record →</Link>
+              <Link href="/gallery" className="cta-text">Open the record →</Link>
             </RevealOnScroll>
           </div>
 
@@ -507,7 +510,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-4">
             {/* Large wide tile */}
             <RevealOnScroll delay={100} className="lg:col-span-8 lg:row-span-2">
-              <Link href="/khadane/gallery" className="group block relative overflow-hidden bg-obsidian h-full">
+              <Link href="/gallery" className="group block relative overflow-hidden bg-obsidian h-full">
                 <PlaceholderImage
                   variant="quarry"
                   label="GAL-009"
@@ -526,7 +529,7 @@ export default function HomePage() {
             </RevealOnScroll>
             {/* Top right tile */}
             <RevealOnScroll delay={200} className="lg:col-span-4">
-              <Link href="/khadane/gallery" className="group block relative overflow-hidden bg-obsidian">
+              <Link href="/gallery" className="group block relative overflow-hidden bg-obsidian">
                 <PlaceholderImage
                   variant="stone-grey"
                   label="GAL-001"
@@ -543,7 +546,7 @@ export default function HomePage() {
             </RevealOnScroll>
             {/* Bottom right tile */}
             <RevealOnScroll delay={300} className="lg:col-span-4">
-              <Link href="/khadane/gallery" className="group block relative overflow-hidden bg-obsidian">
+              <Link href="/gallery" className="group block relative overflow-hidden bg-obsidian">
                 <PlaceholderImage
                   variant="yard"
                   label="GAL-016"
@@ -562,7 +565,7 @@ export default function HomePage() {
 
           <RevealOnScroll delay={400}>
             <div className="mt-12 text-center">
-              <Link href="/khadane/gallery" className="cta-secondary no-justify">
+              <Link href="/gallery" className="cta-secondary no-justify">
                 All 32 frames →
               </Link>
             </div>
@@ -588,7 +591,7 @@ export default function HomePage() {
               </RevealOnScroll>
             </div>
             <RevealOnScroll delay={250}>
-              <Link href="/khadane/field-notes" className="cta-text">All field notes →</Link>
+              <Link href="/field-notes" className="cta-text">All field notes →</Link>
             </RevealOnScroll>
           </div>
 
@@ -617,7 +620,7 @@ export default function HomePage() {
               },
             ].map((note, i) => (
               <RevealOnScroll key={note.code} delay={i * 100}>
-                <Link href="/khadane/field-notes" className="block group">
+                <Link href="/field-notes" className="block group">
                   <PlaceholderImage
                     variant="stone"
                     label={note.code}
@@ -686,7 +689,7 @@ export default function HomePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={520}>
                 <Link
-                  href="/khadane/collection"
+                  href="/collection"
                   className="mt-8 inline-flex items-center gap-3 font-sans text-sm uppercase tracking-wider text-warm-white transition-colors duration-200 ease-out hover:text-quarry-gold no-justify"
                 >
                   Browse all allied varieties <ArrowRight size={16} strokeWidth={1.6} />
@@ -697,7 +700,7 @@ export default function HomePage() {
               <div className="grid grid-cols-3 gap-3 lg:gap-4">
                 {alliedVarieties.slice(0, 9).map((v, i) => (
                   <RevealOnScroll key={v.slug} delay={i * 50}>
-                    <Link href={`/khadane/collection/${v.slug}`} className="block group">
+                    <Link href={`/collection/${v.slug}`} className="block group">
                       <PlaceholderImage
                         variant={v.placeholderClass.replace('placeholder-', '') as any}
                         label={v.code}
@@ -746,7 +749,7 @@ export default function HomePage() {
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={400}>
-              <Link href="/khadane/group" className="cta-secondary">
+              <Link href="/group" className="cta-secondary">
                 The full house →
               </Link>
             </RevealOnScroll>
