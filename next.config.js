@@ -71,6 +71,18 @@ const nextConfig = {
     ]
   },
 
+  // khadane.com/unsubscribe is served by the email agent (n8n). Proxied, not
+  // redirected, so the address bar stays on khadane.com and ?t= passes through.
+  // proxy.ts leaves this path alone on khadane hosts so this rule can match.
+  async rewrites() {
+    return [
+      {
+        source: '/unsubscribe',
+        destination: 'https://n8n.khadane.com/webhook/unsubscribe',
+      },
+    ]
+  },
+
   async headers() {
     return [
       {
