@@ -1,7 +1,7 @@
 /**
  * Admin store database layer.
  *
- * Primary: Neon Postgres (DATABASE_URL) — source of truth.
+ * Primary: Postgres on AWS RDS (DATABASE_URL) — source of truth.
  *          Whole AdminStore lives in one JSONB row with integer version
  *          for optimistic compare-and-swap across serverless instances.
  *
@@ -10,8 +10,9 @@
  * When DATABASE_URL is unset, lib/admin/store.ts uses local JSON file.
  */
 
-import { neon } from '@neondatabase/serverless'
+import { Pool } from 'pg'
 import type { AdminStore } from './types'
+import { RDS_CA } from './rds-ca'
 
 // ─── Neon Postgres (primary) ───────────────────────────────────
 
@@ -19,10 +20,28 @@ export function dbConfigured(): boolean {
   return Boolean(process.env.DATABASE_URL?.trim())
 }
 
+const g = globalThis as unknown as { __adminPool?: Pool }
+
+/** One small pg pool per process. TLS to AWS RDS is verified against Amazon's certificate authorities (./rds-ca.ts). */
+function pool(): Pool {
+  if (!g.__adminPool) {
+    const url = process.env.DATABASE_URL?.trim()
+    if (!url) throw new Error('DATABASE_URL is not set')
+    const local = /localhost|127\.0\.0\.1/.test(url)
+    g.__adminPool = new Pool({ connectionString: url, ssl: local ? undefined : { ca: RDS_CA }, max: 3, idleTimeoutMillis: 30_000 })
+  }
+  return g.__adminPool
+}
+
+type Row = Record<string, unknown>
+
+/** Tagged template: `sql()\`SELECT ... ${value}\`` sends values as bound parameters and resolves to the rows. */
 function sql() {
-  const url = process.env.DATABASE_URL?.trim()
-  if (!url) throw new Error('DATABASE_URL is not set')
-  return neon(url)
+  return async (strings: TemplateStringsArray, ...values: unknown[]): Promise<Row[]> => {
+    const text = strings.reduce((acc, part, i) => acc + part + (i < values.length ? `$${i + 1}` : ''), '')
+    const res = await pool().query(text, values)
+    return res.rows as Row[]
+  }
 }
 
 let schemaReady: Promise<void> | null = null
