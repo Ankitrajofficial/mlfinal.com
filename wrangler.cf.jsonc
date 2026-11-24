@@ -1,3 +1,14 @@
-{ "name": "mlfinal-com", "main": "cf-entry.mjs", "compatibility_date": "2025-09-01",
+{
+  "name": "mlfinal-com",
+  "main": "cf-entry.mjs",
+  "compatibility_date": "2025-09-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "r2_buckets": [{ "binding": "SITE", "bucket_name": "ar-sites" }] }
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  
+  
+  "triggers": { "crons": [] },
+  "observability": { "enabled": true },
+  "workers_dev": true,
+  "preview_urls": false,
+  "keep_vars": true
+}
